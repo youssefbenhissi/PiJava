@@ -157,7 +157,7 @@ public class AfficherCategoriesClubController implements Initializable {
 
         listeCategorie.setEditable(true);
         //nomCategorie.setCellFactory(TextFieldTableCell.forTableColumn());
-        
+        //recupererUtilisateurConnecte
         //nomCategorie.setCellValueFactory(TextFieldTableCell.forTableColumn());
         myList.forEach(e -> {
             myObservableList.add(e);
