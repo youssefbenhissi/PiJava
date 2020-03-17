@@ -157,7 +157,6 @@ public class AfficherCategoriesClubController implements Initializable {
 
         listeCategorie.setEditable(true);
         //nomCategorie.setCellFactory(TextFieldTableCell.forTableColumn());
-        //ligne hedhi eli ta7et hiya eli ta3mel fi errur how temchilou cv w ena le
         
         //nomCategorie.setCellValueFactory(TextFieldTableCell.forTableColumn());
         myList.forEach(e -> {

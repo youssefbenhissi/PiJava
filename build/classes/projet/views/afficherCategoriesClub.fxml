@@ -129,42 +129,12 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <HBox alignment="CENTER_LEFT" layoutX="45.0" layoutY="72.0" prefHeight="92.0" prefWidth="661.0" spacing="50.0">
-                     <children>
-                        <VBox alignment="CENTER" prefHeight="92.0" prefWidth="260.0">
-                           <children>
-                              <Label fx:id="countCategorie" textFill="#fa5f7e">
-                                 <font>
-                                    <Font name="System Bold" size="26.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="21.0" prefWidth="152.0" text="Total des categories" textFill="#e7e5e5" />
-                           </children>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <padding>
-                              <Insets left="110.0" />
-                           </padding>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="92.0" prefWidth="313.0">
-                           <children>
-                              <Label fx:id="countClubs" textFill="#de0000">
-                                 <font>
-                                    <Font name="System Bold" size="26.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Total des clubs" textFill="#e7e5e5" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
                   <ScrollPane layoutX="14.0" layoutY="232.0" prefHeight="173.0" prefWidth="746.0" stylesheets="@style.css">
                      <content>
                         <TableView fx:id="listeCategorie" editable="true" prefHeight="182.0" prefWidth="742.0" style="-fx-background-color: #02030A;">
                           <columns>
                             <TableColumn fx:id="id" prefWidth="159.0" text="ID" />
-                            <TableColumn fx:id="nomCategorie" prefWidth="563.0" onEditCommit="#modifierCategorie"  text="Nom Categorie" />
+                            <TableColumn fx:id="nomCategorie" onEditCommit="#modifierCategorie" prefWidth="563.0" text="Nom Categorie" />
                           </columns>
                            <contextMenu>
                               <ContextMenu>
@@ -276,6 +246,84 @@
             </TableView>
          </content>
       </ScrollPane>
+      <VBox layoutX="255.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="134.0" prefWidth="799.0" styleClass="content-page" stylesheets="@../../../../PI%20FINAL/ProjetPI/src/projet/style/backcss.css">
+         <children>
+            <HBox prefHeight="85.0" prefWidth="1015.0" styleClass="header-title" />
+            <HBox prefHeight="100.0" prefWidth="543.0" styleClass="info-dashboard">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="278.0" styleClass="info-item">
+                     <children>
+                        <VBox prefHeight="67.0" prefWidth="158.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="165.0" text="Categories">
+                                 <font>
+                                    <Font name="Century Gothic" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="countCategorie" prefHeight="51.0" prefWidth="158.0" text="250">
+                                 <font>
+                                    <Font name="Century Gothic" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Button mnemonicParsing="false" style="-fx-background-color: #4099ff;" styleClass="info-button">
+                           <graphic>
+                              <FontAwesomeIcon glyphName="CUBE" styleClass="info-dashboard-icon" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="276.0" layoutY="10.0" prefHeight="100.0" prefWidth="201.0" styleClass="info-item">
+                     <children>
+                        <VBox prefHeight="67.0" prefWidth="158.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="165.0" text="Clubs">
+                                 <font>
+                                    <Font name="Century Gothic" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="countClubs" prefHeight="51.0" prefWidth="158.0" text="250">
+                                 <font>
+                                    <Font name="Century Gothic" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Button mnemonicParsing="false" style="-fx-background-color: #ffb64d;" styleClass="info-button">
+                           <graphic>
+                              <FontAwesomeIcon glyphName="SLACK" styleClass="info-dashboard-icon" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="201.0" styleClass="info-item">
+                     <children>
+                        <VBox prefHeight="67.0" prefWidth="158.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="165.0" text="inscriptions">
+                                 <font>
+                                    <Font name="Century Gothic" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="countClubs1" prefHeight="51.0" prefWidth="158.0" text="250">
+                                 <font>
+                                    <Font name="Century Gothic" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Button mnemonicParsing="false" style="-fx-background-color: #ffb64d;" styleClass="info-button">
+                           <graphic>
+                              <FontAwesomeIcon glyphName="SLACK" styleClass="info-dashboard-icon" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
    <effect>
       <DropShadow color="#1b1eeb" />

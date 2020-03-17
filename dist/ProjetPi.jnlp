@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ProjetPi.jar" size="2051576" download="eager" />
+    <jar href="ProjetPi.jar" size="2051778" download="eager" />
     <jar href="lib\Client.jar" size="3693" download="eager" />
     <jar href="lib\EmacspeakServer.jar" size="7821" download="eager" />
     <jar href="lib\FreeTTSEmacspeakServer.jar" size="8465" download="eager" />
