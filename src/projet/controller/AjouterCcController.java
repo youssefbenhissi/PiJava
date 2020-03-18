@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package projet.controller;
-
+import t2s.son.LecteurTexte;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -34,12 +34,13 @@ public class AjouterCcController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
         TranslateTransition t =new TranslateTransition(Duration.seconds(1),vbox);
         t.setToX(5);
         t.play();
         t.setOnFinished((e)->{
             try {
-                fxml=FXMLLoader.load(getClass().getResource("AjouterCategorieFormulaire.fxml"));
+                fxml=FXMLLoader.load(getClass().getResource("/projet/views/AjouterClubFormulaire.fxml"));
                 vbox.getChildren().removeAll();
                 vbox.getChildren().setAll(fxml);
             } catch (IOException ex) {
@@ -54,7 +55,7 @@ public class AjouterCcController implements Initializable {
         t.play();
         t.setOnFinished((e)->{
             try {
-                fxml=FXMLLoader.load(getClass().getResource("AjouterCategorieFormulaire.fxml"));
+                fxml=FXMLLoader.load(getClass().getResource("/projet/views/AjouterCategorieFromulaire.fxml"));
                 vbox.getChildren().removeAll();
                 vbox.getChildren().setAll(fxml);
             } catch (IOException ex) {
@@ -69,7 +70,7 @@ public class AjouterCcController implements Initializable {
         t.play();
         t.setOnFinished((e)->{
             try {
-                fxml=FXMLLoader.load(getClass().getResource("AjouterClubFormulaire.fxml"));
+                fxml=FXMLLoader.load(getClass().getResource("/projet/views/AjouterClubFormulaire.fxml"));
                 vbox.getChildren().removeAll();
                 vbox.getChildren().setAll(fxml);
             } catch (IOException ex) {

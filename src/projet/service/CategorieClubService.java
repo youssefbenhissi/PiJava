@@ -93,4 +93,18 @@ public class CategorieClubService implements ICategorieClubService{
         }
         System.out.println("Categorie non Supprimer");
     }
+    @Override
+    public void ajouterCategorie(CategorieClub c){
+      String requete="INSERT INTO categorie_club (nomCategorie)"
+                + " VALUES ('"+c.getNomCategorie()+"');";                              
+        
+        try {
+           pst = connection.prepareStatement(requete);
+            pst.executeUpdate(requete);
+            System.out.println("categorie Ajoutee");
+        } catch (SQLException ex) {
+            System.out.println("aaaaaaa");
+        }
+     
+     }
 }

@@ -83,6 +83,7 @@ import projet.models.CategorieClub;
 import projet.models.Club;
 import projet.service.CategorieClubService;
 import projet.service.ClubService;
+import t2s.son.LecteurTexte;
 
 /**
  * FXML Controller class
@@ -143,13 +144,19 @@ public class AfficherCategoriesClubController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //pdf("lobna", "youssef", "desciption", 12,2);
-        
+        //LecteurTexte lecteur = new LecteurTexte("club de foot");
+        //lecteur.playAll();
+        //lecteur.setTexte("je suis un synthétiseur vocal, qui êtes-vous?");
+        //lecteur.playAll();
         compteurCategorie();
         compteurClub();
-
+        //CategorieClub p =new CategorieClub();
+        //p.setNomCategorie("mustapha");
+        
         Timer timer = new Timer(); //new timer
         CategorieClubService cs = new CategorieClubService();
         ClubService cc = new ClubService();
+        //cs.ajouterCategorie(p);
         List<CategorieClub> myList = categoriesClubService.selectAll();
         ObservableList<CategorieClub> myObservableList = FXCollections.observableArrayList();
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -243,7 +250,7 @@ public class AfficherCategoriesClubController implements Initializable {
             talk.speak(clubSelect.getDescription());
         } catch (java.lang.RuntimeException e) {
             Alert a1 = new Alert(Alert.AlertType.WARNING);
-            a1.setTitle("Selction obligatoiire");
+            a1.setTitle("Selction obligatoire");
             a1.setContentText("Vous devez selectionner un club afin d'ecouter sa description");
             Optional<ButtonType> result = a1.showAndWait();
         }
@@ -430,8 +437,7 @@ public class AfficherCategoriesClubController implements Initializable {
     @FXML
     public void ajouterEvenementGUI(ActionEvent even) throws IOException {
         Stage primaryStage = new Stage();
-        //primaryStage.setTitle("Ajouter Evenement");
-        Parent root = FXMLLoader.load(getClass().getResource("/projet/views/Ajouter.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/projet/views/AjouterCategorieEtClub.fxml"));
         Scene scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);
         primaryStage.setScene(scene);
