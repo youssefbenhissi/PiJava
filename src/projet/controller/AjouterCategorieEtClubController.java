@@ -1,4 +1,3 @@
-
 package projet.controller;
 
 import com.jfoenix.controls.JFXButton;
@@ -12,11 +11,15 @@ import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.controlsfx.control.PopOver;
+import projet.models.CategorieClub;
+import projet.service.CategorieClubService;
+import projet.service.ClubService;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
-
 
 /**
  *
@@ -48,10 +51,8 @@ public class AjouterCategorieEtClubController implements Initializable {
     private Label a2;
     @FXML
     private Label b2;
-    @FXML
-    private Label a1;
-    @FXML
-    private Label b1;
+    
+    
     @FXML
     private JFXButton btnsignup;
     @FXML
@@ -62,23 +63,24 @@ public class AjouterCategorieEtClubController implements Initializable {
     private TextField u2;
     @FXML
     private TextField u3;
-    
+
     @FXML
     private TextField u4;
     @FXML
     private TextField n1;
     @FXML
     private AnchorPane layer1;
-    
-    
-    
+
+    ClubService ClubService = new ClubService();
+
+    CategorieClubService categoriesClubService = new CategorieClubService();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         s1.setVisible(false);
         s2.setVisible(false);
         s3.setVisible(false);
         signup.setVisible(false);
-        b1.setVisible(false);
         b2.setVisible(false);
         btnsignin.setVisible(false);
         n1.setVisible(false);
@@ -86,22 +88,51 @@ public class AjouterCategorieEtClubController implements Initializable {
         u2.setVisible(true);
         u3.setVisible(true);
         u4.setVisible(true);
-    }    
+
+        PopOver popOver1 = categoriesClubService.popNotification("le nom ne doit pas contenir aucun caractére spécial");
+        u1.setOnMouseEntered(mouseEvent -> {
+            popOver1.show(n1);
+        });
+        u1.setOnMouseExited(mouseEvent -> {
+            popOver1.hide();
+        });
+
+        PopOver popOver2 = categoriesClubService.popNotification("la liste deroulante vous aidera à choisir le club");
+        u2.setOnMouseEntered(mouseEvent -> {
+            popOver2.show(u2);
+        });
+        u2.setOnMouseExited(mouseEvent -> {
+            popOver2.hide();
+        });
+        PopOver popOver3 = categoriesClubService.popNotification("la capacité doit étre un entier positif");
+        u4.setOnMouseEntered(mouseEvent -> {
+            popOver3.show(u4);
+        });
+        u4.setOnMouseExited(mouseEvent -> {
+            popOver3.hide();
+        });
+        PopOver popOver4 = categoriesClubService.popNotification("le nom ne doit pas contenir aucun caractére spécial");
+        n1.setOnMouseEntered(mouseEvent -> {
+            popOver4.show(n1);
+        });
+        n1.setOnMouseExited(mouseEvent -> {
+            popOver4.hide();
+        });
+    }
 
     @FXML
     private void btn(MouseEvent event) {
         TranslateTransition slide = new TranslateTransition();
         slide.setDuration(Duration.seconds(0.7));
         slide.setNode(layer2);
-        
+
         slide.setToX(491);
         slide.play();
-        
+
         layer1.setTranslateX(-309);
         btnsignin.setVisible(true);
-        b1.setVisible(true);
         b2.setVisible(true);
-        
+
         s1.setVisible(true);
         s2.setVisible(true);
         s3.setVisible(true);
@@ -110,7 +141,6 @@ public class AjouterCategorieEtClubController implements Initializable {
         l2.setVisible(false);
         l3.setVisible(false);
         signin.setVisible(false);
-        a1.setVisible(false);
         a2.setVisible(false);
         btnsignup.setVisible(false);
         n1.setVisible(true);
@@ -118,9 +148,12 @@ public class AjouterCategorieEtClubController implements Initializable {
         u2.setVisible(false);
         u3.setVisible(false);
         u4.setVisible(false);
-        slide.setOnFinished((e->{
-        
-        
+        slide.setOnFinished((e -> {
+            u1.setText("");
+            u2.setText("");
+            u3.setText("");
+            u4.setText("");
+
         }));
     }
 
@@ -129,15 +162,14 @@ public class AjouterCategorieEtClubController implements Initializable {
         TranslateTransition slide = new TranslateTransition();
         slide.setDuration(Duration.seconds(0.7));
         slide.setNode(layer2);
-        
+
         slide.setToX(0);
         slide.play();
-        
+
         layer1.setTranslateX(0);
         btnsignin.setVisible(false);
-        b1.setVisible(false);
         b2.setVisible(false);
-        
+
         s1.setVisible(false);
         s2.setVisible(false);
         s3.setVisible(false);
@@ -146,7 +178,6 @@ public class AjouterCategorieEtClubController implements Initializable {
         l2.setVisible(true);
         l3.setVisible(true);
         signin.setVisible(true);
-        a1.setVisible(true);
         a2.setVisible(true);
         btnsignup.setVisible(true);
         n1.setVisible(false);
@@ -154,9 +185,10 @@ public class AjouterCategorieEtClubController implements Initializable {
         u2.setVisible(true);
         u3.setVisible(true);
         u4.setVisible(true);
-        slide.setOnFinished((e->{
-        
-        
+        slide.setOnFinished((e -> {
+
+            n1.setText("");
+
         }));
     }
 
@@ -166,47 +198,58 @@ public class AjouterCategorieEtClubController implements Initializable {
 
     @FXML
     private void sign(MouseEvent event) {
-        
+
     }
 
     @FXML
     private void click(ActionEvent event) {
-        if("cyberdeveloper".equals(n1.getText())){
-            String tilte = "Sign In";
+        String nomCategorie = n1.getText();
+        
+        if (nomCategorie.isEmpty()) {
+            String tilte = "Champ Vide";
+            String message = "tous les champs doivent être remplis";
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+
+            tray.setAnimationType(type);
+            tray.setTitle(tilte);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.ERROR);
+            tray.showAndDismiss(Duration.millis(3000));
+        }
+        else if (!categoriesClubService.validationChaineSimpleSansEspace(nomCategorie)){
+            String tilte = "Nom Catgeorie";
+            String message = "le nom de la catégorie est non autorisé";
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+
+            tray.setAnimationType(type);
+            tray.setTitle(tilte);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.ERROR);
+            tray.showAndDismiss(Duration.millis(3000));
+        }
+        else {
+            CategorieClub c = new CategorieClub();
+            c.setNomCategorie(nomCategorie);
+            categoriesClubService.ajouterCategorie(c);
+            String tilte = "Ajout validé";
             String message = n1.getText();
             TrayNotification tray = new TrayNotification();
             AnimationType type = AnimationType.POPUP;
-        
+
             tray.setAnimationType(type);
             tray.setTitle(tilte);
             tray.setMessage(message);
             tray.setNotificationType(NotificationType.SUCCESS);
             tray.showAndDismiss(Duration.millis(3000));
         }
-        if(!"cyberdeveloper".equals(n1.getText())){
-            String tilte = "Sign In";
-            String message = "Error Username "+"'"+n1.getText()+"'"+" Wrong";
-            TrayNotification tray = new TrayNotification();
-            AnimationType type = AnimationType.POPUP;
-        
-            tray.setAnimationType(type);
-            tray.setTitle(tilte);
-            tray.setMessage(message);
-            tray.setNotificationType(NotificationType.ERROR);
-            tray.showAndDismiss(Duration.millis(3000));
-        }
-        if (!"cyberdeveloper".equals(n1.getText())){
-            String tilte = "Sign In";
-            String message = "Error Username "+"'"+n1.getText();
-            TrayNotification tray = new TrayNotification();
-            AnimationType type = AnimationType.POPUP;
-        
-            tray.setAnimationType(type);
-            tray.setTitle(tilte);
-            tray.setMessage(message);
-            tray.setNotificationType(NotificationType.ERROR);
-            tray.showAndDismiss(Duration.millis(3000));
-        }
     }
+    @FXML
+    private void quitter() {
+        // get a handle to the stage
+        Stage stage = (Stage) layer1.getScene().getWindow();
+        // do what you have to do
+        stage.close();
     }
-
+}

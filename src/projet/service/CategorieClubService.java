@@ -14,6 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javafx.geometry.Insets;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
+import org.controlsfx.control.PopOver;
 import projet.models.CategorieClub;
 import projet.models.Club;
 import projet.utils.DbConnection;
@@ -107,4 +113,27 @@ public class CategorieClubService implements ICategorieClubService{
         }
      
      }
+    public static PopOver popNotification(String notification) {
+        Text notifcationText = new Text(notification);
+        notifcationText.setWrappingWidth(230);
+        notifcationText.setStyle("-fx-font-weight: bold");
+
+        HBox hBox = new HBox(notifcationText);
+        hBox.setPadding(new Insets(0, 5, 0, 5));
+
+        PopOver popOver = new PopOver(hBox);
+        popOver.setTitle("New Notification");
+
+        return popOver;
+    }
+    
+    /* CONTROLE DE SAISIE */
+    //variable de controle de saisie
+    private static Matcher matcher;
+     private static final String chaineSimple_sanEspace_pattern = "^[A-Za-z0-9]+$";
+    private static Pattern chaineSimple_pattern__sanEspace_complie = Pattern.compile(chaineSimple_sanEspace_pattern);
+     public static boolean validationChaineSimpleSansEspace(final String chaineSaisie) {
+        matcher = chaineSimple_pattern__sanEspace_complie.matcher(chaineSaisie);
+        return matcher.matches();
+    }
 }
