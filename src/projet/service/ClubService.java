@@ -49,8 +49,6 @@ public class ClubService implements IClub {
             ps.executeQuery();
             ResultSet rs = ps.getResultSet();
             ResultSetMetaData rsmd = rs.getMetaData();
-
-            // System.out.println("Column Name of 1st column: "+rsmd.getColumnName(6));  
             //System.out.println("Column Type Name of 1st column: "+rsmd.getColumnTypeName(6)); 
             //System.out.println(rs.getInt(1));
             while (rs.next()) {
@@ -60,26 +58,27 @@ public class ClubService implements IClub {
                 c.setDescription(rs.getString(3));
                 c.setCapacite(rs.getInt(4));
                 c.setMoyenneLike(rs.getFloat(5));
-
-                //System.out.println(rs.getString(5));
                 c.setNomcategorie(rs.getString(6));
-                //System.out.println(rs.getString(6));
                 clubs.add(c);
-                /*Document document=new Document();
-                PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\youssef\\Desktop\\libYoussef\\youssef.pdf"));
-                    document.open();
-                    Paragraph p=new Paragraph(c.getNom());
-                    document.add(p);
-                    Paragraph pDescr=new Paragraph(c.getDescription());
-                    document.add(pDescr);
-                    document.close();*/
             }
         } catch (Exception ex) {
             Logger.getLogger(CategorieClubService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return clubs;
     }
-
+    public void ajouterCategorie(Club c){
+      String requete="INSERT INTO club (nom,description,capacite,image,nbrLike,nbrFoisLike,moyenneLike,categorie_id,questionPr,questionDe,questionTr)"
+                + " VALUES ('"+c.getNom()+"','"+c.getDescription()+"','"+c.getCapacite()+"','"+c.getPath()+"','"+c.getNbrLike()+"','"+c.getNbrFoisLike()+"','"+c.getMoyenneLike()+"','"+c.getCategorie_id()+"','"+c.getQuestionPr()+"','"+c.getQuestionDe()+"','"+c.getQuestionTr()+"');";                              
+        
+        try {
+           pst = connection.prepareStatement(requete);
+            pst.executeUpdate(requete);
+            System.out.println("club Ajoute");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+     
+     }
     @Override
     public void supprimerClub(int x) {
         String sql = "DELETE FROM club WHERE id = ? ";

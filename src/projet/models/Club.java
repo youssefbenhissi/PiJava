@@ -16,10 +16,83 @@ public class Club {
     private int capacite;
     private String path;
     private  float moyenneLike;
+    private int nbrLike;
     private String nomcategorie;
+    private  int nbrFoisLike;
+    private int categorie_id;
+    private String questionPr;
+    private  String questionDe;
+    private String questionTr;
+
+    public String getQuestionPr() {
+        return questionPr;
+    }
+
+    public void setQuestionPr(String questionPr) {
+        this.questionPr = questionPr;
+    }
+
+    public String getQuestionDe() {
+        return questionDe;
+    }
+
+    public void setQuestionDe(String questionDe) {
+        this.questionDe = questionDe;
+    }
+
+    public String getQuestionTr() {
+        return questionTr;
+    }
+
+    public void setQuestionTr(String questionTr) {
+        this.questionTr = questionTr;
+    }
+    
+
+    public int getCategorie_id() {
+        return categorie_id;
+    }
+
+    public void setCategorie_id(int categorie_id) {
+        this.categorie_id = categorie_id;
+    }
+    
+    public int getNbrFoisLike() {
+        return nbrFoisLike;
+    }
+
+    public void setNbrFoisLike(int nbrFoisLike) {
+        this.nbrFoisLike = nbrFoisLike;
+    }
+    
 
     public Club() {
     }
+
+    public int getNbrLike() {
+        return nbrLike;
+    }
+
+    public void setNbrLike(int nbrLike) {
+        this.nbrLike = nbrLike;
+    }
+
+    public Club(int id, String nom, String description, int capacite, String path, float moyenneLike, int nbrLike, String nomcategorie, int nbrFoisLike, int categorie_id, String questionPr, String questionDe, String questionTr) {
+        this.id = id;
+        this.nom = nom;
+        this.description = description;
+        this.capacite = capacite;
+        this.path = path;
+        this.moyenneLike = moyenneLike;
+        this.nbrLike = nbrLike;
+        this.nomcategorie = nomcategorie;
+        this.nbrFoisLike = nbrFoisLike;
+        this.categorie_id = categorie_id;
+        this.questionPr = questionPr;
+        this.questionDe = questionDe;
+        this.questionTr = questionTr;
+    }
+    
 
     public Club(int id, String nom, String description, int capacite, String path, float moyenneLike) {
         this.id = id;

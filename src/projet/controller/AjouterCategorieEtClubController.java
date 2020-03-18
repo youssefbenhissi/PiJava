@@ -2,21 +2,34 @@ package projet.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.PopOver;
 import projet.models.CategorieClub;
+import projet.models.Club;
 import projet.service.CategorieClubService;
 import projet.service.ClubService;
 import tray.animations.AnimationType;
@@ -49,10 +62,6 @@ public class AjouterCategorieEtClubController implements Initializable {
     private Label s3;
     @FXML
     private JFXButton signup;
-    @FXML
-    private Label a2;
-    @FXML
-    private Label b2;
 
     @FXML
     private JFXButton btnsignup;
@@ -62,9 +71,16 @@ public class AjouterCategorieEtClubController implements Initializable {
     private TextField u1;
     @FXML
     private TextField u3;
-
+    @FXML
+    private ImageView imageView;
     @FXML
     private TextField u4;
+    @FXML
+    private TextField uquestion1;
+    @FXML
+    private TextField uquestion2;
+    @FXML
+    private TextField uquestion3;
     @FXML
     private TextField n1;
     @FXML
@@ -72,12 +88,30 @@ public class AjouterCategorieEtClubController implements Initializable {
 
     @FXML
     private JFXComboBox<String> categorie;
+
+    @FXML
+    private Button btnBrowser;
+
+    private File file = null;
+
+    private Image image;
+
+    private FileChooser fileChooser;
     ClubService ClubService = new ClubService();
 
     CategorieClubService categoriesClubService = new CategorieClubService();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        try {
+            // pour le fileChooser
+            fileChooser = new FileChooser();
+            fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All files", "*.*"),
+                    new FileChooser.ExtensionFilter("Images", "*.*"),
+                    new FileChooser.ExtensionFilter("Text File", "*.txt*"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         HashMap<String, Integer> mapCategorie = categoriesClubService.getAllCategorie();
         for (String s : mapCategorie.keySet()) {
             categorie.getItems().add(s);
@@ -86,17 +120,19 @@ public class AjouterCategorieEtClubController implements Initializable {
         s2.setVisible(false);
         s3.setVisible(false);
         signup.setVisible(false);
-        b2.setVisible(false);
         btnsignin.setVisible(false);
         n1.setVisible(false);
         u1.setVisible(true);
         u3.setVisible(true);
         u4.setVisible(true);
+        uquestion1.setVisible(true);
+        uquestion2.setVisible(true);
+        uquestion3.setVisible(true);
         categorie.setVisible(true);
 
         PopOver popOver1 = categoriesClubService.popNotification("le nom ne doit pas contenir aucun caractére spécial");
         u1.setOnMouseEntered(mouseEvent -> {
-            popOver1.show(n1);
+            popOver1.show(u1);
         });
         u1.setOnMouseExited(mouseEvent -> {
             popOver1.hide();
@@ -123,6 +159,27 @@ public class AjouterCategorieEtClubController implements Initializable {
         n1.setOnMouseExited(mouseEvent -> {
             popOver4.hide();
         });
+        PopOver popOver5 = categoriesClubService.popNotification("la première question doit contenir caractére spécial");
+        uquestion1.setOnMouseEntered(mouseEvent -> {
+            popOver5.show(uquestion1);
+        });
+        uquestion1.setOnMouseExited(mouseEvent -> {
+            popOver5.hide();
+        });
+        PopOver popOver6 = categoriesClubService.popNotification("la deuxième question doit un caractére spécial");
+        uquestion2.setOnMouseEntered(mouseEvent -> {
+            popOver6.show(uquestion2);
+        });
+        uquestion2.setOnMouseExited(mouseEvent -> {
+            popOver6.hide();
+        });
+        PopOver popOver7 = categoriesClubService.popNotification("la troisième question doit contenir un caractére spécial");
+        uquestion3.setOnMouseEntered(mouseEvent -> {
+            popOver7.show(uquestion3);
+        });
+        uquestion3.setOnMouseExited(mouseEvent -> {
+            popOver7.hide();
+        });
     }
 
     @FXML
@@ -136,7 +193,6 @@ public class AjouterCategorieEtClubController implements Initializable {
 
         layer1.setTranslateX(-309);
         btnsignin.setVisible(true);
-        b2.setVisible(true);
 
         s1.setVisible(true);
         s2.setVisible(true);
@@ -146,13 +202,17 @@ public class AjouterCategorieEtClubController implements Initializable {
         l2.setVisible(false);
         l3.setVisible(false);
         signin.setVisible(false);
-        a2.setVisible(false);
         btnsignup.setVisible(false);
         n1.setVisible(true);
         u1.setVisible(false);
         u3.setVisible(false);
         u4.setVisible(false);
+        uquestion1.setVisible(false);
+        uquestion2.setVisible(false);
+        uquestion3.setVisible(false);
         categorie.setVisible(false);
+
+        btnBrowser.setVisible(false);
         slide.setOnFinished((e -> {
             HashMap<String, Integer> mapCategorie = categoriesClubService.getAllCategorie();
             for (String s : mapCategorie.keySet()) {
@@ -164,7 +224,9 @@ public class AjouterCategorieEtClubController implements Initializable {
             u1.setText("");
             u3.setText("");
             u4.setText("");
-
+            uquestion1.setText("");
+            uquestion2.setText("");
+            uquestion3.setText("");
         }));
     }
 
@@ -179,7 +241,6 @@ public class AjouterCategorieEtClubController implements Initializable {
 
         layer1.setTranslateX(0);
         btnsignin.setVisible(false);
-        b2.setVisible(false);
 
         s1.setVisible(false);
         s2.setVisible(false);
@@ -189,12 +250,15 @@ public class AjouterCategorieEtClubController implements Initializable {
         l2.setVisible(true);
         l3.setVisible(true);
         signin.setVisible(true);
-        a2.setVisible(true);
         btnsignup.setVisible(true);
         n1.setVisible(false);
         u1.setVisible(true);
         u3.setVisible(true);
         u4.setVisible(true);
+        uquestion1.setVisible(true);
+        uquestion2.setVisible(true);
+        uquestion3.setVisible(true);
+        btnBrowser.setVisible(true);
         categorie.setVisible(true);
         slide.setOnFinished((e -> {
 
@@ -251,6 +315,33 @@ public class AjouterCategorieEtClubController implements Initializable {
             /*CategorieClub c = new CategorieClub();
             c.setNomCategorie(nomCategorie);
             categoriesClubService.ajouterCategorie(c);*/
+            //(capacite)"
+
+            //Club c=new Club(15, "linda","linda",12,"kkk",0, 0,"nnn",0,16,"linda", "linda","linda");
+            String afficheClub;
+            if (file == null) {
+                afficheClub = "";
+                System.out.println("cazzo");
+            } else {
+                afficheClub = replaceFile(file.getAbsolutePath());
+                System.out.println("youssef houni: "+afficheClub.toString());
+            }
+            HashMap<String, Integer> mapCategorie = categoriesClubService.getAllCategorie();
+            int id_Categorie = mapCategorie.get(categorie.getValue());
+            int capacite = Integer.parseInt(capaciteClub);
+            Club c = new Club();
+            c.setNom(nomClub);
+            c.setDescription(u3.getText());
+            c.setQuestionPr(uquestion1.getText());
+            c.setQuestionDe(uquestion2.getText());
+            c.setQuestionTr(uquestion3.getText());
+            c.setNbrFoisLike(0);
+            c.setNbrLike(0);
+            c.setCategorie_id(id_Categorie);
+            c.setMoyenneLike(0);
+            c.setCapacite(capacite);
+            c.setPath(afficheClub);
+            ClubService.ajouterCategorie(c);
             String tilte = "Ajout validé";
             String message = n1.getText();
             TrayNotification tray = new TrayNotification();
@@ -309,6 +400,59 @@ public class AjouterCategorieEtClubController implements Initializable {
             tray.setNotificationType(NotificationType.SUCCESS);
             tray.showAndDismiss(Duration.millis(3000));
         }
+    }
+
+    @FXML
+    private void handleBrowser(ActionEvent event) {
+
+        Stage stage = (Stage) layer2.getScene().getWindow();
+        file = fileChooser.showOpenDialog(stage);
+
+        // try { deskTOP.open(file); } catch (IOException e) { e.printStackTrace(); }
+        if (file != null) {
+            System.out.println("" + file.getAbsolutePath());
+            try {
+                image = new Image(file.getAbsoluteFile().toURI().toString(), imageView.getFitWidth(),
+                        imageView.getFitHeight(), true, true);
+                imageView.setImage(image);
+                imageView.setPreserveRatio(true);
+            } catch (Exception e) {
+                System.out.println("lenna");
+            }
+
+        }
+    }
+
+    private String generateFileName() {
+
+        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 5) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return "club_" + saltStr;
+    }
+
+    private String replaceFile(String file) {
+
+        String extension = file.substring(file.lastIndexOf("."), file.length());
+        String filename = generateFileName() + extension;
+
+        Path sourceDirectory = Paths.get(file);
+        Path targetDirectory = Paths.get("C:\\Users\\youssef\\PhpstormProjects\\pidevFinal\\web\\assets\\images\\" + filename);
+
+        try {
+            //copy source to target using Files Class
+            Files.copy(sourceDirectory, targetDirectory);
+        } catch (IOException ex) {
+            //Logger.getLogger(AjouterEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("ahawa");
+        }
+
+        return filename;
     }
 
     @FXML
