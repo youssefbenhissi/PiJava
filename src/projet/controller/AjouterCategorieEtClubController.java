@@ -1,7 +1,9 @@
 package projet.controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -51,16 +53,13 @@ public class AjouterCategorieEtClubController implements Initializable {
     private Label a2;
     @FXML
     private Label b2;
-    
-    
+
     @FXML
     private JFXButton btnsignup;
     @FXML
     private JFXButton btnsignin;
     @FXML
     private TextField u1;
-    @FXML
-    private TextField u2;
     @FXML
     private TextField u3;
 
@@ -71,12 +70,18 @@ public class AjouterCategorieEtClubController implements Initializable {
     @FXML
     private AnchorPane layer1;
 
+    @FXML
+    private JFXComboBox<String> categorie;
     ClubService ClubService = new ClubService();
 
     CategorieClubService categoriesClubService = new CategorieClubService();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        HashMap<String, Integer> mapCategorie = categoriesClubService.getAllCategorie();
+        for (String s : mapCategorie.keySet()) {
+            categorie.getItems().add(s);
+        }
         s1.setVisible(false);
         s2.setVisible(false);
         s3.setVisible(false);
@@ -85,9 +90,9 @@ public class AjouterCategorieEtClubController implements Initializable {
         btnsignin.setVisible(false);
         n1.setVisible(false);
         u1.setVisible(true);
-        u2.setVisible(true);
         u3.setVisible(true);
         u4.setVisible(true);
+        categorie.setVisible(true);
 
         PopOver popOver1 = categoriesClubService.popNotification("le nom ne doit pas contenir aucun caractére spécial");
         u1.setOnMouseEntered(mouseEvent -> {
@@ -98,10 +103,10 @@ public class AjouterCategorieEtClubController implements Initializable {
         });
 
         PopOver popOver2 = categoriesClubService.popNotification("la liste deroulante vous aidera à choisir le club");
-        u2.setOnMouseEntered(mouseEvent -> {
-            popOver2.show(u2);
+        categorie.setOnMouseEntered(mouseEvent -> {
+            popOver2.show(categorie);
         });
-        u2.setOnMouseExited(mouseEvent -> {
+        categorie.setOnMouseExited(mouseEvent -> {
             popOver2.hide();
         });
         PopOver popOver3 = categoriesClubService.popNotification("la capacité doit étre un entier positif");
@@ -145,12 +150,18 @@ public class AjouterCategorieEtClubController implements Initializable {
         btnsignup.setVisible(false);
         n1.setVisible(true);
         u1.setVisible(false);
-        u2.setVisible(false);
         u3.setVisible(false);
         u4.setVisible(false);
+        categorie.setVisible(false);
         slide.setOnFinished((e -> {
+            HashMap<String, Integer> mapCategorie = categoriesClubService.getAllCategorie();
+            for (String s : mapCategorie.keySet()) {
+                categorie.getItems().remove(s);
+            }
+            for (String s : mapCategorie.keySet()) {
+                categorie.getItems().add(s);
+            }
             u1.setText("");
-            u2.setText("");
             u3.setText("");
             u4.setText("");
 
@@ -182,11 +193,18 @@ public class AjouterCategorieEtClubController implements Initializable {
         btnsignup.setVisible(true);
         n1.setVisible(false);
         u1.setVisible(true);
-        u2.setVisible(true);
         u3.setVisible(true);
         u4.setVisible(true);
+        categorie.setVisible(true);
         slide.setOnFinished((e -> {
 
+            HashMap<String, Integer> mapCategorie = categoriesClubService.getAllCategorie();
+            for (String s : mapCategorie.keySet()) {
+                categorie.getItems().remove(s);
+            }
+            for (String s : mapCategorie.keySet()) {
+                categorie.getItems().add(s);
+            }
             n1.setText("");
 
         }));
@@ -194,18 +212,9 @@ public class AjouterCategorieEtClubController implements Initializable {
 
     @FXML
     private void btnsignup(MouseEvent event) {
-    }
-
-    @FXML
-    private void sign(MouseEvent event) {
-
-    }
-
-    @FXML
-    private void click(ActionEvent event) {
-        String nomCategorie = n1.getText();
-        
-        if (nomCategorie.isEmpty()) {
+        String nomClub = u1.getText();
+        String capaciteClub = u4.getText();
+        if (nomClub.isEmpty()) {
             String tilte = "Champ Vide";
             String message = "tous les champs doivent être remplis";
             TrayNotification tray = new TrayNotification();
@@ -216,10 +225,9 @@ public class AjouterCategorieEtClubController implements Initializable {
             tray.setMessage(message);
             tray.setNotificationType(NotificationType.ERROR);
             tray.showAndDismiss(Duration.millis(3000));
-        }
-        else if (!categoriesClubService.validationChaineSimpleSansEspace(nomCategorie)){
-            String tilte = "Nom Catgeorie";
-            String message = "le nom de la catégorie est non autorisé";
+        } else if (!ClubService.validationChaineSimpleAvecEspace(nomClub)) {
+            String tilte = "Nom Club";
+            String message = "le nom du club est non autorisé";
             TrayNotification tray = new TrayNotification();
             AnimationType type = AnimationType.POPUP;
 
@@ -228,11 +236,21 @@ public class AjouterCategorieEtClubController implements Initializable {
             tray.setMessage(message);
             tray.setNotificationType(NotificationType.ERROR);
             tray.showAndDismiss(Duration.millis(3000));
-        }
-        else {
-            CategorieClub c = new CategorieClub();
+        } else if (!ClubService.validationChaineSimpleNombre(capaciteClub)) {
+            String tilte = "Capacite Club";
+            String message = "la capacite du club est non autorisé";
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+
+            tray.setAnimationType(type);
+            tray.setTitle(tilte);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.ERROR);
+            tray.showAndDismiss(Duration.millis(3000));
+        } else {
+            /*CategorieClub c = new CategorieClub();
             c.setNomCategorie(nomCategorie);
-            categoriesClubService.ajouterCategorie(c);
+            categoriesClubService.ajouterCategorie(c);*/
             String tilte = "Ajout validé";
             String message = n1.getText();
             TrayNotification tray = new TrayNotification();
@@ -245,6 +263,54 @@ public class AjouterCategorieEtClubController implements Initializable {
             tray.showAndDismiss(Duration.millis(3000));
         }
     }
+
+    @FXML
+    private void sign(MouseEvent event) {
+
+    }
+
+    @FXML
+    private void click(ActionEvent event) {
+        String nomCategorie = n1.getText();
+
+        if (nomCategorie.isEmpty()) {
+            String tilte = "Champ Vide";
+            String message = "tous les champs doivent être remplis";
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+
+            tray.setAnimationType(type);
+            tray.setTitle(tilte);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.ERROR);
+            tray.showAndDismiss(Duration.millis(3000));
+        } else if (!categoriesClubService.validationChaineSimpleSansEspace(nomCategorie)) {
+            String tilte = "Nom Catgeorie";
+            String message = "le nom de la catégorie est non autorisé";
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+
+            tray.setAnimationType(type);
+            tray.setTitle(tilte);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.ERROR);
+            tray.showAndDismiss(Duration.millis(3000));
+        } else {
+            CategorieClub c = new CategorieClub();
+            c.setNomCategorie(nomCategorie);
+            categoriesClubService.ajouterCategorie(c);
+            String tilte = "Ajout validé";
+            String message = n1.getText();
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+            tray.setAnimationType(type);
+            tray.setTitle(tilte);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.SUCCESS);
+            tray.showAndDismiss(Duration.millis(3000));
+        }
+    }
+
     @FXML
     private void quitter() {
         // get a handle to the stage

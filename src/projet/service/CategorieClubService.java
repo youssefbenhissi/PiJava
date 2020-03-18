@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -82,6 +83,29 @@ public class CategorieClubService implements ICategorieClubService{
             
         }
         return categories;
+    }
+     @Override
+    public HashMap<String, Integer> getAllCategorie() {
+        
+        HashMap<String,Integer> mapCategorie = new HashMap<String,Integer>();
+        
+        String req = "SELECT * FROM categorie_club";
+	
+        try {
+                statement = connection.createStatement();
+                ResultSet res = statement.executeQuery(req);
+                CategorieClub categorie;
+                while (res.next()) {
+                   categorie = new CategorieClub(res.getInt(1), res.getString(2));
+                   mapCategorie.put(categorie.getNomCategorie(),categorie.getId());
+                }
+
+        } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+        }
+
+        return mapCategorie;
     }
      @Override
     public void supprimer(int x) {

@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
@@ -48,7 +50,7 @@ public class ClubService implements IClub {
             ResultSet rs = ps.getResultSet();
             ResultSetMetaData rsmd = rs.getMetaData();
 
-           // System.out.println("Column Name of 1st column: "+rsmd.getColumnName(6));  
+            // System.out.println("Column Name of 1st column: "+rsmd.getColumnName(6));  
             //System.out.println("Column Type Name of 1st column: "+rsmd.getColumnTypeName(6)); 
             //System.out.println(rs.getInt(1));
             while (rs.next()) {
@@ -58,7 +60,7 @@ public class ClubService implements IClub {
                 c.setDescription(rs.getString(3));
                 c.setCapacite(rs.getInt(4));
                 c.setMoyenneLike(rs.getFloat(5));
-                
+
                 //System.out.println(rs.getString(5));
                 c.setNomcategorie(rs.getString(6));
                 //System.out.println(rs.getString(6));
@@ -116,5 +118,25 @@ public class ClubService implements IClub {
         }
 
         return clubs;
+    }
+
+    /* CONTROLE DE SAISIE */
+    //variable de controle de saisie
+    private static Matcher matcher;
+
+    private static final String chaineSimple_avecEspace_pattern = "^[A-Z a-z 0-9]+$";
+    private static Pattern chaineSimple_pattern_avecEspace_complie = Pattern.compile(chaineSimple_avecEspace_pattern);
+
+    public static boolean validationChaineSimpleAvecEspace(final String chaineSaisie) {
+        matcher = chaineSimple_pattern_avecEspace_complie.matcher(chaineSaisie);
+        return matcher.matches();
+    }
+
+    private static final String chaineSimple_nombre_pattern = "^[0-9]+$";
+    private static Pattern chaineSimple_pattern__nombre_complie = Pattern.compile(chaineSimple_nombre_pattern);
+
+    public static boolean validationChaineSimpleNombre(final String chaineSaisie) {
+        matcher = chaineSimple_pattern__nombre_complie.matcher(chaineSaisie);
+        return matcher.matches();
     }
 }
