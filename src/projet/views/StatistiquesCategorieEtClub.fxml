@@ -1,19 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="512.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.StatistiquesCategorieEtClubController">
-   <children>
-      <Button fx:id="retour" layoutX="14.0" layoutY="30.0" mnemonicParsing="false"  prefHeight="41.0" prefWidth="81.0" stylesheets="@../style/btn.css" text="&lt;-" />
-      <BarChart fx:id="vente" layoutY="98.0" prefHeight="414.0" prefWidth="730.0" title="Vente">
-        <xAxis>
-          <CategoryAxis label="produit" side="BOTTOM" fx:id="x" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis fx:id="y" label="nombre  de vente" side="LEFT" />
-        </yAxis>
-      </BarChart>
-   </children>
+<AnchorPane id="AnchorPane" prefHeight="616.0" prefWidth="1208.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.StatistiquesCategorieEtClubController">
+    <children>
+        <AnchorPane prefHeight="740.0" prefWidth="1294.0" style="-fx-background-color: #EDF2F6;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Pane fx:id="conteneurCategories" layoutX="54.0" layoutY="54.0" prefHeight="152.0" prefWidth="298.0" style="-fx-background-color: #fff;">
+                    <children>
+                        <Label layoutX="83.0" layoutY="21.0" text="NOMBRE DE CATEGORIES" textFill="#9a9a9a">
+                            <font>
+                                <Font name="Segoe UI Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="countCategorie" layoutX="132.0" layoutY="37.0" text="0" textFill="#9a9a9a">
+                            <font>
+                                <Font name="Segoe UI" size="64.0" />
+                            </font>
+                        </Label>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="34.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="36.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/icons8_Microphone_48px_1.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+                <Pane fx:id="conteneurClubs" layoutX="425.0" layoutY="54.0" prefHeight="152.0" prefWidth="298.0" style="-fx-background-color: #fff;">
+                    <children>
+                        <Label layoutX="92.0" layoutY="19.0" text="NOMBRE DE CLUBS" textFill="#9a9a9a">
+                            <font>
+                                <Font name="Segoe UI Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="countClubs" layoutX="130.0" layoutY="36.0" text="0" textFill="#9a9a9a">
+                            <font>
+                                <Font name="Segoe UI" size="64.0" />
+                            </font>
+                        </Label>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="30.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/icons8_List_52px.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+                <ScrollPane layoutX="54.0" layoutY="296.0" prefHeight="263.0" prefWidth="298.0" style="-fx-background-color: #FFF;">
+                    <content>
+                        <VBox fx:id="pnl_scroll" prefHeight="238.0" prefWidth="295.0" />
+                    </content>
+                </ScrollPane>
+                <Pane layoutX="798.0" layoutY="54.0" prefHeight="152.0" prefWidth="298.0" style="-fx-background-color: #fff;">
+                    <children>
+                        <Label layoutX="67.0" layoutY="21.0" text="NOMBRE D'INSCRIPTIONS" textFill="#9a9a9a">
+                            <font>
+                                <Font name="Segoe UI Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="80.0" layoutY="36.0" text="157" textFill="#9a9a9a">
+                            <font>
+                                <Font name="Segoe UI" size="64.0" />
+                            </font>
+                        </Label>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="42.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/icons8_Copy_48px.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+                <Pane layoutX="54.0" layoutY="242.0" prefHeight="48.0" prefWidth="298.0" style="-fx-background-color: #fff;">
+                    <children>
+                        <Label layoutX="70.0" layoutY="17.0" text="AGENTS STATS" textFill="#9a9a9a">
+                            <font>
+                                <Font name="Segoe UI Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="19.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/icons8_List_52px.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+                <Pane layoutX="424.0" layoutY="242.0" prefHeight="48.0" prefWidth="298.0" style="-fx-background-color: #fff;">
+                    <children>
+                        <Label layoutX="111.0" layoutY="17.0" text="Stats Clubs" textFill="#9a9a9a">
+                            <font>
+                                <Font name="Segoe UI Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="35.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/icons8_List_52px.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+                <Pane layoutX="798.0" layoutY="242.0" prefHeight="48.0" prefWidth="298.0" style="-fx-background-color: #fff;">
+                    <children>
+                        <Label layoutX="70.0" layoutY="17.0" text="LINES OF CODE" textFill="#9a9a9a">
+                            <font>
+                                <Font name="Segoe UI Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="19.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/icons8_List_52px.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+                <Pane layoutX="338.0" layoutY="270.0" prefHeight="332.0" prefWidth="453.0">
+               <children>
+                        <BarChart fx:id="vente" layoutX="7.0" layoutY="21.0" prefHeight="340.0" prefWidth="380.0" title="Vente">
+                            <xAxis>
+                                <CategoryAxis label="categories" side="BOTTOM" fx:id="x" />
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis fx:id="y" label="nombre  de clubs" prefHeight="256.0" prefWidth="57.0" side="LEFT" />
+                            </yAxis>
+                        </BarChart>
+               </children>
+                </Pane>
+                <Pane layoutX="748.0" layoutY="296.0" prefHeight="285.0" prefWidth="348.0">
+               <children>
+                        <BarChart fx:id="bar_chart" alternativeRowFillVisible="false" horizontalGridLinesVisible="false" layoutX="7.0" layoutY="19.0" prefHeight="248.0" prefWidth="348.0" title="PROJECTS" verticalGridLinesVisible="false">
+                            <xAxis>
+                                <CategoryAxis side="BOTTOM" />
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis side="LEFT" />
+                            </yAxis>
+                        </BarChart>
+               </children>
+                </Pane>
+            </children>
+        </AnchorPane>
+    </children>
 </AnchorPane>

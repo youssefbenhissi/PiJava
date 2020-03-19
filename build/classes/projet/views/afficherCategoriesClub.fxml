@@ -283,6 +283,7 @@
                         </HBox>
                      </children>
                   </VBox>
+                  <Button fx:id="Statitiques" layoutX="417.0" layoutY="467.0" mnemonicParsing="false" onAction="#Satitiques" text="Statitisques" />
                </children>
             </Pane>
          </children>
