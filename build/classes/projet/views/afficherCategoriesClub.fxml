@@ -208,7 +208,7 @@
                            </children>
                         </HBox>
                         <HBox prefHeight="85.0" prefWidth="1015.0" styleClass="header-title" />
-                        <HBox prefHeight="100.0" prefWidth="543.0" styleClass="info-dashboard">
+                        <HBox fx:id="compteur" prefHeight="100.0" prefWidth="543.0" styleClass="info-dashboard">
                            <children>
                               <HBox prefHeight="100.0" prefWidth="278.0" styleClass="info-item">
                                  <children>

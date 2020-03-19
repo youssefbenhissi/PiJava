@@ -319,45 +319,45 @@ public class AjouterCategorieEtClubController implements Initializable {
                 afficheClub = replaceFile(file.getAbsolutePath());
             }
             String extension = afficheClub.substring(afficheClub.lastIndexOf("."), afficheClub.length());
-            if(extension.equals(".jpg")||extension.equals(".png")){
-            HashMap<String, Integer> mapCategorie = categoriesClubService.getAllCategorie();
-            int id_Categorie = mapCategorie.get(categorie.getValue());
-            int capacite = Integer.parseInt(capaciteClub);
-            Club c = new Club();
-            c.setNom(nomClub);
-            c.setDescription(u3.getText());
-            c.setQuestionPr(uquestion1.getText());
-            c.setQuestionDe(uquestion2.getText());
-            c.setQuestionTr(uquestion3.getText());
-            c.setNbrFoisLike(0);
-            c.setNbrLike(0);
-            c.setCategorie_id(id_Categorie);
-            c.setMoyenneLike(0);
-            c.setCapacite(capacite);
-            
-            c.setPath(afficheClub);
-            ClubService.ajouterCategorie(c);
-            String tilte = "Ajout validé";
-            String message = "votre club est bien ajoute";
-            TrayNotification tray = new TrayNotification();
-            AnimationType type = AnimationType.POPUP;
+            if (extension.equals(".jpg") || extension.equals(".png")) {
+                HashMap<String, Integer> mapCategorie = categoriesClubService.getAllCategorie();
+                int id_Categorie = mapCategorie.get(categorie.getValue());
+                int capacite = Integer.parseInt(capaciteClub);
+                Club c = new Club();
+                c.setNom(nomClub);
+                c.setDescription(u3.getText());
+                c.setQuestionPr(uquestion1.getText());
+                c.setQuestionDe(uquestion2.getText());
+                c.setQuestionTr(uquestion3.getText());
+                c.setNbrFoisLike(0);
+                c.setNbrLike(0);
+                c.setCategorie_id(id_Categorie);
+                c.setMoyenneLike(0);
+                c.setCapacite(capacite);
 
-            tray.setAnimationType(type);
-            tray.setTitle(tilte);
-            tray.setMessage(message);
-            tray.setNotificationType(NotificationType.SUCCESS);
-            tray.showAndDismiss(Duration.millis(3000));}
-            else{
+                c.setPath(afficheClub);
+                ClubService.ajouterCategorie(c);
+                String tilte = "Ajout validé";
+                String message = "votre club est bien ajoute";
+                TrayNotification tray = new TrayNotification();
+                AnimationType type = AnimationType.POPUP;
+
+                tray.setAnimationType(type);
+                tray.setTitle(tilte);
+                tray.setMessage(message);
+                tray.setNotificationType(NotificationType.SUCCESS);
+                tray.showAndDismiss(Duration.millis(3000));
+            } else {
                 String tilte = "image uploadé";
-            String message = "le fichier doit être de type jpg ou png";
-            TrayNotification tray = new TrayNotification();
-            AnimationType type = AnimationType.POPUP;
+                String message = "le fichier doit être de type jpg ou png";
+                TrayNotification tray = new TrayNotification();
+                AnimationType type = AnimationType.POPUP;
 
-            tray.setAnimationType(type);
-            tray.setTitle(tilte);
-            tray.setMessage(message);
-            tray.setNotificationType(NotificationType.ERROR);
-            tray.showAndDismiss(Duration.millis(3000));
+                tray.setAnimationType(type);
+                tray.setTitle(tilte);
+                tray.setMessage(message);
+                tray.setNotificationType(NotificationType.ERROR);
+                tray.showAndDismiss(Duration.millis(3000));
             }
         }
     }
@@ -415,7 +415,6 @@ public class AjouterCategorieEtClubController implements Initializable {
         Stage stage = (Stage) layer2.getScene().getWindow();
         file = fileChooser.showOpenDialog(stage);
 
-        // try { deskTOP.open(file); } catch (IOException e) { e.printStackTrace(); }
         if (file != null) {
             //System.out.println("" + file.getAbsolutePath());
             try {
@@ -447,7 +446,7 @@ public class AjouterCategorieEtClubController implements Initializable {
 
         String extension = file.substring(file.lastIndexOf("."), file.length());
         //System.out.println(extension);
-        
+
         String filename = generateFileName() + extension;
 
         Path sourceDirectory = Paths.get(file);

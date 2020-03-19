@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package projet.controller;
+import animatefx.animation.BounceIn;
+import animatefx.animation.FadeIn;
+import animatefx.animation.Swing;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -72,6 +75,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -94,6 +98,8 @@ public class AfficherCategoriesClubController implements Initializable {
 
     @FXML
     private TableColumn<?, ?> id;
+    @FXML
+    private HBox compteur;
     @FXML
     private TableColumn<?, ?> nomCategorie;
     @FXML
@@ -152,7 +158,7 @@ public class AfficherCategoriesClubController implements Initializable {
         compteurClub();
         //CategorieClub p =new CategorieClub();
         //p.setNomCategorie("mustapha");
-        
+        //new Swing(compteur).setDelay(Duration.seconds(2));
         Timer timer = new Timer(); //new timer
         CategorieClubService cs = new CategorieClubService();
         ClubService cc = new ClubService();
