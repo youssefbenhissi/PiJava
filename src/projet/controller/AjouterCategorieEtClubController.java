@@ -312,20 +312,14 @@ public class AjouterCategorieEtClubController implements Initializable {
             tray.setNotificationType(NotificationType.ERROR);
             tray.showAndDismiss(Duration.millis(3000));
         } else {
-            /*CategorieClub c = new CategorieClub();
-            c.setNomCategorie(nomCategorie);
-            categoriesClubService.ajouterCategorie(c);*/
-            //(capacite)"
-
-            //Club c=new Club(15, "linda","linda",12,"kkk",0, 0,"nnn",0,16,"linda", "linda","linda");
             String afficheClub;
             if (file == null) {
                 afficheClub = "";
-                System.out.println("cazzo");
             } else {
                 afficheClub = replaceFile(file.getAbsolutePath());
-                System.out.println("youssef houni: "+afficheClub.toString());
             }
+            String extension = afficheClub.substring(afficheClub.lastIndexOf("."), afficheClub.length());
+            if(extension.equals(".jpg")||extension.equals(".png")){
             HashMap<String, Integer> mapCategorie = categoriesClubService.getAllCategorie();
             int id_Categorie = mapCategorie.get(categorie.getValue());
             int capacite = Integer.parseInt(capaciteClub);
@@ -340,10 +334,11 @@ public class AjouterCategorieEtClubController implements Initializable {
             c.setCategorie_id(id_Categorie);
             c.setMoyenneLike(0);
             c.setCapacite(capacite);
+            
             c.setPath(afficheClub);
             ClubService.ajouterCategorie(c);
             String tilte = "Ajout validé";
-            String message = n1.getText();
+            String message = "votre club est bien ajoute";
             TrayNotification tray = new TrayNotification();
             AnimationType type = AnimationType.POPUP;
 
@@ -351,7 +346,19 @@ public class AjouterCategorieEtClubController implements Initializable {
             tray.setTitle(tilte);
             tray.setMessage(message);
             tray.setNotificationType(NotificationType.SUCCESS);
+            tray.showAndDismiss(Duration.millis(3000));}
+            else{
+                String tilte = "image uploadé";
+            String message = "le fichier doit être de type jpg ou png";
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+
+            tray.setAnimationType(type);
+            tray.setTitle(tilte);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.ERROR);
             tray.showAndDismiss(Duration.millis(3000));
+            }
         }
     }
 
@@ -410,7 +417,7 @@ public class AjouterCategorieEtClubController implements Initializable {
 
         // try { deskTOP.open(file); } catch (IOException e) { e.printStackTrace(); }
         if (file != null) {
-            System.out.println("" + file.getAbsolutePath());
+            //System.out.println("" + file.getAbsolutePath());
             try {
                 image = new Image(file.getAbsoluteFile().toURI().toString(), imageView.getFitWidth(),
                         imageView.getFitHeight(), true, true);
@@ -439,6 +446,8 @@ public class AjouterCategorieEtClubController implements Initializable {
     private String replaceFile(String file) {
 
         String extension = file.substring(file.lastIndexOf("."), file.length());
+        //System.out.println(extension);
+        
         String filename = generateFileName() + extension;
 
         Path sourceDirectory = Paths.get(file);

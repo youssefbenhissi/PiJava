@@ -29,45 +29,24 @@ import javafx.stage.StageStyle;
  * @author youssef
  */
 public class ProjetPi extends Application {
-    
-            private double x, y;
+
+    private double x, y;
 
     @Override
-    
+
     public void start(Stage primaryStage) {
-        /*Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
-        
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
-        
-        Scene scene = new Scene(root, 300, 250);
-        
-        primaryStage.setTitle("Hello World!");
-        primaryStage.setScene(scene);
-        primaryStage.show();*/
-        CategorieClubService c=new CategorieClubService();
+
+        CategorieClubService c = new CategorieClubService();
         c.selectAll();
         try {
             URL url = new File("src/projet/views/afficherCategoriesClub.fxml").toURI().toURL();
             Parent root = FXMLLoader.load(url);
-      //  Parent root = FXMLLoader.load(getClass().getResource("afficherCategoriesClub.fxml"));
-        primaryStage.setScene(new Scene(root));
-        //set stage borderless
-        //primaryStage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.show();    
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-        
+
     }
 
     /**
@@ -76,5 +55,5 @@ public class ProjetPi extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

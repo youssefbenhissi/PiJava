@@ -163,9 +163,10 @@ public class AfficherCategoriesClubController implements Initializable {
         nomCategorie.setCellValueFactory(new PropertyValueFactory<>("nomCategorie"));
 
         listeCategorie.setEditable(true);
-        //nomCategorie.setCellFactory(TextFieldTableCell.forTableColumn());
-        //recupererUtilisateurConnecte
         //nomCategorie.setCellValueFactory(TextFieldTableCell.forTableColumn());
+        
+        
+        
         myList.forEach(e -> {
             myObservableList.add(e);
             listeCategorie.setItems(myObservableList);
@@ -259,7 +260,6 @@ public class AfficherCategoriesClubController implements Initializable {
     public void pdf(String nomClub, String NomCategorie, String Description, int capacite, float moyenne) {
         Document document = new Document();
         try {
-            // PdfWriter.getInstance(document, new FileOutputStream(nomClub + ".pdf"));
             PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\youssef\\Desktop\\libYoussef\\" + nomClub + ".pdf"));
             document.open();
 
