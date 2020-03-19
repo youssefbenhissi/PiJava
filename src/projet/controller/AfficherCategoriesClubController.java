@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package projet.controller;
+
 import animatefx.animation.BounceIn;
 import animatefx.animation.FadeIn;
 import animatefx.animation.Swing;
@@ -158,7 +159,7 @@ public class AfficherCategoriesClubController implements Initializable {
         compteurClub();
         //CategorieClub p =new CategorieClub();
         //p.setNomCategorie("mustapha");
-        //new Swing(compteur).setDelay(Duration.seconds(2));
+        
         Timer timer = new Timer(); //new timer
         CategorieClubService cs = new CategorieClubService();
         ClubService cc = new ClubService();
@@ -170,21 +171,21 @@ public class AfficherCategoriesClubController implements Initializable {
 
         listeCategorie.setEditable(true);
         //nomCategorie.setCellValueFactory(TextFieldTableCell.forTableColumn());
-        
-        
-        
+        //nomCategorie.setCellValueFactory(new PropertyValueFactory("firstName"));
+
         myList.forEach(e -> {
             myObservableList.add(e);
             listeCategorie.setItems(myObservableList);
         });
         afficherClub();
     }
-    
+
     @FXML
-    public void modifierCategorie(TableColumn.CellEditEvent<CategorieClub,String> e){
-        CategorieClub c=listeCategorie.getSelectionModel().getSelectedItem();
+    public void modifierCategorie(TableColumn.CellEditEvent<CategorieClub, String> e) {
+        CategorieClub c = listeCategorie.getSelectionModel().getSelectedItem();
         c.setNomCategorie(e.getNewValue());
     }
+
     public void compteurClub() {
         Timer timer = new Timer(); //new timer
         counter = 0; //setting the counter to 10 sec
@@ -194,6 +195,7 @@ public class AfficherCategoriesClubController implements Initializable {
             countClubs.setText(String.valueOf(0));
         } else {
             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
+                new BounceIn(compteur).play();
                 counter++;
                 countClubs.setText(String.valueOf(counter));
                 int nbrClub = cc.selectAllClubs().size();
@@ -208,9 +210,9 @@ public class AfficherCategoriesClubController implements Initializable {
             timeline.play();
         }
     }
-     public void changeLastNameCellEvent(TableColumn.CellEditEvent edittedCell)
-    {
-        CategorieClub personSelected =  listeCategorie.getSelectionModel().getSelectedItem();
+
+    public void changeLastNameCellEvent(TableColumn.CellEditEvent edittedCell) {
+        CategorieClub personSelected = listeCategorie.getSelectionModel().getSelectedItem();
         personSelected.setNomCategorie(edittedCell.getNewValue().toString());
     }
 
@@ -350,7 +352,6 @@ public class AfficherCategoriesClubController implements Initializable {
             listeCategorie.setItems(myObservableList);
         });
     }
-   
 
     @FXML
     private void afficherClub() {
@@ -372,16 +373,28 @@ public class AfficherCategoriesClubController implements Initializable {
     private int index() {
         int selectedItem = listeCategorie.getSelectionModel().getSelectedItem().getId();
         int selectedIndex = listeCategorie.getSelectionModel().getSelectedIndex();
-        System.out.println(selectedItem);
+       // System.out.println(selectedItem);
         return selectedItem;
     }
 
     @FXML
     private void supprimerCategorieClub(ActionEvent event) {
+        try {
+            
+        
         int x = index();
+        CategorieClub cat=listeCategorie.getSelectionModel().getSelectedItem();
         Alert a1 = new Alert(Alert.AlertType.WARNING);
+        a1.setWidth(750);
+        a1.setHeight(400);
         a1.setTitle("Supprimer categorie");
-        a1.setContentText("Vous voulez vraiment supprimer cette categorie ?");
+        String message="Attention vous allez supprimer ainsi les clubs suivants: \n";
+        List<Club> listeClubsASuprrimer=ClubService.retournerListeDesClubsSupprission(cat.getId());
+        for(Club c:listeClubsASuprrimer)
+        {
+            message=message+c.getNom()+"\n";
+        }
+        a1.setContentText(message);
         Optional<ButtonType> result = a1.showAndWait();
         if (result.get() == ButtonType.OK) {
             categoriesClubService.supprimer(x);
@@ -396,17 +409,22 @@ public class AfficherCategoriesClubController implements Initializable {
         } else {
             a1.close();
         }
+        } catch (Exception e) {
+        }
     }
 
     private int indexClub() {
         int selectedItem = listeClubs.getSelectionModel().getSelectedItem().getId();
         int selectedIndex = listeClubs.getSelectionModel().getSelectedIndex();
-        System.out.println(selectedItem);
+      //  System.out.println(selectedItem);
         return selectedItem;
     }
 
     @FXML
     private void supprimerClub(ActionEvent event) {
+        try {
+            
+        
         int x = indexClub();
         Alert a1 = new Alert(Alert.AlertType.WARNING);
         a1.setTitle("Supprimer club");
@@ -424,6 +442,8 @@ public class AfficherCategoriesClubController implements Initializable {
 
         } else {
             a1.close();
+        }
+        } catch (Exception e) {
         }
     }
 

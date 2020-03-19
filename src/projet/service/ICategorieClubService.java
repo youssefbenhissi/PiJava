@@ -19,4 +19,5 @@ public interface ICategorieClubService {
     List<CategorieClub> rechercheCategories(String str); 
     public void ajouterCategorie(CategorieClub c);
     public HashMap<String, Integer> getAllCategorie();
+    
 }

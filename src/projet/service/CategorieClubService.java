@@ -107,6 +107,7 @@ public class CategorieClubService implements ICategorieClubService{
 
         return mapCategorie;
     }
+    
      @Override
     public void supprimer(int x) {
         String sql = "DELETE FROM categorie_club WHERE id = ? ";
@@ -119,9 +120,9 @@ public class CategorieClubService implements ICategorieClubService{
             System.out.println("Categorie Supprimer");
 
         } catch (SQLException ex) {
-            Logger.getLogger(CategorieClubService.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(CategorieClubService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("Categorie non Supprimer");
+        
     }
     @Override
     public void ajouterCategorie(CategorieClub c){
@@ -149,6 +150,67 @@ public class CategorieClubService implements ICategorieClubService{
         popOver.setTitle("New Notification");
 
         return popOver;
+    }
+    
+    
+    public List<Integer> getState() {
+        String req11 = "Select id from categorie_club";
+        List<Integer> liste = new ArrayList<Integer>();
+        try {
+            statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(req11);
+
+            while (rs.next()) {
+
+                liste.add(rs.getInt(1));
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return liste;
+    }
+     public String getState1(int x) {
+        String g = "";
+        String req11 = "Select nomCategorie  From categorie_club where id=? ";
+
+        PreparedStatement ps;
+        try {
+            ps = connection.prepareStatement(req11);
+
+            ps.setInt(1, x);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                g = rs.getString(1);
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return g;
+    }
+      public Integer getState12(int x) {
+        int g = 0;
+        String req11 = "Select id From club where categorie_id=? ";
+
+        PreparedStatement ps;
+        try {
+            ps = connection.prepareStatement(req11);
+
+            ps.setInt(1, x);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                g++;
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return g;
     }
     
     /* CONTROLE DE SAISIE */

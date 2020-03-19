@@ -66,19 +66,21 @@ public class ClubService implements IClub {
         }
         return clubs;
     }
-    public void ajouterCategorie(Club c){
-      String requete="INSERT INTO club (nom,description,capacite,image,nbrLike,nbrFoisLike,moyenneLike,categorie_id,questionPr,questionDe,questionTr)"
-                + " VALUES ('"+c.getNom()+"','"+c.getDescription()+"','"+c.getCapacite()+"','"+c.getPath()+"','"+c.getNbrLike()+"','"+c.getNbrFoisLike()+"','"+c.getMoyenneLike()+"','"+c.getCategorie_id()+"','"+c.getQuestionPr()+"','"+c.getQuestionDe()+"','"+c.getQuestionTr()+"');";                              
-        
+
+    public void ajouterCategorie(Club c) {
+        String requete = "INSERT INTO club (nom,description,capacite,image,nbrLike,nbrFoisLike,moyenneLike,categorie_id,questionPr,questionDe,questionTr)"
+                + " VALUES ('" + c.getNom() + "','" + c.getDescription() + "','" + c.getCapacite() + "','" + c.getPath() + "','" + c.getNbrLike() + "','" + c.getNbrFoisLike() + "','" + c.getMoyenneLike() + "','" + c.getCategorie_id() + "','" + c.getQuestionPr() + "','" + c.getQuestionDe() + "','" + c.getQuestionTr() + "');";
+
         try {
-           pst = connection.prepareStatement(requete);
+            pst = connection.prepareStatement(requete);
             pst.executeUpdate(requete);
             System.out.println("club Ajoute");
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-     
-     }
+
+    }
+
     @Override
     public void supprimerClub(int x) {
         String sql = "DELETE FROM club WHERE id = ? ";
@@ -137,5 +139,31 @@ public class ClubService implements IClub {
     public static boolean validationChaineSimpleNombre(final String chaineSaisie) {
         matcher = chaineSimple_pattern__nombre_complie.matcher(chaineSaisie);
         return matcher.matches();
+    }
+
+    @Override
+    public List<Club> retournerListeDesClubsSupprission(int id) {
+        List<Club> categories = new ArrayList<Club>();
+        String sql = "SELECT c.id,c.nom FROM club c WHERE c.categorie_id LIKE ? ";
+        PreparedStatement statement;
+
+        try {
+
+            statement = connection.prepareStatement(sql);
+
+            statement.setString(1, "%" + id + "%");
+            //statement.setString(2, "%" + str + "%");
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                Club c = new Club();
+                c.setId(rs.getInt(1));
+                c.setNom(rs.getString(2));
+                categories.add(c);
+            }
+        } catch (SQLException ex) {
+
+        }
+        return categories;
     }
 }
