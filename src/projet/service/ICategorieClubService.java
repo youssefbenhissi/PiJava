@@ -9,15 +9,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import projet.models.CategorieClub;
+
 /**
  *
  * @author youssef
  */
 public interface ICategorieClubService {
+
     public ArrayList<CategorieClub> selectAll();
+
     public void supprimer(int x);
-    List<CategorieClub> rechercheCategories(String str); 
+
+    List<CategorieClub> rechercheCategories(String str);
+
     public void ajouterCategorie(CategorieClub c);
+
     public HashMap<String, Integer> getAllCategorie();
-    
+
 }

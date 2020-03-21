@@ -11,33 +11,33 @@
 
 
 <VBox id="VBox" alignment="CENTER_LEFT" prefHeight="480.0" prefWidth="480.0" styleClass="white-pane" stylesheets="@../style/StyleSheetAjout.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label prefHeight="34.0" prefWidth="64.0" text="Nom" textFill="#f78c7b">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" styleClass="tf_box">
-         <children>
-            <FontAwesomeIcon fill="#dedee4" glyphName="USER" />
-            <JFXTextField maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Nom" styleClass="tf" HBox.hgrow="ALWAYS">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </JFXTextField>
-         </children>
-      </HBox>
-      <HBox alignment="TOP_RIGHT" prefHeight="45.0" prefWidth="450.0">
-         <opaqueInsets>
-            <Insets left="15.0" right="15.0" top="20.0" />
-         </opaqueInsets>
-         <children>
-            <JFXButton maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
-            <JFXButton prefHeight="39.0" prefWidth="120.0" ripplerFill="WHITE" styleClass="pink_btn" text="Ajouter" />
-         </children>
-      </HBox>
-   </children>
-   <padding>
-      <Insets left="15.0" right="15.0" top="20.0" />
-   </padding>
+    <children>
+        <Label prefHeight="34.0" prefWidth="64.0" text="Nom" textFill="#f78c7b">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" styleClass="tf_box">
+            <children>
+                <FontAwesomeIcon fill="#dedee4" glyphName="USER" />
+                <JFXTextField maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Nom" styleClass="tf" HBox.hgrow="ALWAYS">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                </JFXTextField>
+            </children>
+        </HBox>
+        <HBox alignment="TOP_RIGHT" prefHeight="45.0" prefWidth="450.0">
+            <opaqueInsets>
+                <Insets left="15.0" right="15.0" top="20.0" />
+            </opaqueInsets>
+            <children>
+                <JFXButton maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                <JFXButton prefHeight="39.0" prefWidth="120.0" ripplerFill="WHITE" styleClass="pink_btn" text="Ajouter" />
+            </children>
+        </HBox>
+    </children>
+    <padding>
+        <Insets left="15.0" right="15.0" top="20.0" />
+    </padding>
 </VBox>

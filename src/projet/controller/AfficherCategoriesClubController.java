@@ -159,7 +159,7 @@ public class AfficherCategoriesClubController implements Initializable {
         compteurClub();
         //CategorieClub p =new CategorieClub();
         //p.setNomCategorie("mustapha");
-        
+
         Timer timer = new Timer(); //new timer
         CategorieClubService cs = new CategorieClubService();
         ClubService cc = new ClubService();
@@ -268,7 +268,7 @@ public class AfficherCategoriesClubController implements Initializable {
     public void pdf(String nomClub, String NomCategorie, String Description, int capacite, float moyenne) {
         Document document = new Document();
         try {
-            PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\youssef\\Desktop\\libYoussef\\" + nomClub + ".pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\youssef\\Desktop\\" + nomClub + ".pdf"));
             document.open();
 
             Font f = new Font(FontFactory.getFont(FontFactory.TIMES_BOLD, 24, Font.UNDERLINE));
@@ -373,42 +373,40 @@ public class AfficherCategoriesClubController implements Initializable {
     private int index() {
         int selectedItem = listeCategorie.getSelectionModel().getSelectedItem().getId();
         int selectedIndex = listeCategorie.getSelectionModel().getSelectedIndex();
-       // System.out.println(selectedItem);
+        // System.out.println(selectedItem);
         return selectedItem;
     }
 
     @FXML
     private void supprimerCategorieClub(ActionEvent event) {
         try {
-            
-        
-        int x = index();
-        CategorieClub cat=listeCategorie.getSelectionModel().getSelectedItem();
-        Alert a1 = new Alert(Alert.AlertType.WARNING);
-        a1.setWidth(750);
-        a1.setHeight(400);
-        a1.setTitle("Supprimer categorie");
-        String message="Attention vous allez supprimer ainsi les clubs suivants: \n";
-        List<Club> listeClubsASuprrimer=ClubService.retournerListeDesClubsSupprission(cat.getId());
-        for(Club c:listeClubsASuprrimer)
-        {
-            message=message+c.getNom()+"\n";
-        }
-        a1.setContentText(message);
-        Optional<ButtonType> result = a1.showAndWait();
-        if (result.get() == ButtonType.OK) {
-            categoriesClubService.supprimer(x);
-            Alert a2 = new Alert(Alert.AlertType.INFORMATION);
-            a2.setTitle("Supprimer categorie");
-            a2.setContentText("Categorie supprimé avec succés!");
-            a2.show();
 
-            listeCategorie.getItems().clear();
-            listeCategorie.getItems().addAll(categoriesClubService.selectAll());
+            int x = index();
+            CategorieClub cat = listeCategorie.getSelectionModel().getSelectedItem();
+            Alert a1 = new Alert(Alert.AlertType.WARNING);
+            a1.setWidth(750);
+            a1.setHeight(400);
+            a1.setTitle("Supprimer categorie");
+            String message = "Attention vous allez supprimer ainsi les clubs suivants: \n";
+            List<Club> listeClubsASuprrimer = ClubService.retournerListeDesClubsSupprission(cat.getId());
+            for (Club c : listeClubsASuprrimer) {
+                message = message + c.getNom() + "\n";
+            }
+            a1.setContentText(message);
+            Optional<ButtonType> result = a1.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                categoriesClubService.supprimer(x);
+                Alert a2 = new Alert(Alert.AlertType.INFORMATION);
+                a2.setTitle("Supprimer categorie");
+                a2.setContentText("Categorie supprimé avec succés!");
+                a2.show();
 
-        } else {
-            a1.close();
-        }
+                listeCategorie.getItems().clear();
+                listeCategorie.getItems().addAll(categoriesClubService.selectAll());
+
+            } else {
+                a1.close();
+            }
         } catch (Exception e) {
         }
     }
@@ -416,33 +414,32 @@ public class AfficherCategoriesClubController implements Initializable {
     private int indexClub() {
         int selectedItem = listeClubs.getSelectionModel().getSelectedItem().getId();
         int selectedIndex = listeClubs.getSelectionModel().getSelectedIndex();
-      //  System.out.println(selectedItem);
+        //  System.out.println(selectedItem);
         return selectedItem;
     }
 
     @FXML
     private void supprimerClub(ActionEvent event) {
         try {
-            
-        
-        int x = indexClub();
-        Alert a1 = new Alert(Alert.AlertType.WARNING);
-        a1.setTitle("Supprimer club");
-        a1.setContentText("Vous voulez vraiment supprimer ce club ?");
-        Optional<ButtonType> result = a1.showAndWait();
-        if (result.get() == ButtonType.OK) {
-            ClubService.supprimerClub(x);
-            Alert a2 = new Alert(Alert.AlertType.INFORMATION);
-            a2.setTitle("Supprimer Club");
-            a2.setContentText("Club supprimé avec succés!");
-            a2.show();
 
-            listeClubs.getItems().clear();
-            listeClubs.getItems().addAll(ClubService.selectAllClubs());
+            int x = indexClub();
+            Alert a1 = new Alert(Alert.AlertType.WARNING);
+            a1.setTitle("Supprimer club");
+            a1.setContentText("Vous voulez vraiment supprimer ce club ?");
+            Optional<ButtonType> result = a1.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                ClubService.supprimerClub(x);
+                Alert a2 = new Alert(Alert.AlertType.INFORMATION);
+                a2.setTitle("Supprimer Club");
+                a2.setContentText("Club supprimé avec succés!");
+                a2.show();
 
-        } else {
-            a1.close();
-        }
+                listeClubs.getItems().clear();
+                listeClubs.getItems().addAll(ClubService.selectAllClubs());
+
+            } else {
+                a1.close();
+            }
         } catch (Exception e) {
         }
     }
@@ -470,7 +467,8 @@ public class AfficherCategoriesClubController implements Initializable {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
     }
-     @FXML
+
+    @FXML
     public void Satitiques(ActionEvent even) throws IOException {
         Stage primaryStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/projet/views/StatistiquesCategorieEtClub.fxml"));

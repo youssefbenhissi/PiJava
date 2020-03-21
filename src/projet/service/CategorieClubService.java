@@ -29,7 +29,8 @@ import projet.utils.DbConnection;
  *
  * @author youssef
  */
-public class CategorieClubService implements ICategorieClubService{
+public class CategorieClubService implements ICategorieClubService {
+
     static Statement statement = null;
     PreparedStatement pst;
 
@@ -59,17 +60,18 @@ public class CategorieClubService implements ICategorieClubService{
         }
         return categories;
     }
+
     @Override
-     public List<CategorieClub> rechercheCategories(String str) {
-         List<CategorieClub> categories=new ArrayList<CategorieClub>();
+    public List<CategorieClub> rechercheCategories(String str) {
+        List<CategorieClub> categories = new ArrayList<CategorieClub>();
         String sql = "SELECT * FROM categorie_club WHERE nomCategorie LIKE ? ";
         PreparedStatement statement;
-        
+
         try {
 
             statement = connection.prepareStatement(sql);
 
-            statement.setString(1,"%" + str + "%");
+            statement.setString(1, "%" + str + "%");
             //statement.setString(2, "%" + str + "%");
             ResultSet rs = statement.executeQuery();
 
@@ -80,35 +82,36 @@ public class CategorieClubService implements ICategorieClubService{
                 categories.add(c);
             }
         } catch (SQLException ex) {
-            
+
         }
         return categories;
     }
-     @Override
+
+    @Override
     public HashMap<String, Integer> getAllCategorie() {
-        
-        HashMap<String,Integer> mapCategorie = new HashMap<String,Integer>();
-        
+
+        HashMap<String, Integer> mapCategorie = new HashMap<String, Integer>();
+
         String req = "SELECT * FROM categorie_club";
-	
+
         try {
-                statement = connection.createStatement();
-                ResultSet res = statement.executeQuery(req);
-                CategorieClub categorie;
-                while (res.next()) {
-                   categorie = new CategorieClub(res.getInt(1), res.getString(2));
-                   mapCategorie.put(categorie.getNomCategorie(),categorie.getId());
-                }
+            statement = connection.createStatement();
+            ResultSet res = statement.executeQuery(req);
+            CategorieClub categorie;
+            while (res.next()) {
+                categorie = new CategorieClub(res.getInt(1), res.getString(2));
+                mapCategorie.put(categorie.getNomCategorie(), categorie.getId());
+            }
 
         } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
 
         return mapCategorie;
     }
-    
-     @Override
+
+    @Override
     public void supprimer(int x) {
         String sql = "DELETE FROM categorie_club WHERE id = ? ";
         try {
@@ -122,22 +125,24 @@ public class CategorieClubService implements ICategorieClubService{
         } catch (SQLException ex) {
             //Logger.getLogger(CategorieClubService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
+
     @Override
-    public void ajouterCategorie(CategorieClub c){
-      String requete="INSERT INTO categorie_club (nomCategorie)"
-                + " VALUES ('"+c.getNomCategorie()+"');";                              
-        
+    public void ajouterCategorie(CategorieClub c) {
+        String requete = "INSERT INTO categorie_club (nomCategorie)"
+                + " VALUES ('" + c.getNomCategorie() + "');";
+
         try {
-           pst = connection.prepareStatement(requete);
+            pst = connection.prepareStatement(requete);
             pst.executeUpdate(requete);
             System.out.println("categorie Ajoutee");
         } catch (SQLException ex) {
             System.out.println("aaaaaaa");
         }
-     
-     }
+
+    }
+
     public static PopOver popNotification(String notification) {
         Text notifcationText = new Text(notification);
         notifcationText.setWrappingWidth(230);
@@ -151,8 +156,7 @@ public class CategorieClubService implements ICategorieClubService{
 
         return popOver;
     }
-    
-    
+
     public List<Integer> getState() {
         String req11 = "Select id from categorie_club";
         List<Integer> liste = new ArrayList<Integer>();
@@ -170,7 +174,8 @@ public class CategorieClubService implements ICategorieClubService{
         }
         return liste;
     }
-     public String getState1(int x) {
+
+    public String getState1(int x) {
         String g = "";
         String req11 = "Select nomCategorie  From categorie_club where id=? ";
 
@@ -191,7 +196,8 @@ public class CategorieClubService implements ICategorieClubService{
         }
         return g;
     }
-      public Integer getState12(int x) {
+
+    public Integer getState12(int x) {
         int g = 0;
         String req11 = "Select id From club where categorie_id=? ";
 
@@ -212,13 +218,14 @@ public class CategorieClubService implements ICategorieClubService{
         }
         return g;
     }
-    
+
     /* CONTROLE DE SAISIE */
     //variable de controle de saisie
     private static Matcher matcher;
-     private static final String chaineSimple_sanEspace_pattern = "^[A-Za-z0-9]+$";
+    private static final String chaineSimple_sanEspace_pattern = "^[A-Za-z0-9]+$";
     private static Pattern chaineSimple_pattern__sanEspace_complie = Pattern.compile(chaineSimple_sanEspace_pattern);
-     public static boolean validationChaineSimpleSansEspace(final String chaineSaisie) {
+
+    public static boolean validationChaineSimpleSansEspace(final String chaineSaisie) {
         matcher = chaineSimple_pattern__sanEspace_complie.matcher(chaineSaisie);
         return matcher.matches();
     }

@@ -13,8 +13,12 @@ import projet.models.Club;
  * @author youssef
  */
 public interface IClub {
-        public List<Club> selectAllClubs();
-        public void supprimerClub(int x);
-        public List<Club> search(String libelle);
-        public List<Club> retournerListeDesClubsSupprission(int id);
+
+    public List<Club> selectAllClubs();
+
+    public void supprimerClub(int x);
+
+    public List<Club> search(String libelle);
+
+    public List<Club> retournerListeDesClubsSupprission(int id);
 }

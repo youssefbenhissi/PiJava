@@ -27,15 +27,15 @@
                         <JFXComboBox fx:id="categorie" layoutX="116.0" layoutY="48.0" prefHeight="31.0" prefWidth="258.0" promptText="nom de la categorie" />
                         <TextField fx:id="uquestion2" layoutX="118.0" layoutY="169.0" prefHeight="32.0" prefWidth="258.0" promptText="deuxième question" />
                         <TextField fx:id="uquestion3" layoutX="116.0" layoutY="209.0" prefHeight="32.0" prefWidth="258.0" promptText="troisième question" />
-                  <Button fx:id="btnBrowser" layoutX="153.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleBrowser" prefHeight="143.0" prefWidth="184.0" style="-fx-background-color: transparent;" text="Button">
-                     <graphic>
-                        <ImageView fx:id="imageView" fitHeight="155.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/ajouterPhoto.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
+                        <Button fx:id="btnBrowser" layoutX="153.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleBrowser" prefHeight="143.0" prefWidth="184.0" style="-fx-background-color: transparent;" text="Button">
+                            <graphic>
+                                <ImageView fx:id="imageView" fitHeight="155.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/ajouterPhoto.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
                   
                     </children>
                 </AnchorPane>

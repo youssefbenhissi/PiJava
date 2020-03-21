@@ -21,336 +21,340 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="858.0" prefWidth="1050.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.AfficherCategoriesClubController">
-   <children>
-      <VBox alignment="TOP_CENTER" prefHeight="858.0" prefWidth="260.0" style="-fx-background-color: #2F323A;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Button fx:id="btnOverview" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Overview" textFill="#e7e5e5">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/icons8_Home_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btnOrders" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Orders">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/icons8_Open_Envelope_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <Button fx:id="Clubs" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Clubs">
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-               <graphic>
-                  <FontAwesomeIcon fill="#7f7f7f" glyphName="USERS" wrappingWidth="19.071428298950195" />
-               </graphic>
-            </Button>
-            <Button fx:id="btnMenus" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Menus">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/icons8_Xbox_Menu_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btnPackages" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Packages">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/icons8_Box_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btnSettings" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Settings">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/icons8_Slider__32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Sign Out">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/icons8_Sign_Out_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-         </children>
-         <padding>
-            <Insets top="150.0" />
-         </padding>
-      </VBox>
-      <StackPane layoutX="258.0" prefHeight="858.0" prefWidth="792.0" style="-fx-background-color: #02030A;">
-         <children>
-            <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
-            <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
-            <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
-            <Pane fx:id="pnlOverview" prefHeight="759.0" prefWidth="793.0" style="-fx-background-color: #fff;">
-               <children>
-                   <JFXTextField fx:id="rechercheBar" focusColor="WHITE" layoutX="439.0" layoutY="192.0" onKeyPressed="#rechercher" onKeyReleased="#rechercher" prefHeight="25.0" prefWidth="283.0" promptText="Recherche Ici..." style="-fx-background-color: #fff; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" unFocusColor="WHITE" />
-                  <ScrollPane layoutX="14.0" layoutY="243.0" prefHeight="215.0" prefWidth="746.0" stylesheets="@style.css">
-                     <content>
-                        <TableView fx:id="listeCategorie" editable="true" prefHeight="219.0" prefWidth="728.0" style="-fx-background-color: #F3F3F3;">
-                          <columns>
-                            <TableColumn fx:id="id" prefWidth="159.0" text="ID" />
-                            <TableColumn fx:id="nomCategorie" onEditCommit="#modifierCategorie" prefWidth="563.0" text="Nom Categorie" />
-                          </columns>
-                           <contextMenu>
-                              <ContextMenu>
-                                <items>
-                                  <MenuItem mnemonicParsing="false" onAction="#afficherCategorieClub" text="Actualiser">
-                                       <graphic>
-                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
+    <children>
+        <VBox alignment="TOP_CENTER" prefHeight="858.0" prefWidth="260.0" style="-fx-background-color: #2F323A;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Button fx:id="btnOverview" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Overview" textFill="#e7e5e5">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Home_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnOrders" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Orders">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Open_Envelope_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="Clubs" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Clubs">
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                    <graphic>
+                        <FontAwesomeIcon fill="#7f7f7f" glyphName="USERS" wrappingWidth="19.071428298950195" />
+                    </graphic>
+                </Button>
+                <Button fx:id="btnMenus" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Menus">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Xbox_Menu_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnPackages" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Packages">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Box_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnSettings" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Settings">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Slider__32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Sign Out">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Sign_Out_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+            </children>
+            <padding>
+                <Insets top="150.0" />
+            </padding>
+        </VBox>
+        <StackPane layoutX="258.0" prefHeight="858.0" prefWidth="792.0" style="-fx-background-color: #02030A;">
+            <children>
+                <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
+                <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
+                <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
+                <Pane fx:id="pnlOverview" prefHeight="759.0" prefWidth="793.0" style="-fx-background-color: #fff;">
+                    <children>
+                        <JFXTextField fx:id="rechercheBar" focusColor="WHITE" layoutX="439.0" layoutY="192.0" onKeyPressed="#rechercher" onKeyReleased="#rechercher" prefHeight="25.0" prefWidth="283.0" promptText="Recherche Ici..." style="-fx-background-color: #fff; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" unFocusColor="WHITE" />
+                        <ScrollPane layoutX="14.0" layoutY="243.0" prefHeight="215.0" prefWidth="746.0" stylesheets="@style.css">
+                            <content>
+                                <TableView fx:id="listeCategorie" editable="true" prefHeight="219.0" prefWidth="728.0" style="-fx-background-color: #F3F3F3;">
+                                    <columns>
+                                        <TableColumn fx:id="id" prefWidth="159.0" text="ID" />
+                                        <TableColumn fx:id="nomCategorie" onEditCommit="#modifierCategorie" prefWidth="563.0" text="Nom Categorie" />
+                                    </columns>
+                                    <contextMenu>
+                                        <ContextMenu>
+                                            <items>
+                                                <MenuItem mnemonicParsing="false" onAction="#afficherCategorieClub" text="Actualiser">
+                                                    <graphic>
+                                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@../images/acctualiser.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </graphic>
+                                                </MenuItem>
+                                                <MenuItem mnemonicParsing="false" text="Modifier">
+                                                    <graphic>
+                                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@../images/modifier.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </graphic>
+                                                </MenuItem>
+                                                <MenuItem mnemonicParsing="false" onAction="#supprimerCategorieClub" text="Supprimer">
+                                                    <graphic>
+                                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@../images/supprimer.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </graphic>
+                                                </MenuItem>
+                                            </items>
+                                        </ContextMenu>
+                                    </contextMenu>
+                                </TableView>
+                            </content>
+                        </ScrollPane>
+                        <Label layoutX="40.0" layoutY="186.0" text="Table des categories" textFill="WHITE" />
+                        <Label layoutX="40.0" layoutY="461.0" text="Tables des clubs" />
+                        <!--<JFXTextField layoutX="310.0" layoutY="42.0" onAction="#search" text="" />-->
+                        <Button layoutX="296.0" layoutY="467.0" mnemonicParsing="false" onAction="#ajouterEvenementGUI" text="Ajouter" />
+                        <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="691.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Search_52px.png" />
+                            </image>
+                        </ImageView>
+                        <VBox layoutX="-12.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="207.0" prefWidth="799.0" styleClass="content-page" stylesheets="@../../../../PI%20FINAL/ProjetPI/src/projet/style/backcss.css">
+                            <children>
+                                <HBox prefHeight="70.0" prefWidth="739.0" styleClass="header-title">
+                                    <children>
+                                        <HBox prefHeight="100.0" prefWidth="504.0">
+                                            <children>
+                                                <Button mnemonicParsing="false" styleClass="title-button">
+                                                    <graphic>
+                                                        <FontAwesomeIcon glyphName="HOME" styleClass="title-button-icon" />
+                                                    </graphic>
+                                                </Button>
+                                                <Label prefHeight="48.0" prefWidth="456.0" styleClass="title-label" text="Section Club">
+                                                    <font>
+                                                        <Font name="Century Gothic" size="20.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox layoutX="513.0" layoutY="10.0" prefHeight="100.0" prefWidth="523.0">
+                                            <children>
+                                                <Label prefHeight="41.0" prefWidth="402.0" styleClass="title-right" text="  /  Clubs">
+                                                    <graphic>
+                                                        <FontAwesomeIcon glyphName="HOME" />
+                                                    </graphic>
+                                                    <font>
+                                                        <Font name="Century Gothic" size="15.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </HBox>
+                                <HBox prefHeight="85.0" prefWidth="1015.0" styleClass="header-title" />
+                                <HBox fx:id="compteur" prefHeight="100.0" prefWidth="543.0" styleClass="info-dashboard">
+                                    <children>
+                                        <HBox prefHeight="100.0" prefWidth="278.0" styleClass="info-item">
+                                            <children>
+                                                <VBox prefHeight="67.0" prefWidth="158.0">
+                                                    <children>
+                                                        <Label prefHeight="17.0" prefWidth="165.0" text="Categories">
+                                                            <font>
+                                                                <Font name="Century Gothic" size="20.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Label fx:id="countCategorie" prefHeight="51.0" prefWidth="158.0" text="0">
+                                                            <font>
+                                                                <Font name="Century Gothic" size="20.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </VBox>
+                                                <Button mnemonicParsing="false" style="-fx-background-color: #4099ff;" styleClass="info-button">
+                                                    <graphic>
+                                                        <FontAwesomeIcon glyphName="CUBE" styleClass="info-dashboard-icon" />
+                                                    </graphic>
+                                                </Button>
+                                            </children>
+                                        </HBox>
+                                        <HBox layoutX="276.0" layoutY="10.0" prefHeight="100.0" prefWidth="201.0" styleClass="info-item">
+                                            <children>
+                                                <VBox prefHeight="50.0" prefWidth="113.0">
+                                                    <children>
+                                                        <Label prefHeight="25.0" prefWidth="114.0" text="Clubs">
+                                                            <font>
+                                                                <Font name="Century Gothic" size="20.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Label fx:id="countClubs" prefHeight="51.0" prefWidth="158.0" text="0">
+                                                            <font>
+                                                                <Font name="Century Gothic" size="20.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </VBox>
+                                                <Button mnemonicParsing="false" style="-fx-background-color: #2ed8b6;" styleClass="info-button">
+                                                    <graphic>
+                                                        <FontAwesomeIcon glyphName="TREE" styleClass="info-dashboard-icon" />
+                                                    </graphic>
+                                                </Button>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="100.0" prefWidth="201.0" styleClass="info-item">
+                                            <children>
+                                                <VBox prefHeight="67.0" prefWidth="158.0">
+                                                    <children>
+                                                        <Label prefHeight="17.0" prefWidth="165.0" text="inscriptions">
+                                                            <font>
+                                                                <Font name="Century Gothic" size="20.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Label fx:id="countClubs1" prefHeight="51.0" prefWidth="158.0" text="250">
+                                                            <font>
+                                                                <Font name="Century Gothic" size="20.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </VBox>
+                                                <Button mnemonicParsing="false" style="-fx-background-color: #ffb64d;" styleClass="info-button">
+                                                    <graphic>
+                                                        <FontAwesomeIcon glyphName="SLACK" styleClass="info-dashboard-icon" />
+                                                    </graphic>
+                                                </Button>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        <Button fx:id="Statitiques" layoutX="417.0" layoutY="467.0" mnemonicParsing="false" onAction="#Satitiques" text="Statitisques" />
+                    </children>
+                </Pane>
+            </children>
+        </StackPane>
+        <ScrollPane layoutX="270.0" layoutY="515.0" prefHeight="319.0" prefWidth="746.0" stylesheets="@style.css">
+            <content>
+                <TableView fx:id="listeClubs" prefHeight="317.0" prefWidth="743.0" style="-fx-background-color: #F3F3F3;" stylesheets="@style.css">
+                    <columns>
+                        <TableColumn fx:id="idClub" prefWidth="42.0" text="Id" />
+                        <TableColumn fx:id="nomClub" onEditCancel="#edit" onEditCommit="#edit" onEditStart="#edit" prefWidth="157.0" text="nom club" />
+                        <TableColumn fx:id="nomCat" prefWidth="173.0" text="nom categorie" />
+                        <TableColumn fx:id="descriptionClub" prefWidth="133.0" text="description" />
+                        <TableColumn fx:id="capaciteClub" minWidth="9.0" prefWidth="119.0" text="capacite" />
+                        <TableColumn fx:id="moyenneLike" prefWidth="118.0" text="moyenne" />
+                    </columns>
+                    <contextMenu>
+                        <ContextMenu>
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#afficherClub" text="Actualiser">
+                                    <graphic>
+                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
                                                 <Image url="@../images/acctualiser.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </MenuItem>
-                                    <MenuItem mnemonicParsing="false" text="Modifier">
-                                       <graphic>
-                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </MenuItem>
+                                <MenuItem mnemonicParsing="false" text="Modifier">
+                                    <graphic>
+                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
                                                 <Image url="@../images/modifier.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </MenuItem>
-                                    <MenuItem mnemonicParsing="false" onAction="#supprimerCategorieClub" text="Supprimer">
-                                       <graphic>
-                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </MenuItem>
+                                <MenuItem mnemonicParsing="false" onAction="#lireDescriptionEvenement" text="Lire description">
+                                    <graphic>
+                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../images/song.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </MenuItem>
+                                <MenuItem mnemonicParsing="false" onAction="#supprimerClub" text="Supprimer">
+                                    <graphic>
+                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
                                                 <Image url="@../images/supprimer.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </MenuItem>
-                                </items>
-                              </ContextMenu>
-                           </contextMenu>
-                        </TableView>
-                     </content>
-                  </ScrollPane>
-                  <Label layoutX="40.0" layoutY="186.0" text="Table des categories" textFill="WHITE" />
-                  <Label layoutX="40.0" layoutY="461.0" text="Tables des clubs" />
-                  <!--<JFXTextField layoutX="310.0" layoutY="42.0" onAction="#search" text="" />-->
-                  <Button layoutX="296.0" layoutY="467.0" mnemonicParsing="false" onAction="#ajouterEvenementGUI" text="Ajouter" />
-                  <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="691.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/icons8_Search_52px.png" />
-                     </image>
-                  </ImageView>
-                  <VBox layoutX="-12.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="207.0" prefWidth="799.0" styleClass="content-page" stylesheets="@../../../../PI%20FINAL/ProjetPI/src/projet/style/backcss.css">
-                     <children>
-                        <HBox prefHeight="70.0" prefWidth="739.0" styleClass="header-title">
-                           <children>
-                              <HBox prefHeight="100.0" prefWidth="504.0">
-                                 <children>
-                                    <Button mnemonicParsing="false" styleClass="title-button">
-                                       <graphic>
-                                          <FontAwesomeIcon glyphName="HOME" styleClass="title-button-icon" />
-                                       </graphic>
-                                    </Button>
-                                    <Label prefHeight="48.0" prefWidth="456.0" styleClass="title-label" text="Section Club">
-                                       <font>
-                                          <Font name="Century Gothic" size="20.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <HBox layoutX="513.0" layoutY="10.0" prefHeight="100.0" prefWidth="523.0">
-                                 <children>
-                                    <Label prefHeight="41.0" prefWidth="402.0" styleClass="title-right" text="  /  Clubs">
-                                       <graphic>
-                                          <FontAwesomeIcon glyphName="HOME" />
-                                       </graphic>
-                                       <font>
-                                          <Font name="Century Gothic" size="15.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="85.0" prefWidth="1015.0" styleClass="header-title" />
-                        <HBox fx:id="compteur" prefHeight="100.0" prefWidth="543.0" styleClass="info-dashboard">
-                           <children>
-                              <HBox prefHeight="100.0" prefWidth="278.0" styleClass="info-item">
-                                 <children>
-                                    <VBox prefHeight="67.0" prefWidth="158.0">
-                                       <children>
-                                          <Label prefHeight="17.0" prefWidth="165.0" text="Categories">
-                                             <font>
-                                                <Font name="Century Gothic" size="20.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="countCategorie" prefHeight="51.0" prefWidth="158.0" text="0">
-                                             <font>
-                                                <Font name="Century Gothic" size="20.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </VBox>
-                                    <Button mnemonicParsing="false" style="-fx-background-color: #4099ff;" styleClass="info-button">
-                                       <graphic>
-                                          <FontAwesomeIcon glyphName="CUBE" styleClass="info-dashboard-icon" />
-                                       </graphic>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                              <HBox layoutX="276.0" layoutY="10.0" prefHeight="100.0" prefWidth="201.0" styleClass="info-item">
-                                 <children>
-                                    <VBox prefHeight="50.0" prefWidth="113.0">
-                                       <children>
-                                          <Label prefHeight="25.0" prefWidth="114.0" text="Clubs">
-                                             <font>
-                                                <Font name="Century Gothic" size="20.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="countClubs" prefHeight="51.0" prefWidth="158.0" text="0">
-                                             <font>
-                                                <Font name="Century Gothic" size="20.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </VBox>
-                                    <Button mnemonicParsing="false" style="-fx-background-color: #2ed8b6;" styleClass="info-button">
-                                       <graphic>
-                                          <FontAwesomeIcon glyphName="TREE" styleClass="info-dashboard-icon" />
-                                       </graphic>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="100.0" prefWidth="201.0" styleClass="info-item">
-                                 <children>
-                                    <VBox prefHeight="67.0" prefWidth="158.0">
-                                       <children>
-                                          <Label prefHeight="17.0" prefWidth="165.0" text="inscriptions">
-                                             <font>
-                                                <Font name="Century Gothic" size="20.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="countClubs1" prefHeight="51.0" prefWidth="158.0" text="250">
-                                             <font>
-                                                <Font name="Century Gothic" size="20.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </VBox>
-                                    <Button mnemonicParsing="false" style="-fx-background-color: #ffb64d;" styleClass="info-button">
-                                       <graphic>
-                                          <FontAwesomeIcon glyphName="SLACK" styleClass="info-dashboard-icon" />
-                                       </graphic>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-                  <Button fx:id="Statitiques" layoutX="417.0" layoutY="467.0" mnemonicParsing="false" onAction="#Satitiques" text="Statitisques" />
-               </children>
-            </Pane>
-         </children>
-      </StackPane>
-      <ScrollPane layoutX="270.0" layoutY="515.0" prefHeight="319.0" prefWidth="746.0" stylesheets="@style.css">
-         <content>
-            <TableView fx:id="listeClubs" prefHeight="317.0" prefWidth="743.0" style="-fx-background-color: #F3F3F3;" stylesheets="@style.css">
-              <columns>
-                <TableColumn fx:id="idClub" prefWidth="42.0" text="Id" />
-                <TableColumn fx:id="nomClub" onEditCancel="#edit" onEditCommit="#edit" onEditStart="#edit" prefWidth="157.0" text="nom club" />
-                <TableColumn fx:id="nomCat" prefWidth="173.0" text="nom categorie" />
-                  <TableColumn fx:id="descriptionClub" prefWidth="133.0" text="description" />
-                  <TableColumn fx:id="capaciteClub" minWidth="9.0" prefWidth="119.0" text="capacite" />
-                  <TableColumn fx:id="moyenneLike" prefWidth="118.0" text="moyenne" />
-              </columns>
-               <contextMenu>
-                  <ContextMenu>
-                    <items>
-                      <MenuItem mnemonicParsing="false" onAction="#afficherClub" text="Actualiser">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/acctualiser.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic></MenuItem>
-                        <MenuItem mnemonicParsing="false" text="Modifier">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/modifier.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </MenuItem>
-                        <MenuItem mnemonicParsing="false" onAction="#lireDescriptionEvenement" text="Lire description">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/song.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic></MenuItem>
-                        <MenuItem mnemonicParsing="false" onAction="#supprimerClub" text="Supprimer">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/supprimer.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic></MenuItem>
-                        <MenuItem mnemonicParsing="false" onAction="#convertirEnPdf" text="Conevrtir en pdf">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/file-pdf-regular.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic></MenuItem>
-                    </items>
-                  </ContextMenu>
-               </contextMenu>
-            </TableView>
-         </content>
-      </ScrollPane>
-   </children>
-   <effect>
-      <DropShadow color="#1b1eeb" />
-   </effect>
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </MenuItem>
+                                <MenuItem mnemonicParsing="false" onAction="#convertirEnPdf" text="Conevrtir en pdf">
+                                    <graphic>
+                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../images/file-pdf-regular.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </MenuItem>
+                            </items>
+                        </ContextMenu>
+                    </contextMenu>
+                </TableView>
+            </content>
+        </ScrollPane>
+    </children>
+    <effect>
+        <DropShadow color="#1b1eeb" />
+    </effect>
 </AnchorPane>

@@ -10,18 +10,19 @@ package projet.models;
  * @author youssef
  */
 public class Club {
+
     private int id;
     private String nom;
     private String description;
     private int capacite;
     private String path;
-    private  float moyenneLike;
+    private float moyenneLike;
     private int nbrLike;
     private String nomcategorie;
-    private  int nbrFoisLike;
+    private int nbrFoisLike;
     private int categorie_id;
     private String questionPr;
-    private  String questionDe;
+    private String questionDe;
     private String questionTr;
 
     public String getQuestionPr() {
@@ -47,7 +48,6 @@ public class Club {
     public void setQuestionTr(String questionTr) {
         this.questionTr = questionTr;
     }
-    
 
     public int getCategorie_id() {
         return categorie_id;
@@ -56,7 +56,7 @@ public class Club {
     public void setCategorie_id(int categorie_id) {
         this.categorie_id = categorie_id;
     }
-    
+
     public int getNbrFoisLike() {
         return nbrFoisLike;
     }
@@ -64,7 +64,6 @@ public class Club {
     public void setNbrFoisLike(int nbrFoisLike) {
         this.nbrFoisLike = nbrFoisLike;
     }
-    
 
     public Club() {
     }
@@ -92,7 +91,6 @@ public class Club {
         this.questionDe = questionDe;
         this.questionTr = questionTr;
     }
-    
 
     public Club(int id, String nom, String description, int capacite, String path, float moyenneLike) {
         this.id = id;
@@ -102,13 +100,15 @@ public class Club {
         this.path = path;
         this.moyenneLike = moyenneLike;
     }
-       public Club(int id, String nom, String description, int capacite ,float moyenneLike) {
+
+    public Club(int id, String nom, String description, int capacite, float moyenneLike) {
         this.id = id;
         this.nom = nom;
         this.description = description;
         this.capacite = capacite;
         this.moyenneLike = moyenneLike;
     }
+
     public int getId() {
         return id;
     }
@@ -125,8 +125,6 @@ public class Club {
         this.nomcategorie = nomcategorie;
     }
 
-    
-    
     public String getNom() {
         return nom;
     }
@@ -166,5 +164,5 @@ public class Club {
     public void setMoyenneLike(float moyenneLike) {
         this.moyenneLike = moyenneLike;
     }
-    
+
 }

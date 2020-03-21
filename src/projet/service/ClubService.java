@@ -43,7 +43,7 @@ public class ClubService implements IClub {
     @Override
     public List<Club> selectAllClubs() {
         ArrayList<Club> clubs = new ArrayList<>();
-        String req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,cat.nomCategorie FROM club c,categorie_club cat WHERE c.categorie_id = cat.id";
+        String req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,cat.nomCategorie,c.image FROM club c,categorie_club cat WHERE c.categorie_id = cat.id";
         try {
             PreparedStatement ps = connection.prepareStatement(req);
             ps.executeQuery();
@@ -59,6 +59,7 @@ public class ClubService implements IClub {
                 c.setCapacite(rs.getInt(4));
                 c.setMoyenneLike(rs.getFloat(5));
                 c.setNomcategorie(rs.getString(6));
+                c.setPath(rs.getString(7));
                 clubs.add(c);
             }
         } catch (Exception ex) {

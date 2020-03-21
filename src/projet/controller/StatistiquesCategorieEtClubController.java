@@ -169,7 +169,7 @@ public class StatistiquesCategorieEtClubController implements Initializable {
             countCategorie.setText(String.valueOf(0));
         } else {
             Timeline timelineCat = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
-                new Swing(conteneurCategories).play();
+                new Pulse(conteneurCategories).play();
 
                 counterCat++;
                 countCategorie.setText(String.valueOf(counterCat));

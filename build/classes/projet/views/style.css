@@ -1,15 +1,15 @@
 .button
 {
--fx-background-color : #2F323A;
--fx-text-fill : #e7e5e5;
--fx-text-color : white;
+    -fx-background-color : #2F323A;
+    -fx-text-fill : #e7e5e5;
+    -fx-text-color : white;
 }
 .button:hover{
--fx-background-color : #4ECDC4;
+    -fx-background-color : #4ECDC4;
 }
 .button:pressed
 {
--fx-background-color : #4ECDC4;
+    -fx-background-color : #4ECDC4;
 }
 
 .scroll-pane {

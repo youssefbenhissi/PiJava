@@ -10,7 +10,8 @@ package projet.models;
  * @author youssef
  */
 public class CategorieClub {
-    private int  id;
+
+    private int id;
     private String nomCategorie;
 
     public CategorieClub() {
@@ -36,11 +37,10 @@ public class CategorieClub {
     public String toString() {
         return "CategorieClub{" + "id=" + id + ", nomCategorie=" + nomCategorie + '}';
     }
-    
 
     public CategorieClub(int id, String nomCategorie) {
         this.id = id;
         this.nomCategorie = nomCategorie;
     }
-    
+
 }

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package projet.controller;
+
 import t2s.son.LecteurTexte;
 import java.io.IOException;
 import java.net.URL;
@@ -31,31 +32,17 @@ public class AjouterCcController implements Initializable {
     @FXML
     private VBox vbox;
     private Parent fxml;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
-        TranslateTransition t =new TranslateTransition(Duration.seconds(1),vbox);
+
+        TranslateTransition t = new TranslateTransition(Duration.seconds(1), vbox);
         t.setToX(5);
         t.play();
-        t.setOnFinished((e)->{
+        t.setOnFinished((e) -> {
             try {
-                fxml=FXMLLoader.load(getClass().getResource("/projet/views/AjouterClubFormulaire.fxml"));
-                vbox.getChildren().removeAll();
-                vbox.getChildren().setAll(fxml);
-            } catch (IOException ex) {
-                Logger.getLogger(AjouterCcController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
-    }    
-    @FXML
-    public void open_ajouter_categorie(){
-         TranslateTransition t =new TranslateTransition(Duration.seconds(1),vbox);
-        t.setToX(460);
-        t.play();
-        t.setOnFinished((e)->{
-            try {
-                fxml=FXMLLoader.load(getClass().getResource("/projet/views/AjouterCategorieFromulaire.fxml"));
+                fxml = FXMLLoader.load(getClass().getResource("/projet/views/AjouterClubFormulaire.fxml"));
                 vbox.getChildren().removeAll();
                 vbox.getChildren().setAll(fxml);
             } catch (IOException ex) {
@@ -63,18 +50,36 @@ public class AjouterCcController implements Initializable {
             }
         });
     }
-     @FXML
-    public void open_ajouter_club(){
-     TranslateTransition t =new TranslateTransition(Duration.seconds(1),vbox);
-        t.setToX(5);
+
+    @FXML
+    public void open_ajouter_categorie() {
+        TranslateTransition t = new TranslateTransition(Duration.seconds(1), vbox);
+        t.setToX(460);
         t.play();
-        t.setOnFinished((e)->{
+        t.setOnFinished((e) -> {
             try {
-                fxml=FXMLLoader.load(getClass().getResource("/projet/views/AjouterClubFormulaire.fxml"));
+                fxml = FXMLLoader.load(getClass().getResource("/projet/views/AjouterCategorieFromulaire.fxml"));
                 vbox.getChildren().removeAll();
                 vbox.getChildren().setAll(fxml);
             } catch (IOException ex) {
                 Logger.getLogger(AjouterCcController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        });}
+        });
+    }
+
+    @FXML
+    public void open_ajouter_club() {
+        TranslateTransition t = new TranslateTransition(Duration.seconds(1), vbox);
+        t.setToX(5);
+        t.play();
+        t.setOnFinished((e) -> {
+            try {
+                fxml = FXMLLoader.load(getClass().getResource("/projet/views/AjouterClubFormulaire.fxml"));
+                vbox.getChildren().removeAll();
+                vbox.getChildren().setAll(fxml);
+            } catch (IOException ex) {
+                Logger.getLogger(AjouterCcController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    }
 }
