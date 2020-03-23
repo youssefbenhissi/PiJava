@@ -22,7 +22,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import org.controlsfx.control.PopOver;
 import projet.models.CategorieClub;
-import projet.models.Club;
 import projet.utils.DbConnection;
 
 /**

@@ -5,7 +5,6 @@
  */
 package projet.controller;
 
-import t2s.son.LecteurTexte;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

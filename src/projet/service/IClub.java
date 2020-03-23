@@ -21,4 +21,5 @@ public interface IClub {
     public List<Club> search(String libelle);
 
     public List<Club> retournerListeDesClubsSupprission(int id);
+
 }

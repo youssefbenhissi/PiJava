@@ -5,10 +5,6 @@
  */
 package projet.service;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
-import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +19,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Button;
 import projet.models.CategorieClub;
 import projet.models.Club;
 import projet.utils.DbConnection;
@@ -166,5 +161,63 @@ public class ClubService implements IClub {
 
         }
         return categories;
+    }
+
+    //@Override
+    public List<Club> getListProduitsFilter(String categorie, String triNom) {
+
+        ObservableList<Club> listproduits = FXCollections.observableArrayList();
+        String req = null;
+
+        if (categorie == null) {
+            if (triNom == null) {
+                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image FROM club c ORDER BY c.id DESC ";
+                System.out.println("c est le cas");
+            }
+
+            if (triNom == "nom_asc") {
+                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image FROM club c ORDER BY(c.nom) ASC";
+            }
+            if (triNom == "nom_desc") {
+                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image FROM club c ORDER BY(c.nom) DESC";
+            }
+            if (triNom == "etoi_asc") {
+                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image FROM club c ORDER BY(c.moyenneLike) ASC";
+            }
+            if (triNom == "etoi_desc") {
+                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image FROM club c ORDER BY(c.moyenneLike) DESC";
+            }
+
+        }
+        
+        if (categorie != null) {
+            if (triNom == null) {
+                System.out.println("lehnnnnna");
+                String sql = "SELECT c.id,c.nom FROM club c  WHERE c.categorie_id = '"+categorie+"' ORDER BY c.id DESC ";
+            }
+
+        }
+        try {
+            statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(req);
+
+            while (rs.next()) {
+                Club c = new Club();
+                c.setId(rs.getInt(1));
+                c.setNom(rs.getString(2));
+                c.setDescription(rs.getString(3));
+                c.setCapacite(rs.getInt(4));
+                c.setMoyenneLike(rs.getFloat(5));
+               // c.setNomcategorie(rs.getString(6));
+                c.setPath(rs.getString(6));
+                listproduits.add(c);
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return listproduits;
     }
 }

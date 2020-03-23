@@ -26,15 +26,25 @@ row {
 }
 
 .supp_Box .button{
-    
+
     -fx-background-color: #e74c3c;
     -fx-font-size: 15;
     -fx-pref-width: 150;
     -fx-pref-height: 60
-    
+
 }
 
 .button .detail_btn .label {
     -fx-padding: 7 40;
     -fx-font-size: 14
+}
+
+.bouttonCategorie{
+    -fx-background-color: #fff; 
+    -fx-border-color: #ff3333;
+}
+.bouttonCategorie:hover {
+    -fx-background-color: #CFA671;
+    -fx-border-color: #ff3333;
+    -fx-text-fill: #fff
 }

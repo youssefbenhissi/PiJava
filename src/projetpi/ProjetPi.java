@@ -7,22 +7,12 @@ package projetpi;
 
 import java.io.File;
 import java.net.URL;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import projet.service.CategorieClubService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  *
@@ -39,7 +29,7 @@ public class ProjetPi extends Application {
         CategorieClubService c = new CategorieClubService();
         c.selectAll();
         try {
-            URL url = new File("src/projet/views/AfficherCategoriesClubFront.fxml").toURI().toURL();
+            URL url = new File("src/projet/views/AccueilEvenementGUI.fxml").toURI().toURL();
             Parent root = FXMLLoader.load(url);
             primaryStage.setScene(new Scene(root));
             primaryStage.show();

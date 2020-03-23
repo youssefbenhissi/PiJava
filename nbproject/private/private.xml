@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/service/ClubService.java</file>
-            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/controller/AjouterCategorieEtClubController.java</file>
-            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/views/AfficherCategoriesClubFront.fxml</file>
-            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/controller/AfficherCategoriesClubController.java</file>
-            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/style/EvenementCss.css</file>
+            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projetpi/ProjetPi.java</file>
+            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/controller/afficherCategorieClubFront.java</file>
+            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/controller/DisplayShelfSample.java</file>
+            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/service/CategorieClubService.java</file>
         </group>
     </open-files>
 </project-private>
