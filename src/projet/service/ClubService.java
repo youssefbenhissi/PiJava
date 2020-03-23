@@ -140,7 +140,7 @@ public class ClubService implements IClub {
     @Override
     public List<Club> retournerListeDesClubsSupprission(int id) {
         List<Club> categories = new ArrayList<Club>();
-        String sql = "SELECT c.id,c.nom FROM club c WHERE c.categorie_id LIKE ? ";
+        String sql = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image FROM club c WHERE c.categorie_id LIKE ? ";
         PreparedStatement statement;
 
         try {
@@ -155,6 +155,11 @@ public class ClubService implements IClub {
                 Club c = new Club();
                 c.setId(rs.getInt(1));
                 c.setNom(rs.getString(2));
+                c.setDescription(rs.getString(3));
+                c.setCapacite(rs.getInt(4));
+                c.setMoyenneLike(rs.getFloat(5));
+               // c.setNomcategorie(rs.getString(6));
+                c.setPath(rs.getString(6));
                 categories.add(c);
             }
         } catch (SQLException ex) {
@@ -190,7 +195,7 @@ public class ClubService implements IClub {
 
         }
         
-        if (categorie != null) {
+        else {    
             if (triNom == null) {
                 System.out.println("lehnnnnna");
                 String sql = "SELECT c.id,c.nom FROM club c  WHERE c.categorie_id = '"+categorie+"' ORDER BY c.id DESC ";

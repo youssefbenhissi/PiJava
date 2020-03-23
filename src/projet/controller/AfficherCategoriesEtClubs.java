@@ -76,7 +76,8 @@ public class AfficherCategoriesEtClubs implements Initializable {
 
     @FXML
     private Label title_filter;
-
+    @FXML
+    private HBox meilleursProduit;
     @FXML
     private JFXComboBox<String> categorie_combo;
 
@@ -104,6 +105,11 @@ public class AfficherCategoriesEtClubs implements Initializable {
         tri_combo.getItems().addAll("Nom, A à Z", "Nom, Z à A", "Prix,croissant", "Prix, décroissant");
         listProduit = FXCollections.observableArrayList(ps.getListProduitsFilter(null, null));
         getProduit();
+        try {
+            setMeilleurProduct();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(AfficherCategoriesEtClubs.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void filter() {
@@ -214,17 +220,66 @@ public class AfficherCategoriesEtClubs implements Initializable {
     @FXML
     private void CagetorieEvent(ActionEvent event) {
 
-//        getSousCategorie();
+        getSousCategorie();
         String nombre = "2";
-        
+
 //categorie_combo.setValue(nombre);
+        //filter();
+    }
 
-        filter();
+    private void getSousCategorie() {
 
+        if (categorie_combo.getValue() != null) {
+
+            HashMap<String, Integer> mapCategorie = categorieproduitservice.getAllCategorie();
+
+            int id_Categorie = mapCategorie.get(categorie_combo.getValue());
+
+            System.out.println(id_Categorie);
+            listProduit = FXCollections.observableArrayList(ps.retournerListeDesClubsSupprission(id_Categorie));
+            getProduit();
+        }
     }
 
     @FXML
-    private void TriEvent(ActionEvent event) {
+    private void TriEvent(ActionEvent event
+    ) {
         filter();
     }
+
+    //top3
+    private void setMeilleurProduct() throws FileNotFoundException {
+
+        listProduit = FXCollections.observableArrayList(ps.getListProduitsFilter(null, "etoi_desc"));
+
+        int index = 0;
+
+        for (Club produit : listProduit) {
+            System.out.println(produit);
+            VBox content = new VBox();
+
+            Image image = new Image(new FileInputStream("C:\\Users\\youssef\\PhpstormProjects\\pidevFinal\\web\\assets\\images\\" + produit.getPath()));
+            ImageView imageView = new ImageView(image);
+            Label title = new Label(produit.getDescription());
+            title.getStyleClass().add("title_prod");
+            Label prix = new Label(produit.getNomcategorie());
+            imageView.setFitHeight(255);
+            imageView.setFitWidth(246);
+
+            content.getChildren().addAll(imageView, title, prix);
+            Button item = new Button("", content);
+            item.setOnAction(event -> {
+                //detailProduit(event, produit);
+            });
+
+            meilleursProduit.getChildren().add(item);
+
+            if (index == 2) {
+                break;
+            }
+
+            index++;
+        }
+    }
+
 }
