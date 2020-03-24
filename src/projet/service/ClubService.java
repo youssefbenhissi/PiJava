@@ -78,8 +78,8 @@ public class ClubService implements IClub {
     }
 
     @Override
-    public Club ClubLike(int x){
-        Club cc=new Club();
+    public Club ClubLike(int x) {
+        Club cc = new Club();
         String sql = "SELECT moyenneLike, nbrLike, nbrFoisLike FROM club WHERE id = ? ";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -92,15 +92,15 @@ public class ClubService implements IClub {
                 c.setMoyenneLike(rs.getFloat(1));
                 c.setNbrLike(rs.getInt(2));
                 c.setNbrFoisLike(rs.getInt(3));
-                cc=c;
-                
+                cc = c;
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(CategorieClubService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return cc;
     }
-    
+
     @Override
     public void supprimerClub(int x) {
         String sql = "DELETE FROM club WHERE id = ? ";
@@ -112,7 +112,6 @@ public class ClubService implements IClub {
             Logger.getLogger(CategorieClubService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 
     public List<Club> search(String libelle) {
 
@@ -183,7 +182,7 @@ public class ClubService implements IClub {
                 c.setDescription(rs.getString(3));
                 c.setCapacite(rs.getInt(4));
                 c.setMoyenneLike(rs.getFloat(5));
-               // c.setNomcategorie(rs.getString(6));
+                // c.setNomcategorie(rs.getString(6));
                 c.setPath(rs.getString(6));
                 categories.add(c);
             }
@@ -218,12 +217,10 @@ public class ClubService implements IClub {
                 req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image FROM club c ORDER BY(c.moyenneLike) DESC";
             }
 
-        }
-        
-        else {    
+        } else {
             if (triNom == null) {
                 System.out.println("lehnnnnna");
-                String sql = "SELECT c.id,c.nom FROM club c  WHERE c.categorie_id = '"+categorie+"' ORDER BY c.id DESC ";
+                String sql = "SELECT c.id,c.nom FROM club c  WHERE c.categorie_id = '" + categorie + "' ORDER BY c.id DESC ";
             }
 
         }
@@ -238,7 +235,7 @@ public class ClubService implements IClub {
                 c.setDescription(rs.getString(3));
                 c.setCapacite(rs.getInt(4));
                 c.setMoyenneLike(rs.getFloat(5));
-               // c.setNomcategorie(rs.getString(6));
+                // c.setNomcategorie(rs.getString(6));
                 c.setPath(rs.getString(6));
                 listproduits.add(c);
             }
@@ -250,29 +247,50 @@ public class ClubService implements IClub {
 
         return listproduits;
     }
+
     @Override
     public boolean modifierLike(Club c) {
         String req = "UPDATE club SET moyenneLike= ?,nbrFoisLike= ?,nbrLike = ? WHERE id= ?";
         try {
-            pst = connection.prepareStatement(req);	
+            pst = connection.prepareStatement(req);
             System.out.println(c.getMoyenneLike());
             System.out.println(c.getNbrFoisLike());
             System.out.println(c.getNbrLike());
-           // System.out.println(c.getId());
-            pst.setFloat(1,c.getMoyenneLike());
+            // System.out.println(c.getId());
+            pst.setFloat(1, c.getMoyenneLike());
             pst.setInt(2, c.getNbrFoisLike());
             pst.setInt(3, c.getNbrLike());
             pst.setInt(4, c.getId());
 
             int res = pst.executeUpdate();
 
-            if(res > 0) {
-                    return true;
-            }	
+            if (res > 0) {
+                return true;
+            }
         } catch (SQLException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-        }   
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
         return false;
+    }
+
+    @Override
+    public List<String> retournerListeImages() {
+        ArrayList<String> listetImage = new ArrayList<>();
+        String req = "SELECT c.image FROM club c ";
+
+        try {
+            statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(req);
+            while (rs.next()) {
+                listetImage.add(rs.getString(1));
+
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return listetImage;
     }
 }

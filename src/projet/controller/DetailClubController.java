@@ -4,15 +4,18 @@ import animatefx.animation.Swing;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Rating;
@@ -41,6 +44,7 @@ public class DetailClubController implements Initializable {
     private Label capacite;
     @FXML
     private Label nomClub;
+    
     @FXML
     private Rating rating;
     @FXML
@@ -52,6 +56,8 @@ public class DetailClubController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         rating.setUpdateOnHover(false);
+
+        
 
     }
 

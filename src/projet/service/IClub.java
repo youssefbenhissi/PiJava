@@ -19,6 +19,7 @@ public interface IClub {
     public void supprimerClub(int x);
 
     public List<Club> search(String libelle);
+    public List<String> retournerListeImages();
 
     public List<Club> retournerListeDesClubsSupprission(int id);
 

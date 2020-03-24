@@ -93,7 +93,10 @@ public class AfficherCategoriesEtClubs implements Initializable {
     private HBox row;
 
     private String ref_combo;
-
+    @FXML
+    private HBox box;
+    @FXML
+    private ImageView present_img;
     private String filter;
 
     private CategorieClubService categorieproduitservice = new CategorieClubService();
@@ -110,6 +113,21 @@ public class AfficherCategoriesEtClubs implements Initializable {
             setMeilleurProduct();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(AfficherCategoriesEtClubs.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        List<String> listeImages = ps.retournerListeImages();
+        for (String i : listeImages) {
+            Button button = new Button();
+            String SatGrande="file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/"+i;
+            String stat="-fx-background-image: url('file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/"+i+"\')";
+            button.setStyle(stat);
+            button.setPrefHeight(100);
+            button.setPrefWidth(106);
+            button.getStyleClass().add("btn-image");
+            button.setOnMouseClicked(e->{
+                File imgFile = new  File(SatGrande);
+                present_img.setImage(new Image(SatGrande));
+            });
+            box.getChildren().add(button);
         }
     }
 
@@ -279,8 +297,7 @@ public class AfficherCategoriesEtClubs implements Initializable {
             index++;
         }
     }
-    
-    
+
     //Detail 
     private void detailExperience(Club exp) {
         try {
