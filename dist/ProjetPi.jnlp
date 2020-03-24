@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ProjetPi.jar" size="2244723" download="eager" />
+    <jar href="ProjetPi.jar" size="3444305" download="eager" />
     <jar href="lib\AnimateFX-1.2.0.jar" size="85823" download="eager" />
     <jar href="lib\Client.jar" size="3693" download="eager" />
     <jar href="lib\EmacspeakServer.jar" size="7821" download="eager" />
@@ -28,6 +28,7 @@
     <jar href="lib\cmudict04.jar" size="894905" download="eager" />
     <jar href="lib\cmulex.jar" size="599429" download="eager" />
     <jar href="lib\cmutimelex.jar" size="1231" download="eager" />
+    <jar href="lib\controlsfx-8.40.11.jar" size="985420" download="eager" />
     <jar href="lib\controlsfx-8.40.14.jar" size="1215643" download="eager" />
     <jar href="lib\en_us.jar" size="866598" download="eager" />
     <jar href="lib\fontawesomefx-8.2.jar" size="180341" download="eager" />

@@ -45,6 +45,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
@@ -180,7 +181,7 @@ public class AfficherCategoriesEtClubs implements Initializable {
             content.getChildren().addAll(imageView, title, prix);
             Button item = new Button("", content);
             item.setOnAction(event -> {
-                //detailProduit(event, produit);
+                detailExperience(produit);
             });
 
             row.getChildren().add(item);
@@ -257,7 +258,6 @@ public class AfficherCategoriesEtClubs implements Initializable {
         for (Club produit : listProduit) {
             System.out.println(produit);
             VBox content = new VBox();
-
             Image image = new Image(new FileInputStream("C:\\Users\\youssef\\PhpstormProjects\\pidevFinal\\web\\assets\\images\\" + produit.getPath()));
             ImageView imageView = new ImageView(image);
             Label title = new Label(produit.getDescription());
@@ -265,13 +265,11 @@ public class AfficherCategoriesEtClubs implements Initializable {
             Label prix = new Label(produit.getNomcategorie());
             imageView.setFitHeight(255);
             imageView.setFitWidth(246);
-
             content.getChildren().addAll(imageView, title, prix);
             Button item = new Button("", content);
             item.setOnAction(event -> {
                 //detailProduit(event, produit);
             });
-
             meilleursProduit.getChildren().add(item);
 
             if (index == 2) {
@@ -279,6 +277,28 @@ public class AfficherCategoriesEtClubs implements Initializable {
             }
 
             index++;
+        }
+    }
+    
+    
+    //Detail 
+    private void detailExperience(Club exp) {
+        try {
+
+            System.out.println("efzf");
+            FXMLLoader Loader = new FXMLLoader();
+            Loader.setLocation(getClass().getResource("/projet/views/DetailClub.fxml"));
+            Parent p = Loader.load();
+
+            DetailClubController display = Loader.getController();
+            display.setClub(exp);
+
+            Dialog dialog = new Dialog();
+            dialog.getDialogPane().setContent(p);
+            dialog.initStyle(StageStyle.UNDECORATED);
+            dialog.show();
+        } catch (IOException ex) {
+            Logger.getLogger(AfficherCategoriesEtClubs.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
