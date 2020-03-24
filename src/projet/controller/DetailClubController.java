@@ -14,8 +14,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.controlsfx.control.Rating;
 import projet.models.Club;
+import projet.service.ClubService;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 public class DetailClubController implements Initializable {
 
@@ -40,25 +45,50 @@ public class DetailClubController implements Initializable {
     private Rating rating;
     @FXML
     private Label msg;
+    public int valeurEtoile;
+    ClubService ClubService = new ClubService();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         rating.setUpdateOnHover(false);
-        rating.ratingProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 
-                //msg.setText("rating"+newValue);
-                rating.setDisable(true);
-                
-                System.out.println(newValue);
-
-            }
-        });
     }
 
     public void setClub(Club exp) throws FileNotFoundException {
+
+        rating.ratingProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                rating.setDisable(true);
+                valeurEtoile = newValue.intValue();
+                System.out.println(newValue);
+                String tilte = "Merci pour votre avis";
+                String message = "On a approuvé votre avis.";
+                TrayNotification tray = new TrayNotification();
+                AnimationType type = AnimationType.POPUP;
+                Club ClubDeBase = new Club();
+                int nbrFoisLike = exp.getNbrFoisLike();
+                nbrFoisLike++;
+                int nbrLike = exp.getNbrLike();
+                System.out.println(nbrLike);
+                nbrLike += valeurEtoile;
+                System.out.println(nbrLike);
+                ClubDeBase.setNbrFoisLike(nbrFoisLike);
+                float moyenneLike = (nbrLike / nbrFoisLike);
+                ClubDeBase.setMoyenneLike(moyenneLike);
+                ClubDeBase.setNbrLike(nbrLike);
+                ClubDeBase.setId(exp.getId());
+                ClubService.modifierLike(ClubDeBase);
+                tray.setAnimationType(type);
+                tray.setTitle(tilte);
+                tray.setMessage(message);
+                tray.setNotificationType(NotificationType.SUCCESS);
+                tray.showAndDismiss(Duration.millis(3000));
+
+            }
+        });
+
         experience = exp;
 
         Image image = new Image(new FileInputStream("C:\\Users\\youssef\\PhpstormProjects\\pidevFinal\\web\\assets\\images\\" + experience.getPath()));

@@ -22,4 +22,8 @@ public interface IClub {
 
     public List<Club> retournerListeDesClubsSupprission(int id);
 
+    public Club ClubLike(int x);
+
+    public boolean modifierLike(Club c);
+
 }

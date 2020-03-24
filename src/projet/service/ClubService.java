@@ -78,6 +78,30 @@ public class ClubService implements IClub {
     }
 
     @Override
+    public Club ClubLike(int x){
+        Club cc=new Club();
+        String sql = "SELECT moyenneLike, nbrLike, nbrFoisLike FROM club WHERE id = ? ";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, x);
+            ps.executeQuery();
+            ResultSet rs = ps.getResultSet();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            while (rs.next()) {
+                Club c = new Club();
+                c.setMoyenneLike(rs.getFloat(1));
+                c.setNbrLike(rs.getInt(2));
+                c.setNbrFoisLike(rs.getInt(3));
+                cc=c;
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CategorieClubService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return cc;
+    }
+    
+    @Override
     public void supprimerClub(int x) {
         String sql = "DELETE FROM club WHERE id = ? ";
         try {
@@ -88,6 +112,7 @@ public class ClubService implements IClub {
             Logger.getLogger(CategorieClubService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
 
     public List<Club> search(String libelle) {
 
@@ -224,5 +249,30 @@ public class ClubService implements IClub {
         }
 
         return listproduits;
+    }
+    @Override
+    public boolean modifierLike(Club c) {
+        String req = "UPDATE club SET moyenneLike= ?,nbrFoisLike= ?,nbrLike = ? WHERE id= ?";
+        try {
+            pst = connection.prepareStatement(req);	
+            System.out.println(c.getMoyenneLike());
+            System.out.println(c.getNbrFoisLike());
+            System.out.println(c.getNbrLike());
+           // System.out.println(c.getId());
+            pst.setFloat(1,c.getMoyenneLike());
+            pst.setInt(2, c.getNbrFoisLike());
+            pst.setInt(3, c.getNbrLike());
+            pst.setInt(4, c.getId());
+
+            int res = pst.executeUpdate();
+
+            if(res > 0) {
+                    return true;
+            }	
+        } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+        }   
+        return false;
     }
 }

@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/controller/DetailExperienceeController.java</file>
             <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projetpi/ProjetPi.java</file>
-            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/controller/DetailClubController.java</file>
-            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/views/DetailClub.fxml</file>
+            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/controller/AfficherCategoriesClubController.java</file>
+            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/controller/AjouterCategorieEtClubController.java</file>
+            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/controller/UIController.java</file>
+            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/views/UI.fxml</file>
         </group>
     </open-files>
 </project-private>
