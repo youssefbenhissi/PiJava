@@ -65,6 +65,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 import org.controlsfx.control.InfoOverlay;
 import org.controlsfx.control.PopOver;
 import org.controlsfx.control.textfield.TextFields;
@@ -72,11 +73,19 @@ import projet.models.CategorieClub;
 import projet.models.Club;
 import projet.service.CategorieClubService;
 import projet.service.ClubService;
+import projet.service.NewsLetterService;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 public class AfficherCategoriesEtClubs implements Initializable {
 
     @FXML
     private Label title_filter;
+    @FXML
+    private TextField emailField;
+    @FXML
+    private Button inscription;
     @FXML
     private HBox meilleursProduit;
     @FXML
@@ -102,9 +111,11 @@ public class AfficherCategoriesEtClubs implements Initializable {
     private CategorieClubService categorieproduitservice = new CategorieClubService();
 
     private ClubService ps = new ClubService();
+    private NewsLetterService newsLetter = new NewsLetterService();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         getCategorie();
         tri_combo.getItems().addAll("Nom, A à Z", "Nom, Z à A", "Prix,croissant", "Prix, décroissant");
         listProduit = FXCollections.observableArrayList(ps.getListProduitsFilter(null, null));
@@ -117,14 +128,14 @@ public class AfficherCategoriesEtClubs implements Initializable {
         List<String> listeImages = ps.retournerListeImages();
         for (String i : listeImages) {
             Button button = new Button();
-            String SatGrande="file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/"+i;
-            String stat="-fx-background-image: url('file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/"+i+"\')";
+            String SatGrande = "file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/" + i;
+            String stat = "-fx-background-image: url('file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/" + i + "\')";
             button.setStyle(stat);
             button.setPrefHeight(100);
             button.setPrefWidth(106);
             button.getStyleClass().add("btn-image");
-            button.setOnMouseClicked(e->{
-                File imgFile = new  File(SatGrande);
+            button.setOnMouseClicked(e -> {
+                File imgFile = new File(SatGrande);
                 present_img.setImage(new Image(SatGrande));
             });
             box.getChildren().add(button);
@@ -302,7 +313,6 @@ public class AfficherCategoriesEtClubs implements Initializable {
     private void detailExperience(Club exp) {
         try {
 
-            System.out.println("efzf");
             FXMLLoader Loader = new FXMLLoader();
             Loader.setLocation(getClass().getResource("/projet/views/DetailClub.fxml"));
             Parent p = Loader.load();
@@ -319,4 +329,31 @@ public class AfficherCategoriesEtClubs implements Initializable {
         }
     }
 
+    @FXML
+    private void EnregitrerEmail() {
+        
+        if (!ClubService.validationEmail(emailField.getText())) {
+            String tilte = "Email";
+            String message = "votre Email n'est correcte";
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+
+            tray.setAnimationType(type);
+            tray.setTitle(tilte);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.ERROR);
+            tray.showAndDismiss(Duration.millis(3000));
+        } else {
+            newsLetter.ajouterEmail(emailField.getText());
+            String tilte = "Merci pour votre Confiance";
+            String message = "votre email a été bien enregistré.";
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+            tray.setAnimationType(type);
+            tray.setTitle(tilte);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.SUCCESS);
+            tray.showAndDismiss(Duration.millis(3000));
+        }
+    }
 }

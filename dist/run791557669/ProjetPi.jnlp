@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ProjetPi.jar" size="3505424" download="eager" />
+    <jar href="ProjetPi.jar" size="3500620" download="eager" />
     <jar href="lib\AnimateFX-1.2.0.jar" size="85823" download="eager" />
     <jar href="lib\Client.jar" size="3693" download="eager" />
     <jar href="lib\EmacspeakServer.jar" size="7821" download="eager" />
@@ -36,7 +36,6 @@
     <jar href="lib\freetts.jar" size="208668" download="eager" />
     <jar href="lib\itext-5.0.5.jar" size="1599728" download="eager" />
     <jar href="lib\jfoenix.jar" size="2211776" download="eager" />
-    <jar href="lib\mail.jar" size="521000" download="eager" />
     <jar href="lib\mbrola.jar" size="11926" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
   </resources>

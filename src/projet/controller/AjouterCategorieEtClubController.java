@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -30,6 +31,7 @@ import projet.models.CategorieClub;
 import projet.models.Club;
 import projet.service.CategorieClubService;
 import projet.service.ClubService;
+import projet.service.NewsLetterService;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
@@ -98,9 +100,11 @@ public class AjouterCategorieEtClubController implements Initializable {
     ClubService ClubService = new ClubService();
 
     CategorieClubService categoriesClubService = new CategorieClubService();
+    private NewsLetterService newsLetter = new NewsLetterService();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         try {
             // pour le fileChooser
             fileChooser = new FileChooser();
@@ -332,7 +336,6 @@ public class AjouterCategorieEtClubController implements Initializable {
                 c.setCategorie_id(id_Categorie);
                 c.setMoyenneLike(0);
                 c.setCapacite(capacite);
-
                 c.setPath(afficheClub);
                 ClubService.ajouterCategorie(c);
                 String tilte = "Ajout validé";
@@ -345,6 +348,10 @@ public class AjouterCategorieEtClubController implements Initializable {
                 tray.setMessage(message);
                 tray.setNotificationType(NotificationType.SUCCESS);
                 tray.showAndDismiss(Duration.millis(3000));
+                List<String> listeEmail = newsLetter.retournerListeEmails();
+                for (String i : listeEmail) {
+                    newsLetter.sendMail("youssef.benhissi@esprit.tn","ilovetennis", i, "nouveau club", c.getNom()+" "+c.getDescription());
+                }
             } else {
                 String tilte = "image uploadé";
                 String message = "le fichier doit être de type jpg ou png";
