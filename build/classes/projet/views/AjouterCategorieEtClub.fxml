@@ -21,13 +21,13 @@
                         <TextField fx:id="u3" layoutX="116.0" layoutY="250.0" prefHeight="47.0" prefWidth="258.0" promptText="description" />
                         <TextField fx:id="u4" layoutX="116.0" layoutY="86.0" prefHeight="32.0" prefWidth="258.0" promptText="capacité" />
                         <TextField fx:id="uquestion1" layoutX="116.0" layoutY="127.0" prefHeight="32.0" prefWidth="258.0" promptText="première question" />
-                        <JFXButton fx:id="btnsignup" layoutX="188.0" layoutY="442.0" onMouseClicked="#btnsignup" prefHeight="32.0" prefWidth="118.0" style="-fx-background-color: #2F323A; -fx-background-radius: 200; -fx-text-fill: #e7e5e5;" text="Valider" />
-                        <JFXButton fx:id="btnsignin" layoutX="188.0" layoutY="458.0" onAction="#click" onMouseClicked="#sign" prefHeight="32.0" prefWidth="118.0" style="-fx-background-color: #2F323A; -fx-background-radius: 200; -fx-text-fill: #e7e5e5;" text="Valider" />
+                        <JFXButton fx:id="btnsignup" layoutX="186.0" layoutY="454.0" onMouseClicked="#btnsignup" prefHeight="32.0" prefWidth="118.0" style="-fx-background-color: #2F323A; -fx-background-radius: 200; -fx-text-fill: #e7e5e5;" text="Valider" />
+                        <JFXButton fx:id="btnsignin" layoutX="177.0" layoutY="281.0" onAction="#click" onMouseClicked="#sign" prefHeight="32.0" prefWidth="118.0" style="-fx-background-color: #2F323A; -fx-background-radius: 200; -fx-text-fill: #e7e5e5;" text="Valider" />
                         <TextField fx:id="n1" layoutX="117.0" layoutY="165.0" prefHeight="32.0" prefWidth="258.0" promptText="Nom de la categorie" />
                         <JFXComboBox fx:id="categorie" layoutX="116.0" layoutY="48.0" prefHeight="31.0" prefWidth="258.0" promptText="nom de la categorie" />
                         <TextField fx:id="uquestion2" layoutX="118.0" layoutY="169.0" prefHeight="32.0" prefWidth="258.0" promptText="deuxième question" />
                         <TextField fx:id="uquestion3" layoutX="116.0" layoutY="209.0" prefHeight="32.0" prefWidth="258.0" promptText="troisième question" />
-                        <Button fx:id="btnBrowser" layoutX="153.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleBrowser" prefHeight="143.0" prefWidth="184.0" style="-fx-background-color: transparent;" text="Button">
+                        <Button fx:id="btnBrowser" layoutX="155.0" layoutY="294.0" mnemonicParsing="false" onAction="#handleBrowser" prefHeight="143.0" prefWidth="184.0" style="-fx-background-color: transparent;" text="Button">
                             <graphic>
                                 <ImageView fx:id="imageView" fitHeight="155.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                                     <image>

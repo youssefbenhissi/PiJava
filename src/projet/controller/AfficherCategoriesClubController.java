@@ -10,13 +10,21 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.events.JFXDialogEvent;
 //import com.jfoenix.controls.JFXTextField;
 import java.util.Timer;
 import com.sun.speech.freetts.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.time.Instant;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -36,13 +44,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -61,6 +73,8 @@ public class AfficherCategoriesClubController implements Initializable {
 
     @FXML
     private TableColumn<?, ?> id;
+    @FXML
+    private StackPane afficherTsEvenementStackPane;
     @FXML
     private HBox compteur;
     @FXML
@@ -465,4 +479,100 @@ public class AfficherCategoriesClubController implements Initializable {
         }
     }
 
+    @FXML
+    private void modifierCategorieAction(ActionEvent event) {
+        CategorieClub categorieselect = listeCategorie.getSelectionModel().getSelectedItem();
+        if (categorieselect == null) {
+            JFXDialogLayout dialogLayout = new JFXDialogLayout();
+            JFXButton button = new JFXButton("OKAY");
+            button.getStyleClass().add("dialog-button");
+            JFXDialog dialog = new JFXDialog(afficherTsEvenementStackPane, dialogLayout, JFXDialog.DialogTransition.TOP);
+            button.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
+                dialog.close();
+            });
+            dialogLayout.setHeading(new Label("Modification de categorie"));
+            dialogLayout.setBody(new Label("il faut selectionner une categorie"));
+            dialogLayout.setActions(button);
+            dialog.show();
+            dialog.setOnDialogClosed((JFXDialogEvent event1) -> {
+                afficherTsEvenementStackPane.setEffect(null);
+            });
+            return;
+        }
+        try {
+            //pour que les champs soient rempli à la place de  // Parent root = FXMLLoader.load(getClass().getResource("AjouterEvenementGUI.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/projet/views/ModifierEvenementGUI.fxml"));
+            Parent root = loader.load();
+            ModifierCategorieClubController controller = (ModifierCategorieClubController) loader.getController();
+            controller.id_evenement = categorieselect.getId();
+            controller.nom_categorie_fx.setText(categorieselect.getNomCategorie());
+            Stage primaryStage = new Stage();
+
+            primaryStage.setTitle("Modifier Evenement");
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/projet/style/EvenementCss.css").toExternalForm());
+            primaryStage.setScene(scene);
+            primaryStage.setMaxWidth(670);
+            primaryStage.setMaxHeight(750);
+            primaryStage.setMinWidth(570);
+            primaryStage.setMinHeight(688);
+            primaryStage.show();
+
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    @FXML
+    private void modifierClubAction(ActionEvent event) {
+        Club clubselect = listeClubs.getSelectionModel().getSelectedItem();        if (clubselect == null) {
+            JFXDialogLayout dialogLayout = new JFXDialogLayout();
+            JFXButton button = new JFXButton("OKAY");
+            button.getStyleClass().add("dialog-button");
+            JFXDialog dialog = new JFXDialog(afficherTsEvenementStackPane, dialogLayout, JFXDialog.DialogTransition.TOP);
+            button.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
+                dialog.close();
+            });
+            dialogLayout.setHeading(new Label("Modification de club"));
+            dialogLayout.setBody(new Label("il faut selectionner un club"));
+            dialogLayout.setActions(button);
+            dialog.show();
+            dialog.setOnDialogClosed((JFXDialogEvent event1) -> {
+                afficherTsEvenementStackPane.setEffect(null);
+            });
+            return;
+        }
+        try {
+            Club clubselec = listeClubs.getSelectionModel().getSelectedItem(); 
+            System.out.println(clubselec);
+            //pour que les champs soient rempli à la place de  // Parent root = FXMLLoader.load(getClass().getResource("AjouterEvenementGUI.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/projet/views/ModifierClubGUI.fxml"));
+            Parent root = loader.load();
+           ModifierClubController controller = (ModifierClubController) loader.getController();
+            controller.id_evenement = clubselect.getId();
+            //sout
+            controller.nom_club_fx.setText(clubselec.getNom());
+            controller.capacite_club_fx.setText(Integer.toString(clubselec.getCapacite()));
+            controller.premiere_question_fx.setText(clubselec.getQuestionPr());
+            controller.deuxieme_question_fx.setText(clubselec.getQuestionDe());
+            controller.troisieme_question_fx.setText(clubselec.getQuestionTr());
+            controller.nom_club_fx.setText(clubselec.getNom());
+            controller.description_club_fx.setText(clubselec.getDescription());
+            //controller..setText(clubselect.getNomcategorie());
+            Stage primaryStage = new Stage();
+
+            primaryStage.setTitle("Modifier Evenement");
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/projet/style/EvenementCss.css").toExternalForm());
+            primaryStage.setScene(scene);
+            primaryStage.setMaxWidth(670);
+            primaryStage.setMaxHeight(750);
+            primaryStage.setMinWidth(570);
+            primaryStage.setMinHeight(688);
+            primaryStage.show();
+
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    }
 }

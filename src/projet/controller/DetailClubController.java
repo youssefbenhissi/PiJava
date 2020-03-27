@@ -62,24 +62,22 @@ public class DetailClubController implements Initializable {
     }
 
     public void setClub(Club exp) throws FileNotFoundException {
-
         rating.ratingProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 rating.setDisable(true);
                 valeurEtoile = newValue.intValue();
-                System.out.println(newValue);
                 String tilte = "Merci pour votre avis";
                 String message = "On a approuvé votre avis.";
                 TrayNotification tray = new TrayNotification();
                 AnimationType type = AnimationType.POPUP;
                 Club ClubDeBase = new Club();
                 int nbrFoisLike = exp.getNbrFoisLike();
+                System.out.println("nombre precedent: "+nbrFoisLike);
                 nbrFoisLike++;
+                System.out.println(nbrFoisLike);
                 int nbrLike = exp.getNbrLike();
-                System.out.println(nbrLike);
                 nbrLike += valeurEtoile;
-                System.out.println(nbrLike);
                 ClubDeBase.setNbrFoisLike(nbrFoisLike);
                 float moyenneLike = (nbrLike / nbrFoisLike);
                 ClubDeBase.setMoyenneLike(moyenneLike);

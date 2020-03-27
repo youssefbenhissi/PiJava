@@ -350,6 +350,7 @@ public class AjouterCategorieEtClubController implements Initializable {
                 tray.showAndDismiss(Duration.millis(3000));
                 List<String> listeEmail = newsLetter.retournerListeEmails();
                 for (String i : listeEmail) {
+                    System.out.println(i);
                     newsLetter.sendMail("youssef.benhissi@esprit.tn","ilovetennis", i, "nouveau club", c.getNom()+" "+c.getDescription());
                 }
             } else {

@@ -26,4 +26,6 @@ public interface ICategorieClubService {
 
     public HashMap<String, Integer> getAllCategorie();
 
+    public boolean modifierCategorie(CategorieClub c);
+
 }

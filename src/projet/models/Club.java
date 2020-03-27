@@ -29,6 +29,11 @@ public class Club {
         return questionPr;
     }
 
+    @Override
+    public String toString() {
+        return "Club{" + "id=" + id + ", nom=" + nom + ", description=" + description + ", capacite=" + capacite + ", path=" + path + ", moyenneLike=" + moyenneLike + ", nbrLike=" + nbrLike + ", nomcategorie=" + nomcategorie + ", nbrFoisLike=" + nbrFoisLike + ", categorie_id=" + categorie_id + ", questionPr=" + questionPr + ", questionDe=" + questionDe + ", questionTr=" + questionTr + '}';
+    }
+
     public void setQuestionPr(String questionPr) {
         this.questionPr = questionPr;
     }

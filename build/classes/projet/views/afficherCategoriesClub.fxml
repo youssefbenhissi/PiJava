@@ -115,7 +115,7 @@
                 <Insets top="150.0" />
             </padding>
         </VBox>
-        <StackPane layoutX="258.0" prefHeight="858.0" prefWidth="792.0" style="-fx-background-color: #02030A;">
+        <StackPane fx:id="afficherTsEvenementStackPane" layoutX="258.0" prefHeight="858.0" prefWidth="797.0" style="-fx-background-color: #02030A;">
             <children>
                 <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
                 <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
@@ -142,7 +142,7 @@
                                                         </ImageView>
                                                     </graphic>
                                                 </MenuItem>
-                                                <MenuItem mnemonicParsing="false" text="Modifier">
+                                                <MenuItem mnemonicParsing="false" onAction="#modifierCategorieAction" text="Modifier">
                                                     <graphic>
                                                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                                             <image>
@@ -311,7 +311,7 @@
                                         </ImageView>
                                     </graphic>
                                 </MenuItem>
-                                <MenuItem mnemonicParsing="false" text="Modifier">
+                                <MenuItem mnemonicParsing="false" text="Modifier" onAction="#modifierClubAction">
                                     <graphic>
                                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                             <image>

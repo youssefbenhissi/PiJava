@@ -42,5 +42,8 @@ public class CategorieClub {
         this.id = id;
         this.nomCategorie = nomCategorie;
     }
+    public CategorieClub(String nomCategorie) {
+        this.nomCategorie = nomCategorie;
+    }
 
 }

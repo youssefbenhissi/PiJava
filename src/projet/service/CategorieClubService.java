@@ -218,6 +218,25 @@ public class CategorieClubService implements ICategorieClubService {
         return g;
     }
 
+    @Override
+    public boolean modifierCategorie(CategorieClub c) {
+        String req = "UPDATE categorie_club SET nomCategorie= ? WHERE id= ?";
+        try {
+            pst = connection.prepareStatement(req);
+            pst.setString(1, c.getNomCategorie());
+            pst.setInt(2, c.getId());
+            System.out.println(c.getId());
+            int res = pst.executeUpdate();
+
+            if (res > 0) {
+                return true;
+            }
+        } catch (SQLException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        return false;
+    }
     /* CONTROLE DE SAISIE */
     //variable de controle de saisie
     private static Matcher matcher;

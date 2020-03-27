@@ -38,7 +38,7 @@ public class ClubService implements IClub {
     @Override
     public List<Club> selectAllClubs() {
         ArrayList<Club> clubs = new ArrayList<>();
-        String req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,cat.nomCategorie,c.image FROM club c,categorie_club cat WHERE c.categorie_id = cat.id";
+        String req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,cat.nomCategorie,c.image,c.questionPr,c.questionDe,c.questionTr FROM club c,categorie_club cat WHERE c.categorie_id = cat.id";
         try {
             PreparedStatement ps = connection.prepareStatement(req);
             ps.executeQuery();
@@ -55,6 +55,9 @@ public class ClubService implements IClub {
                 c.setMoyenneLike(rs.getFloat(5));
                 c.setNomcategorie(rs.getString(6));
                 c.setPath(rs.getString(7));
+                c.setQuestionPr(rs.getString(8));
+                c.setQuestionDe(rs.getString(9));
+                c.setQuestionTr(rs.getString(10));
                 clubs.add(c);
             }
         } catch (Exception ex) {
@@ -144,7 +147,7 @@ public class ClubService implements IClub {
     /* CONTROLE DE SAISIE */
     //variable de controle de saisie
     private static Matcher matcher;
-private static final String email_pattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    private static final String email_pattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
     private static Pattern email_pattern_compile = Pattern.compile(email_pattern);
 
     public static boolean validationEmail(final String emailSaisie) {
@@ -206,21 +209,21 @@ private static final String email_pattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]
 
         if (categorie == null) {
             if (triNom == null) {
-                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image FROM club c ORDER BY c.id DESC ";
+                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image,c.nbrLike,c.nbrFoisLike,cat.nomCategorie FROM club c,categorie_club cat WHERE c.categorie_id = cat.id ORDER BY c.id DESC ";
                 System.out.println("c est le cas");
             }
 
             if (triNom == "nom_asc") {
-                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image FROM club c ORDER BY(c.nom) ASC";
+                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image,c.nbrLike,c.nbrFoisLike,cat.nomCategorie  FROM club c,categorie_club cat WHERE c.categorie_id = cat.id ORDER BY(c.nom) ASC";
             }
             if (triNom == "nom_desc") {
-                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image FROM club c ORDER BY(c.nom) DESC";
+                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image,c.nbrLike,c.nbrFoisLike,cat.nomCategorie  FROM club c,categorie_club cat WHERE c.categorie_id = cat.id ORDER BY(c.nom) DESC";
             }
             if (triNom == "etoi_asc") {
-                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image FROM club c ORDER BY(c.moyenneLike) ASC";
+                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image,c.nbrLike,c.nbrFoisLike,cat.nomCategorie  FROM club c,categorie_club cat WHERE c.categorie_id = cat.id ORDER BY(c.moyenneLike) ASC";
             }
             if (triNom == "etoi_desc") {
-                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image FROM club c ORDER BY(c.moyenneLike) DESC";
+                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image,c.nbrLike,c.nbrFoisLike,cat.nomCategorie  FROM club c,categorie_club cat WHERE c.categorie_id = cat.id ORDER BY(c.moyenneLike) DESC";
             }
 
         } else {
@@ -243,6 +246,9 @@ private static final String email_pattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]
                 c.setMoyenneLike(rs.getFloat(5));
                 // c.setNomcategorie(rs.getString(6));
                 c.setPath(rs.getString(6));
+                c.setNbrLike(rs.getInt(7));
+                c.setNbrFoisLike(rs.getInt(8));
+                c.setNomcategorie(rs.getString(9));
                 listproduits.add(c);
             }
 
@@ -259,9 +265,6 @@ private static final String email_pattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]
         String req = "UPDATE club SET moyenneLike= ?,nbrFoisLike= ?,nbrLike = ? WHERE id= ?";
         try {
             pst = connection.prepareStatement(req);
-            System.out.println(c.getMoyenneLike());
-            System.out.println(c.getNbrFoisLike());
-            System.out.println(c.getNbrLike());
             // System.out.println(c.getId());
             pst.setFloat(1, c.getMoyenneLike());
             pst.setInt(2, c.getNbrFoisLike());
@@ -298,5 +301,31 @@ private static final String email_pattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]
         }
 
         return listetImage;
+    }
+
+    @Override
+    public boolean modifierClub(Club c) {
+        String req = "UPDATE club SET nom = ?,description = ? , capacite = ? , image = ?  , questionPr = ? , questionDe = ? , questionTr = ? WHERE id= ?";
+        try {
+            pst = connection.prepareStatement(req);
+            pst.setString(1, c.getNom());
+            pst.setString(2, c.getDescription());
+            pst.setInt(3, c.getCapacite());
+            pst.setString(4, c.getPath());
+          //  pst.setInt(5, c.getCategorie_id());
+            pst.setString(5, c.getQuestionPr());
+            pst.setString(6, c.getQuestionDe());
+            pst.setString(7, c.getQuestionTr());
+            pst.setInt(8, c.getId());
+            int res = pst.executeUpdate();
+
+            if (res > 0) {
+                return true;
+            }
+        } catch (SQLException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        return false;
     }
 }

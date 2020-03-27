@@ -13,6 +13,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
@@ -28,14 +30,16 @@ import projet.utils.DbConnection;
  * @author youssef
  */
 public class NewsLetterService {
+
     static Statement statement = null;
     PreparedStatement pst;
 
     DbConnection cnx = DbConnection.getInstance();
     Connection connection = cnx.getConnection();
-   public void ajouterEmail(String email) {
+
+    public void ajouterEmail(String email) {
         String requete = "INSERT INTO inscription_email (email)"
-                + " VALUES ('"+ email+"');";
+                + " VALUES ('" + email + "');";
 
         try {
             pst = connection.prepareStatement(requete);
@@ -44,11 +48,12 @@ public class NewsLetterService {
             System.out.println(ex);
         }
 
-    } 
-    public String sendMail(String Email,String Password,String ToEmail,String Subject,String Text){
+    }
 
-	String Msg;
-    
+    public String sendMail(String Email, String Password, String ToEmail, String Subject, String Text) {
+
+        String Msg;
+
         final String username = Email;
         final String password = Password;
 
@@ -71,20 +76,19 @@ public class NewsLetterService {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("youssef.benhissi@esprit.tn"));//ur email
             message.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse("youssef.benhissi@esprit.tn"));//u will send to
+                    InternetAddress.parse(ToEmail));//u will send to
             message.setSubject(Subject);
             message.setText(Text);
             Transport.send(message);
-            Msg="true";
-    	    return Msg;
+            Msg = "true";
+            return Msg;
 
         } catch (Exception e) {
             return e.toString();
         }
-    
-    
-    
+
     }
+
     public List<String> retournerListeEmails() {
         ArrayList<String> listetImage = new ArrayList<>();
         String req = "SELECT c.email FROM inscription_email c ";
@@ -102,5 +106,16 @@ public class NewsLetterService {
         }
 
         return listetImage;
+    }
+
+    public void desabonner(String email) {
+         String sql = "DELETE FROM inscription_email where email LIKE ? ";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, email);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(CategorieClubService.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

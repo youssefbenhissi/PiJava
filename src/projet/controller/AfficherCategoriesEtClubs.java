@@ -2,74 +2,34 @@ package projet.controller;
 
 import java.io.File;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import com.jfoenix.controls.JFXDatePicker;
-
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
-import com.jfoenix.controls.JFXDrawer;
-import com.jfoenix.controls.JFXHamburger;
-import com.jfoenix.controls.events.JFXDialogEvent;
-import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.property.ReadOnlyObjectWrapper;
-import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
-import org.controlsfx.control.InfoOverlay;
-import org.controlsfx.control.PopOver;
-import org.controlsfx.control.textfield.TextFields;
-import projet.models.CategorieClub;
 import projet.models.Club;
 import projet.service.CategorieClubService;
 import projet.service.ClubService;
@@ -125,7 +85,14 @@ public class AfficherCategoriesEtClubs implements Initializable {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(AfficherCategoriesEtClubs.class.getName()).log(Level.SEVERE, null, ex);
         }
+        present_img.setFitHeight(300);
+        present_img.setFitWidth(300);
         List<String> listeImages = ps.retournerListeImages();
+         for (String i : listeImages) {
+             String SatGrande = "file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/" + i;
+             present_img.setImage(new Image(SatGrande));
+             break;
+         }
         for (String i : listeImages) {
             Button button = new Button();
             String SatGrande = "file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/" + i;
@@ -210,6 +177,7 @@ public class AfficherCategoriesEtClubs implements Initializable {
             content.getChildren().addAll(imageView, title, prix);
             Button item = new Button("", content);
             item.setOnAction(event -> {
+                
                 detailExperience(produit);
             });
 
@@ -297,7 +265,7 @@ public class AfficherCategoriesEtClubs implements Initializable {
             content.getChildren().addAll(imageView, title, prix);
             Button item = new Button("", content);
             item.setOnAction(event -> {
-                //detailProduit(event, produit);
+                detailExperience(produit);
             });
             meilleursProduit.getChildren().add(item);
 
@@ -331,7 +299,7 @@ public class AfficherCategoriesEtClubs implements Initializable {
 
     @FXML
     private void EnregitrerEmail() {
-        
+
         if (!ClubService.validationEmail(emailField.getText())) {
             String tilte = "Email";
             String message = "votre Email n'est correcte";
@@ -355,5 +323,20 @@ public class AfficherCategoriesEtClubs implements Initializable {
             tray.setNotificationType(NotificationType.SUCCESS);
             tray.showAndDismiss(Duration.millis(3000));
         }
+    }
+
+    @FXML
+    private void SeDesabonner() {
+
+        newsLetter.desabonner(emailField.getText());
+        String tilte = "Nous sommes tristes";
+        String message = "votre email a été bien enregistré.";
+        TrayNotification tray = new TrayNotification();
+        AnimationType type = AnimationType.POPUP;
+        tray.setAnimationType(type);
+        tray.setTitle(tilte);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(3000));
     }
 }
