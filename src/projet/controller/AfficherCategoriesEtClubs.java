@@ -30,6 +30,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.controlsfx.control.InfoOverlay;
@@ -45,6 +46,30 @@ public class AfficherCategoriesEtClubs implements Initializable {
 
     @FXML
     private Label title_filter;
+    @FXML
+    private Text nomP;
+    @FXML
+    private Text nomD;
+    @FXML
+    private Text nomT;
+    @FXML
+    private Text capaciteP;
+    @FXML
+    private Text capaciteD;
+    @FXML
+    private Text capaciteT;
+    @FXML
+    private Text descriptionP;
+    @FXML
+    private Text descriptionD;
+    @FXML
+    private Text descriptionT;
+    @FXML
+    private Text categorieP;
+    @FXML
+    private Text categorieD;
+    @FXML
+    private Text categorieT;
     @FXML
     private TextField emailField;
     @FXML
@@ -71,10 +96,16 @@ public class AfficherCategoriesEtClubs implements Initializable {
     private HBox box;
     @FXML
     private ImageView present_img;
+    @FXML
+    private ImageView imageP;
+    @FXML
+    private ImageView imageD;
+    @FXML
+    private ImageView imageT;
     private String filter;
     private InfoOverlay infooverlay;
     private CategorieClubService categorieproduitservice = new CategorieClubService();
-
+    private int c;
     private ClubService ps = new ClubService();
     private NewsLetterService newsLetter = new NewsLetterService();
 
@@ -82,7 +113,7 @@ public class AfficherCategoriesEtClubs implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         getCategorie();
-        tri_combo.getItems().addAll("Nom, A à Z", "Nom, Z à A", "Prix,croissant", "Prix, décroissant");
+        tri_combo.getItems().addAll("Nom, A à Z", "Nom, Z à A", "Moyenne Croissante", "Moyenne Decroissante");
         listProduit = FXCollections.observableArrayList(ps.getListProduitsFilter(null, null));
         getProduit();
         try {
@@ -92,14 +123,15 @@ public class AfficherCategoriesEtClubs implements Initializable {
         }
         present_img.setFitHeight(300);
         present_img.setFitWidth(300);
+        reinitialiserAletoire();
         List<Club> listeImages = ps.retournerListeImages();
         for (Club i : listeImages) {
             String info = "Bienvenue chez :" + i.getNom()
-                        +"\nIl appartient a la categorie : "+i.getNomcategorie()
-                        + "\nSa description est :" + i.getDescription()
-                        + "\nIl a une capacite de : " + i.getCapacite()
-                        + "\nSa moyenne de Like est : "+i.getMoyenneLike()
-                        +"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+                    + "\nIl appartient a la categorie : " + i.getNomcategorie()
+                    + "\nSa description est :" + i.getDescription()
+                    + "\nIl a une capacite de : " + i.getCapacite()
+                    + "\nSa moyenne de Like est : " + i.getMoyenneLike()
+                    + "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
             String SatGrande = "file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/" + i.getPath();
             present_img.setImage(new Image(SatGrande));
             present_img.setFitHeight(395);
@@ -110,10 +142,10 @@ public class AfficherCategoriesEtClubs implements Initializable {
         }
         for (Club i : listeImages) {
             Button button = new Button();
-            String SatGrande = "file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/" + i.getPath();
+            String SatGrand = "file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/" + i.getPath();
             String stat = "-fx-background-image: url('file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/" + i.getPath() + "');  -fx-background-size: 100px 106px; ";
             button.setStyle(stat);
-            
+
             button.setPrefHeight(100);
             button.setPrefWidth(106);
             button.getStyleClass().add("btn-image");
@@ -121,14 +153,14 @@ public class AfficherCategoriesEtClubs implements Initializable {
                 muhbox.getChildren().remove(infooverlay);
 
                 String info = "Bienvenue chez :" + i.getNom()
-                        +"\nIl appartient a la categorie : "+i.getNomcategorie()
+                        + "\nIl appartient a la categorie : " + i.getNomcategorie()
                         + "\nSa description est :" + i.getDescription()
                         + "\nIl a une capacite de : " + i.getCapacite()
-                        + "\nSa moyenne de Like est : "+i.getMoyenneLike()
-                        +"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
-                File imgFile = new File(SatGrande);
-                present_img.setImage(new Image(SatGrande));
-                
+                        + "\nSa moyenne de Like est : " + i.getMoyenneLike()
+                        + "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+                File im = new File(SatGrand);
+                present_img.setImage(new Image(SatGrand));
+
                 present_img.setFitHeight(395);
                 present_img.setFitWidth(381);
                 infooverlay = new InfoOverlay(present_img, info);
@@ -156,10 +188,10 @@ public class AfficherCategoriesEtClubs implements Initializable {
                 case "Nom, Z à A":
                     tri = "nom_desc";
                     break;
-                case "Prix,croissant":
+                case "Moyenne Croissante":
                     tri = "etoi_asc";
                     break;
-                case "Prix, décroissant":
+                case "Moyenne Decroissante":
                     tri = "etoi_desc";
                     break;
                 default:
@@ -191,8 +223,10 @@ public class AfficherCategoriesEtClubs implements Initializable {
                 //System.out.println(produit.getPath());
 
                 image = new Image(new FileInputStream("C:\\Users\\youssef\\PhpstormProjects\\pidevFinal\\web\\assets\\images\\" + produit.getPath()));
+
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(AfficherCategoriesEtClubs.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AfficherCategoriesEtClubs.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
 
             ImageView imageView = new ImageView(image);
@@ -238,11 +272,40 @@ public class AfficherCategoriesEtClubs implements Initializable {
     private void reinitialiser(MouseEvent event) {
 
         tri_combo.getItems().clear();
-        tri_combo.getItems().addAll("Nom, A à Z", "Nom, Z à A", "Prix,croissant", "Prix, décroissant");
+        tri_combo.getItems().addAll("Nom, A à Z", "Nom, Z à A", "Moyenne Croissante", "Moyenne Decroissante");
 
         getCategorie();
 
         title_filter.setText(filter);
+
+    }
+
+    @FXML
+    private void reinitialiserAletoire() {
+        List<Club> listeIma = ps.selectAllClubsAleatoire();
+
+        String SatG = "file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/" + listeIma.get(0).getPath();
+        File imgFile = new File(SatG);
+        imageP.setImage(new Image(SatG));
+        nomP.setText(listeIma.get(0).getNom());
+        descriptionP.setText("\t\t\t\t" + listeIma.get(0).getDescription());
+        capaciteP.setText(Integer.toString(listeIma.get(0).getCapacite()));
+        categorieP.setText(listeIma.get(0).getNomcategorie());
+        String Sat = "file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/" + listeIma.get(1).getPath();
+        File imgFil = new File(Sat);
+        imageD.setImage(new Image(Sat));
+        nomD.setText(listeIma.get(1).getNom());
+        descriptionD.setText(listeIma.get(1).getDescription());
+        capaciteD.setText(Integer.toString(listeIma.get(1).getCapacite()));
+        categorieD.setText(listeIma.get(1).getNomcategorie());
+
+        String Sa = "file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/" + listeIma.get(2).getPath();
+        File imgFi = new File(Sa);
+        imageT.setImage(new Image(Sa));
+        nomT.setText(listeIma.get(2).getNom());
+        descriptionT.setText(listeIma.get(2).getDescription());
+        capaciteT.setText(Integer.toString(listeIma.get(2).getCapacite()));
+        categorieT.setText(listeIma.get(2).getNomcategorie());
 
     }
 
@@ -284,11 +347,10 @@ public class AfficherCategoriesEtClubs implements Initializable {
         int index = 0;
 
         for (Club produit : listProduit) {
-            System.out.println(produit);
             VBox content = new VBox();
             Image image = new Image(new FileInputStream("C:\\Users\\youssef\\PhpstormProjects\\pidevFinal\\web\\assets\\images\\" + produit.getPath()));
             ImageView imageView = new ImageView(image);
-            Label title = new Label(produit.getDescription());
+            Label title = new Label(produit.getNom());
             title.getStyleClass().add("title_prod");
             Label prix = new Label(produit.getNomcategorie());
             imageView.setFitHeight(255);
@@ -323,8 +385,10 @@ public class AfficherCategoriesEtClubs implements Initializable {
             dialog.getDialogPane().setContent(p);
             dialog.initStyle(StageStyle.UNDECORATED);
             dialog.show();
+
         } catch (IOException ex) {
-            Logger.getLogger(AfficherCategoriesEtClubs.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AfficherCategoriesEtClubs.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }
 

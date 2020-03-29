@@ -65,7 +65,35 @@ public class ClubService implements IClub {
         }
         return clubs;
     }
-
+    public List<Club> selectAllClubsAleatoire() {
+        ArrayList<Club> clubs = new ArrayList<>();
+        String req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,cat.nomCategorie,c.image,c.questionPr,c.questionDe,c.questionTr FROM club c,categorie_club cat WHERE c.categorie_id = cat.id ORDER BY RAND() LIMIT 3";
+        try {
+            PreparedStatement ps = connection.prepareStatement(req);
+            ps.executeQuery();
+            ResultSet rs = ps.getResultSet();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            //System.out.println("Column Type Name of 1st column: "+rsmd.getColumnTypeName(6)); 
+            //System.out.println(rs.getInt(1));
+            while (rs.next()) {
+                Club c = new Club();
+                c.setId(rs.getInt(1));
+                c.setNom(rs.getString(2));
+                c.setDescription(rs.getString(3));
+                c.setCapacite(rs.getInt(4));
+                c.setMoyenneLike(rs.getFloat(5));
+                c.setNomcategorie(rs.getString(6));
+                c.setPath(rs.getString(7));
+                c.setQuestionPr(rs.getString(8));
+                c.setQuestionDe(rs.getString(9));
+                c.setQuestionTr(rs.getString(10));
+                clubs.add(c);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CategorieClubService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return clubs;
+    }
     public void ajouterCategorie(Club c) {
         String requete = "INSERT INTO club (nom,description,capacite,image,nbrLike,nbrFoisLike,moyenneLike,categorie_id,questionPr,questionDe,questionTr)"
                 + " VALUES ('" + c.getNom() + "','" + c.getDescription() + "','" + c.getCapacite() + "','" + c.getPath() + "','" + c.getNbrLike() + "','" + c.getNbrFoisLike() + "','" + c.getMoyenneLike() + "','" + c.getCategorie_id() + "','" + c.getQuestionPr() + "','" + c.getQuestionDe() + "','" + c.getQuestionTr() + "');";
