@@ -20,7 +20,7 @@ public interface IClub {
 
     public List<Club> search(String libelle);
 
-    public List<String> retournerListeImages();
+    public List<Club> retournerListeImages();
 
     public List<Club> retournerListeDesClubsSupprission(int id);
 

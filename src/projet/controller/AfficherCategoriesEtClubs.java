@@ -20,16 +20,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import org.controlsfx.control.InfoOverlay;
 import projet.models.Club;
 import projet.service.CategorieClubService;
 import projet.service.ClubService;
@@ -63,11 +66,13 @@ public class AfficherCategoriesEtClubs implements Initializable {
 
     private String ref_combo;
     @FXML
+    private HBox muhbox;
+    @FXML
     private HBox box;
     @FXML
     private ImageView present_img;
     private String filter;
-
+    private InfoOverlay infooverlay;
     private CategorieClubService categorieproduitservice = new CategorieClubService();
 
     private ClubService ps = new ClubService();
@@ -87,23 +92,49 @@ public class AfficherCategoriesEtClubs implements Initializable {
         }
         present_img.setFitHeight(300);
         present_img.setFitWidth(300);
-        List<String> listeImages = ps.retournerListeImages();
-         for (String i : listeImages) {
-             String SatGrande = "file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/" + i;
-             present_img.setImage(new Image(SatGrande));
-             break;
-         }
-        for (String i : listeImages) {
+        List<Club> listeImages = ps.retournerListeImages();
+        for (Club i : listeImages) {
+            String info = "Bienvenue chez :" + i.getNom()
+                        +"\nIl appartient a la categorie : "+i.getNomcategorie()
+                        + "\nSa description est :" + i.getDescription()
+                        + "\nIl a une capacite de : " + i.getCapacite()
+                        + "\nSa moyenne de Like est : "+i.getMoyenneLike()
+                        +"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+            String SatGrande = "file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/" + i.getPath();
+            present_img.setImage(new Image(SatGrande));
+            present_img.setFitHeight(395);
+            present_img.setFitWidth(381);
+            infooverlay = new InfoOverlay(present_img, info);
+            muhbox.getChildren().add(infooverlay);
+            break;
+        }
+        for (Club i : listeImages) {
             Button button = new Button();
-            String SatGrande = "file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/" + i;
-            String stat = "-fx-background-image: url('file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/" + i + "\')";
+            String SatGrande = "file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/" + i.getPath();
+            String stat = "-fx-background-image: url('file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/" + i.getPath() + "');  -fx-background-size: 100px 106px; ";
             button.setStyle(stat);
+            
             button.setPrefHeight(100);
             button.setPrefWidth(106);
             button.getStyleClass().add("btn-image");
             button.setOnMouseClicked(e -> {
+                muhbox.getChildren().remove(infooverlay);
+
+                String info = "Bienvenue chez :" + i.getNom()
+                        +"\nIl appartient a la categorie : "+i.getNomcategorie()
+                        + "\nSa description est :" + i.getDescription()
+                        + "\nIl a une capacite de : " + i.getCapacite()
+                        + "\nSa moyenne de Like est : "+i.getMoyenneLike()
+                        +"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
                 File imgFile = new File(SatGrande);
                 present_img.setImage(new Image(SatGrande));
+                
+                present_img.setFitHeight(395);
+                present_img.setFitWidth(381);
+                infooverlay = new InfoOverlay(present_img, info);
+                muhbox.getChildren().remove(present_img);
+
+                muhbox.getChildren().add(infooverlay);
             });
             box.getChildren().add(button);
         }
@@ -177,7 +208,7 @@ public class AfficherCategoriesEtClubs implements Initializable {
             content.getChildren().addAll(imageView, title, prix);
             Button item = new Button("", content);
             item.setOnAction(event -> {
-                
+
                 detailExperience(produit);
             });
 

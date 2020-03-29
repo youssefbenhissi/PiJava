@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane hbarPolicy="NEVER" stylesheets="@../style/gestionproduit.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.AfficherCategoriesEtClubs">
+    <content>
+        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1350.0" style="-fx-background-color: #fff;" styleClass="content-produit">
+            <children>
+                <VBox>
+                    <children>
+                        <Label fx:id="title_filter">
+                            <padding>
+                                <Insets bottom="10.0" left="6.0" top="15.0" />
+                            </padding>
+                            <font>
+                                <Font name="Century Gothic" size="20.0" />
+                            </font>
+                        </Label>
+                        <HBox prefWidth="1316.0" styleClass="hbox-filter">
+                            <children>
+                                <JFXComboBox fx:id="categorie_combo" onAction="#CagetorieEvent" prefHeight="28.0" prefWidth="292.0" promptText="Categorie" />
+                                <JFXComboBox fx:id="tri_combo" layoutX="625.0" layoutY="25.0" onAction="#TriEvent" prefHeight="28.0" prefWidth="292.0" promptText="Tri par" />
+                            </children>
+                        </HBox>
+                        <JFXButton onMouseClicked="#reinitialiser" style="-fx-background-color: #CCCCCC;" text="Réinitialiser les filtres">
+                            <font>
+                                <Font name="Century Gothic" size="16.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets left="5.0" top="3.0" />
+                            </VBox.margin>
+                            <padding>
+                                <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                            </padding>
+                        </JFXButton>
+                    </children>
+                </VBox>
+                <VBox fx:id="content_product" prefHeight="200.0" prefWidth="100.0">
+                    <VBox.margin>
+                        <Insets top="40.0" />
+                    </VBox.margin>
+                </VBox>
+                <HBox prefHeight="359.0" styleClass="best-prod">
+                    <children>
+                        <HBox prefHeight="359.0" prefWidth="1324.0" styleClass="content-best">
+                            <children>
+                                <VBox prefHeight="359.0" prefWidth="340.0">
+                                    <children>
+                                        <Label prefHeight="59.0" prefWidth="340.0" text="Nos Trois " textFill="WHITE">
+                                            <font>
+                                                <Font name="Century Gothic Bold" size="46.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets left="14.0" />
+                                            </padding>
+                                            <VBox.margin>
+                                                <Insets top="41.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <Label layoutX="10.0" layoutY="10.0" prefHeight="55.0" prefWidth="340.0" text="Meilleurs Clubs" textFill="WHITE">
+                                            <font>
+                                                <Font name="Century Gothic Bold" size="46.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets left="14.0" />
+                                            </padding>
+                                            <VBox.margin>
+                                                <Insets />
+                                            </VBox.margin>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <HBox fx:id="meilleursProduit" prefHeight="359.0" prefWidth="981.0" styleClass="meilleur-prod" />
+                            </children>
+                        </HBox>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="40.0" top="60.0" />
+                    </VBox.margin>
+                </HBox>
+                <VBox>
+                    <children>
+                  <HBox fx:id="muhbox" cacheShape="false" centerShape="false" prefHeight="377.0" prefWidth="700.0" scaleShape="false">
+                     <children>
+                              <ImageView fx:id="present_img" fitHeight="381.0" fitWidth="390.0" pickOnBounds="true" />
+                     </children>
+                  </HBox>
+                        <HBox fx:id="box" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           
+                        </HBox>
+
+                    </children>
+                </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <AnchorPane id="AnchorPane" prefHeight="503.0" prefWidth="854.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <AnchorPane prefHeight="318.0" prefWidth="371.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <ImageView fitHeight="158.0" fitWidth="333.0" layoutX="68.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/newsletters.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="CENTER" layoutX="89.0" layoutY="241.0" prefHeight="23.0" prefWidth="205.0" style="-fx-text-fill: black;" text="Suivez nos nuoveaux Clubs" textFill="WHITE">
+                                 <font>
+                                    <Font name="Segoe UI" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <Pane layoutX="488.0" layoutY="79.0" AnchorPane.bottomAnchor="94.0" AnchorPane.topAnchor="79.0">
+                           <children>
+                              <TextField fx:id="emailField" layoutY="32.0" prefHeight="60.0" prefWidth="293.0" promptText="email" />
+                              <Button fx:id="inscription" layoutX="197.0" layoutY="95.0" mnemonicParsing="false" onAction="#EnregitrerEmail" prefHeight="34.0" prefWidth="137.0" text="Enregistrer" />
+                              <Label alignment="CENTER" layoutX="-19.0" layoutY="101.0" onMouseClicked="#SeDesabonner" prefHeight="23.0" prefWidth="203.0" text="Vous voulez vous desabonner?" textFill="#5383ff">
+                                 <font>
+                                    <Font name="Segoe UI" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="btnFB" layoutX="4.0" layoutY="215.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="275.0" style="-fx-background-color: #0C39FF;" text="Sign in with Facebook" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="16.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../JavaFX-MySQL-Login-master/src/images/icons8_Facebook_F_48px.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+            </children>
+            <padding>
+                <Insets left="15.0" right="15.0" />
+            </padding>
+        </VBox>
+      
+    </content>
+</ScrollPane>

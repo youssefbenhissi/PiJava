@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
@@ -17,43 +19,46 @@
         <AnchorPane prefHeight="740.0" prefWidth="1294.0" style="-fx-background-color: #EDF2F6;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <Pane fx:id="conteneurCategories" layoutX="54.0" layoutY="54.0" prefHeight="152.0" prefWidth="298.0" style="-fx-background-color: #fff;">
-                    <children>
-                        <Label layoutX="83.0" layoutY="21.0" text="NOMBRE DE CATEGORIES" textFill="#9a9a9a">
-                            <font>
-                                <Font name="Segoe UI Bold" size="12.0" />
-                            </font>
+               <children>
+                  <VBox layoutX="70.0" layoutY="43.0" prefHeight="67.0" prefWidth="158.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="165.0" text="Categories">
+                           <font>
+                              <Font name="Century Gothic" size="20.0" />
+                           </font>
                         </Label>
-                        <Label fx:id="countCategorie" layoutX="132.0" layoutY="37.0" text="0" textFill="#9a9a9a">
-                            <font>
-                                <Font name="Segoe UI" size="64.0" />
-                            </font>
+                        <Label fx:id="countCategorie" prefHeight="53.0" prefWidth="196.0" text="0">
+                           <font>
+                              <Font name="Century Gothic" size="20.0" />
+                           </font>
                         </Label>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="34.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="36.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../icons/icons8_Microphone_48px_1.png" />
-                            </image>
-                        </ImageView>
-                    </children>
+                     </children>
+                  </VBox>
+                  <Button layoutX="212.0" layoutY="49.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="51.0" style="-fx-background-color: #4099ff;" styleClass="info-button">
+                     <graphic>
+                        <FontAwesomeIcon glyphName="CUBE" styleClass="info-dashboard-icon" />
+                     </graphic>
+                  </Button>
+               </children>
                 </Pane>
                 <Pane fx:id="conteneurClubs" layoutX="425.0" layoutY="54.0" prefHeight="152.0" prefWidth="298.0" style="-fx-background-color: #fff;">
-                    <children>
-                        <Label layoutX="92.0" layoutY="19.0" text="NOMBRE DE CLUBS" textFill="#9a9a9a">
-                            <font>
-                                <Font name="Segoe UI Bold" size="12.0" />
-                            </font>
-                        </Label>
-                        <Label fx:id="countClubs" layoutX="130.0" layoutY="36.0" text="0" textFill="#9a9a9a">
-                            <font>
-                                <Font name="Segoe UI" size="64.0" />
-                            </font>
-                        </Label>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="30.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../icons/icons8_List_52px.png" />
-                            </image>
-                        </ImageView>
-                    </children>
+               <children>
+                  <Label layoutX="70.0" layoutY="46.0" prefHeight="25.0" prefWidth="114.0" text="Clubs">
+                     <font>
+                        <Font name="Century Gothic" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="countClubs" layoutX="70.0" layoutY="66.0" prefHeight="51.0" prefWidth="158.0" text="0">
+                     <font>
+                        <Font name="Century Gothic" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="210.0" layoutY="49.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="51.0" style="-fx-background-color: #2ed8b6;" styleClass="info-button">
+                     <graphic>
+                        <FontAwesomeIcon glyphName="TREE" styleClass="info-dashboard-icon" />
+                     </graphic>
+                  </Button>
+               </children>
                 </Pane>
                 <ScrollPane layoutX="54.0" layoutY="296.0" prefHeight="263.0" prefWidth="298.0" style="-fx-background-color: #FFF;">
                     <content>
