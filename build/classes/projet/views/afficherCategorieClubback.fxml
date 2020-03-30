@@ -167,9 +167,6 @@
                             </content>
                         </ScrollPane>
                         <Label layoutX="40.0" layoutY="186.0" text="Table des categories" textFill="WHITE" />
-                        <Label layoutX="40.0" layoutY="461.0" text="Tables des clubs" />
-                        <!--<JFXTextField layoutX="310.0" layoutY="42.0" onAction="#search" text="" />-->
-                        <Button layoutX="296.0" layoutY="467.0" mnemonicParsing="false" onAction="#ajouterEvenementGUI" text="Ajouter" />
                         <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="691.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../images/icons8_Search_52px.png" />
@@ -283,7 +280,7 @@
                                 </HBox>
                             </children>
                         </VBox>
-                        <Button fx:id="Statitiques" layoutX="417.0" layoutY="467.0" mnemonicParsing="false" onAction="#Satitiques" text="Statitisques" />
+                  <Button layoutX="323.0" layoutY="470.0" mnemonicParsing="false" onAction="#divers" styleClass="iphone" stylesheets="@../style/EvenementCss.css" text="divers" />
                     </children>
                 </Pane>
             </children>
@@ -311,7 +308,7 @@
                                         </ImageView>
                                     </graphic>
                                 </MenuItem>
-                                <MenuItem mnemonicParsing="false" text="Modifier" onAction="#modifierClubAction">
+                                <MenuItem mnemonicParsing="false" onAction="#modifierClubAction" text="Modifier">
                                     <graphic>
                                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                             <image>

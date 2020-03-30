@@ -1,0 +1,87 @@
+.parent{
+    -fx-background-color:transparent;
+}
+.pane{
+	-fx-background-color: transparent;
+}
+.btn-circle{
+	-fx-background-color: #ffffff;
+	-fx-background-radius: 100%;
+}
+.btn-circle:hover{
+	-fx-background-color:  #41EAC1;
+	-fx-background-radius: 100%;
+	-fx-text-fill:#fff;
+}
+.facebook-btn{
+	-fx-background-color:  #517CC0;
+	-fx-background-radius: 100%;
+}
+.facebook-icon{
+	-fx-fill:#fff;
+}
+.facebook-btn:hover{
+	-fx-background-color: #ffffff;
+	-fx-background-radius: 100%;
+        -fx-text-fill: black;
+}
+.facebook-btn:hover .facebook-icon{
+	-fx-fill: #517CC0;
+        -fx-text-fill: black;
+}
+
+
+.twitter-btn{
+	-fx-background-color:  #64CCF1;
+	-fx-background-radius: 100%;
+}
+.twitter-icon{
+	-fx-fill:#fff;
+}
+.twitter-btn:hover{
+	-fx-background-color: #ffffff;
+	-fx-background-radius: 100%;
+        -fx-text-fill: black;
+}
+.twitter-btn:hover .twitter-icon{
+	-fx-fill: #64CCF1;
+        -fx-text-fill: black;
+}
+
+.linkedin-btn{
+	-fx-background-color:  #1D547D;
+	-fx-background-radius: 100%;
+}
+.linkedin-icon{
+	-fx-fill:#fff;
+}
+.linkedin-btn:hover{
+	-fx-background-color: #ffffff;
+	-fx-background-radius: 100%;
+}
+.linkedin-btn:hover .linkedin-icon{
+	-fx-fill:  #1D547D;
+        -fx-text-fill: black;
+}
+
+
+.google-btn{
+	-fx-background-color:  #DF4930;
+	-fx-background-radius: 100%;
+}
+.google-icon{
+	-fx-fill:#fff;
+}
+.google-btn:hover{
+	-fx-background-color: #ffffff;
+	-fx-background-radius: 100%;
+        -fx-text-fill: black;
+}
+.google-btn:hover .google-icon{
+	-fx-fill: #DF4930;
+        -fx-text-fill: black;
+}
+
+
+
+

@@ -437,7 +437,7 @@ Dialog
 
 }
 
-#blue {
+.blue {
     -fx-background-color:
             #000000,
             linear-gradient(#7ebcea, #2f4b8f),
@@ -449,10 +449,10 @@ Dialog
     -fx-text-fill: white;
     -fx-font-size: 12px;
 }
-#blue Text {
+.blue Text {
     -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.8) , 0, 0.0 , 0 , 1);
 }
-#yellow {
+.yellow {
     -fx-background-color:
             #ecebe9,
             rgba(0,0,0,0.05),
@@ -467,13 +467,13 @@ Dialog
     -fx-text-fill: #311c09;
     -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.1) , 2, 0.0 , 0 , 1);
 }
-#yellow Text {
+.yellow Text {
     -fx-effect: dropshadow( one-pass-box , rgba(255,255,255,0.5) , 0, 0.0 , 0 , 1);
 }
-#iphone-toolbar {
+.iphone-toolbar {
     -fx-background-color: linear-gradient(#98a8bd 0%, #8195af 25%, #6d86a4 100%);
 }
-#iphone {
+.iphone {
     -fx-background-color:
             #a6b5c9,
             linear-gradient(#303842 0%, #3e5577 20%, #375074 100%),
@@ -486,10 +486,10 @@ Dialog
     -fx-font-size: 12px;
     -fx-text-fill: white;
 }
-#iphone Text {
+.iphone Text {
     -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.8) , 0, 0.0 , 0 , -1 );
 }
-#ipad_d {
+.ipad_d {
     -fx-background-color:
             linear-gradient(#686868 0%, #232723 25%, #373837 75%, #757575 100%),
             linear-gradient(#020b02, #3a3a3a),
@@ -505,10 +505,10 @@ Dialog
     -fx-text-fill: white;
     -fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1);
 }
-#ipad_d Text {
+.ipad_d Text {
     -fx-effect: dropshadow( one-pass-box , black , 0, 0.0 , 0 , -1 );
 }
-#ipad_g {
+.ipad_g {
     -fx-background-color:
             linear-gradient(#686868 0%, #232723 25%, #373837 75%, #757575 100%),
             linear-gradient(#020b02, #3a3a3a),
@@ -523,10 +523,10 @@ Dialog
     -fx-text-fill: #333333;
     -fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1);
 }
-#ipad_g Text {
+.ipad_g Text {
     -fx-effect: dropshadow( one-pass-box , white , 0, 0.0 , 0 , 1 );
 }
-#lion_d{
+.lion_d{
     -fx-background-color:
             rgba(0,0,0,0.08),
             linear-gradient(#5a61af, #51536d),
@@ -537,7 +537,7 @@ Dialog
     -fx-text-fill: #242d35;
     -fx-font-size: 14px;
 }
-#lion {
+.lion {
     -fx-background-color:
             rgba(0,0,0,0.08),
             linear-gradient(#9a9a9a, #909090),
@@ -548,7 +548,7 @@ Dialog
     -fx-text-fill: #242d35;
     -fx-font-size: 14px;
 }
-#windows7_d {
+.windows7_d {
     -fx-background-color:
             #3c7fb1,
             linear-gradient(#fafdfe, #e8f5fc),
@@ -559,7 +559,7 @@ Dialog
     -fx-text-fill: black;
     -fx-font-size: 14px;
 }
-#windows7 {
+.windows7 {
     -fx-background-color:
             #707070,
             linear-gradient(#fcfcfc, #f3f3f3),
@@ -571,7 +571,7 @@ Dialog
     -fx-font-size: 14px;
 }
 
-#bevel_g {
+.bevel_g {
     -fx-background-color:
             linear-gradient(#f2f2f2, #d6d6d6),
             linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
@@ -581,7 +581,7 @@ Dialog
     -fx-text-fill: black;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
-#glass_g {
+.glass_g {
     -fx-background-color:
             #c3c4c4,
             linear-gradient(#d6d6d6 50%, white 100%),
@@ -592,7 +592,7 @@ Dialog
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
 }
 
-#dark_b {
+.dark_b {
     -fx-background-color:
             #090a0c,
             linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
@@ -607,11 +607,11 @@ Dialog
     -fx-font-size: 12px;
     -fx-padding: 10 20 10 20;
 }
-#dark_b {
+.dark_b {
     -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.9) , 1, 0.0 , 0 , 1 );
 }
 
-#shiny_o {
+.shiny_o {
     -fx-background-color:
             linear-gradient(#ffd65b, #e68400),
             linear-gradient(#ffef84, #f2ba44),

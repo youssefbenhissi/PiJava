@@ -1,16 +1,22 @@
 package projet.controller;
 
 import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class UIController implements Initializable {
 
@@ -29,26 +35,7 @@ public class UIController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         pane.setVisible(false);
-        makeStageDrageable();
 
-    }
-
-    private void makeStageDrageable() {
-        parent.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset = event.getSceneX();
-                yOffset = event.getSceneY();
-            }
-        });
-        parent.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                 Stage primaryStage = new Stage();
-                primaryStage.setX(event.getScreenX() - xOffset);
-                primaryStage.setY(event.getScreenY() - yOffset);
-            }
-        });
     }
 
     @FXML
@@ -65,7 +52,14 @@ public class UIController implements Initializable {
     }
 
     @FXML
-    private void open_facebook(ActionEvent event) {
+    private void open_facebook(ActionEvent event) throws IOException {
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/projet/views/StatistiquesCategorieEtClub.fxml"));
+        Scene scene = new Scene(root);
+        //scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        //primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
     }
 
     @FXML
@@ -73,11 +67,22 @@ public class UIController implements Initializable {
     }
 
     @FXML
-    private void open_likedin(ActionEvent event) {
+    private void open_likedin(ActionEvent event) throws IOException {
+         Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/projet/views/AjouterCategorieEtClub.fxml"));
+        Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
     }
 
     @FXML
     private void open_google(ActionEvent event) {
+         // get a handle to the stage
+        Stage stage = (Stage) pane.getScene().getWindow();
+        // do what you have to do
+        stage.close();
     }
 
 }

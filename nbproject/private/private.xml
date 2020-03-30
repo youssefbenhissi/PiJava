@@ -4,9 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/controller/AfficherCategoriesEtClubs.java</file>
-            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projetpi/ProjetPi.java</file>
+            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/views/afficherCategorieClubFront.fxml</file>
             <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/service/ClubService.java</file>
-            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/service/IClub.java</file>
+            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/views/ModifierClubGUI.fxml</file>
         </group>
     </open-files>
 </project-private>
