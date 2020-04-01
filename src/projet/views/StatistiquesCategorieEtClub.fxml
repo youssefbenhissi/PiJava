@@ -6,7 +6,6 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -60,49 +59,44 @@
                   </Button>
                </children>
                 </Pane>
-                <ScrollPane layoutX="54.0" layoutY="296.0" prefHeight="263.0" prefWidth="298.0" style="-fx-background-color: #FFF;">
-                    <content>
-                        <VBox fx:id="pnl_scroll" prefHeight="238.0" prefWidth="295.0" />
-                    </content>
-                </ScrollPane>
-                <Pane layoutX="798.0" layoutY="54.0" prefHeight="152.0" prefWidth="298.0" style="-fx-background-color: #fff;">
-                    <children>
-                        <Label layoutX="67.0" layoutY="21.0" text="NOMBRE D'INSCRIPTIONS" textFill="#9a9a9a">
-                            <font>
-                                <Font name="Segoe UI Bold" size="12.0" />
-                            </font>
-                        </Label>
-                        <Label layoutX="80.0" layoutY="36.0" text="157" textFill="#9a9a9a">
-                            <font>
-                                <Font name="Segoe UI" size="64.0" />
-                            </font>
-                        </Label>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="42.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../icons/icons8_Copy_48px.png" />
-                            </image>
-                        </ImageView>
-                    </children>
+                <Pane fx:id="conteneurInscrip" layoutX="798.0" layoutY="54.0" prefHeight="152.0" prefWidth="298.0" style="-fx-background-color: #fff;">
+               <children>
+                  <Label layoutX="39.0" layoutY="47.0" prefHeight="25.0" prefWidth="114.0" text="inscriptions">
+                     <font>
+                        <Font name="Century Gothic" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="countInscrisp" layoutX="40.0" layoutY="65.0" prefHeight="53.0" prefWidth="196.0" text="0">
+                     <font>
+                        <Font name="Century Gothic" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="201.0" layoutY="49.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="51.0" style="-fx-background-color: #ffb64d;" styleClass="info-button">
+                     <graphic>
+                        <FontAwesomeIcon glyphName="SLACK" styleClass="info-dashboard-icon" />
+                     </graphic>
+                  </Button>
+               </children>
                 </Pane>
                 <Pane layoutX="54.0" layoutY="242.0" prefHeight="48.0" prefWidth="298.0" style="-fx-background-color: #fff;">
                     <children>
-                        <Label layoutX="70.0" layoutY="17.0" text="AGENTS STATS" textFill="#9a9a9a">
-                            <font>
-                                <Font name="Segoe UI Bold" size="12.0" />
-                            </font>
-                        </Label>
                         <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="19.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../icons/icons8_List_52px.png" />
                             </image>
                         </ImageView>
+                  <Label layoutX="66.0" layoutY="11.0" prefHeight="23.0" prefWidth="172.0" text="Moyenne par club" textFill="#9a9a9a">
+                     <font>
+                        <Font name="Segoe UI Bold" size="18.0" />
+                     </font>
+                  </Label>
                     </children>
                 </Pane>
                 <Pane layoutX="424.0" layoutY="242.0" prefHeight="48.0" prefWidth="298.0" style="-fx-background-color: #fff;">
                     <children>
-                        <Label layoutX="111.0" layoutY="17.0" text="Stats Clubs" textFill="#9a9a9a">
+                        <Label layoutX="86.0" layoutY="11.0" prefHeight="23.0" prefWidth="172.0" text="clubs par categorie" textFill="#9a9a9a">
                             <font>
-                                <Font name="Segoe UI Bold" size="12.0" />
+                                <Font name="Segoe UI Bold" size="18.0" />
                             </font>
                         </Label>
                         <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="35.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
@@ -114,9 +108,9 @@
                 </Pane>
                 <Pane layoutX="798.0" layoutY="242.0" prefHeight="48.0" prefWidth="298.0" style="-fx-background-color: #fff;">
                     <children>
-                        <Label layoutX="70.0" layoutY="17.0" text="LINES OF CODE" textFill="#9a9a9a">
+                        <Label layoutX="83.0" layoutY="13.0" text="inscriptions par club" textFill="#9a9a9a">
                             <font>
-                                <Font name="Segoe UI Bold" size="12.0" />
+                                <Font name="Segoe UI Bold" size="18.0" />
                             </font>
                         </Label>
                         <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="19.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
@@ -128,28 +122,40 @@
                 </Pane>
                 <Pane layoutX="338.0" layoutY="270.0" prefHeight="332.0" prefWidth="453.0">
                     <children>
-                        <BarChart fx:id="vente" layoutX="7.0" layoutY="21.0" prefHeight="340.0" prefWidth="380.0" title="Vente">
+                        <BarChart fx:id="vente" layoutX="7.0" layoutY="21.0" prefHeight="339.0" prefWidth="380.0">
                             <xAxis>
-                                <CategoryAxis label="categories" side="BOTTOM" fx:id="x" />
+                                <CategoryAxis label="categories" prefHeight="46.0" prefWidth="293.0" side="BOTTOM" fx:id="x" />
                             </xAxis>
                             <yAxis>
-                                <NumberAxis fx:id="y" label="nombre  de clubs" prefHeight="256.0" prefWidth="57.0" side="LEFT" />
+                                <NumberAxis fx:id="y" label="nombre  de clubs" prefHeight="211.0" prefWidth="73.0" side="LEFT" />
                             </yAxis>
                         </BarChart>
                     </children>
                 </Pane>
-                <Pane layoutX="748.0" layoutY="296.0" prefHeight="285.0" prefWidth="348.0">
+                <Pane layoutX="748.0" layoutY="296.0" prefHeight="318.0" prefWidth="380.0">
                     <children>
-                        <BarChart fx:id="bar_chart" alternativeRowFillVisible="false" horizontalGridLinesVisible="false" layoutX="7.0" layoutY="19.0" prefHeight="248.0" prefWidth="348.0" title="PROJECTS" verticalGridLinesVisible="false">
+                        <BarChart fx:id="statsInscri" alternativeRowFillVisible="false" horizontalGridLinesVisible="false" layoutX="-22.0" layoutY="-4.0" prefHeight="332.0" prefWidth="380.0" verticalGridLinesVisible="false">
                             <xAxis>
-                                <CategoryAxis side="BOTTOM" />
+                                <CategoryAxis label="clubs" prefHeight="45.0" prefWidth="275.0" side="BOTTOM" />
                             </xAxis>
                             <yAxis>
-                                <NumberAxis side="LEFT" />
+                                <NumberAxis label="inscriptions" prefHeight="226.0" prefWidth="61.0" side="LEFT" />
                             </yAxis>
                         </BarChart>
                     </children>
                 </Pane>
+            <Pane layoutX="-12.0" layoutY="289.0" prefHeight="332.0" prefWidth="431.0">
+               <children>
+                  <BarChart fx:id="statsMoyenne" layoutX="7.0" layoutY="21.0" prefHeight="318.0" prefWidth="380.0">
+                     <xAxis>
+                        <CategoryAxis label="clubs" prefHeight="46.0" prefWidth="293.0" side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis label="moyenne like" prefHeight="242.0" prefWidth="53.0" side="LEFT" />
+                     </yAxis>
+                  </BarChart>
+               </children>
+            </Pane>
             </children>
         </AnchorPane>
     </children>

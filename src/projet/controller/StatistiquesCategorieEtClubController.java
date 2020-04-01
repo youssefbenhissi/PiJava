@@ -27,6 +27,7 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import projet.service.CategorieClubService;
 import projet.service.ClubService;
+import projet.service.InscriptionService;
 
 /**
  * FXML Controller class
@@ -49,33 +50,48 @@ public class StatistiquesCategorieEtClubController implements Initializable {
     @FXML
     private Pane conteneurCategories;
     @FXML
+    private Pane conteneurInscrip;
+    @FXML
     private Pane conteneurClubs;
     @FXML
     private BarChart bar_chart;
     CategorieClubService categoriesClubService = new CategorieClubService();
+    InscriptionService inscrservice=new InscriptionService();
+     ClubService clubServ=new ClubService();
     @FXML
     private StackedAreaChart area_chart;
     @FXML
     private BarChart<?, ?> vente;
+    @FXML
+    private BarChart<?, ?> statsInscri;
+    @FXML
+    private BarChart<?, ?> statsMoyenne;
     @FXML
     private NumberAxis y;
     @FXML
     private CategoryAxis x;
     int counter = 0;
     int counterCat = 0;
+    
+    int counterIns = 0;
     List<Integer> listdd = new ArrayList<Integer>();
     List<String> listddd = new ArrayList<String>();
+    List<Integer> listIdClubIn = new ArrayList<Integer>();
+    List<Integer> listIdClub = new ArrayList<Integer>();
+    
     Boolean isIt = false;
-
+@FXML
+    private Label countInscrisp;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         Node[] nodes = new Node[15];
-
-        plotBarChart();
-        plotChart();
+statsMoyenneLike();
+plotChart();
+        statsInscri();
         compteurClub();
         compteurCategorie();
+        compteurInscription() ;
     }
 
     private void plotChart() {
@@ -83,49 +99,29 @@ public class StatistiquesCategorieEtClubController implements Initializable {
         listdd = categoriesClubService.getState();
         for (int i = 0; i < listdd.size(); i++) {
             String g = categoriesClubService.getState1(listdd.get(i));
+            
             int gg = categoriesClubService.getState12(listdd.get(i));
+           
             seriesApril.getData().add(new XYChart.Data(g, gg));
 
         }
 
         vente.getData().addAll(seriesApril);
     }
+    private void statsInscri() {
+        XYChart.Series seriesApril = new XYChart.Series();
+        listIdClub = inscrservice.getState();
+        for (int i = 0; i < listIdClub.size(); i++) {
+            String g = inscrservice.getState1(listIdClub.get(i));
+            int gg = inscrservice.getState12(listIdClub.get(i));
+            seriesApril.getData().add(new XYChart.Data(g, gg));
 
-    private void plotBarChart() {
+        }
 
-        String austria = "Austria";
-        String brazil = "Brazil";
-        String france = "France";
-        String italy = "Italy";
-        String usa = "USA";
-
-        XYChart.Series series1 = new XYChart.Series();
-        series1.setName("2015");
-        series1.getData().add(new XYChart.Data(austria, 25601.34));
-        series1.getData().add(new XYChart.Data(brazil, 20148.82));
-        series1.getData().add(new XYChart.Data(france, 10000));
-        series1.getData().add(new XYChart.Data(italy, 35407.15));
-        series1.getData().add(new XYChart.Data(usa, 12000));
-
-        XYChart.Series series2 = new XYChart.Series();
-        series2.setName("2016");
-        series2.getData().add(new XYChart.Data(austria, 57401.85));
-        series2.getData().add(new XYChart.Data(brazil, 41941.19));
-        series2.getData().add(new XYChart.Data(france, 45263.37));
-        series2.getData().add(new XYChart.Data(italy, 117320.16));
-        series2.getData().add(new XYChart.Data(usa, 14845.27));
-
-        XYChart.Series series3 = new XYChart.Series();
-        series3.setName("2017");
-        series3.getData().add(new XYChart.Data(austria, 45000.65));
-        series3.getData().add(new XYChart.Data(brazil, 44835.76));
-        series3.getData().add(new XYChart.Data(france, 18722.18));
-        series3.getData().add(new XYChart.Data(italy, 17557.31));
-        series3.getData().add(new XYChart.Data(usa, 92633.68));
-
-        bar_chart.getData().addAll(series1, series2, series3);
-
+        statsInscri.getData().addAll(seriesApril);
     }
+
+    
 
     public void compteurClub() {
         Timer timer = new Timer(); //new timer
@@ -173,5 +169,42 @@ public class StatistiquesCategorieEtClubController implements Initializable {
             timelineCat.setCycleCount(cs.selectAll().size());
             timelineCat.play();
         }
+    }
+     public void compteurInscription() {
+        Timer timer = new Timer();
+        InscriptionService cs = new InscriptionService();
+        if (cs.selectAllInscris().size() == 0) {
+            countInscrisp.setText(String.valueOf(0));
+        } else {
+            
+            Timeline timelineCat = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
+                new Pulse(conteneurInscrip).play();
+                counterIns++;
+                countInscrisp.setText(String.valueOf(counterIns));
+                int nbrClub = cs.selectAllInscris().size();
+                if (counterCat == nbrClub) {
+                } else if (isIt) {
+                    timer.cancel();
+                    isIt = false;
+                }
+            }));
+            timelineCat.setCycleCount(cs.selectAllInscris().size());
+            timelineCat.play();
+        }
+    }
+     private void statsMoyenneLike() {
+        XYChart.Series seriesApril = new XYChart.Series();
+        listIdClubIn = clubServ.getState();
+        for (int i = 0; i < listIdClubIn.size(); i++) {
+            String g = clubServ.getState1(listIdClubIn.get(i));
+            
+            
+            float gg = clubServ.getState12(listIdClubIn.get(i));
+            
+            seriesApril.getData().add(new XYChart.Data(g, gg));
+
+        }
+
+        statsMoyenne.getData().addAll(seriesApril);
     }
 }

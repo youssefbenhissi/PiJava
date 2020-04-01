@@ -76,8 +76,8 @@
                             </ImageView>
                         </graphic>
                     </Button>
-               <Rating fx:id="rating" layoutX="35.0" layoutY="322.0" />
                <Label fx:id="msg" layoutX="89.0" layoutY="365.0" text="Label" />
+               <Rating fx:id="rating" layoutX="59.0" layoutY="309.0" />
                 </children>
             </Pane>
             <Label fx:id="nomClub" layoutX="133.0" layoutY="35.0" text="NEW YORK CITY" textFill="#0d0d0d">

@@ -58,6 +58,7 @@
 .linkedin-btn:hover{
 	-fx-background-color: #ffffff;
 	-fx-background-radius: 100%;
+        -fx-text-fill: black;
 }
 .linkedin-btn:hover .linkedin-icon{
 	-fx-fill:  #1D547D;

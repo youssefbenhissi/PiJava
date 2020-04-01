@@ -21,6 +21,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import projet.models.CategorieClub;
 import projet.models.Club;
+import static projet.service.CategorieClubService.statement;
 import projet.utils.DbConnection;
 
 /**
@@ -38,7 +39,7 @@ public class ClubService implements IClub {
     @Override
     public List<Club> selectAllClubs() {
         ArrayList<Club> clubs = new ArrayList<>();
-        String req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,cat.nomCategorie,c.image,c.questionPr,c.questionDe,c.questionTr FROM club c,categorie_club cat WHERE c.categorie_id = cat.id";
+        String req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,cat.nomCategorie,c.image,c.questionPr,c.questionDe,c.questionTr,c.categorie_id FROM club c,categorie_club cat WHERE c.categorie_id = cat.id";
         try {
             PreparedStatement ps = connection.prepareStatement(req);
             ps.executeQuery();
@@ -58,6 +59,7 @@ public class ClubService implements IClub {
                 c.setQuestionPr(rs.getString(8));
                 c.setQuestionDe(rs.getString(9));
                 c.setQuestionTr(rs.getString(10));
+                c.setCategorie_id(rs.getInt(11));
                 clubs.add(c);
             }
         } catch (Exception ex) {
@@ -182,7 +184,7 @@ public class ClubService implements IClub {
         matcher = email_pattern_compile.matcher(emailSaisie);
         return matcher.matches();
     }
-    private static final String chaineSimple_avecEspace_pattern = "^[A-Z a-z 0-9]+$";
+    private static final String chaineSimple_avecEspace_pattern = "^[A-Z a-z ]+$";
     private static Pattern chaineSimple_pattern_avecEspace_complie = Pattern.compile(chaineSimple_avecEspace_pattern);
 
     public static boolean validationChaineSimpleAvecEspace(final String chaineSaisie) {
@@ -345,7 +347,7 @@ public class ClubService implements IClub {
 
     @Override
     public boolean modifierClub(Club c) {
-        String req = "UPDATE club SET nom = ?,description = ? , capacite = ? , image = ?  , questionPr = ? , questionDe = ? , questionTr = ? WHERE id= ?";
+        String req = "UPDATE club SET nom = ?,description = ? , capacite = ? , image = ?  , questionPr = ? , questionDe = ? , questionTr = ? , categorie_id = ? WHERE id= ?";
         try {
             pst = connection.prepareStatement(req);
             pst.setString(1, c.getNom());
@@ -356,7 +358,8 @@ public class ClubService implements IClub {
             pst.setString(5, c.getQuestionPr());
             pst.setString(6, c.getQuestionDe());
             pst.setString(7, c.getQuestionTr());
-            pst.setInt(8, c.getId());
+            pst.setInt(8, c.getCategorie_id());
+            pst.setInt(9, c.getId());
             int res = pst.executeUpdate();
 
             if (res > 0) {
@@ -368,4 +371,64 @@ public class ClubService implements IClub {
         }
         return false;
     }
+    public List<Integer> getState() {
+        String req11 = "Select id from club";
+        List<Integer> liste = new ArrayList<Integer>();
+        try {
+            statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(req11);
+
+            while (rs.next()) {
+
+                liste.add(rs.getInt(1));
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return liste;
+    }
+     public String getState1(int x) {
+        String g = "";
+        String req11 = "Select nom  From club where id=? ";
+
+        PreparedStatement ps;
+        try {
+            ps = connection.prepareStatement(req11);
+
+            ps.setInt(1, x);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                g = rs.getString(1);
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return g;
+    }
+     public float getState12(int x) {
+        float g = 0;
+        String req11 = "Select moyenneLike From club where id=? ";
+
+        PreparedStatement ps;
+        try {
+            ps = connection.prepareStatement(req11);
+
+            ps.setInt(1, x);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                g = rs.getFloat(1);
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return g;
+    }
+
 }

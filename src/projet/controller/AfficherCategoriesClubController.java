@@ -63,6 +63,8 @@ import projet.models.CategorieClub;
 import projet.models.Club;
 import projet.service.CategorieClubService;
 import projet.service.ClubService;
+import projet.service.InscriptionService;
+import t2s.son.LecteurTexte;
 
 /**
  * FXML Controller class
@@ -100,6 +102,8 @@ public class AfficherCategoriesClubController implements Initializable {
     @FXML
     private Label countClubs;
     @FXML
+    private Label countInscrisp;
+    @FXML
     private Button Clubs;
 
     @FXML
@@ -115,6 +119,7 @@ public class AfficherCategoriesClubController implements Initializable {
 
     int counter = 0;
     int counterCat = 0;
+    int counterIns = 0;
     Boolean isIt = false;
     ClubService ClubService = new ClubService();
 
@@ -126,16 +131,9 @@ public class AfficherCategoriesClubController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //pdf("lobna", "youssef", "desciption", 12,2);
-        //LecteurTexte lecteur = new LecteurTexte("club de foot");
-        //lecteur.playAll();
-        //lecteur.setTexte("je suis un synthétiseur vocal, qui êtes-vous?");
-        //lecteur.playAll();
         compteurCategorie();
         compteurClub();
-        //CategorieClub p =new CategorieClub();
-        //p.setNomCategorie("mustapha");
-
+        compteurInscription();
         Timer timer = new Timer(); //new timer
         CategorieClubService cs = new CategorieClubService();
         ClubService cc = new ClubService();
@@ -144,11 +142,7 @@ public class AfficherCategoriesClubController implements Initializable {
         ObservableList<CategorieClub> myObservableList = FXCollections.observableArrayList();
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomCategorie.setCellValueFactory(new PropertyValueFactory<>("nomCategorie"));
-
         listeCategorie.setEditable(true);
-        //nomCategorie.setCellValueFactory(TextFieldTableCell.forTableColumn());
-        //nomCategorie.setCellValueFactory(new PropertyValueFactory("firstName"));
-
         myList.forEach(e -> {
             myObservableList.add(e);
             listeCategorie.setItems(myObservableList);
@@ -163,8 +157,8 @@ public class AfficherCategoriesClubController implements Initializable {
     }
 
     public void compteurClub() {
-        Timer timer = new Timer(); //new timer
-        counter = 0; //setting the counter to 10 sec
+        Timer timer = new Timer(); 
+        counter = 0; 
         ClubService cc = new ClubService();
         countClubs.setText(String.valueOf(0));
         if (cc.selectAllClubs().size() == 0) {
@@ -212,6 +206,27 @@ public class AfficherCategoriesClubController implements Initializable {
         }
     }
 
+    public void compteurInscription() {
+        Timer timer = new Timer();
+        InscriptionService cs = new InscriptionService();
+        if (cs.selectAllInscris().size() == 0) {
+            countInscrisp.setText(String.valueOf(0));
+        } else {
+            Timeline timelineCat = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
+                counterIns++;
+                countInscrisp.setText(String.valueOf(counterIns));
+                int nbrClub = cs.selectAllInscris().size();
+                if (counterCat == nbrClub) {
+                } else if (isIt) {
+                    timer.cancel();
+                    isIt = false;
+                }
+            }));
+            timelineCat.setCycleCount(cs.selectAllInscris().size());
+            timelineCat.play();
+        }
+    }
+
     @FXML
     private void convertirEnPdf(ActionEvent event) {
         Alert a2 = new Alert(Alert.AlertType.CONFIRMATION);
@@ -226,12 +241,8 @@ public class AfficherCategoriesClubController implements Initializable {
     private void lireDescriptionEvenement(ActionEvent event) {
         try {
             Club clubSelect = listeClubs.getSelectionModel().getSelectedItem();
-            Voice talk;
-            VoiceManager vm = VoiceManager.getInstance();
-            System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
-            talk = vm.getVoice(VOICE_KEVIN16);
-            talk.allocate();
-            talk.speak(clubSelect.getDescription());
+            LecteurTexte lecteur = new LecteurTexte(clubSelect.getDescription());
+            lecteur.playAll();
         } catch (java.lang.RuntimeException e) {
             Alert a1 = new Alert(Alert.AlertType.WARNING);
             a1.setTitle("Selction obligatoire");
@@ -442,6 +453,7 @@ public class AfficherCategoriesClubController implements Initializable {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
     }
+
     @FXML
     public void divers(ActionEvent even) throws IOException {
         Stage primaryStage = new Stage();
@@ -535,7 +547,8 @@ public class AfficherCategoriesClubController implements Initializable {
 
     @FXML
     private void modifierClubAction(ActionEvent event) {
-        Club clubselect = listeClubs.getSelectionModel().getSelectedItem();        if (clubselect == null) {
+        Club clubselect = listeClubs.getSelectionModel().getSelectedItem();
+        if (clubselect == null) {
             JFXDialogLayout dialogLayout = new JFXDialogLayout();
             JFXButton button = new JFXButton("OKAY");
             button.getStyleClass().add("dialog-button");
@@ -553,14 +566,12 @@ public class AfficherCategoriesClubController implements Initializable {
             return;
         }
         try {
-            Club clubselec = listeClubs.getSelectionModel().getSelectedItem(); 
+            Club clubselec = listeClubs.getSelectionModel().getSelectedItem();
             System.out.println(clubselec);
-            //pour que les champs soient rempli à la place de  // Parent root = FXMLLoader.load(getClass().getResource("AjouterEvenementGUI.fxml"));
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/projet/views/ModifierClubGUI.fxml"));
             Parent root = loader.load();
-           ModifierClubController controller = (ModifierClubController) loader.getController();
+            ModifierClubController controller = (ModifierClubController) loader.getController();
             controller.id_evenement = clubselect.getId();
-            //sout
             controller.nom_club_fx.setText(clubselec.getNom());
             controller.capacite_club_fx.setText(Integer.toString(clubselec.getCapacite()));
             controller.premiere_question_fx.setText(clubselec.getQuestionPr());
@@ -568,7 +579,14 @@ public class AfficherCategoriesClubController implements Initializable {
             controller.troisieme_question_fx.setText(clubselec.getQuestionTr());
             controller.nom_club_fx.setText(clubselec.getNom());
             controller.description_club_fx.setText(clubselec.getDescription());
-            //controller..setText(clubselect.getNomcategorie());
+            controller.nomAfficher = clubselec.getPath();
+            controller.categorie.setValue(clubselec.getNomcategorie());
+            controller.image = new Image("file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/" + clubselec.getPath(), controller.imageView.getFitWidth(),
+                    controller.imageView.getFitHeight(), true, true);
+            controller.imageView.setImage(controller.image);
+            controller.imageView.setPreserveRatio(true);
+            System.out.println(clubselec.getCategorie_id());
+
             Stage primaryStage = new Stage();
 
             primaryStage.setTitle("Modifier Evenement");

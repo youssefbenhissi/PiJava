@@ -262,7 +262,7 @@
                                                                 <Font name="Century Gothic" size="20.0" />
                                                             </font>
                                                         </Label>
-                                                        <Label fx:id="countClubs1" prefHeight="51.0" prefWidth="158.0" text="250">
+                                                        <Label fx:id="countInscrisp" prefHeight="51.0" prefWidth="158.0" text="0">
                                                             <font>
                                                                 <Font name="Century Gothic" size="20.0" />
                                                             </font>
