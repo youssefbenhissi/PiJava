@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.DetailClubController">
+    <children>
+        <AnchorPane fx:id="layer1" prefHeight="500.0" prefWidth="632.0">
+            <ImageView fx:id="imageBack" fitHeight="400.0" fitWidth="632.0" pickOnBounds="true">
+                <image>
+                    <Image url="@../images/bg-img.jpg" />
+                </image>
+            </ImageView>
+            <Pane layoutX="339.0" prefHeight="400.0" prefWidth="293.0" style="-fx-background-color: rgba(31, 29, 40,0.8);">
+                <children>
+                    <Label layoutX="89.0" layoutY="64.0" text="Détails" textFill="#fffefe">
+                        <font>
+                            <Font name="Calibri Bold" size="24.0" />
+                        </font>
+                    </Label>
+                    <Separator layoutX="30.0" layoutY="95.0" prefHeight="0.0" prefWidth="200.0" />
+                    <Label layoutX="12.0" layoutY="146.0" text="Nom" textFill="#fffefe">
+                        <font>
+                            <Font name="Calibri Light" size="14.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="nom" layoutX="186.0" layoutY="146.0" text="35 ˚C" textFill="#fffefe">
+                        <font>
+                            <Font name="Calibri Light" size="14.0" />
+                        </font>
+                    </Label>
+                    <Label layoutX="11.0" layoutY="184.0" text="Nom de la categorie" textFill="#fffefe">
+                        <font>
+                            <Font name="Calibri Light" size="14.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="nomCategorie" layoutX="187.0" layoutY="184.0" text="35 ˚C" textFill="#fffefe">
+                        <font>
+                            <Font name="Calibri Light" size="14.0" />
+                        </font>
+                    </Label>
+                    <Label layoutX="13.0" layoutY="228.0" text="Description" textFill="#fffefe">
+                        <font>
+                            <Font name="Calibri Light" size="14.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="description" layoutX="187.0" layoutY="228.0" text="35 ˚C" textFill="#fffefe">
+                        <font>
+                            <Font name="Calibri Light" size="14.0" />
+                        </font>
+                    </Label>
+                    <Label layoutX="14.0" layoutY="265.0" text="Capacité" textFill="#fffefe">
+                        <font>
+                            <Font name="Calibri Light" size="14.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="capacite" layoutX="188.0" layoutY="265.0" text="35 ˚C" textFill="#fffefe">
+                        <font>
+                            <Font name="Calibri Light" size="14.0" />
+                        </font>
+                    </Label>
+                    <Button layoutX="206.0" layoutY="7.0" mnemonicParsing="false" onMouseClicked="#quitter" prefHeight="43.0" prefWidth="15.0" style="-fx-background-color: transparent;">
+                        <graphic>
+                            <ImageView fitHeight="27.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../images/logout.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+               <Label fx:id="msg" layoutX="89.0" layoutY="365.0" text="Label" />
+               <Rating fx:id="rating" layoutX="59.0" layoutY="309.0" />
+                </children>
+            </Pane>
+            <Label fx:id="nomClub" layoutX="133.0" layoutY="35.0" text="NEW YORK CITY" textFill="#0d0d0d">
+                <font>
+                    <Font name="Calibri Bold" size="24.0" />
+                </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="366.0" text="Il reste que">
+                <font>
+                    <Font name="Calibri" size="18.0" />
+                </font>
+            </Label>
+            <Label layoutX="196.0" layoutY="267.0" text="35 ˚C" textFill="#fffefe">
+                <font>
+                    <Font name="Century Gothic" size="45.0" />
+                </font>
+            </Label>
+            <FontAwesomeIcon />
+         <Label layoutX="134.0" layoutY="366.0" text="places">
+            <font>
+               <Font name="Calibri" size="18.0" />
+            </font>
+         </Label>
+         <Label fx:id="cap" layoutX="110.0" layoutY="366.0" prefHeight="22.0" prefWidth="29.0" text="nb">
+            <font>
+               <Font name="Calibri" size="18.0" />
+            </font>
+         </Label>
+    
+        </AnchorPane>
+    </children>
+</Pane>

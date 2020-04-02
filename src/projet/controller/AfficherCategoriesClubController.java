@@ -72,7 +72,6 @@ import t2s.son.LecteurTexte;
  * @author youssef
  */
 public class AfficherCategoriesClubController implements Initializable {
-
     @FXML
     private TableColumn<?, ?> id;
     @FXML

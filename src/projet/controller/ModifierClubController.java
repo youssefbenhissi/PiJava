@@ -304,7 +304,7 @@ public class ModifierClubController implements Initializable {
         stage.close();
     }
 
-    private String generateFileName() {
+     private String generateFileName() {
 
         String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder salt = new StringBuilder();
@@ -314,21 +314,29 @@ public class ModifierClubController implements Initializable {
             salt.append(SALTCHARS.charAt(index));
         }
         String saltStr = salt.toString();
-        return "Evenement_" + saltStr;
+        return "club_" + saltStr;
     }
 
     private String replaceFile(String file) {
+
         String extension = file.substring(file.lastIndexOf("."), file.length());
+        //System.out.println(extension);
+
         String filename = generateFileName() + extension;
+
         Path sourceDirectory = Paths.get(file);
-        Path targetDirectory = Paths.get("C:\\wamp64\\www\\worldfriendship\\web\\Evenement\\image\\affiches\\" + filename);
+        Path targetDirectory = Paths.get("C:\\Users\\youssef\\PhpstormProjects\\pidevFinal\\web\\assets\\images\\" + filename);
+
         try {
+            //copy source to target using Files Class
             Files.copy(sourceDirectory, targetDirectory);
         } catch (IOException ex) {
-            Logger.getLogger(ModifierClubController.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(AjouterEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("ahawa");
         }
 
         return filename;
     }
+
 
 }
