@@ -5,7 +5,10 @@
         <group>
             <file>file:/C:/Users/Iheb/Documents/NetBeansProjects/projetPi/src/projet/service/CategorieEvenementService.java</file>
             <file>file:/C:/Users/Iheb/Documents/NetBeansProjects/projetPi/src/projet/models/CategorieEvenement.java</file>
+            <file>file:/C:/Users/Iheb/Documents/NetBeansProjects/projetPi/src/projet/models/Evenement.java</file>
+            <file>file:/C:/Users/Iheb/Documents/NetBeansProjects/projetPi/src/projet/service/EvenementService.java</file>
             <file>file:/C:/Users/Iheb/Documents/NetBeansProjects/projetPi/src/projetpi/ProjetPi.java</file>
+            <file>file:/C:/Users/Iheb/Documents/NetBeansProjects/projetPi/src/projet/utils/DbConnection.java</file>
         </group>
     </open-files>
 </project-private>

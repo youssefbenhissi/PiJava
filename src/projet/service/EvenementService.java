@@ -34,7 +34,7 @@ public class EvenementService implements IEvenement {
     @Override
     public List<Evenement> selectAllEvenement() {
         ArrayList<Evenement> evenements = new ArrayList<>();
-        String req = "SELECT e.id,e.nomE,e.capaciteE,e.description,e.imgE,e.prixE,c.nomCategorieEvenement FROM evenement e,categorie_evenement c where e.categorieEvenement_id = c.id";
+        String req = "SELECT e.id,e.nomE,e.capaciteE,e.description,e.imgE,e.prixE,c.nomCategorieEvenement,e.dateD FROM evenement e,categorie_evenement c where e.categorieEvenement_id = c.id";
         try {
             PreparedStatement ps = connection.prepareStatement(req);
             ps.executeQuery();
@@ -51,6 +51,7 @@ public class EvenementService implements IEvenement {
                 c.setImageEvenement(rs.getString(5));
                 c.setPrixEvenement(rs.getInt(6));
                 c.setNomCategorie(rs.getString(7));
+                c.setDateEvenement(rs.getDate(8));
                 evenements.add(c);
             }
         } catch (Exception ex) {
@@ -73,8 +74,8 @@ public class EvenementService implements IEvenement {
 
     @Override
     public void ajouterEvenement(Evenement c) {
-        String requete = "INSERT INTO Evenement (nomE,capaciteE,description,imgE,prixE)"
-                + " VALUES ( '" + c.getNomEvenement() + "','" + c.getCapaciteEvenement() + "', '" + c.getDescriptionEvenement() + "', '" + c.getImageEvenement() + "', '" + c.getPrixEvenement() + "' );";
+        String requete = "INSERT INTO Evenement (nomE,capaciteE,description,imgE,prixE,categorieEvenement_id)"
+                + " VALUES ( '" + c.getNomEvenement() + "','" + c.getCapaciteEvenement() + "', '" + c.getDescriptionEvenement() + "', '" + c.getImageEvenement() + "', '" + c.getPrixEvenement() + "', '" + c.getIdCatgeorie() + "' )";
 
         try {
             pst = connection.prepareStatement(requete);
@@ -98,7 +99,7 @@ public class EvenementService implements IEvenement {
             pst.setInt(5, c.getPrixEvenement());
             pst.setInt(6, c.getIdCatgeorie());
             pst.setInt(7, c.getIdEvenement());
-            
+
             int res = pst.executeUpdate();
 
             if (res > 0) {

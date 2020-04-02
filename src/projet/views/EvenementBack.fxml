@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.EvenementBackController">
+    <children>
+        <VBox alignment="TOP_CENTER" prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #2F323A;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <VBox prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <JFXDrawer fx:id="drawer" prefHeight="205.0" prefWidth="256.0" />
+                    </children>
+                </VBox>
+                <Button fx:id="btnOverview" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Overview" textFill="#e7e5e5">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Home_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnOrders" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Evenements">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Open_Envelope_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnCustomers" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Customers">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Person_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnMenus" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Menus">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Xbox_Menu_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnPackages" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Packages">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Box_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnSettings" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Settings">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Slider__32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Sign Out">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Sign_Out_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+            </children>
+        </VBox>
+        <StackPane layoutX="257.0" prefHeight="576.0" prefWidth="794.0" style="-fx-background-color: #ffff;">
+            <children>
+               
+                <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
+                <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
+                <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
+                <Pane fx:id="pnlOverview" prefHeight="554.0" prefWidth="793.0">
+                    <children>
+                        <TextField layoutX="590.0" layoutY="22.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #B7C3D7; -fx-border-color: #B7C3D7;" />
+                        <Label layoutX="55.0" layoutY="10.0" text="Evenements" textFill="#e7e5e5">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Label>
+                        <HBox alignment="CENTER_LEFT" layoutX="221.0" layoutY="53.0" prefHeight="75.0" prefWidth="539.0" spacing="50.0">
+                            <children>
+                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                    <children>
+                                        <Label text="22000" textFill="#2a73ff">
+                                            <font>
+                                                <Font name="System Bold" size="26.0" />
+                                            </font>
+                                        </Label>
+                                        <Label text="Total Orders" textFill="#e7e5e5" />
+                                    </children>
+                                </VBox>
+                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                    <children>
+                                        <Label text="1500" textFill="#26bfbc">
+                                            <font>
+                                                <Font name="System Bold" size="26.0" />
+                                            </font>
+                                        </Label>
+                                        <Label text="Total delivered" textFill="#e7e5e5" />
+                                    </children>
+                                </VBox>
+                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                    <children>
+                                        <Label text="1000" textFill="#fa5f7e">
+                                            <font>
+                                                <Font name="System Bold" size="26.0" />
+                                            </font>
+                                        </Label>
+                                        <Label text="Peding Orders" textFill="#e7e5e5" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                        <ScrollPane layoutX="14.0" layoutY="345.0" prefHeight="224.0" prefWidth="746.0" stylesheets="@style.css">
+                            <content>
+                                <TableView fx:id="listeEvenement" prefHeight="188.0" prefWidth="745.0">
+                                    <columns>
+                                        <TableColumn fx:id="idEvenement" prefWidth="75.0" text="id" />
+                                        <TableColumn fx:id="nomEvenement" prefWidth="121.0" text="nom" />
+                                        <TableColumn fx:id="nomCategorie" prefWidth="129.0" text="nom categorie" />
+                                        <TableColumn fx:id="capaciteEvenement" prefWidth="76.0" text="capacite" />
+                                        <TableColumn fx:id="descriptionEvenement" prefWidth="141.0" text="description" />
+                                        <TableColumn fx:id="prixEvenement" prefWidth="98.0" text="prix" />
+                                        <TableColumn fx:id="dateEvenement" prefWidth="103.0" text="date" />
+                                    </columns>
+                                </TableView>
+                            </content>
+                        </ScrollPane>
+                        <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="748.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Search_52px.png" />
+                            </image>
+                        </ImageView>
+                        <ScrollPane layoutX="14.0" layoutY="127.0" prefHeight="159.0" prefWidth="746.0" stylesheets="@style.css">
+                            <content>
+                                <TableView fx:id="listeCategorie" prefHeight="177.0" prefWidth="749.0">
+                                    <columns>
+                                        <TableColumn fx:id="id" prefWidth="75.0" text="id" />
+                                        <TableColumn fx:id="nomCategorieEvenement" prefWidth="359.0" text="nom categorie" />
+                                        <TableColumn fx:id="descriptionCat" prefWidth="310.0" text="description" />
+                                    </columns>
+                                </TableView>
+                            </content>
+                        </ScrollPane>
+                        <JFXHamburger fx:id="hamburger" layoutX="733.0" layoutY="75.0" />
+                        <JFXButton layoutX="14.0" layoutY="83.0" prefHeight="27.0" prefWidth="112.0" style="-fx-background-color: #234b86;;" text="Ajouter Categorie" textFill="WHITE" />
+                  <JFXButton layoutX="14.0" layoutY="303.0" prefHeight="27.0" prefWidth="127.0" style="-fx-background-color: #234b86;;" text="Ajouter Evenement" textFill="WHITE" />
+                    </children>
+                </Pane>
+            </children>
+        </StackPane>
+    </children>
+    <effect>
+        <DropShadow color="#1b1eeb" />
+    </effect>
+</AnchorPane>

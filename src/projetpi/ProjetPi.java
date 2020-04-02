@@ -5,10 +5,15 @@
  */
 package projetpi;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
@@ -23,36 +28,13 @@ import projet.service.EvenementService;
  * @author Iheb
  */
 public class ProjetPi extends Application {
-    
+
     @Override
-    public void start(Stage primaryStage) {
-/*        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
-        
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
-        
-        Scene scene = new Scene(root, 300, 250);
-        
-        primaryStage.setTitle("Hello World!");
-        primaryStage.setScene(scene);
-        primaryStage.show();*/
-        EvenementService service =new EvenementService();
-        List<Evenement> mylise=service.selectAllEvenement();
-        for(Evenement e:mylise){
-            System.out.println("nom de l'evenement: "+e.getNomEvenement());
-        }
-        Evenement e=new Evenement(59,"yousef", 100, "benhissi", "image", 0,53);
-        service.modifierEvenement(e);
-        service.supprimerEvenement(59);
-        
+    public void start(Stage primaryStage) throws IOException {
+        URL url = new File("src/projet/views/EvenementBack.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
     }
 
     /**
@@ -61,5 +43,5 @@ public class ProjetPi extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

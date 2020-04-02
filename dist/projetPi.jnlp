@@ -8,8 +8,10 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="lib\fontawesomefx-8.0.1.jar" size="65486" download="eager" />
+    <jar href="lib\jfoenix-8.0.2.jar" size="2442326" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
-    <jar href="projetPi.jar" size="11261" download="eager" />
+    <jar href="projetPi.jar" size="56982" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="projetPi" >
     <param name="requiredFXVersion" value="8.0+"/>
