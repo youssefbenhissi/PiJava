@@ -69,7 +69,7 @@ public class inscriptionBackController implements Initializable {
     private Label countInscrisp;
 
     @FXML
-    private TableView<Inscription> listeClubs;
+    public TableView<Inscription> listeClubs;
 
     @FXML
     private TableColumn<?, ?> questionP;
@@ -91,10 +91,13 @@ public class inscriptionBackController implements Initializable {
 
     @FXML
     private TableColumn<?, ?> nomClub;
+    @FXML
+    private TableColumn<?, ?> idClub;
 
     @FXML
-    private TableColumn<?, ?> status;
-
+    public TableColumn<?, ?> status;
+    @FXML
+    private TableColumn<?, ?> actionD;
     @FXML
     private TableColumn<Inscription, String> action;
     InscriptionService service = new InscriptionService();
@@ -102,8 +105,9 @@ public class inscriptionBackController implements Initializable {
     int counterCat = 0;
 
     int counterIns = 0;
-     Boolean isIt = false;
-public static ObservableList<Inscription> observableList;
+    Boolean isIt = false;
+    public static ObservableList<Inscription> observableList;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         compteurClub();
@@ -113,8 +117,9 @@ public static ObservableList<Inscription> observableList;
     }
 
     @FXML
-    private void afficherCategorieClub() {
+    public void afficherCategorieClub() {
         List<Inscription> myList = service.selectAllInscris();
+        
         observableList = FXCollections.observableArrayList();
         questionP.setCellValueFactory(new PropertyValueFactory<>("questionPr"));
         reponseP.setCellValueFactory(new PropertyValueFactory<>("reponsePr"));
@@ -124,7 +129,9 @@ public static ObservableList<Inscription> observableList;
         reponseT.setCellValueFactory(new PropertyValueFactory<>("reponseTr"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
         nomClub.setCellValueFactory(new PropertyValueFactory<>("nomClub"));
+        //idClub.setCellValueFactory(new PropertyValueFactory<>("idClub"));
         action.setCellValueFactory(new PropertyValueFactory<>("btn_delete"));
+        actionD.setCellValueFactory(new PropertyValueFactory<>("btn_confirmer"));
         myList.forEach(e -> {
             observableList.add(e);
             listeClubs.setItems(observableList);

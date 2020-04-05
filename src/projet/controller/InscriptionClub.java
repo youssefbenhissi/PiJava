@@ -57,7 +57,7 @@ public class InscriptionClub implements Initializable {
         insc.setReponseDe(ReponseDe.getText());
         insc.setReponseTr(ReponseTr.getText());
         insc.setIdClub(Integer.parseInt(idClub.getText()));
-        insc.setStatus("non valide");
+        insc.setStatus("non traitée");
         insc.setIdUser(7);
         service.ajouterInscription(insc);
     }

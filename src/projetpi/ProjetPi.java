@@ -5,14 +5,19 @@
  */
 package projetpi;
 
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.io.File;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import projet.service.CategorieClubService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import projet.API.Printer;
 
 /**
  *
@@ -26,7 +31,7 @@ public class ProjetPi extends Application {
 
     public void start(Stage primaryStage) {
 
-        CategorieClubService c = new CategorieClubService();
+      /*  CategorieClubService c = new CategorieClubService();
         c.selectAll();
         try {
             URL url = new File("src/projet/views/afficherCategorieClubback.fxml").toURI().toURL();
@@ -35,8 +40,14 @@ public class ProjetPi extends Application {
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();
+        }*/Printer p=new Printer();
+        PrinterJob pj = PrinterJob.getPrinterJob();   
+        pj.setPrintable(new Printer(),p.getPageFormat(pj));
+        try {
+            pj.print();
+        } catch (PrinterException ex) {
+            Logger.getLogger(ProjetPi.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     /**

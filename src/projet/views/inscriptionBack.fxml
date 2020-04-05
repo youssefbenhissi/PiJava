@@ -14,20 +14,20 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="1036.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.inscriptionBackController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="779.0" prefWidth="1277.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.inscriptionBackController">
     <children>
-        <StackPane fx:id="afficherTsEvenementStackPane" layoutX="-1.0" prefHeight="667.0" prefWidth="1035.0" style="-fx-background-color: #02030A;">
+        <StackPane fx:id="afficherTsEvenementStackPane" layoutX="-1.0" prefHeight="779.0" prefWidth="1277.0" style="-fx-background-color: #02030A;">
             <children>
                 <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
                 <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
                 <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
                 <Pane fx:id="pnlOverview" prefHeight="667.0" prefWidth="972.0" style="-fx-background-color: #fff;">
                     <children>
-                        <VBox layoutX="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="207.0" prefWidth="1043.0" styleClass="content-page" stylesheets="@../style/backcss.css">
+                        <VBox layoutX="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="207.0" prefWidth="1266.0" styleClass="content-page" stylesheets="@../style/backcss.css">
                             <children>
                                 <HBox prefHeight="70.0" prefWidth="739.0" styleClass="header-title">
                                     <children>
-                              <HBox prefHeight="100.0" prefWidth="200.0" />
+                              <HBox prefHeight="41.0" prefWidth="90.0" />
                                         <HBox prefHeight="100.0" prefWidth="504.0">
                                             <children>
                                                 <Button mnemonicParsing="false" styleClass="title-button" stylesheets="@../style/backcss.css">
@@ -134,19 +134,20 @@
                                 </HBox>
                             </children>
                         </VBox>
-                    <ScrollPane layoutX="9.0" layoutY="207.0" prefHeight="319.0" prefWidth="1014.0" stylesheets="@style.css">
+                    <ScrollPane layoutX="9.0" layoutY="207.0" prefHeight="453.0" prefWidth="1266.0" stylesheets="@style.css">
                         <content>
-                            <TableView fx:id="listeClubs" prefHeight="317.0" prefWidth="1012.0" style="-fx-background-color: #F3F3F3;" stylesheets="@style.css">
+                            <TableView fx:id="listeClubs" prefHeight="452.0" prefWidth="1258.0" style="-fx-background-color: #F3F3F3;" stylesheets="@style.css">
                                 <columns>
-                                    <TableColumn fx:id="questionP" prefWidth="139.0" text="premiere question" />
-                                    <TableColumn fx:id="reponseP" prefWidth="132.0" text="premiere reponse" />
-                                    <TableColumn fx:id="questionD" prefWidth="114.0" text="deuxieme question" />
-                                    <TableColumn fx:id="reponseD" prefWidth="126.0" text="deuxieme reponse" />
-                                    <TableColumn fx:id="questionT" minWidth="9.0" prefWidth="138.0" text="troisieme question" />
-                                    <TableColumn fx:id="reponseT" prefWidth="140.0" text="troisieme reponse" />
-                              <TableColumn fx:id="nomClub" prefWidth="74.0" text="nom club" />
-                              <TableColumn fx:id="status" prefWidth="79.0" text="status" />
-                              <TableColumn fx:id="action" prefWidth="69.0" text="action" />
+                                    <TableColumn fx:id="questionP" prefWidth="137.0" text="premiere question" />
+                                    <TableColumn fx:id="reponseP" prefWidth="143.0" text="premiere reponse" />
+                                    <TableColumn fx:id="questionD" prefWidth="147.0" text="deuxieme question" />
+                                    <TableColumn fx:id="reponseD" prefWidth="147.0" text="deuxieme reponse" />
+                                    <TableColumn fx:id="questionT" minWidth="9.0" prefWidth="153.0" text="troisieme question" />
+                                    <TableColumn fx:id="reponseT" prefWidth="137.0" text="troisieme reponse" />
+                              <TableColumn fx:id="nomClub" prefWidth="97.0" text="nom club" />
+                              <TableColumn fx:id="status" text="status" />
+                              <TableColumn fx:id="action" prefWidth="99.0" />
+                              <TableColumn fx:id="actionD" maxWidth="105.0" prefWidth="105.0" />
                                 </columns>
                             </TableView>
                         </content>

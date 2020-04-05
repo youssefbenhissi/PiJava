@@ -351,7 +351,7 @@ public class AjouterCategorieEtClubController implements Initializable {
                 List<String> listeEmail = newsLetter.retournerListeEmails();
                 for (String i : listeEmail) {
                     System.out.println(i);
-                    //newsLetter.sendMail("youssef.benhissi@esprit.tn","ilovetennis", i, "nouveau club", c.getNom()+" "+c.getDescription());
+                    newsLetter.sendMail("youssef.benhissi@esprit.tn","ilovetennis", i, "nouveau club", c.getNom()+" "+c.getDescription());
                 }
             } else {
                 String tilte = "image uploadé";
