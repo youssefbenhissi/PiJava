@@ -15,8 +15,10 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import projet.utils.DbConnection;
 import java.sql.ResultSet;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import projet.models.Parent;
 
 /**
  *
@@ -69,18 +71,19 @@ public class EleveService implements IEleve {
     }
 
     @Override
-    public void ajouterEleve(Eleve e) {
-        String requete = "INSERT INTO eleve (nom,prenom,sexe,image,age,email)"
-                + " VALUES ('" + e.getNom() + "','" + e.getPrenom() + "','" + e.getSexe() + "','" + e.getImage() + "','" + e.getAge() + "','" + e.getEmail() + "');";
+    public boolean ajouterEleve(Eleve e) {
+        String requete = "INSERT INTO eleve (nom,prenom,sexe,image,age,email,parents_id)"
+                + " VALUES ('" + e.getNom() + "','" + e.getPrenom() + "','" + e.getSexe() + "','" + e.getImage() + "','" + e.getAge() + "','" + e.getEmail() +"','" +e.getParent_id()+  "');";
 
         try {
             pst = connection.prepareStatement(requete);
             pst.executeUpdate(requete);
             System.out.println("eleve Ajoute");
+            return true;
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-
+        return false;
     }
 
     @Override
@@ -103,6 +106,31 @@ public class EleveService implements IEleve {
             System.out.println(e1);
         }
 
+    }
+
+    public HashMap<String, Integer> getAllParents() {
+
+        HashMap<String, Integer> mapCategorie = new HashMap<String, Integer>();
+
+        String req = "SELECT id,nom FROM parents";
+
+        try {
+            statement = connection.createStatement();
+            ResultSet res = statement.executeQuery(req);
+            Parent p = new Parent();
+            while (res.next()) {
+                // categorie = new CategorieClub(res.getInt(1), res.getString(2));
+                p.setId(res.getInt(1));
+                p.setNom(res.getString(2));
+                mapCategorie.put(p.getNom(), p.getId());
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return mapCategorie;
     }
 
 }

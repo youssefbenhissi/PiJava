@@ -15,6 +15,6 @@ import projet.models.Eleve;
 public interface IEleve {
     public List<Eleve> selectAllEleve();
      public void supprimerEleve(int x);
-     public void ajouterEleve(Eleve e);
+     public boolean ajouterEleve(Eleve e);
      public void modifierE(Eleve e);
 }

@@ -51,9 +51,7 @@ public class ParentService implements IParent{
         return listeParent;
     }
 
-    public List<Parent> selectAllParents() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     public void supprimerParents(int x) {
         String sql = "DELETE FROM parents WHERE id = ? ";
