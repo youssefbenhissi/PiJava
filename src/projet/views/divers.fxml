@@ -10,7 +10,7 @@
       <AnchorPane id="AnchorPane" fx:id="pane" prefHeight="400.0" prefWidth="400.0" styleClass="pane">
          <children>
             <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="65.0" layoutY="168.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#open_facebook" prefHeight="65.0" prefWidth="65.0" ripplerFill="#517cc0" styleClass="facebook-btn" text="stats" textFill="WHITE" />
-            <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="168.0" layoutY="65.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#open_twitter" prefHeight="65.0" prefWidth="65.0" ripplerFill="#64ccf1" styleClass="twitter-btn" text="telecharger">
+            <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="168.0" layoutY="65.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#open_twitter" prefHeight="65.0" prefWidth="65.0" ripplerFill="#64ccf1" styleClass="twitter-btn" text="inscriptions">
                <font>
                   <Font size="10.0" />
                </font></JFXButton>

@@ -63,7 +63,14 @@ public class UIController implements Initializable {
     }
 
     @FXML
-    private void open_twitter(ActionEvent event) {
+    private void open_twitter(ActionEvent event) throws IOException {
+         Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/projet/views/inscriptionBack.fxml"));
+        Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
     }
 
     @FXML

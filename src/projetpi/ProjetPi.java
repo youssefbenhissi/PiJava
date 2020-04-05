@@ -29,7 +29,7 @@ public class ProjetPi extends Application {
         CategorieClubService c = new CategorieClubService();
         c.selectAll();
         try {
-            URL url = new File("src/projet/views/FXML.fxml").toURI().toURL();
+            URL url = new File("src/projet/views/afficherCategorieClubback.fxml").toURI().toURL();
             Parent root = FXMLLoader.load(url);
             primaryStage.setScene(new Scene(root));
             primaryStage.show();

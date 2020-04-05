@@ -203,7 +203,7 @@ public class ClubService implements IClub {
     @Override
     public List<Club> retournerListeDesClubsSupprission(int id) {
         List<Club> categories = new ArrayList<Club>();
-        String sql = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image FROM club c WHERE c.categorie_id LIKE ? ";
+        String sql = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image,c.questionPr,c.questionDe,c.questionTr FROM club c WHERE c.categorie_id LIKE ? ";
         PreparedStatement statement;
 
         try {
@@ -223,6 +223,9 @@ public class ClubService implements IClub {
                 c.setMoyenneLike(rs.getFloat(5));
                 // c.setNomcategorie(rs.getString(6));
                 c.setPath(rs.getString(6));
+                c.setQuestionPr(rs.getString(7));
+                c.setQuestionDe(rs.getString(8));
+                c.setQuestionTr(rs.getString(9));
                 categories.add(c);
             }
         } catch (SQLException ex) {
@@ -239,21 +242,21 @@ public class ClubService implements IClub {
 
         if (categorie == null) {
             if (triNom == null) {
-                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image,c.nbrLike,c.nbrFoisLike,cat.nomCategorie FROM club c,categorie_club cat WHERE c.categorie_id = cat.id ORDER BY c.id DESC ";
+                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image,c.nbrLike,c.nbrFoisLike,cat.nomCategorie,c.questionPr,c.questionDe,c.questionTr FROM club c,categorie_club cat WHERE c.categorie_id = cat.id ORDER BY c.id DESC ";
                 System.out.println("c est le cas");
             }
 
             if (triNom == "nom_asc") {
-                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image,c.nbrLike,c.nbrFoisLike,cat.nomCategorie  FROM club c,categorie_club cat WHERE c.categorie_id = cat.id ORDER BY(c.nom) ASC";
+                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image,c.nbrLike,c.nbrFoisLike,cat.nomCategorie,c.questionPr,c.questionDe,c.questionTr  FROM club c,categorie_club cat WHERE c.categorie_id = cat.id ORDER BY(c.nom) ASC";
             }
             if (triNom == "nom_desc") {
-                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image,c.nbrLike,c.nbrFoisLike,cat.nomCategorie  FROM club c,categorie_club cat WHERE c.categorie_id = cat.id ORDER BY(c.nom) DESC";
+                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image,c.nbrLike,c.nbrFoisLike,cat.nomCategorie,c.questionPr,c.questionDe,c.questionTr  FROM club c,categorie_club cat WHERE c.categorie_id = cat.id ORDER BY(c.nom) DESC";
             }
             if (triNom == "etoi_asc") {
-                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image,c.nbrLike,c.nbrFoisLike,cat.nomCategorie  FROM club c,categorie_club cat WHERE c.categorie_id = cat.id ORDER BY(c.moyenneLike) ASC";
+                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image,c.nbrLike,c.nbrFoisLike,cat.nomCategorie,c.questionPr,c.questionDe,c.questionTr  FROM club c,categorie_club cat WHERE c.categorie_id = cat.id ORDER BY(c.moyenneLike) ASC";
             }
             if (triNom == "etoi_desc") {
-                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image,c.nbrLike,c.nbrFoisLike,cat.nomCategorie  FROM club c,categorie_club cat WHERE c.categorie_id = cat.id ORDER BY(c.moyenneLike) DESC";
+                req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,c.image,c.nbrLike,c.nbrFoisLike,cat.nomCategorie,c.questionPr,c.questionDe,c.questionTr  FROM club c,categorie_club cat WHERE c.categorie_id = cat.id ORDER BY(c.moyenneLike) DESC";
             }
 
         } else {
@@ -279,6 +282,9 @@ public class ClubService implements IClub {
                 c.setNbrLike(rs.getInt(7));
                 c.setNbrFoisLike(rs.getInt(8));
                 c.setNomcategorie(rs.getString(9));
+                c.setQuestionPr(rs.getString(10));
+                c.setQuestionDe(rs.getString(11));
+                c.setQuestionTr(rs.getString(12));
                 listproduits.add(c);
             }
 

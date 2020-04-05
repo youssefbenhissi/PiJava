@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="596.0" prefWidth="532.0" style="-fx-background-color: #2A0033;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.InscriptionClub">
+   <children>
+      <Pane layoutY="75.0" prefHeight="521.0" prefWidth="539.0">
+         <children>
+            <TextField fx:id="ReponsePr" layoutX="54.0" layoutY="89.0" prefHeight="34.0" prefWidth="430.0" style="-fx-border-color: #9643A9; -fx-background-color: #2A0033; -fx-background-insets: 0; -fx-border-radius: 20;" styleClass="text-input" stylesheets="@../style/styleInscriptionClub.css" />
+            <Label fx:id="questionP" layoutX="53.0" layoutY="57.0" text="premiere question" textFill="#ddd9d9">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="questionD" layoutX="55.0" layoutY="153.0" text="deuxieme question" textFill="#ddd9d9">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="questionT" layoutX="53.0" layoutY="265.0" text="troisieme question" textFill="#ddd9d9">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Separator layoutX="56.0" layoutY="363.0" opacity="0.15" prefHeight="3.0" prefWidth="423.0" />
+            <Separator layoutX="54.0" layoutY="36.0" opacity="0.15" prefHeight="3.0" prefWidth="423.0" />
+            <Button layoutX="139.0" layoutY="390.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: #FCBB31;" text="CANCEL" textFill="WHITE" />
+            <Button layoutX="273.0" layoutY="390.0" mnemonicParsing="false" onAction="#ajouterInscrip" prefHeight="34.0" prefWidth="112.0" style="-fx-background-color: #CE201C;" text="Enregistrer" textFill="WHITE" />
+            <TextField fx:id="ReponseDe" layoutX="58.0" layoutY="181.0" prefHeight="34.0" prefWidth="430.0" style="-fx-border-color: #9643A9; -fx-background-color: #2A0033; -fx-background-insets: 0; -fx-border-radius: 20;" styleClass="text-input" stylesheets="@../style/styleInscriptionClub.css" />
+            <TextField fx:id="ReponseTr" layoutX="51.0" layoutY="299.0" prefHeight="34.0" prefWidth="430.0" style="-fx-border-color: #9643A9; -fx-background-color: #2A0033; -fx-background-insets: 0; -fx-border-radius: 20;" styleClass="text-input" stylesheets="@../style/styleInscriptionClub.css" />
+            <Label fx:id="idClub" layoutX="421.0" layoutY="14.0" />
+         </children>
+      </Pane>
+      <Label layoutX="218.0" layoutY="40.0" text="INSCRIPTION" textFill="#ddd9d9">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="515.0" layoutY="4.0" prefHeight="20.0" prefWidth="21.0" text="X" textFill="#ddd9d9">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

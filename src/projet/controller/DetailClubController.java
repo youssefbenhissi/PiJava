@@ -3,20 +3,27 @@ package projet.controller;
 import animatefx.animation.Swing;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.controlsfx.control.Rating;
 import projet.models.Club;
@@ -44,7 +51,9 @@ public class DetailClubController implements Initializable {
     private Label capacite;
     @FXML
     private Label nomClub;
-    
+    @FXML
+    private Button inscription;
+
     @FXML
     private Rating rating;
     @FXML
@@ -56,8 +65,6 @@ public class DetailClubController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         rating.setUpdateOnHover(false);
-
-        
 
     }
 
@@ -73,7 +80,7 @@ public class DetailClubController implements Initializable {
                 AnimationType type = AnimationType.POPUP;
                 Club ClubDeBase = new Club();
                 int nbrFoisLike = exp.getNbrFoisLike();
-                System.out.println("nombre precedent: "+nbrFoisLike);
+                System.out.println("nombre precedent: " + nbrFoisLike);
                 nbrFoisLike++;
                 System.out.println(nbrFoisLike);
                 int nbrLike = exp.getNbrLike();
@@ -116,5 +123,22 @@ public class DetailClubController implements Initializable {
         Stage stage = (Stage) layer1.getScene().getWindow();
         // do what you have to do
         stage.close();
+    }
+
+    @FXML
+    public void Inscription(ActionEvent even) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/projet/views/InscriptionClub.fxml"));
+        Parent root = loader.load();
+        InscriptionClub controller = (InscriptionClub) loader.getController();
+        controller.idClub.setText(Integer.toString(experience.getId()));
+        controller.questionP.setText(experience.getQuestionPr());
+        controller.questionD.setText(experience.getQuestionDe());
+        controller.questionT.setText(experience.getQuestionTr());
+        Stage primaryStage = new Stage();
+        Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
     }
 }

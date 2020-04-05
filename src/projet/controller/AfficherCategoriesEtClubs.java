@@ -121,11 +121,7 @@ public static AnchorPane contnt = null;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            initDrawer();
-        } catch (IOException ex) {
-            Logger.getLogger(AfficherCategoriesEtClubs.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         getCategorie();
         tri_combo.getItems().addAll("Nom, A à Z", "Nom, Z à A", "Moyenne Croissante", "Moyenne Decroissante");
         listProduit = FXCollections.observableArrayList(ps.getListProduitsFilter(null, null));
@@ -393,6 +389,7 @@ public static AnchorPane contnt = null;
             Parent p = Loader.load();
 
             DetailClubController display = Loader.getController();
+            System.out.println("houni"+exp.getQuestionPr());
             display.setClub(exp);
 
             Dialog dialog = new Dialog();

@@ -9,11 +9,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.Button;
+import projet.models.CategorieClub;
 import projet.utils.DbConnection;
 import projet.models.Inscription;
 import static projet.service.CategorieClubService.statement;
@@ -29,10 +32,10 @@ public class InscriptionService {
 
     DbConnection cnx = DbConnection.getInstance();
     Connection connection = cnx.getConnection();
-
+    
     public List<Inscription> selectAllInscris() {
         ArrayList<Inscription> clubs = new ArrayList<>();
-        String req = "SELECT c.id,c.reponsePr,c.reponseDe,c.reponseTr,c.club_id,c.eleve_id,c.status,c.questionPr,c.questionDe,c.questionTr FROM inscription c";
+        String req = "SELECT c.id,c.reponsePr,c.reponseDe,c.reponseTr,c.club_id,c.eleve_id,c.status,c.questionPr,c.questionDe,c.questionTr,cl.nom FROM inscription c,club cl where cl.id=c.club_id";
         try {
             PreparedStatement ps = connection.prepareStatement(req);
             ps.executeQuery();
@@ -50,12 +53,30 @@ public class InscriptionService {
                 c.setQuestionPr(rs.getString(8));
                 c.setQuestionDe(rs.getString(9));
                 c.setQuestionTr(rs.getString(10));
+                c.setNomClub(rs.getString(11));
+                c.setBtn_delete(new Button("Supprimer"));
                 clubs.add(c);
             }
         } catch (Exception ex) {
             Logger.getLogger(CategorieClubService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return clubs;
+    }
+    public boolean supprimerInscription(int id) {
+        
+         String req="DELETE FROM inscription WHERE id="+id;
+              
+        try {
+            pst = connection.prepareStatement(req);
+            int res = pst.executeUpdate();
+
+            if(res > 0) {
+                    return true;
+            }	
+        } catch (SQLException e1) {
+                e1.printStackTrace();
+        }   
+        return false;
     }
     public List<Integer> getState() {
         String req11 = "Select id from club";
@@ -115,5 +136,17 @@ public class InscriptionService {
             e.printStackTrace();
         }
         return g;
+    }
+    public void ajouterInscription(Inscription c) {
+        String requete = "INSERT INTO inscription (reponsePr,reponseDe,reponseTr,club_id,eleve_id,status,questionPr,questionDe,questionTr)"
+                + " VALUES ('" + c.getReponseTr()+ "','"+c.getReponseDe()+ "','"+c.getReponseTr()+ "','"+c.getIdClub()+"','"+c.getIdUser()+"','"+c.getStatus()+"','"+c.getQuestionPr()+"','"+c.getReponseDe()+"','"+c.getReponseTr()+"');";
+
+        try {
+            pst = connection.prepareStatement(requete);
+            pst.executeUpdate(requete);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+
     }
 }
