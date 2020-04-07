@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Iheb/Documents/NetBeansProjects/projetPi/src/projet/service/CategorieEvenementService.java</file>
-            <file>file:/C:/Users/Iheb/Documents/NetBeansProjects/projetPi/src/projet/models/CategorieEvenement.java</file>
+            <file>file:/C:/Users/Iheb/Documents/NetBeansProjects/projetPi/src/projet/controller/ModifierEvenementController.java</file>
+            <file>file:/C:/Users/Iheb/Documents/NetBeansProjects/projetPi/src/projet/controller/EvenementBackController.java</file>
             <file>file:/C:/Users/Iheb/Documents/NetBeansProjects/projetPi/src/projet/models/Evenement.java</file>
+            <file>file:/C:/Users/Iheb/Documents/NetBeansProjects/projetPi/src/projet/controller/ModifierCategorieEvenementController.java</file>
             <file>file:/C:/Users/Iheb/Documents/NetBeansProjects/projetPi/src/projet/service/EvenementService.java</file>
-            <file>file:/C:/Users/Iheb/Documents/NetBeansProjects/projetPi/src/projetpi/ProjetPi.java</file>
-            <file>file:/C:/Users/Iheb/Documents/NetBeansProjects/projetPi/src/projet/utils/DbConnection.java</file>
         </group>
     </open-files>
 </project-private>

@@ -6,6 +6,8 @@ import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.events.JFXDialogEvent;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,9 +20,17 @@ import javafx.scene.effect.BoxBlur;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.util.Duration;
+import jxl.write.WriteException;
+import projet.service.EvenementService;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 public class PanneauDeControle {
 
@@ -61,9 +71,24 @@ public class PanneauDeControle {
     /**
      * test
      */
+    
     @FXML
     void afficherMesEvenementGUI(ActionEvent event) {
-
+        EvenementService service =new EvenementService();
+        try {
+            service.exportXLS();
+             String tilte = "fichier pret";
+                String message = "le fichier est telecharge";
+                TrayNotification tray = new TrayNotification();
+                AnimationType type = AnimationType.POPUP;
+                tray.setAnimationType(type);
+                tray.setTitle(tilte);
+                tray.setMessage(message);
+                tray.setNotificationType(NotificationType.SUCCESS);
+                tray.showAndDismiss(Duration.millis(3000));
+        } catch (WriteException ex) {
+            Logger.getLogger(PanneauDeControle.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
@@ -72,13 +97,25 @@ public class PanneauDeControle {
     }
 
     @FXML
-    void afficherTsEvenementGUI(ActionEvent event) {
-        
+    void ajouterCategorieGUI(ActionEvent event) throws IOException {
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/projet/views/AjouterCategorieEvenement.fxml"));
+        Scene scene = new Scene(root);  
+        scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
     }
 
     @FXML
     public void ajouterEvenementGUI(ActionEvent even) throws IOException {
-        
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/projet/views/AjouterEvenement.fxml"));
+        Scene scene = new Scene(root);  
+        scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
     }
 
 }

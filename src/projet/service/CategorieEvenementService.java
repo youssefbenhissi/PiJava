@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.Button;
 import projet.models.CategorieEvenement;
 import projet.models.Evenement;
 import projet.utils.DbConnection;
@@ -48,7 +49,7 @@ public class CategorieEvenementService implements ICategorieEvenement {
                 c.setNomCategorieEvenement(rs.getString(2));
                 c.setImageCat(rs.getString(3));
                 c.setDescriptionCat(rs.getString(4));
-
+                c.setBtn_delete(new Button("Supprimer"));
                 CategorieEvenements.add(c);
             }
         } catch (Exception ex) {
@@ -57,32 +58,35 @@ public class CategorieEvenementService implements ICategorieEvenement {
         return CategorieEvenements;
     }
     @Override
-    public void supprimerCategorieEvenement(int x) {
+    public boolean supprimerCategorieEvenement(int x) {
         String sql = "DELETE FROM categorie_evenement WHERE id = ? ";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, x);
             statement.executeUpdate();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(CategorieEvenementService.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return false;
     }
     @Override
-    public void ajouterCategorieEvenement(CategorieEvenement c) {
+    public boolean ajouterCategorieEvenement(CategorieEvenement c) {
         String requete = "INSERT INTO categorie_evenement (nomCategorieEvenement,image,description)"
                 + " VALUES ( '" + c.getNomCategorieEvenement()+ "','" + c.getImageCat()+ "', '" + c.getDescriptionCat()+ "' );";
 
         try {
             pst = connection.prepareStatement(requete);
             pst.executeUpdate(requete);
-            System.out.println("categroie Ajoute");
+            return true;
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-
+        return false;
     }
     @Override
     public boolean modifierCategorieEvenement(CategorieEvenement c) {
+        System.out.println(c.getNomCategorieEvenement());
         String req = "UPDATE categorie_evenement SET nomCategorieEvenement = ?, image= ? , description = ?   WHERE id= ?";
         try {
             pst = connection.prepareStatement(req);

@@ -14,8 +14,8 @@ import projet.models.CategorieEvenement;
  */
 public interface ICategorieEvenement {
      public List<CategorieEvenement> selectAllCategorieEvenement();
-     public void supprimerCategorieEvenement(int x);
-      public void ajouterCategorieEvenement(CategorieEvenement c);
+     public boolean supprimerCategorieEvenement(int x) ;
+      public boolean ajouterCategorieEvenement(CategorieEvenement c);
       public boolean modifierCategorieEvenement(CategorieEvenement c);
     
 }

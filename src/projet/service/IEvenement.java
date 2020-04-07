@@ -5,6 +5,7 @@
  */
 package projet.service;
 
+import java.util.HashMap;
 import java.util.List;
 import projet.models.Evenement;
 
@@ -14,8 +15,9 @@ import projet.models.Evenement;
  */
 public interface IEvenement {
     public List<Evenement> selectAllEvenement();
-    public void supprimerEvenement(int x);
-    public void ajouterEvenement(Evenement c);
+    public boolean supprimerEvenement(int x);
+    public boolean ajouterEvenement(Evenement c) ;
     public boolean modifierEvenement(Evenement c);
+    public HashMap<String, Integer> getAllCategorie();
   
 }

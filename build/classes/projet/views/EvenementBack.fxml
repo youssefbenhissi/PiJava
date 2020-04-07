@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import javafx.geometry.Insets?>
@@ -169,17 +168,18 @@
                                 </VBox>
                             </children>
                         </HBox>
-                        <ScrollPane layoutX="14.0" layoutY="345.0" prefHeight="224.0" prefWidth="746.0" stylesheets="@style.css">
+                        <ScrollPane layoutX="14.0" layoutY="345.0" prefHeight="224.0" prefWidth="763.0" stylesheets="@style.css">
                             <content>
-                                <TableView fx:id="listeEvenement" prefHeight="188.0" prefWidth="745.0">
+                                <TableView fx:id="listeEvenement" prefHeight="212.0" prefWidth="765.0">
                                     <columns>
                                         <TableColumn fx:id="idEvenement" prefWidth="75.0" text="id" />
-                                        <TableColumn fx:id="nomEvenement" prefWidth="121.0" text="nom" />
-                                        <TableColumn fx:id="nomCategorie" prefWidth="129.0" text="nom categorie" />
-                                        <TableColumn fx:id="capaciteEvenement" prefWidth="76.0" text="capacite" />
-                                        <TableColumn fx:id="descriptionEvenement" prefWidth="141.0" text="description" />
-                                        <TableColumn fx:id="prixEvenement" prefWidth="98.0" text="prix" />
-                                        <TableColumn fx:id="dateEvenement" prefWidth="103.0" text="date" />
+                                        <TableColumn fx:id="nomEvenement" prefWidth="73.0" text="nom" />
+                                        <TableColumn fx:id="nomCategorie" prefWidth="121.0" text="nom categorie" />
+                                        <TableColumn fx:id="capaciteEvenement" prefWidth="107.0" text="capacite" />
+                                        <TableColumn fx:id="descriptionEvenement" prefWidth="121.0" text="description" />
+                                        <TableColumn fx:id="prixEvenement" prefWidth="84.0" text="prix" />
+                                        <TableColumn fx:id="dateEvenement" maxWidth="100.0" prefWidth="77.0" text="date" />
+                              <TableColumn fx:id="actionEvenement" maxWidth="90.0" prefWidth="87.0" text="Action" />
                                     </columns>
                                 </TableView>
                             </content>
@@ -194,15 +194,14 @@
                                 <TableView fx:id="listeCategorie" prefHeight="177.0" prefWidth="749.0">
                                     <columns>
                                         <TableColumn fx:id="id" prefWidth="75.0" text="id" />
-                                        <TableColumn fx:id="nomCategorieEvenement" prefWidth="359.0" text="nom categorie" />
-                                        <TableColumn fx:id="descriptionCat" prefWidth="310.0" text="description" />
+                                        <TableColumn fx:id="nomCategorieEvenement" prefWidth="222.0" text="nom categorie" />
+                                        <TableColumn fx:id="descriptionCat" maxWidth="300.0" prefWidth="447.0" text="description" />
+                              <TableColumn fx:id="actionCategprie" prefWidth="135.0" text="Action" />
                                     </columns>
                                 </TableView>
                             </content>
                         </ScrollPane>
                         <JFXHamburger fx:id="hamburger" layoutX="733.0" layoutY="75.0" />
-                        <JFXButton layoutX="14.0" layoutY="83.0" prefHeight="27.0" prefWidth="112.0" style="-fx-background-color: #234b86;;" text="Ajouter Categorie" textFill="WHITE" />
-                  <JFXButton layoutX="14.0" layoutY="303.0" prefHeight="27.0" prefWidth="127.0" style="-fx-background-color: #234b86;;" text="Ajouter Evenement" textFill="WHITE" />
                     </children>
                 </Pane>
             </children>

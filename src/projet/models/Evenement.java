@@ -6,6 +6,11 @@
 
 package projet.models;
 import java.util.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import projet.controller.EvenementBackController;
+import projet.service.EvenementService;
 
 /**
  *
@@ -24,9 +29,34 @@ public class Evenement {
     private int idUser;
     private String nomCategorie;
     private int idCatgeorie;
-
+    private Button btn_delete;
     public int getIdCatgeorie() {
         return idCatgeorie;
+    }
+
+    public Button getBtn_delete() {
+        return btn_delete;
+    }
+
+    public void setBtn_delete(Button btn_delete) {
+        this.btn_delete = btn_delete;
+        this.btn_delete.setOnAction(event -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText("Vous voulez vraiment supprimer cet evenement?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                EvenementService service = new EvenementService();
+                if (service.supprimerEvenement(idEvenement)) {
+                    EvenementBackController gestionInscription = new EvenementBackController();
+                    gestionInscription.myObservableList.remove(this);
+                }
+            } else {
+
+            }
+        });
+
     }
 
     public void setIdCatgeorie(int idCatgeorie) {
