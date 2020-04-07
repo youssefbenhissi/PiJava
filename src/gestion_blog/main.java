@@ -5,6 +5,12 @@
  */
 package gestion_blog;
 
+import gestion_blog.service.GestionTags;
+import gestion_blog.service.GestionArticles;
+import gestion_blog.service.GestionCategories;
+import gestion_blog.models.Categories;
+import gestion_blog.models.Tags;
+import gestion_blog.models.Articles;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,29 +27,30 @@ public class main {
      */
     public static void main(String[] args) {
         
-        Tags tag = new Tags(1 ,"TAG-2222222-TEST");
+        Tags tag = new Tags(16 ,"TAG");
        GestionTags gestag = new GestionTags();
        
-     /**if(gestag.AjouterTag(tag2)){
+     /**if(gestag.AjouterTag(tag)){
            System.out.println("Une nouvelle tag a été insérée avec succès ! ");
        }else{
            System.out.println("Une erreur est survenue ! ");
-       }    **/
+       } **/
        //gestag.AfficherTags();
        
-      /** if(gestag.ModifierTag(tag1)){
+      /**if(gestag.ModifierTag(tag)){
            System.out.println("Une tag existante a été mise à jour avec succès!");
        }else{
            System.out.println("Une erreur est survenue ! "); 
        }**/
-           
-       
-       /** if(gestag.SupprimerTag(tag2)){
+         //  gestag.AfficherTags(); 
+        gestag.AfficherTags(); 
+      /** if(gestag.SupprimerTag(tag)){
            System.out.println("Une tag a été supprimée avec succès!");
        }else{
            System.out.println("Une erreur est survenue ! "); 
-       }
-       gestag.AfficherTags(); **/
+       }**/
+       
+       gestag.AfficherTags(); 
        
      
         
@@ -52,7 +59,7 @@ public class main {
         
       //  gstcat.AfficherCat();
         
-         /** if(gstcat.AjouterCat(cat)){
+        /** if(gstcat.AjouterCat(cat)){
             System.out.println("Une nouvelle catégorie a été insérée avec succès ! ");
         }else{
             System.out.println("Une erreur est survenue ! ");
@@ -74,7 +81,7 @@ public class main {
                // gstcat.AfficherCat();
 List<Tags> listags = new ArrayList<Tags>();
 listags.add(tag);
-        Articles arti = new Articles("tesss", "teeee", "tesss", "teeeeee", "2020-04-02", 65 , 0, 0, 3, listags);
+        Articles arti = new Articles("tesss", "teeee", "tesss", "teeeeee", "2020-04-02", 69 , 0, 0, 3, listags);
        GestionArticles gestarti = new GestionArticles();
        
        
@@ -91,9 +98,9 @@ listags.add(tag);
        } **/
      
        
-       gestarti.AfficherArticle();
+      // gestarti.AfficherArticle();
        
-      /** if(gestarti.SupprimerArticle(arti)){
+       /**if(gestarti.SupprimerArticle(arti)){
              System.out.println("POST a été supprimée avec succès!");
         }else{
             System.out.println("Une erreur est survenue ! ");
