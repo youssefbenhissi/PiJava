@@ -6,6 +6,7 @@
 package gestion_blog.service;
 
 
+import gestion_blog.models.Articles;
 import gestion_blog.models.Categories;
 import gestion_blog.utils.Conx_BD;
 import java.sql.Connection;
@@ -26,7 +27,7 @@ public class GestionCategories {
         List<Categories> listcat = new ArrayList<Categories>();
     Conx_BD connbase = new Conx_BD();
     Connection conn = connbase.obtenirconnexion();
-
+ List<Articles> listarticle = new ArrayList<Articles>();
     public GestionCategories() {
     }
     
@@ -150,6 +151,14 @@ if (rowsUpdated > 0) {
 PreparedStatement statement;
         try 
         {
+            GestionArticles gst = new GestionArticles();
+            listarticle = gst.getArticles();
+            for(int i = 0 ; i < listarticle.size(); i++){
+                if(listarticle.get(i).getCat_id() == cat.getId()){
+                    gst.SupprimerArticle(listarticle.get(i));
+                }
+            }
+            
     statement = conn.prepareStatement(sql);
 statement.setString(1, Integer.toString(cat.getId()));
  
@@ -211,9 +220,41 @@ while (result.next()){
         return null;
     }
       
+        
+         public void RechercheCat(String terme){
+         
+         String sql = "SELECT * FROM categorie WHERE categorie.nom LIKE ?";
+ 
+         PreparedStatement statement;
+        try 
+        {
+         statement = conn.prepareStatement(sql);
+          statement.setString(1, terme);
+         ResultSet result = statement.executeQuery();
+    
+ 
+while (result.next()){
+    String id = result.getString("id");
+    int idint = Integer.parseInt(id);
+    String nom = result.getString("nom");
+    String description = result.getString("description");
+    Categories cat = new Categories(idint, nom, description);
+    listcat.add(cat);
+}
+ 
+       
+       } catch (SQLException ex) {
+           System.out.println("Une erreur est survenue ! ");  
+        }
+     }       
       
       
-      
+     public List<Categories> getArticlesSearch(String terme) {
+              terme = "%"+terme+"%";
+          this.RechercheCat(terme);
+          
+        return listcat;
+    } 
       
       
       

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="center" hgap="10.0" prefHeight="720.0" prefWidth="1366.0" vgap="5.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestion_blog.controller.ModifierCategorie">
+    <padding><Insets bottom="1.0" left="3.0" right="1.0" top="3.0" /></padding>
+    <columnConstraints>
+        <ColumnConstraints halignment="RIGHT" maxWidth="Infinity" minWidth="100.0" prefWidth="100.0">
+        </ColumnConstraints>
+        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="200.0">
+        </ColumnConstraints>
+    </columnConstraints>
+
+    <!-- Add Header Label -->
+    <Label alignment="CENTER" prefHeight="98.0" prefWidth="608.0" style="-fx-background-color: #dedede; -fx-background-radius: 1em;" text="Modifier Catégorie" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowSpan="1">
+        <font>
+            <Font name="Arial" size="24" />
+        </font>
+        <GridPane.margin>
+            <Insets left="109.0" />
+        </GridPane.margin>
+    </Label>
+
+
+
+    <!-- Add Name Label -->
+    <Label alignment="CENTER" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: #dedede; -fx-background-radius: 1em;" text="*Titre : " GridPane.rowIndex="4">
+    </Label>
+    <!-- Add Name Text Field -->
+    <TextField fx:id="titre" prefHeight="40" promptText="Titre mini 3 caractères  -  200 max" style="-fx-background-radius: 1em;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+
+    <!-- Add Email Label -->
+    <Label alignment="CENTER" prefHeight="38.0" prefWidth="100.0" style="-fx-background-color: #dedede; -fx-background-radius: 1em;" text="*Description :" GridPane.rowIndex="5">
+    </Label>
+    <!-- Add Email Text Field -->
+    <TextField fx:id="descri" prefHeight="40" promptText="Titre mini 10 caractères  -  300 max" style="-fx-background-radius: 1em;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+
+    <!-- Add Submit Button -->
+    <Button fx:id="submitButton" defaultButton="true" onAction="#handleModificationCateg" prefHeight="40" prefWidth="100" text="Modifier" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.rowSpan="1">
+        <GridPane.margin>
+            <Insets bottom="20" left="0" right="0" top="20" />
+        </GridPane.margin>
+    </Button>
+   <Label fx:id="taglabel" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <GridPane.margin>
+         <Insets left="205.0" />
+      </GridPane.margin>
+   </Label>
+   <Button fx:id="Retourner" defaultButton="true" onAction="#retouraccu" prefHeight="42.0" prefWidth="100" text="Retour">
+      <graphic>
+         <ImageView fitHeight="16.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../images/unnamed%20(1).png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </Button>
+   <rowConstraints>
+      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="43.0" valignment="TOP" />
+      <RowConstraints maxHeight="-Infinity" prefHeight="100.0" valignment="TOP" />
+      <RowConstraints valignment="TOP" />
+      <RowConstraints valignment="TOP" />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints minHeight="10.0" prefHeight="100.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+   </rowConstraints>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</GridPane>

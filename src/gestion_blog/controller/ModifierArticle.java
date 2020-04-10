@@ -105,12 +105,12 @@ public class ModifierArticle implements Initializable{
     
     
     private int id;
-    private String titre_Article = null;
-    private String Descri_Article = null;
+    private String titre_Article ="";
+    private String Descri_Article ="" ;
     private int catid_Article ;
-    private String date_Article = null;
-    private String contenu_Article = null;
-    private String Image_Article = null;
+    private String date_Article="" ;
+    private String contenu_Article ;
+    private String Image_Article="" ;
     private int typeid = 0;
     
     File file ;
@@ -118,6 +118,7 @@ public class ModifierArticle implements Initializable{
     boolean tagchange = false;
     boolean imagechange = false;
     boolean typechange = false;
+    boolean contenuchange = false;
     
     
     private boolean errortitre = false;
@@ -274,6 +275,7 @@ public class ModifierArticle implements Initializable{
                     errorcont = true;
                 contenu.setStyle("-fx-border-color :#ff4242;");
             }else{
+                    contenuchange = true;
                     contenu_Article = contenu.getHtmlText();
                     errorcont = false;
                 contenu.setStyle("-fx-background-radius: 0em ;");
@@ -347,6 +349,10 @@ public class ModifierArticle implements Initializable{
         
         
         contenu.setHtmlText(articlemodf.getContenu());
+        if(!contenuchange){
+            this.contenu_Article = articlemodf.getContenu();
+        }
+        
         if(!imagechange){
             this.Image_Article = articlemodf.getImage();
         }
@@ -412,14 +418,14 @@ public class ModifierArticle implements Initializable{
        
         Image image = Toolkit.getDefaultToolkit().createImage("/gestion_blog/images/how-to-edit-a-png-image-1.png");
        
-        TrayIcon trayIcon = new TrayIcon(image, "Ajout Article");
+        TrayIcon trayIcon = new TrayIcon(image, "Modification Article");
         //Let the system resize the image if needed
         trayIcon.setImageAutoSize(true);
         //Set tooltip text for the tray icon
         //trayIcon.setToolTip("System tray icon demo");
         tray.add(trayIcon);
 
-        trayIcon.displayMessage("Ajout Article", msg, TrayIcon.MessageType.INFO);
+        trayIcon.displayMessage("Modification Article", msg, TrayIcon.MessageType.INFO);
     }
     
          @FXML

@@ -193,27 +193,28 @@ public class RechercheArticle implements Initializable{
         }
         if(actionEvent.getSource()==recherchebtn)
         {
-         
-             if(this.terme != null && !erreurrech){
-             Stage stage = (Stage) recherchebtn.getScene().getWindow();
+           if(this.terme != null && !erreurrech){
+               Stage stage = (Stage) recherchebtn.getScene().getWindow();
                   
-                   FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestion_blog/views/RechercheArticle.fxml"));
+                   FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestion_blog/views/RechercheCategories.fxml"));
         Parent root = loader.load();
-        RechercheArticle rech;
+        RechercheCategorie rech;
                 rech = loader.getController();
                 rech.handleRecherche(this.terme);
         stage.getIcons().add(new javafx.scene.image.Image("/gestion_blog/images/article-512.png"));
-        stage.setTitle("Gestion de Blog");
+        stage.setTitle("Recherche Categorie");
         Scene scene = new Scene(root);
-        stage.setScene(scene);
-             }else{
-                 try {
+        stage.setScene(scene);  
+            }else{
+                try {
                 this.displayTray("Minimum 3 caracteres !!!");
             } catch (AWTException ex) {
                 Logger.getLogger(AjoutArticle.class.getName()).log(Level.SEVERE, null, ex);
             }
-             }
+            }
             
+            
+           
                   
             
         }
@@ -300,7 +301,7 @@ public class RechercheArticle implements Initializable{
         URL url = new File("src/gestion_blog/views/Home.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         stage.getIcons().add(new javafx.scene.image.Image("/gestion_blog/images/article-512.png"));
-        stage.setTitle("Gestion de Blog");
+        stage.setTitle("Recherche Articles");
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
