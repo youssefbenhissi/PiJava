@@ -11,7 +11,7 @@
 
 <HBox fx:id="itemC" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="1050.0" spacing="25.0" style="-fx-background-color: #b5b5b5; -fx-background-radius: 1em; -fx-background-insets: 0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestion_blog.controller.AffichageArticleList">
     <children>
-        <ImageView fitHeight="31.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="iconartic" fitHeight="31.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/articles-icon-png-310555-free-icons-library-article-png-200_200.jpg" />
             </image>
@@ -43,7 +43,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
         </Button>
-      <Button id="supp" mnemonicParsing="false" prefHeight="10.0" prefWidth="72.0" stylesheets="@../style/style.css" text="Supprimer">
+      <Button id="supp" fx:id="supp" mnemonicParsing="false" onAction="#handleClicks" prefHeight="10.0" prefWidth="72.0" stylesheets="@../style/style.css" text="Supprimer">
           <HBox.margin>
                 <Insets />
             </HBox.margin>

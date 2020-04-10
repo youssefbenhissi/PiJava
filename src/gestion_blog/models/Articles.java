@@ -30,6 +30,16 @@ public class Articles {
         this.listags = listt;
     }
 
+    public Articles() {
+    }
+
+    public Articles(int id) {
+        this.id = id;
+    }
+    
+    
+    
+
     public String getTitre() {
         return titre;
     }

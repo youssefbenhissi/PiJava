@@ -23,8 +23,8 @@ import java.util.logging.Logger;
  * @author geek alaa
  */
 public class GestionArticles {
-    
-   
+    private List<Tags> listagsold = new ArrayList<Tags>();
+   private List<Tags> listagsnew = new ArrayList<Tags>();
     List<Articles> listarticle = new ArrayList<Articles>();
     Conx_BD connbase = new Conx_BD();
     Connection conn = connbase.obtenirconnexion();
@@ -120,7 +120,6 @@ public class GestionArticles {
      
       public boolean ModifierArticle(Articles art){
           String sql = "UPDATE article SET titre =? , image =? , contenu =? , categorie_id =? , date =? , description =?, vues =?, type =?  WHERE id=?";
- 
 PreparedStatement statement;
         try 
         {
@@ -136,13 +135,44 @@ PreparedStatement statement;
         statement.setString(8, Integer.toString(art.getType()));
         statement.setString(9, Integer.toString(art.getId()));
  
-        int rowsUpdated = statement.executeUpdate();
+        int rowsUpdated = statement.executeUpdate();  
+        
+        
+   int index = listarticle.indexOf(art);
+    //listagsold = listarticle.get(index).getListags();
+    listagsnew = art.getListags();      
+        
+        String sql2 = "DELETE FROM cattag WHERE article_id=?"; 
+PreparedStatement statement2;
+statement2 = conn.prepareStatement(sql2);
+statement2.setString(1, Integer.toString(art.getId()));
+int rowsUpdated2 = statement2.executeUpdate();
+        
+        
+  String sql1 = "INSERT INTO cattag (article_id, tag_id) VALUES (?, ?)";
+        try 
+        {
+        for(int i = 0 ; i < listagsnew.size(); i++){
+        PreparedStatement statement3;
+        statement3 = conn.prepareStatement(sql1);
+        statement3.setString(1,Integer.toString(art.getId()));
+        statement3.setString(2, Integer.toString(listagsnew.get(i).getId()));
+        statement3.executeUpdate();
+        }
+        }catch (ArrayIndexOutOfBoundsException e) {
+        System.out.println(e);
+        }
+        
    if (rowsUpdated > 0) {
-    this.UpdateListArticles();
+
+
+      
+            this.UpdateListArticles();
     return true;
 }
  } catch (SQLException ex) {
-           
+            System.out.println(ex);
+            ex.printStackTrace();
            return false;
         }
         return false;
@@ -250,7 +280,71 @@ while (result.next()){
         return listarticle;
     }
       
+      
+            public void RechercheListArticles(String terme){
+         
+         String sql = "SELECT * FROM article WHERE article.titre LIKE ? ";
+ 
+         PreparedStatement statement;
+        try 
+        {
+         statement = conn.prepareStatement(sql);
+          statement.setString(1, terme);
+         ResultSet result = statement.executeQuery();
     
+ 
+while (result.next()){
+   String id = result.getString("id");
+    int idint = Integer.parseInt(id);
+    String titre = result.getString("titre");
+    String image = result.getString("image");
+    String contenu = result.getString("contenu");
+    String categorie_id = result.getString("categorie_id");
+    int cat_id = Integer.parseInt(categorie_id);
+    String date = result.getString("date");
+    String description = result.getString("description");
+    String vues = result.getString("vues");
+    int vu = Integer.parseInt(vues);
+    String type = result.getString("type");
+    int typ = Integer.parseInt(type);
+    List<Tags> listags = new ArrayList<Tags>();
+    String sqll = "SELECT * FROM article INNER JOIN cattag INNER JOIN tags ON article.id=cattag.article_id AND tags.id=cattag.tag_id WHERE article_id=?";
+        PreparedStatement statementt;
+        try 
+        {
+         statementt = conn.prepareStatement(sqll);
+          statementt.setString(1, id);
+          ResultSet resulttags = statementt.executeQuery();
+         while (resulttags.next()){
+             String idtag = resulttags.getString("tag_id");
+    int idinttag = Integer.parseInt(idtag);
+    String nom = resulttags.getString("nom");
+    Tags tag = new Tags(idinttag, nom);
+    listags.add(tag);
+     //System.out.println(idinttag+"IDTAG "+nom);  
+         }
+        }catch (SQLException ex) {
+            System.out.println("Une erreur est survenue ! ");  
+             //ex.printStackTrace();
+        }
+    Articles article = new Articles(titre, image, description, contenu, date, idint, vu, typ, cat_id, listags);
+    listarticle.add(article);
+}
+ 
+       
+       } catch (SQLException ex) {
+           System.out.println(ex);  
+           
+           
+        }
+     }
+      
+          public List<Articles> getArticlesSearch(String terme) {
+              terme = "%"+terme+"%";
+          this.RechercheListArticles(terme);
+          
+        return listarticle;
+    }
     
     
     

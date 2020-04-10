@@ -5,63 +5,64 @@
  */
 package gestion_blog.controller;
 
+import static gestion_blog.controller.AjoutArticle.html2text;
 import gestion_blog.models.Articles;
 import gestion_blog.models.Categories;
 import gestion_blog.models.Tags;
 import gestion_blog.service.GestionArticles;
 import gestion_blog.service.GestionCategories;
 import gestion_blog.service.GestionTags;
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.beans.value.ObservableValue;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import java.awt.*;
-import java.awt.TrayIcon.MessageType;
+import java.awt.AWTException;
+import java.awt.Image;
+import java.awt.SystemTray;
+import java.awt.Toolkit;
+import java.awt.TrayIcon;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.web.HTMLEditor;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
-import java.io.IOException;
-import java.net.ProtocolException;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.web.HTMLEditor;
-import org.jsoup.Jsoup;
 import rest.file.uploader.tn.FileUploader;
 
 /**
  *
  * @author geek alaa
  */
-public class AjoutArticle implements Initializable{
+public class ModifierArticle implements Initializable{
+    
     
     
 
@@ -102,33 +103,44 @@ public class AjoutArticle implements Initializable{
     @FXML
     private Button submitButton;
     
-    private String titre_Article;
-    private String Descri_Article;
-    private int catid_Article;
-    private String date_Article;
-    private String contenu_Article;
-    private String Image_Article;
+    
+    private int id;
+    private String titre_Article = null;
+    private String Descri_Article = null;
+    private int catid_Article ;
+    private String date_Article = null;
+    private String contenu_Article = null;
+    private String Image_Article = null;
     private int typeid = 0;
     
     File file ;
-    private boolean errortitre = true;
-    private boolean errordescri = true;
-    private boolean errorcat = true;
-    private boolean errortag = true;
-    private boolean errorcont = true;
-    private boolean errorimage = true;
-    private boolean errortype = true;
+    boolean categchange = false;
+    boolean tagchange = false;
+    boolean imagechange = false;
+    boolean typechange = false;
     
+    
+    private boolean errortitre = false;
+    private boolean errordescri = false;
+    private boolean errorcat = false;
+    private boolean errortag = false;
+    private boolean errorcont = false;
+    private boolean errorimage = false;
+    private boolean errortype = false;
+    
+     Articles articlemodf ;   
     
     java.util.List<Categories> listcat = new ArrayList<Categories>();
     java.util.List<Tags> listags = new ArrayList<Tags>();
+    java.util.List<Tags> listags2 = new ArrayList<Tags>();
     java.util.List<Tags> listagsSelectedaj = new ArrayList<Tags>();
-    @Override
+    List<Articles> listarticle = new ArrayList<Articles>();
+    
     public void initialize(URL location, ResourceBundle resources) {
          catlabel.setText("");   
          taglabel.setText(""); 
-     
-        
+    
+      
         
         
         
@@ -199,12 +211,15 @@ public class AjoutArticle implements Initializable{
         });
         GestionCategories gstcat = new GestionCategories();
         listcat = gstcat.getcatlist();
+        
         for (int i = 0; i < listcat.size(); i++) {
             MenuItem m = new MenuItem(listcat.get(i).toString());
             m.setId(Integer.toString(listcat.get(i).getId()));
             m.setOnAction(Cateven);
             categ.getItems().add(m);
         }
+        
+        
         
         
         
@@ -226,8 +241,10 @@ public class AjoutArticle implements Initializable{
             public void handle(MouseEvent event) {
                    ObservableList<Tags> selectedtags =  tags.getSelectionModel().getSelectedItems();
                         if(selectedtags.size() == 0){
+                             tagchange = true;
                              errortag = true;
                         }else{
+                            tagchange = true;
                              errortag = false;
                              listagsSelectedaj = selectedtags;
                         }
@@ -241,26 +258,6 @@ public class AjoutArticle implements Initializable{
             
         });
         
-       /* contenu.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
-            System.out.println(newValue.length());
-            if(newValue.trim().isEmpty()){
-                this.errorcont = true;
-                contenu.setStyle("-fx-border-color :#ff4242;");
-                contenu.clear();
-            }else if(newValue.length() < 200){
-                this.errorcont = true;
-                contenu.setStyle("-fx-border-color :#ff4242;");
-                }else if(newValue.length() > 1000){
-                    this.errorcont = true;
-                contenu.setStyle("-fx-border-color :#ff4242;");
-            }else{
-                    this.contenu_Article = newValue;
-                    this.errorcont = false;
-                contenu.setStyle("-fx-background-radius: 0em ;");
-            }
-        });*/
-       
-       
        contenu.setOnKeyReleased(new EventHandler<KeyEvent>()
       {
              @Override
@@ -295,13 +292,6 @@ public class AjoutArticle implements Initializable{
        
        
        
-       
-   
-       
-       
-       
-       
-       
         
         MenuItem publier = new MenuItem("Publier");
         MenuItem brouillon = new MenuItem("Brouillon");
@@ -315,41 +305,97 @@ public class AjoutArticle implements Initializable{
     }
     
     
-    
-    
-    
-    public static String html2text(String html) {
-    return Jsoup.parse(html).text();
-}
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+   public void setId(int id) {
+        this.id = id;
+         
+    }
+   
+   
+   public void load(){
+       
+   GestionArticles gstar = new GestionArticles();
+   listarticle = gstar.getArticles();
+   Articles article = new Articles(id);
+   int index = listarticle.indexOf(article);
+   articlemodf = listarticle.get(index);
+   
+   titre.setText(articlemodf.getTitre());
+   descri.setText(articlemodf.getDescription());
+   GestionCategories gstcat = new GestionCategories();
+        listcat = gstcat.getcatlist();
+        Categories categorie = new Categories(articlemodf.getCat_id());
+        int indexcateg = listcat.indexOf(categorie);
+        Categories cat = new Categories();
+        
+        cat = listcat.get(indexcateg);
+        if(!categchange){
+            categ.setText(cat.getNom());
+            this.catid_Article = cat.getId();
+        }
+        
+        
+        
+        
+        if(!tagchange){
+          
+           listags2 = articlemodf.getListags();
+        for (int i = 0; i < listags2.size(); i++) {
+            tags.getSelectionModel().select(listags2.get(i));
+        }
+         listagsSelectedaj = listags2;
+        }
+        
+        
+        contenu.setHtmlText(articlemodf.getContenu());
+        if(!imagechange){
+            this.Image_Article = articlemodf.getImage();
+        }
+        
+        int type_preloaded = articlemodf.getType();
+        
+        
+        
+        if(!typechange){
+            this.typeid = type_preloaded;
+        }
+        
+   
+       //System.out.println(id);
+       
+   
+   }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
     
    
     
    EventHandler<ActionEvent> Cateven = (ActionEvent e) -> {
-       System.out.println(((MenuItem)e.getSource()).getId());
+      // System.out.println(((MenuItem)e.getSource()).getId());
        categ.setText(((MenuItem)e.getSource()).getText());
        this.catid_Article = Integer.parseInt(((MenuItem)e.getSource()).getId());
+       categchange = true;
         this.errorcat = false;
+         //System.out.println(id);
     }; 
    
    EventHandler<ActionEvent> typeeven = (ActionEvent e) -> {
        
        type.setText(((MenuItem)e.getSource()).getText());
-       
+       typechange = true;
        if("Publier".equals(((MenuItem)e.getSource()).getText())){
            this.typeid = 1;
        }else if("Brouillon".equals(((MenuItem)e.getSource()).getText())){
@@ -373,7 +419,7 @@ public class AjoutArticle implements Initializable{
         //trayIcon.setToolTip("System tray icon demo");
         tray.add(trayIcon);
 
-        trayIcon.displayMessage("Ajout Article", msg, MessageType.INFO);
+        trayIcon.displayMessage("Ajout Article", msg, TrayIcon.MessageType.INFO);
     }
     
          @FXML
@@ -385,6 +431,7 @@ public class AjoutArticle implements Initializable{
                 
                  file = fileChooser.showOpenDialog(null);
                 if (file != null) {
+                    imagechange = true;
                   // Image image = new Image(selectedFile.toURI().toString());
 this.errorimage = false;
 try {
@@ -412,7 +459,7 @@ this.Image_Article = file.getAbsolutePath();
          @FXML
  public void handleAjouterArticleButton(ActionEvent event) throws MalformedURLException, IOException {
              GestionArticles gst = new GestionArticles();
-             Articles article = new Articles(this.titre_Article, this.Image_Article, this.Descri_Article, this.contenu_Article, this.date_Article, 0, 0, this.typeid, this.catid_Article, this.listagsSelectedaj);
+             Articles article = new Articles(this.titre_Article, this.Image_Article, this.Descri_Article, this.contenu_Article, this.date_Article, this.id, 0, this.typeid, this.catid_Article, listagsSelectedaj);
      //System.out.println(article);
              
               int errors =0;
@@ -447,13 +494,13 @@ this.Image_Article = file.getAbsolutePath();
              
              }else{
  
-                 if(gst.AjouterArticle(article)){
-                     
+                 if(gst.ModifierArticle(article)){
+                     if(file != null){
          FileUploader fu = new FileUploader("http://127.0.0.1/www/PIJAVA/images/");
         
         //Upload
         String fileNameInServer = fu.upload(file.getAbsolutePath());
-                     
+                     }
                      
                      
                   System.out.println("true : true");
@@ -471,7 +518,7 @@ this.Image_Article = file.getAbsolutePath();
                 
                 contr.Update();
                  try {
-                this.displayTray("Article Ajouté");
+                this.displayTray("Article Modifié");
             } catch (AWTException ex) {
                 Logger.getLogger(AjoutArticle.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -514,6 +561,10 @@ this.Image_Article = file.getAbsolutePath();
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+
+   
+    
+    
     
     
     

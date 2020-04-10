@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package gestion_blog.controller;
 
 import gestion_blog.models.Articles;
@@ -9,18 +14,6 @@ import java.awt.Toolkit;
 import java.awt.TrayIcon;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -29,22 +22,32 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
-public class Controller implements Initializable {
+/**
+ *
+ * @author geek alaa
+ */
+public class RechercheArticle implements Initializable{
 
+    
     @FXML
     private VBox pnItems = null;
     
@@ -68,6 +71,9 @@ public class Controller implements Initializable {
     
     @FXML
     private Button recherchebtn;
+    
+    @FXML
+    private Button accueil;
     
     @FXML
     private Pane AjoutPane;
@@ -114,45 +120,32 @@ public class Controller implements Initializable {
     
     
   String terme;
-  boolean modifint = false;
-  boolean erreurrech = true;
-
-
-    List<Articles> listarticles = new ArrayList<Articles>();
-    List<Articles> listarticless = new ArrayList<Articles>();
-    GestionArticles gstart = new GestionArticles();
-    GestionCategories gstcat = new GestionCategories();
-    Node[] nodes;
-
-    public void setModifint(boolean modifint) {
-        this.modifint = modifint;
-    }
+   boolean erreurrech = true;
+   List<Articles> listarticles = new ArrayList<Articles>();
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
-        
-        
-        try {
+
+
+ recherche.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
            
-                Update();
-           
+            if(newValue.trim().isEmpty()){
+                recherche.setStyle("-fx-border-color :#ff4242;");
+            }else if(newValue.length() < 3){
                 
-               int vuespub = 0;
+                recherche.setStyle("-fx-border-color :#ff4242;");
+                }else{
+                 erreurrech = false;
+                this.terme = newValue;
+                recherche.setId(newValue);
+                 System.out.println(recherche.getId());
+                recherche.setStyle("-fx-background-radius: 0em ;");
+            }
+        });
+ 
+        GestionArticles gst = new GestionArticles();
+        listarticles = gst.getArticles();
+     int vuespub = 0;
             for (int i = 0; i < listarticles.size() ; i++) {
               
                     vuespub = vuespub + listarticles.get(i).getVues();
@@ -173,49 +166,12 @@ public class Controller implements Initializable {
              artibrou.setText(Integer.toString(artinbrbrou));
             
             
-            
-     
-        } catch (IOException ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-       
-       
-       
-       
-    recherche.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
-           
-            if(newValue.trim().isEmpty()){
-                recherche.setStyle("-fx-border-color :#ff4242;");
-            }else if(newValue.length() < 3){
-                
-                recherche.setStyle("-fx-border-color :#ff4242;");
-                }else{
-                erreurrech = false;
-                this.terme = newValue;
-                recherche.setId(newValue);
-                 System.out.println(recherche.getId());
-                recherche.setStyle("-fx-background-radius: 0em ;");
-            }
-        });
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-        
-
+             
     }
-
-
-    public void handleClicks(ActionEvent actionEvent) throws IOException {
+    
+    
+    
+        public void handleClicks(ActionEvent actionEvent) throws IOException {
         if (actionEvent.getSource() == btnCustomers) {
             pnlCustomer.setStyle("-fx-background-color : #1620A1");
             pnlCustomer.toFront();
@@ -238,8 +194,8 @@ public class Controller implements Initializable {
         if(actionEvent.getSource()==recherchebtn)
         {
          
-            if(this.terme != null && !erreurrech){
-               Stage stage = (Stage) recherchebtn.getScene().getWindow();
+             if(this.terme != null && !erreurrech){
+             Stage stage = (Stage) recherchebtn.getScene().getWindow();
                   
                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestion_blog/views/RechercheArticle.fxml"));
         Parent root = loader.load();
@@ -249,40 +205,31 @@ public class Controller implements Initializable {
         stage.getIcons().add(new javafx.scene.image.Image("/gestion_blog/images/article-512.png"));
         stage.setTitle("Gestion de Blog");
         Scene scene = new Scene(root);
-        stage.setScene(scene);  
-            }else{
-                try {
+        stage.setScene(scene);
+             }else{
+                 try {
                 this.displayTray("Minimum 3 caracteres !!!");
             } catch (AWTException ex) {
                 Logger.getLogger(AjoutArticle.class.getName()).log(Level.SEVERE, null, ex);
             }
-            }
-            
-            
+             }
             
                   
             
         }
+       
         
       
         
         
     }
     
-
-
     
-    
-    
-    
-    
-    
-    
-    public void Update() throws IOException{
-      // pnItems.getChildren().clear();
-        Node[] nodess;
-           listarticles = gstart.getArticles();
-          
+   public void handleRecherche(String terme){
+       
+         Node[] nodess;
+         GestionArticles gstart = new GestionArticles();
+           listarticles = gstart.getArticlesSearch(terme);
         nodess = new Node[listarticles.size()];
     
          
@@ -305,6 +252,7 @@ public class Controller implements Initializable {
             //Pass whatever data you want. You can have multiple method calls here
             
            Affich.SetArticleTitle(listarticles.get(i).getTitre());
+                GestionCategories gstcat = new GestionCategories();
             String cat_nom = gstcat.getcatbyid(listarticles.get(i).getCat_id());
             Affich.SetArticleCategorie(cat_nom);
             Affich.SetArticleVues(listarticles.get(i).getVues());
@@ -345,14 +293,19 @@ public class Controller implements Initializable {
                 e.printStackTrace();
             }
         }
-       
+   } 
+   
+   public void retouraccu() throws MalformedURLException, IOException{
+         Stage stage = (Stage) accueil.getScene().getWindow();
+        URL url = new File("src/gestion_blog/views/Home.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        stage.getIcons().add(new javafx.scene.image.Image("/gestion_blog/images/article-512.png"));
+        stage.setTitle("Gestion de Blog");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
     }
     
-    
- 
-
-
-       public void displayTray(String msg) throws AWTException {
+    public void displayTray(String msg) throws AWTException {
         //Obtain only one instance of the SystemTray object
         SystemTray tray = SystemTray.getSystemTray();
 
@@ -368,12 +321,6 @@ public class Controller implements Initializable {
 
         trayIcon.displayMessage("Recherche", msg, TrayIcon.MessageType.ERROR);
     }     
-    
-    
-    
-    
-    
-    
     
     
 }

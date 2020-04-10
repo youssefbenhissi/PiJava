@@ -5,13 +5,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.web.HTMLEditor?>
 
 <GridPane alignment="center" hgap="10.0" prefWidth="1010.0" vgap="5.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestion_blog.controller.AjoutArticle">
     <padding><Insets bottom="1.0" left="38.0" right="1.0" top="3.0" /></padding>
@@ -76,7 +77,6 @@
    </Button>
    <Label alignment="CENTER" prefHeight="38.0" prefWidth="100.0" style="-fx-background-color: #dedede; -fx-background-radius: 1em;" text="*Catégorie :" GridPane.rowIndex="3" />
    <Label alignment="CENTER" prefHeight="38.0" prefWidth="100.0" style="-fx-background-color: #dedede; -fx-background-radius: 1em;" text="*Tags :" GridPane.rowIndex="4" />
-   <TextArea fx:id="contenu" prefHeight="200.0" prefWidth="200.0" promptText="Contenu mini 500 caractères  -  2000 max" GridPane.columnIndex="1" GridPane.rowIndex="5" />
    <Label fx:id="taglabel" GridPane.columnIndex="1" GridPane.rowIndex="4">
       <GridPane.margin>
          <Insets left="205.0" />
@@ -98,6 +98,16 @@
          <Insets />
       </opaqueInsets>
    </Label>
+   <Button fx:id="Retourner" defaultButton="true" onAction="#retouraccu" prefHeight="40" prefWidth="100" text="Retour">
+      <graphic>
+         <ImageView fitHeight="16.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../images/unnamed%20(1).png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </Button>
+   <HTMLEditor fx:id="contenu" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" prefHeight="200.0" prefWidth="506.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
    <rowConstraints>
       <RowConstraints maxHeight="-Infinity" prefHeight="43.0" valignment="TOP" />
       <RowConstraints valignment="TOP" />

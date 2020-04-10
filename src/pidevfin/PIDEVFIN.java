@@ -5,6 +5,7 @@
  */
 package pidevfin;
 
+import gestion_blog.controller.Controller;
 import java.io.File;
 
 import java.net.URL;
@@ -28,8 +29,11 @@ public class PIDEVFIN extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         
-        URL url = new File("src/gestion_blog/views/Home.fxml").toURI().toURL();
-        Parent root = FXMLLoader.load(url);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestion_blog/views/Home.fxml"));
+        Parent root = loader.load();
+         Controller contr;
+                contr = loader.getController();
+               
         primaryStage.getIcons().add(new Image("/gestion_blog/images/article-512.png"));
         primaryStage.setTitle("Gestion de Blog");
         Scene scene = new Scene(root);

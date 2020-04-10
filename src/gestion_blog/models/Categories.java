@@ -19,6 +19,14 @@ public class Categories {
         this.description = description;
     }
 
+    public Categories(int id) {
+        this.id = id;
+    }
+
+    public Categories() {
+    }
+    
+
     public int getId() {
         return id;
     }
