@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="596.0" prefWidth="532.0" style="-fx-background-color: #2A0033;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.InscriptionClub">
+<AnchorPane fx:id="layer1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="596.0" prefWidth="532.0" style="-fx-background-color: #2A0033;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.InscriptionClub">
    <children>
       <Pane layoutY="75.0" prefHeight="521.0" prefWidth="539.0">
          <children>
@@ -30,22 +33,32 @@
             </Label>
             <Separator layoutX="56.0" layoutY="363.0" opacity="0.15" prefHeight="3.0" prefWidth="423.0" />
             <Separator layoutX="54.0" layoutY="36.0" opacity="0.15" prefHeight="3.0" prefWidth="423.0" />
-            <Button layoutX="139.0" layoutY="390.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: #FCBB31;" text="CANCEL" textFill="WHITE" />
-            <Button layoutX="273.0" layoutY="390.0" mnemonicParsing="false" onAction="#ajouterInscrip" prefHeight="34.0" prefWidth="112.0" style="-fx-background-color: #CE201C;" text="Enregistrer" textFill="WHITE" />
+            <Button layoutX="135.0" layoutY="390.0" mnemonicParsing="false" onAction="#Imprimer" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: #FCBB31;" text="Imprimer" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIcon glyphName="PRINT" />
+               </graphic></Button>
+            <Button layoutX="273.0" layoutY="390.0" mnemonicParsing="false" onAction="#ajouterInscrip" prefHeight="34.0" prefWidth="112.0" style="-fx-background-color: #CE201C;" text="Enregistrer" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIcon glyphName="SAVE" />
+               </graphic></Button>
             <TextField fx:id="ReponseDe" layoutX="58.0" layoutY="181.0" prefHeight="34.0" prefWidth="430.0" style="-fx-border-color: #9643A9; -fx-background-color: #2A0033; -fx-background-insets: 0; -fx-border-radius: 20;" styleClass="text-input" stylesheets="@../style/styleInscriptionClub.css" />
             <TextField fx:id="ReponseTr" layoutX="51.0" layoutY="299.0" prefHeight="34.0" prefWidth="430.0" style="-fx-border-color: #9643A9; -fx-background-color: #2A0033; -fx-background-insets: 0; -fx-border-radius: 20;" styleClass="text-input" stylesheets="@../style/styleInscriptionClub.css" />
             <Label fx:id="idClub" layoutX="421.0" layoutY="14.0" />
          </children>
       </Pane>
-      <Label layoutX="218.0" layoutY="40.0" text="INSCRIPTION" textFill="#ddd9d9">
+      <Label layoutX="192.0" layoutY="40.0" text="INSCRIPTION" textFill="#ddd9d9">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="515.0" layoutY="4.0" prefHeight="20.0" prefWidth="21.0" text="X" textFill="#ddd9d9">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
+      <Button layoutX="459.0" layoutY="11.0" mnemonicParsing="false" onAction="#quitter" onMouseClicked="#quitter" prefHeight="43.0" prefWidth="15.0" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="27.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logout.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

@@ -31,22 +31,15 @@ public class ProjetPi extends Application {
 
     public void start(Stage primaryStage) {
 
-      /*  CategorieClubService c = new CategorieClubService();
+        CategorieClubService c = new CategorieClubService();
         c.selectAll();
         try {
-            URL url = new File("src/projet/views/afficherCategorieClubback.fxml").toURI().toURL();
+            URL url = new File("src/projet/views/LoginGUI.fxml").toURI().toURL();
             Parent root = FXMLLoader.load(url);
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();
-        }*/Printer p=new Printer();
-        PrinterJob pj = PrinterJob.getPrinterJob();   
-        pj.setPrintable(new Printer(),p.getPageFormat(pj));
-        try {
-            pj.print();
-        } catch (PrinterException ex) {
-            Logger.getLogger(ProjetPi.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

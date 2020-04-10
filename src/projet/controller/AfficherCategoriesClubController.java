@@ -64,6 +64,7 @@ import projet.models.Club;
 import projet.service.CategorieClubService;
 import projet.service.ClubService;
 import projet.service.InscriptionService;
+import projet.service.NewsLetterService;
 import t2s.son.LecteurTexte;
 
 /**
@@ -72,8 +73,10 @@ import t2s.son.LecteurTexte;
  * @author youssef
  */
 public class AfficherCategoriesClubController implements Initializable {
+
     @FXML
     private TableColumn<?, ?> id;
+    private NewsLetterService newsLetter = new NewsLetterService();
     @FXML
     private StackPane afficherTsEvenementStackPane;
     @FXML
@@ -156,8 +159,8 @@ public class AfficherCategoriesClubController implements Initializable {
     }
 
     public void compteurClub() {
-        Timer timer = new Timer(); 
-        counter = 0; 
+        Timer timer = new Timer();
+        counter = 0;
         ClubService cc = new ClubService();
         countClubs.setText(String.valueOf(0));
         if (cc.selectAllClubs().size() == 0) {
@@ -413,6 +416,11 @@ public class AfficherCategoriesClubController implements Initializable {
             a1.setContentText("Vous voulez vraiment supprimer ce club ?");
             Optional<ButtonType> result = a1.showAndWait();
             if (result.get() == ButtonType.OK) {
+                List<Integer> idUsers = ClubService.selectAllIdSupprimer(x);
+                for (int id : idUsers) {
+                    String email = ClubService.retournerEmailUtilisateur(id);
+                    newsLetter.sendMail("youssef.benhissi@esprit.tn","ilovetennis", email, "Suppression club", "on a supprimé le club "+listeClubs.getSelectionModel().getSelectedItem().getNom());
+                }
                 ClubService.supprimerClub(x);
                 Alert a2 = new Alert(Alert.AlertType.INFORMATION);
                 a2.setTitle("Supprimer Club");

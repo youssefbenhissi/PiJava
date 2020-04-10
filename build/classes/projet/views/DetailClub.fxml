@@ -77,8 +77,8 @@
                         </graphic>
                     </Button>
                <Label fx:id="msg" layoutX="89.0" layoutY="365.0" text="Label" />
-               <Rating fx:id="rating" layoutX="59.0" layoutY="309.0" />
-               <Button fx:id="inscription" layoutX="125.0" layoutY="350.0" mnemonicParsing="false" onAction="#Inscription" text="Button" />
+               <Rating fx:id="rating" layoutX="59.0" layoutY="309.0" rating="0.0" />
+               <Button fx:id="inscription" layoutX="125.0" layoutY="350.0" mnemonicParsing="false" onAction="#Inscription" prefHeight="39.0" prefWidth="100.0" stylesheets="@../style/dark-theme.css" text="S'inscrire" />
                 </children>
             </Pane>
             <Label fx:id="nomClub" layoutX="133.0" layoutY="35.0" text="NEW YORK CITY" textFill="#0d0d0d">

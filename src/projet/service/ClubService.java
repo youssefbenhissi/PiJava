@@ -19,8 +19,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Button;
 import projet.models.CategorieClub;
 import projet.models.Club;
+import projet.models.Inscription;
 import static projet.service.CategorieClubService.statement;
 import projet.utils.DbConnection;
 
@@ -67,6 +69,7 @@ public class ClubService implements IClub {
         }
         return clubs;
     }
+
     public List<Club> selectAllClubsAleatoire() {
         ArrayList<Club> clubs = new ArrayList<>();
         String req = "SELECT c.id,c.nom,c.description,c.capacite,c.moyenneLike,cat.nomCategorie,c.image,c.questionPr,c.questionDe,c.questionTr FROM club c,categorie_club cat WHERE c.categorie_id = cat.id ORDER BY RAND() LIMIT 3";
@@ -96,6 +99,7 @@ public class ClubService implements IClub {
         }
         return clubs;
     }
+
     public void ajouterCategorie(Club c) {
         String requete = "INSERT INTO club (nom,description,capacite,image,nbrLike,nbrFoisLike,moyenneLike,categorie_id,questionPr,questionDe,questionTr)"
                 + " VALUES ('" + c.getNom() + "','" + c.getDescription() + "','" + c.getCapacite() + "','" + c.getPath() + "','" + c.getNbrLike() + "','" + c.getNbrFoisLike() + "','" + c.getMoyenneLike() + "','" + c.getCategorie_id() + "','" + c.getQuestionPr() + "','" + c.getQuestionDe() + "','" + c.getQuestionTr() + "');";
@@ -337,7 +341,7 @@ public class ClubService implements IClub {
                 c.setDescription(rs.getString(3));
                 c.setCapacite(rs.getInt(4));
                 c.setMoyenneLike(rs.getFloat(5));
-                
+
                 c.setPath(rs.getString(6));
                 c.setQuestionPr(rs.getString(7));
                 c.setQuestionDe(rs.getString(8));
@@ -360,7 +364,7 @@ public class ClubService implements IClub {
             pst.setString(2, c.getDescription());
             pst.setInt(3, c.getCapacite());
             pst.setString(4, c.getPath());
-          //  pst.setInt(5, c.getCategorie_id());
+            //  pst.setInt(5, c.getCategorie_id());
             pst.setString(5, c.getQuestionPr());
             pst.setString(6, c.getQuestionDe());
             pst.setString(7, c.getQuestionTr());
@@ -377,6 +381,7 @@ public class ClubService implements IClub {
         }
         return false;
     }
+
     public List<Integer> getState() {
         String req11 = "Select id from club";
         List<Integer> liste = new ArrayList<Integer>();
@@ -394,7 +399,8 @@ public class ClubService implements IClub {
         }
         return liste;
     }
-     public String getState1(int x) {
+
+    public String getState1(int x) {
         String g = "";
         String req11 = "Select nom  From club where id=? ";
 
@@ -415,7 +421,8 @@ public class ClubService implements IClub {
         }
         return g;
     }
-     public float getState12(int x) {
+
+    public float getState12(int x) {
         float g = 0;
         String req11 = "Select moyenneLike From club where id=? ";
 
@@ -437,4 +444,37 @@ public class ClubService implements IClub {
         return g;
     }
 
+    public List<Integer> selectAllIdSupprimer(int idClub) {
+        ArrayList<Integer> clubs = new ArrayList<>();
+        String req = "SELECT eleve_id FROM inscription where( status LIKE 'Approuvée'  AND club_id = " + idClub + " )";
+        try {
+            PreparedStatement ps = connection.prepareStatement(req);
+            ps.executeQuery();
+            ResultSet rs = ps.getResultSet();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            while (rs.next()) {
+                clubs.add(rs.getInt(1));
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CategorieClubService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return clubs;
+    }
+     public String retournerEmailUtilisateur(int id){
+        String idClub="";
+        String req = "SELECT c.email FROM fos_user c where c.id = "+id;
+         try {
+            PreparedStatement ps = connection.prepareStatement(req);
+            ps.executeQuery();
+            ResultSet rs = ps.getResultSet();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            while (rs.next()) {
+                
+                idClub=rs.getString(1);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CategorieClubService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return idClub;
+    }
 }

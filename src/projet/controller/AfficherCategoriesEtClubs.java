@@ -98,7 +98,7 @@ public static AnchorPane contnt = null;
     private ObservableList<Club> listProduit;
 
     private HBox row;
-
+    public int idUtilistaeur;
     private String ref_combo;
     @FXML
     private HBox muhbox;
@@ -131,10 +131,10 @@ public static AnchorPane contnt = null;
         } catch (FileNotFoundException ex) {
             Logger.getLogger(AfficherCategoriesEtClubs.class.getName()).log(Level.SEVERE, null, ex);
         }
-        present_img.setFitHeight(300);
-        present_img.setFitWidth(300);
-        reinitialiserAletoire();
-        List<Club> listeImages = ps.retournerListeImages();
+//        present_img.setFitHeight(300);
+  //      present_img.setFitWidth(300);
+       reinitialiserAletoire();
+       /* List<Club> listeImages = ps.retournerListeImages();
         for (Club i : listeImages) {
             String info = "Bienvenue chez :" + i.getNom()
                     + "\nIl appartient a la categorie : " + i.getNomcategorie()
@@ -179,7 +179,7 @@ public static AnchorPane contnt = null;
                 muhbox.getChildren().add(infooverlay);
             });
             box.getChildren().add(button);
-        }
+        }*/
     }
 
     private void filter() {
@@ -292,31 +292,31 @@ public static AnchorPane contnt = null;
 
     @FXML
     private void reinitialiserAletoire() {
-        List<Club> listeIma = ps.selectAllClubsAleatoire();
+     /*   List<Club> listeIma = ps.selectAllClubsAleatoire();
 
         String SatG = "file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/" + listeIma.get(0).getPath();
         File imgFile = new File(SatG);
         imageP.setImage(new Image(SatG));
         nomP.setText(listeIma.get(0).getNom());
         descriptionP.setText("\t\t\t\t" + listeIma.get(0).getDescription());
-        capaciteP.setText(Integer.toString(listeIma.get(0).getCapacite()));
+        capaciteP.setText("capacite: "+Integer.toString(listeIma.get(0).getCapacite()));
         categorieP.setText(listeIma.get(0).getNomcategorie());
         String Sat = "file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/" + listeIma.get(1).getPath();
         File imgFil = new File(Sat);
         imageD.setImage(new Image(Sat));
         nomD.setText(listeIma.get(1).getNom());
-        descriptionD.setText(listeIma.get(1).getDescription());
-        capaciteD.setText(Integer.toString(listeIma.get(1).getCapacite()));
+        descriptionD.setText("\t\t\t\t" + listeIma.get(1).getDescription());
+        capaciteD.setText("capacite: "+Integer.toString(listeIma.get(1).getCapacite()));
         categorieD.setText(listeIma.get(1).getNomcategorie());
 
         String Sa = "file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/" + listeIma.get(2).getPath();
         File imgFi = new File(Sa);
         imageT.setImage(new Image(Sa));
         nomT.setText(listeIma.get(2).getNom());
-        descriptionT.setText(listeIma.get(2).getDescription());
-        capaciteT.setText(Integer.toString(listeIma.get(2).getCapacite()));
+        descriptionT.setText("\t\t\t\t" + listeIma.get(2).getDescription());
+        capaciteT.setText("capacite: "+Integer.toString(listeIma.get(2).getCapacite()));
         categorieT.setText(listeIma.get(2).getNomcategorie());
-
+*/
     }
 
     @FXML
@@ -436,7 +436,7 @@ public static AnchorPane contnt = null;
 
         newsLetter.desabonner(emailField.getText());
         String tilte = "Nous sommes tristes";
-        String message = "votre email a été bien enregistré.";
+        String message = "votre email a été bien supprimé.";
         TrayNotification tray = new TrayNotification();
         AnimationType type = AnimationType.POPUP;
         tray.setAnimationType(type);

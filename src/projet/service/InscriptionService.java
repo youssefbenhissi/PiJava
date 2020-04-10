@@ -65,6 +65,7 @@ public class InscriptionService {
         }
         return clubs;
     }
+    
     public boolean supprimerInscription(int id) {
         
          String req="DELETE FROM inscription WHERE id="+id;
