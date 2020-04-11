@@ -108,9 +108,9 @@ public class LoginController {
 //            WorldfriendshipController controller = (WorldfriendshipController) loader.getController();
             //          existenceUtilisateur = ServiceLogin.getUtilisateur(nomUtilisateur);
             //        controller.setUser(existenceUtilisateur);
-            InscriptionClub controller = new InscriptionClub();
-            existenceUtilisateur = ServiceLogin.getUtilisateur(nomUtilisateur);
-            controller.idUtilistaeur=existenceUtilisateur.getId_Utilisateur();
+  //          InscriptionClub controller = new InscriptionClub();
+//            existenceUtilisateur = ServiceLogin.getUtilisateur(nomUtilisateur);
+    //        controller.idUtilistaeur=existenceUtilisateur.getId_Utilisateur();
             Stage primaryStage = new Stage();
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
@@ -157,7 +157,11 @@ public class LoginController {
                 if (ServiceLogin.testMotDePasse(motDePasseUtilisateur, Uti.getValue())) {
                     Utilisateur utilisateur = ServiceLogin.getUtilisateur(Uti.getKey());
                     if (utilisateur.getRole_Utilisateur().equals("a:0:{}")) {
-
+                        System.out.println(utilisateur.getId_Utilisateur());
+                        InscriptionClub controller = new InscriptionClub();
+//            existenceUtilisateur = ServiceLogin.getUtilisateur(nomUtilisateur);
+            //controller.idUtilistaeur.setText(Integer.toString(utilisateur.getId_Utilisateur()));
+                        //controller.idClub.setText(Integer.toString(utilisateur.getId_Utilisateur()));
                         Stage stage = (Stage) GUI.getScene().getWindow();
                         stage.close();
 

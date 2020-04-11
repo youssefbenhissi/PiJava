@@ -55,7 +55,8 @@ public class InscriptionClub implements Initializable, Printable {
 
     @FXML
     private TextField ReponseDe;
-    public int idUtilistaeur;
+     @FXML
+    public Label idUtilisateur;
     @FXML
     private TextField ReponseTr;
     @FXML
@@ -70,6 +71,7 @@ public class InscriptionClub implements Initializable, Printable {
     @FXML
     public void ajouterInscrip(ActionEvent even) {
         Inscription insc = new Inscription();
+        System.out.println(idUtilisateur);
         insc.setQuestionPr(questionP.getText());
         insc.setQuestionDe(questionD.getText());
         insc.setQuestionTr(questionT.getText());
@@ -78,7 +80,7 @@ public class InscriptionClub implements Initializable, Printable {
         insc.setReponseTr(ReponseTr.getText());
         insc.setIdClub(Integer.parseInt(idClub.getText()));
         insc.setStatus("non traitée");
-        insc.setIdUser(idUtilistaeur);
+        insc.setIdUser(8);
         service.ajouterInscription(insc);
         String tilte = "Inscription enregistre";
         String message = "votre inscription a été bien enregistrée.";

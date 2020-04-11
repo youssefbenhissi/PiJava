@@ -52,6 +52,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -74,6 +75,8 @@ import t2s.son.LecteurTexte;
  */
 public class AfficherCategoriesClubController implements Initializable {
 
+    @FXML
+    private AnchorPane panel;
     @FXML
     private TableColumn<?, ?> id;
     private NewsLetterService newsLetter = new NewsLetterService();
@@ -419,7 +422,7 @@ public class AfficherCategoriesClubController implements Initializable {
                 List<Integer> idUsers = ClubService.selectAllIdSupprimer(x);
                 for (int id : idUsers) {
                     String email = ClubService.retournerEmailUtilisateur(id);
-                    newsLetter.sendMail("youssef.benhissi@esprit.tn","ilovetennis", email, "Suppression club", "on a supprimé le club "+listeClubs.getSelectionModel().getSelectedItem().getNom());
+                    newsLetter.sendMail("youssef.benhissi@esprit.tn", "ilovetennis", email, "Suppression club", "on a supprimé le club " + listeClubs.getSelectionModel().getSelectedItem().getNom());
                 }
                 ClubService.supprimerClub(x);
                 Alert a2 = new Alert(Alert.AlertType.INFORMATION);
@@ -436,11 +439,11 @@ public class AfficherCategoriesClubController implements Initializable {
         } catch (Exception e) {
         }
     }
-
+/*
     @FXML
     private void AfficherC(ActionEvent event) {
         BorderPane border_pane = (BorderPane) ((Node) event.getSource()).getScene().getRoot();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/projet/views/afficherCategoriesClub.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/projet/views/afficherCategorieClubback.fxml"));
         Parent root = null;
         try {
             root = loader.load();
@@ -449,9 +452,12 @@ public class AfficherCategoriesClubController implements Initializable {
         }
         border_pane.setCenter(root);
     }
-
+*/
     @FXML
     public void ajouterEvenementGUI(ActionEvent even) throws IOException {
+        Stage stage = (Stage) panel.getScene().getWindow();
+        // do what you have to do
+        stage.close();
         Stage primaryStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/projet/views/AjouterCategorieEtClub.fxml"));
         Scene scene = new Scene(root);
@@ -609,5 +615,42 @@ public class AfficherCategoriesClubController implements Initializable {
         } catch (IOException ex) {
             System.out.println(ex);
         }
+    }
+    
+    
+    
+    
+    
+    
+     //Menuuuuuuuuuu
+    @FXML
+    private void AfficherC(ActionEvent event) {
+        Stage primaryStage = new Stage();
+        javafx.scene.Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/projet/views/afficherCategorieClubback.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
+    }
+    @FXML
+    private void Afficherpersonnel(ActionEvent event) {
+        Stage primaryStage = new Stage();
+        javafx.scene.Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/projet/views/affichageBackPersonnel.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
     }
 }
