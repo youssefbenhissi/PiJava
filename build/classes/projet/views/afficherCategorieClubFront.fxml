@@ -91,7 +91,7 @@
                         <Insets top="40.0" />
                     </VBox.margin>
                 </VBox>
-        <!--    <HBox prefHeight="42.0" prefWidth="1320.0">
+          <HBox prefHeight="42.0" prefWidth="1320.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#reinitialiserAletoire">
                      <graphic>
@@ -258,8 +258,8 @@
                      </children>
                   </Pane>
                </children>
-            </HBox>!-->
-          <!--  <HBox prefHeight="100.0" prefWidth="200.0" />
+            </HBox>
+          <HBox prefHeight="100.0" prefWidth="200.0" />
                 <VBox prefHeight="478.0" prefWidth="1318.0">
                     <children>
                   <HBox fx:id="muhbox" cacheShape="false" centerShape="false" prefHeight="377.0" prefWidth="700.0" scaleShape="false">
@@ -272,7 +272,7 @@
                         </HBox>
 
                     </children>
-                </VBox>!-->
+                </VBox>
             <HBox prefHeight="24.0" prefWidth="1320.0" />
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>

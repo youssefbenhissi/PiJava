@@ -131,10 +131,10 @@ public static AnchorPane contnt = null;
         } catch (FileNotFoundException ex) {
             Logger.getLogger(AfficherCategoriesEtClubs.class.getName()).log(Level.SEVERE, null, ex);
         }
-//        present_img.setFitHeight(300);
-  //      present_img.setFitWidth(300);
+      present_img.setFitHeight(300);
+present_img.setFitWidth(300);
        reinitialiserAletoire();
-       /* List<Club> listeImages = ps.retournerListeImages();
+        List<Club> listeImages = ps.retournerListeImages();
         for (Club i : listeImages) {
             String info = "Bienvenue chez :" + i.getNom()
                     + "\nIl appartient a la categorie : " + i.getNomcategorie()
@@ -179,7 +179,7 @@ public static AnchorPane contnt = null;
                 muhbox.getChildren().add(infooverlay);
             });
             box.getChildren().add(button);
-        }*/
+        }
     }
 
     private void filter() {
@@ -292,7 +292,7 @@ public static AnchorPane contnt = null;
 
     @FXML
     private void reinitialiserAletoire() {
-     /*   List<Club> listeIma = ps.selectAllClubsAleatoire();
+      List<Club> listeIma = ps.selectAllClubsAleatoire();
 
         String SatG = "file:///C:/Users/youssef/PhpstormProjects/pidevFinal/web/assets/images/" + listeIma.get(0).getPath();
         File imgFile = new File(SatG);
@@ -316,7 +316,7 @@ public static AnchorPane contnt = null;
         descriptionT.setText("\t\t\t\t" + listeIma.get(2).getDescription());
         capaciteT.setText("capacite: "+Integer.toString(listeIma.get(2).getCapacite()));
         categorieT.setText(listeIma.get(2).getNomcategorie());
-*/
+
     }
 
     @FXML

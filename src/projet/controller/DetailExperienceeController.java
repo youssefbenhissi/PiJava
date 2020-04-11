@@ -11,6 +11,9 @@ import com.jfoenix.controls.JFXButton;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -24,6 +27,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.controlsfx.control.Rating;
 import projet.models.Club;
+import projet.models.Evenement;
 
 /**
  * FXML Controller class
@@ -52,8 +56,26 @@ public class DetailExperienceeController implements Initializable {
     private TextField invi;
     @FXML
     private Label ratee;
+@FXML
+    private Label nomEvenement;
 
-    private Club experience;
+    @FXML
+    private Label capaciteEvenement;
+
+    @FXML
+    private Label prixEvenement;
+
+    @FXML
+    private Label Evenement;
+
+    
+
+    @FXML
+    private Label ratee1;
+
+    @FXML
+    private Label descriptionEvenement;
+    private Evenement experience;
     @FXML
     private Label desc;
 
@@ -63,7 +85,7 @@ public class DetailExperienceeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //ExperienceService experienceService = new ExperienceService();
-        rate.ratingProperty().addListener(new ChangeListener<Number>() {
+        /*rate.ratingProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 
@@ -77,30 +99,38 @@ public class DetailExperienceeController implements Initializable {
 
             }
         });
-
+*/
     }
 
     @FXML
     private void ajouterPanier(MouseEvent event) {
     }
 
-    public void setExperience(Club exp) throws FileNotFoundException {
+    public void setExperience(Evenement exp) throws FileNotFoundException {
         experience = exp;
 
-        Image image = new Image(new FileInputStream("C:\\Users\\youssef\\PhpstormProjects\\pidevFinal\\web\\assets\\images\\" + experience.getPath()));
+        Image image = new Image(new FileInputStream("C:\\Users\\youssef\\PhpstormProjects\\pidevFinal\\web\\assets\\images\\" + experience.getImageEvenement()));
         //ImageView img = new ImageView(image);
         cover.setImage(image);
 
-        String test = String.valueOf(exp.getId());
+        String test = String.valueOf(exp.getIdEvenement());
         
-        invi.setText(test);
-        invi.setVisible(false);
-        nom.setText(experience.getNom());
-        lieu.setText(experience.getNomcategorie());
-         
+//        invi.setText(test);
+  //      invi.setVisible(false);
+        nomEvenement.setText(experience.getNomEvenement());
+        capaciteEvenement.setText(Integer.toString(experience.getCapaciteEvenement()));
+        prixEvenement.setText(Integer.toString(experience.getPrixEvenement()));
+        //Evenement.setText(test);
+          String pattern = "MM/dd/yyyy HH:mm:ss";
+            DateFormat df = new SimpleDateFormat(pattern);
+            Date today = exp.getDateEvenement();
+            String todayAsString = df.format(today);
+            Evenement.setText(todayAsString);
+            descriptionEvenement.setText(exp.getDescriptionEvenement());
         //date.setText(experience.getCapacite());
-        cat.setText(experience.getNomcategorie());
-        desc.setText(experience.getDescription());
+        
+        //cat.setText(experience.getDateEvenement());
+        //desc.setText(experience.getDescription());
     }
 
     @FXML

@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/controller/AfficherCategoriesEtClubs.java</file>
-            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/controller/DetailClubController.java</file>
-            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/views/afficherCategorieClubFront.fxml</file>
-            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/models/Club.java</file>
-            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/controller/InscriptionClub.java</file>
-            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/service/ClubService.java</file>
+            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/controller/DetailExperienceeController.java</file>
             <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/controller/AjouterCategorieEtClubController.java</file>
-            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/service/NewsLetterService.java</file>
+            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/controller/EvenementFrontController.java</file>
+            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/views/AjouterCategorieEtClub.fxml</file>
         </group>
     </open-files>
 </project-private>

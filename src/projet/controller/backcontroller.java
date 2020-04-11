@@ -5,6 +5,7 @@
  */
 package projet.controller;
 
+import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -19,13 +20,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import projet.models.CategorieClub;
 import projet.models.Eleve;
 import projet.models.Parent;
 import projet.models.Personnel;
@@ -40,8 +44,8 @@ import projet.service.PersonnelService;
 public class backcontroller implements Initializable {
 
     EleveService EleveService = new EleveService();
-    ParentService parentService =new ParentService();
-    PersonnelService personnelService=new PersonnelService();
+    ParentService parentService = new ParentService();
+    PersonnelService personnelService = new PersonnelService();
     @FXML
 
     private TableColumn<?, ?> nomEleve;
@@ -51,7 +55,8 @@ public class backcontroller implements Initializable {
     private TableColumn<?, ?> actionParent;
     @FXML
     private TableColumn<?, ?> actionPer;
-    
+    @FXML
+    private JFXTextField rechercheBar;
     @FXML
     private TableColumn<?, ?> prenomEleve;
     @FXML
@@ -68,16 +73,16 @@ public class backcontroller implements Initializable {
     private TableView<Parent> listeParent;
     @FXML
     private TableView<Personnel> listePersonnel;
-   
+
     @FXML
-private TableColumn<?, ?> nomParent;
+    private TableColumn<?, ?> nomParent;
     @FXML
     private TableColumn<?, ?> prenomParent;
     @FXML
     private TableColumn<?, ?> numTelephoneParent;
     @FXML
     private TableColumn<?, ?> imageParent;
-     @FXML
+    @FXML
     private TableColumn<?, ?> nomPersonnel;
     @FXML
     private TableColumn<?, ?> prenomPersonnel;
@@ -95,6 +100,7 @@ private TableColumn<?, ?> nomParent;
     private TableColumn<?, ?> descriptionPersonnel;
     @FXML
     private TableColumn<?, ?> imagePersonnel;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         afficherEleve();
@@ -112,7 +118,7 @@ private TableColumn<?, ?> nomParent;
         nomEleve.setCellValueFactory(new PropertyValueFactory<>("nom"));
         prenomEleve.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         sexeEleve.setCellValueFactory(new PropertyValueFactory<>("Sexe"));
-       // imageEleve.setCellValueFactory(new PropertyValueFactory<>("image"));
+        // imageEleve.setCellValueFactory(new PropertyValueFactory<>("image"));
         AgeEleve.setCellValueFactory(new PropertyValueFactory<>("Age"));
         emailEleve.setCellValueFactory(new PropertyValueFactory<>("Email"));
         actionCategprie.setCellValueFactory(new PropertyValueFactory<>("btn_delete"));
@@ -122,43 +128,46 @@ private TableColumn<?, ?> nomParent;
         });
 
     }
-     @FXML
+
+    @FXML
     private void afficherParents() {
-         ParentService  ParentSe= new ParentService();
-          List<Parent> myList = ParentSe.selectAllParent();
-         myObservableListP = FXCollections.observableArrayList();
+        ParentService ParentSe = new ParentService();
+        List<Parent> myList = ParentSe.selectAllParent();
+        myObservableListP = FXCollections.observableArrayList();
 
         nomParent.setCellValueFactory(new PropertyValueFactory<>("nom"));
         prenomParent.setCellValueFactory(new PropertyValueFactory<>("prenom"));
-       numTelephoneParent.setCellValueFactory(new PropertyValueFactory<>("Sexe"));
-       actionParent.setCellValueFactory(new PropertyValueFactory<>("btn_delete"));
-       // imageParent.setCellValueFactory(new PropertyValueFactory<>("image"));
-        
+        numTelephoneParent.setCellValueFactory(new PropertyValueFactory<>("Sexe"));
+        actionParent.setCellValueFactory(new PropertyValueFactory<>("btn_delete"));
+        // imageParent.setCellValueFactory(new PropertyValueFactory<>("image"));
+
         myList.forEach(e -> {
             myObservableListP.add(e);
             listeParent.setItems(myObservableListP);
         });
     }
+
     @FXML
     private void afficherPersonnel() {
-    
-        PersonnelService PersonnelSe= new PersonnelService();
-        List<Personnel> myList =PersonnelSe.selectAllPersonnel();
+
+        PersonnelService PersonnelSe = new PersonnelService();
+        List<Personnel> myList = PersonnelSe.selectAllPersonnel();
         myObservableListPer = FXCollections.observableArrayList();
-    nomPersonnel.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        nomPersonnel.setCellValueFactory(new PropertyValueFactory<>("nom"));
         prenomPersonnel.setCellValueFactory(new PropertyValueFactory<>("prenom"));
-      soldeCongePersonnel.setCellValueFactory(new PropertyValueFactory<>("soldeConge"));
+        soldeCongePersonnel.setCellValueFactory(new PropertyValueFactory<>("soldeConge"));
         Date_debutTravailPersonnel.setCellValueFactory(new PropertyValueFactory<>("Date_debutTravail"));
-       typePersonnel.setCellValueFactory(new PropertyValueFactory<>("type"));
-       descriptionPersonnel.setCellValueFactory(new PropertyValueFactory<>("description"));
-       actionPer.setCellValueFactory(new PropertyValueFactory<>("btn_delete"));
-       //     imagePersonnel.setCellValueFactory(new PropertyValueFactory<>("image"));
+        typePersonnel.setCellValueFactory(new PropertyValueFactory<>("type"));
+        descriptionPersonnel.setCellValueFactory(new PropertyValueFactory<>("description"));
+        actionPer.setCellValueFactory(new PropertyValueFactory<>("btn_delete"));
+        //     imagePersonnel.setCellValueFactory(new PropertyValueFactory<>("image"));
         myList.forEach(e -> {
             myObservableListPer.add(e);
             listePersonnel.setItems(myObservableListPer);
         });
-    
+
     }
+
     @FXML
     private void AjouterEleve(ActionEvent event) {
         Stage primaryStage = new Stage();
@@ -174,6 +183,7 @@ private TableColumn<?, ?> nomParent;
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
     }
+
     @FXML
     private void AjouterParent(ActionEvent event) {
         Stage primaryStage = new Stage();
@@ -189,6 +199,7 @@ private TableColumn<?, ?> nomParent;
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
     }
+
     @FXML
     private void AjouterPersonnel(ActionEvent event) {
         Stage primaryStage = new Stage();
@@ -204,30 +215,16 @@ private TableColumn<?, ?> nomParent;
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
     }
+
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+    //Menuuuuuuuuuu
     //Menuuuuuuuuuu
     @FXML
     private void AfficherC(ActionEvent event) {
+        Button btn = (Button) event.getSource();
+        Stage stage = (Stage) btn.getScene().getWindow();
+        stage.close();
         Stage primaryStage = new Stage();
         javafx.scene.Parent root = null;
         try {
@@ -243,10 +240,52 @@ private TableColumn<?, ?> nomParent;
     }
     @FXML
     private void Afficherpersonnel(ActionEvent event) {
+        
+        Button btn = (Button) event.getSource();
+        Stage stage = (Stage) btn.getScene().getWindow();
+        stage.close();
         Stage primaryStage = new Stage();
         javafx.scene.Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource("/projet/views/affichageBackPersonnel.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
+    }
+    @FXML
+    private void AfficherEvenements(ActionEvent event) {
+        
+        Button btn = (Button) event.getSource();
+        Stage stage = (Stage) btn.getScene().getWindow();
+        stage.close();
+        Stage primaryStage = new Stage();
+        javafx.scene.Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/projet/views/EvenementBack.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
+    }
+    @FXML
+    private void login(ActionEvent event) {
+        
+        Button btn = (Button) event.getSource();
+        Stage stage = (Stage) btn.getScene().getWindow();
+        stage.close();
+        Stage primaryStage = new Stage();
+        javafx.scene.Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/projet/views/LoginGUI.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
         }
