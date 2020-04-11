@@ -56,6 +56,9 @@ public class GestionCatego implements Initializable {
     
     @FXML
     private Button btnaccueil;
+    
+    @FXML
+    private Button btntags;
 
      @FXML
     private Pane accueilpane;
@@ -90,24 +93,9 @@ public class GestionCatego implements Initializable {
       
      
       
-    /*@FXML
-    private Button pnlMenus;
-
     @FXML
-    private Button btnPackages;
+    private Pane pnlTags;
 
-    @FXML
-    private Button btnSettings;
-
-    @FXML
-    private Button btnSignout;
-
-   
-
-    
-
-   
-*/
     
     
   String terme;
@@ -192,6 +180,18 @@ public class GestionCatego implements Initializable {
 
 
     public void handleClicks(ActionEvent actionEvent) throws IOException {
+        if (actionEvent.getSource() == btntags) {
+              Stage stage = (Stage) recherchebtn.getScene().getWindow();
+                  
+                   FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestion_blog/views/Gestiontags.fxml"));
+        Parent root = loader.load();
+        stage.getIcons().add(new javafx.scene.image.Image("/gestion_blog/images/article-512.png"));
+        stage.setTitle("Gestion des Catégories");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);  
+        }
+        
+        
         if (actionEvent.getSource() == gestioncat) {
               Stage stage = (Stage) recherchebtn.getScene().getWindow();
                   

@@ -99,25 +99,11 @@ public class RechercheArticle implements Initializable{
       @FXML
      private Label vuetotal;
       
-    /*@FXML
-    private Button pnlMenus;
-
-    @FXML
-    private Button btnPackages;
-
-    @FXML
-    private Button btnSettings;
-
-    @FXML
-    private Button btnSignout;
-
-   
-
+     @FXML
+    private Button gestioncat;
     
-
-   
-*/
-    
+     @FXML
+    private Button btntags;
     
   String terme;
    boolean erreurrech = true;
@@ -172,9 +158,27 @@ public class RechercheArticle implements Initializable{
     
     
         public void handleClicks(ActionEvent actionEvent) throws IOException {
-        if (actionEvent.getSource() == btnCustomers) {
-            pnlCustomer.setStyle("-fx-background-color : #1620A1");
-            pnlCustomer.toFront();
+            if (actionEvent.getSource() == gestioncat) {
+              Stage stage = (Stage) recherchebtn.getScene().getWindow();
+                  
+                   FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestion_blog/views/GestionCatego.fxml"));
+        Parent root = loader.load();
+        stage.getIcons().add(new javafx.scene.image.Image("/gestion_blog/images/article-512.png"));
+        stage.setTitle("Gestion des Catégories");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);  
+        }
+            
+            
+      if (actionEvent.getSource() == btntags) {
+              Stage stage = (Stage) btntags.getScene().getWindow();
+                  
+                   FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestion_blog/views/Gestiontags.fxml"));
+        Parent root = loader.load();
+        stage.getIcons().add(new javafx.scene.image.Image("/gestion_blog/images/article-512.png"));
+        stage.setTitle("Gestion des Tags");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);  
         }
         
         if (actionEvent.getSource() == btnaccueil) {

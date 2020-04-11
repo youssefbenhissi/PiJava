@@ -92,7 +92,9 @@ public class RechercheCategorie implements Initializable {
     @FXML
     private Button accueil;
       
-     
+    
+     @FXML
+    private Button btntags;
       
     /*@FXML
     private Button pnlMenus;
@@ -190,6 +192,18 @@ public class RechercheCategorie implements Initializable {
         Parent root = loader.load();
         stage.getIcons().add(new javafx.scene.image.Image("/gestion_blog/images/article-512.png"));
         stage.setTitle("Gestion des Catégories");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);  
+        }
+            
+            
+      if (actionEvent.getSource() == btntags) {
+              Stage stage = (Stage) btntags.getScene().getWindow();
+                  
+                   FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestion_blog/views/Gestiontags.fxml"));
+        Parent root = loader.load();
+        stage.getIcons().add(new javafx.scene.image.Image("/gestion_blog/images/article-512.png"));
+        stage.setTitle("Gestion des Tags");
         Scene scene = new Scene(root);
         stage.setScene(scene);  
         }

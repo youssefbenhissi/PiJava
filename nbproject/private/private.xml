@@ -3,18 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/PIDEV-JAVA/PIDEVFIN/src/gestion_blog/controller/AffichageArticleList.java</file>
+            <file>file:/C:/PIDEV-JAVA/PIDEVFIN/src/gestion_blog/controller/RechercheCategorie.java</file>
             <file>file:/C:/PIDEV-JAVA/PIDEVFIN/src/gestion_blog/service/GestionArticles.java</file>
-            <file>file:/C:/PIDEV-JAVA/PIDEVFIN/src/gestion_blog/views/AjoutArticle.fxml</file>
-            <file>file:/C:/PIDEV-JAVA/PIDEVFIN/src/gestion_blog/models/Articles.java</file>
-            <file>file:/C:/PIDEV-JAVA/PIDEVFIN/src/gestion_blog/controller/ModifierArticle.java</file>
-            <file>file:/C:/PIDEV-JAVA/PIDEVFIN/src/gestion_blog/controller/Controller.java</file>
-            <file>file:/C:/PIDEV-JAVA/PIDEVFIN/src/gestion_blog/views/Item.fxml</file>
-            <file>file:/C:/PIDEV-JAVA/PIDEVFIN/src/gestion_blog/controller/AjoutArticle.java</file>
-            <file>file:/C:/PIDEV-JAVA/PIDEVFIN/src/pidevfin/PIDEVFIN.java</file>
-            <file>file:/C:/PIDEV-JAVA/PIDEVFIN/src/gestion_blog/views/ModifierArticle.fxml</file>
-            <file>file:/C:/PIDEV-JAVA/PIDEVFIN/src/gestion_blog/controller/FXMLDocumentController.java</file>
-            <file>file:/C:/PIDEV-JAVA/PIDEVFIN/src/gestion_blog/views/Home.fxml</file>
+            <file>file:/C:/PIDEV-JAVA/PIDEVFIN/src/gestion_blog/views/ModifierCategorie.fxml</file>
+            <file>file:/C:/PIDEV-JAVA/PIDEVFIN/src/gestion_blog/controller/RechercheArticle.java</file>
+            <file>file:/C:/PIDEV-JAVA/PIDEVFIN/src/gestion_blog/controller/GestionCatego.java</file>
         </group>
     </open-files>
 </project-private>

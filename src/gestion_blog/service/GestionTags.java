@@ -198,9 +198,39 @@ while (result.next()){
       
       
       
+     public void GetRechercheTags(String terme){
+         
+         String sql = "SELECT * FROM tags WHERE tags.nom LIKE ?";
+ 
+         PreparedStatement statement;
+        try 
+        {
+         statement = conn.prepareStatement(sql);
+          statement.setString(1, terme);
+         ResultSet result = statement.executeQuery();
+    
+ 
+while (result.next()){
+    String id = result.getString("id");
+    int idint = Integer.parseInt(id);
+    String nom = result.getString("nom");
+    Tags tag = new Tags(idint, nom);
+    listags.add(tag);
+}
+ 
+       
+       } catch (SQLException ex) {
+           System.out.println("Une erreur est survenue ! ");  
+            //ex.printStackTrace();
+        }
+     }    
       
-      
-      
+      public List<Tags> getTagsSearch(String terme) {
+              terme = "%"+terme+"%";
+          this.GetRechercheTags(terme);
+          
+        return listags;
+    } 
       
       
        

@@ -1,8 +1,11 @@
 package gestion_blog.controller;
 
 import gestion_blog.models.Articles;
+import gestion_blog.models.Categories;
+import gestion_blog.models.Tags;
 import gestion_blog.service.GestionArticles;
 import gestion_blog.service.GestionCategories;
+import gestion_blog.service.GestionTags;
 import java.awt.AWTException;
 import java.awt.SystemTray;
 import java.awt.Toolkit;
@@ -43,7 +46,7 @@ import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
-public class Controller implements Initializable {
+public class Gestiontags implements Initializable {
 
     @FXML
     private VBox pnItems = null;
@@ -55,6 +58,9 @@ public class Controller implements Initializable {
     
     @FXML
     private Button btnaccueil;
+    
+    @FXML
+    private Button btntags;
 
      @FXML
     private Pane accueilpane;
@@ -65,9 +71,6 @@ public class Controller implements Initializable {
 
     @FXML
     private Button gestioncat;
-    
-     @FXML
-    private Button btntags;
     
     @FXML
     private Button recherchebtn;
@@ -90,14 +93,9 @@ public class Controller implements Initializable {
      
      
       @FXML
-     private Label artipubint;
+     private Label nbrtaglabel;
       
-      @FXML
-     private Label artibrou;
-      
-      @FXML
-     private Label vuetotal;
-      
+     
  
     
     
@@ -106,15 +104,11 @@ public class Controller implements Initializable {
   boolean erreurrech = true;
 
 
-    List<Articles> listarticles = new ArrayList<Articles>();
-    List<Articles> listarticless = new ArrayList<Articles>();
-    GestionArticles gstart = new GestionArticles();
-    GestionCategories gstcat = new GestionCategories();
+    List<Tags> listtag = new ArrayList<Tags>();
+    GestionTags gsttagglobal = new GestionTags();
+    GestionTags gsttag = new GestionTags();
     Node[] nodes;
 
-    public void setModifint(boolean modifint) {
-        this.modifint = modifint;
-    }
     
     
     
@@ -139,26 +133,9 @@ public class Controller implements Initializable {
            
                 Update();
            
-                
-               int vuespub = 0;
-            for (int i = 0; i < listarticles.size() ; i++) {
-              
-                    vuespub = vuespub + listarticles.get(i).getVues();
+                nbrtaglabel.setText(Integer.toString(listtag.size()));
                
-            }
-            vuetotal.setText(Integer.toString(vuespub));
-            int artinbrpub = 0;
-            int artinbrbrou = 0;
-            for (int i = 0; i < listarticles.size() ; i++) {
-              if(listarticles.get(i).getType() == 1){
-                  artinbrpub = artinbrpub+1;
-              }else if(listarticles.get(i).getType() == 0){
-                  artinbrbrou = artinbrbrou+1;
-              }
-   
-            }
-             artipubint.setText(Integer.toString(artinbrpub));
-             artibrou.setText(Integer.toString(artinbrbrou));
+            
             
             
             
@@ -204,6 +181,8 @@ public class Controller implements Initializable {
 
 
     public void handleClicks(ActionEvent actionEvent) throws IOException {
+        
+        
         if (actionEvent.getSource() == gestioncat) {
               Stage stage = (Stage) recherchebtn.getScene().getWindow();
                   
@@ -215,25 +194,31 @@ public class Controller implements Initializable {
         stage.setScene(scene);  
         }
         
-        if (actionEvent.getSource() == btntags) {
-              Stage stage = (Stage) btntags.getScene().getWindow();
+        if (actionEvent.getSource() == gestioncat) {
+              Stage stage = (Stage) recherchebtn.getScene().getWindow();
                   
-                   FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestion_blog/views/Gestiontags.fxml"));
+                   FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestion_blog/views/GestionCatego.fxml"));
         Parent root = loader.load();
         stage.getIcons().add(new javafx.scene.image.Image("/gestion_blog/images/article-512.png"));
-        stage.setTitle("Gestion des Tags");
+        stage.setTitle("Gestion des Catégories");
         Scene scene = new Scene(root);
         stage.setScene(scene);  
         }
         
         if (actionEvent.getSource() == btnaccueil) {
-            accueilpane.setStyle("-fx-background-color : #f2f2f2");
-            accueilpane.toFront();
+          Stage stage = (Stage) recherchebtn.getScene().getWindow();
+                  
+                   FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestion_blog/views/Home.fxml"));
+        Parent root = loader.load();
+        stage.getIcons().add(new javafx.scene.image.Image("/gestion_blog/images/article-512.png"));
+        stage.setTitle("Gestion des Articles");
+        Scene scene = new Scene(root);
+        stage.setScene(scene); 
         }
         if(actionEvent.getSource()==Ajout)
         {
             ScrollPane sp = new ScrollPane();
-            Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/gestion_blog/views/AjoutArticle.fxml"));
+            Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/gestion_blog/views/AjouterTag.fxml"));
             AjoutPane.getChildren().add(newLoadedPane);
            AjoutPane.setStyle("-fx-background-color : #f2f2f2");
            sp.setContent(AjoutPane);
@@ -246,13 +231,13 @@ public class Controller implements Initializable {
             if(this.terme != null && !erreurrech){
                Stage stage = (Stage) recherchebtn.getScene().getWindow();
                   
-                   FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestion_blog/views/RechercheArticle.fxml"));
+                   FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestion_blog/views/RechercheTags.fxml"));
         Parent root = loader.load();
-        RechercheArticle rech;
+        Recherchetags rech;
                 rech = loader.getController();
                 rech.handleRecherche(this.terme);
         stage.getIcons().add(new javafx.scene.image.Image("/gestion_blog/images/article-512.png"));
-        stage.setTitle("Gestion de Blog");
+        stage.setTitle("Recherche Tags");
         Scene scene = new Scene(root);
         stage.setScene(scene);  
             }else{
@@ -286,9 +271,9 @@ public class Controller implements Initializable {
     public void Update() throws IOException{
       // pnItems.getChildren().clear();
         Node[] nodess;
-           listarticles = gstart.getArticles();
+           listtag = gsttag.getTags();
           
-        nodess = new Node[listarticles.size()];
+        nodess = new Node[listtag.size()];
     
          
             
@@ -301,39 +286,22 @@ public class Controller implements Initializable {
                 /*URL url = new File("src/gestion_blog/views/Item.fxml").toURI().toURL();
                 nodes[i] = FXMLLoader.load(url);*/
                 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestion_blog/views/Item.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestion_blog/views/ItemTags.fxml"));
                 nodess[i] = loader.load();
              
             //Get controller of scene2
-            AffichageArticleList Affich;
+            AffichagetagsList Affich;
                 Affich = loader.getController();
             //Pass whatever data you want. You can have multiple method calls here
             
-           Affich.SetArticleTitle(listarticles.get(i).getTitre());
-            String cat_nom = gstcat.getcatbyid(listarticles.get(i).getCat_id());
-            Affich.SetArticleCategorie(cat_nom);
-            Affich.SetArticleVues(listarticles.get(i).getVues());
-            Affich.SetArticleDate(listarticles.get(i).getDate());
-            Affich.SetArticleID(listarticles.get(i).getId());
-            Affich.SetArticleIDSup(listarticles.get(i).getId());
+           
             
-            
-            
+          Affich.SettagTitle(listtag.get(i).getNom());
+          
+          Affich.SetTagIDSup(listtag.get(i).getId());
+          Affich.SetTagID(listtag.get(i).getId());
                 
-             
-                
-                if(listarticles.get(i).getType() == 1){
-                File file = new File("src\\gestion_blog\\images\\publier.png");
-                 BufferedImage bufferedImage = ImageIO.read(file);
-                 WritableImage image = SwingFXUtils.toFXImage(bufferedImage, null);
-                 Affich.setIconartic(image);
-                }
-                 if(listarticles.get(i).getType() == 0){
-              File file = new File("src\\gestion_blog\\images\\Brou.png");
-                 BufferedImage bufferedImage = ImageIO.read(file);
-                 WritableImage image = SwingFXUtils.toFXImage(bufferedImage, null);
-                   Affich.setIconartic(image);
-                 }
+               
            
                 //give the items some effect
 

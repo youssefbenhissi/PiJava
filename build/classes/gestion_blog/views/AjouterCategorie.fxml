@@ -21,7 +21,7 @@
     </columnConstraints>
 
     <!-- Add Header Label -->
-    <Label alignment="CENTER" prefHeight="98.0" prefWidth="608.0" style="-fx-background-color: #dedede; -fx-background-radius: 1em;" text="Modifier Catégorie" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowSpan="1">
+    <Label alignment="CENTER" prefHeight="98.0" prefWidth="608.0" style="-fx-background-color: #dedede; -fx-background-radius: 1em;" text="Ajouter Catégorie" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowSpan="1">
         <font>
             <Font name="Arial" size="24" />
         </font>

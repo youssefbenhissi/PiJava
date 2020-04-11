@@ -19,6 +19,11 @@ public class Tags {
         this.nom = nom;
     }
 
+    public Tags(int id) {
+        this.id = id;
+    }
+    
+
     public int getId() {
         return id;
     }
