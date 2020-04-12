@@ -74,6 +74,18 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#AfficherBlogs" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="gestion blogs">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_Person_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
                 <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#login" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Sign Out">
                     <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
@@ -148,7 +160,7 @@
                                 <Image url="@../images/icons8_Search_52px.png" />
                             </image>
                         </ImageView>
-                        <VBox layoutX="-12.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="207.0" prefWidth="799.0" styleClass="content-page" stylesheets="@../../../../PI%20FINAL/ProjetPI/src/projet/style/backcss.css">
+                        <VBox layoutX="-12.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="207.0" prefWidth="799.0" styleClass="content-page" stylesheets="@../style/backcss.css">
                             <children>
                                 <HBox prefHeight="70.0" prefWidth="739.0" styleClass="header-title">
                                     <children>
