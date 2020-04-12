@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -25,9 +26,17 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.controlsfx.control.Rating;
+import projet.API.QrCodeMailApi;
 import projet.models.Club;
 import projet.models.Evenement;
+import projet.models.Inscription;
+import projet.models.reservation;
+import projet.service.ReservationService;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -56,7 +65,7 @@ public class DetailExperienceeController implements Initializable {
     private TextField invi;
     @FXML
     private Label ratee;
-@FXML
+    @FXML
     private Label nomEvenement;
 
     @FXML
@@ -67,8 +76,7 @@ public class DetailExperienceeController implements Initializable {
 
     @FXML
     private Label Evenement;
-
-    
+    ReservationService service = new ReservationService();
 
     @FXML
     private Label ratee1;
@@ -99,7 +107,7 @@ public class DetailExperienceeController implements Initializable {
 
             }
         });
-*/
+         */
     }
 
     @FXML
@@ -114,21 +122,21 @@ public class DetailExperienceeController implements Initializable {
         cover.setImage(image);
 
         String test = String.valueOf(exp.getIdEvenement());
-        
+
 //        invi.setText(test);
-  //      invi.setVisible(false);
+        //      invi.setVisible(false);
         nomEvenement.setText(experience.getNomEvenement());
         capaciteEvenement.setText(Integer.toString(experience.getCapaciteEvenement()));
         prixEvenement.setText(Integer.toString(experience.getPrixEvenement()));
         //Evenement.setText(test);
-          String pattern = "MM/dd/yyyy HH:mm:ss";
-            DateFormat df = new SimpleDateFormat(pattern);
-            Date today = exp.getDateEvenement();
-            String todayAsString = df.format(today);
-            Evenement.setText(todayAsString);
-            descriptionEvenement.setText(exp.getDescriptionEvenement());
+        String pattern = "MM/dd/yyyy HH:mm:ss";
+        DateFormat df = new SimpleDateFormat(pattern);
+        Date today = exp.getDateEvenement();
+        String todayAsString = df.format(today);
+        Evenement.setText(todayAsString);
+        descriptionEvenement.setText(exp.getDescriptionEvenement());
         //date.setText(experience.getCapacite());
-        
+
         //cat.setText(experience.getDateEvenement());
         //desc.setText(experience.getDescription());
     }
@@ -141,5 +149,27 @@ public class DetailExperienceeController implements Initializable {
 
     @FXML
     private void rate(MouseEvent event) {
+    }
+
+    @FXML
+    public void ajouterInscrip(ActionEvent even) {
+       //QrCodeMailApi.envoyerQrCode(experience.getNomEvenement(), experience.getDateEvenement());
+       
+        reservation insc = new reservation();
+        // System.out.println(idUtilisateur);
+        insc.setIdevenement(experience.getIdEvenement());
+        //insc.setStatus("non traitée");
+        insc.setStatus("non confirmer");
+        insc.setIdUser(8);
+        service.ajouterInscription(insc);
+        String tilte = "Reservation enregistre";
+        String message = "votre reservation a été bien enregistrée.";
+        TrayNotification tray = new TrayNotification();
+        AnimationType type = AnimationType.POPUP;
+        tray.setAnimationType(type);
+        tray.setTitle(tilte);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(3000));
     }
 }

@@ -117,5 +117,14 @@ public class PanneauDeControle {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
     }
-
+@FXML
+    public void afficherReservationGUI(ActionEvent even) throws IOException {
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/projet/views/reservationBack.fxml"));
+        Scene scene = new Scene(root);  
+        scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
+    }
 }

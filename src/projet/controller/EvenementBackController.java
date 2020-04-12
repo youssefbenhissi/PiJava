@@ -197,7 +197,7 @@ public class EvenementBackController implements Initializable {
             VBox menu = FXMLLoader.load(getClass().getResource("/projet/views/MenuEvenementGUI.fxml"));
 
             drawer.setSidePane(menu);
-            drawer.setDefaultDrawerSize(200);
+            drawer.setDefaultDrawerSize(300);
             HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(hamburger);
             transition.setRate(-1);
             hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {

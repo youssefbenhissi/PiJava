@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="1278.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.ReservationBackController">
+    <children>
+        <StackPane fx:id="afficherTsEvenementStackPane" layoutX="-1.0" prefHeight="599.0" prefWidth="1277.0" style="-fx-background-color: #02030A;">
+            <children>
+                <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
+                <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
+                <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
+                <Pane fx:id="pnlOverview" prefHeight="667.0" prefWidth="972.0" style="-fx-background-color: #fff;">
+                    <children>
+                        <VBox layoutX="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="137.0" prefWidth="1266.0" styleClass="content-page" stylesheets="@../style/backcss.css">
+                            <children>
+                                <HBox prefHeight="70.0" prefWidth="739.0" styleClass="header-title">
+                                    <children>
+                              <HBox prefHeight="41.0" prefWidth="90.0" />
+                                        <HBox prefHeight="100.0" prefWidth="504.0">
+                                            <children>
+                                                <Button mnemonicParsing="false" styleClass="title-button" stylesheets="@../style/backcss.css">
+                                                    <graphic>
+                                                        <FontAwesomeIcon glyphName="HOME" styleClass="title-button-icon" />
+                                                    </graphic>
+                                                </Button>
+                                                <Label prefHeight="48.0" prefWidth="456.0" styleClass="title-label" text="Section Reservations">
+                                                    <font>
+                                                        <Font name="Century Gothic" size="20.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                              <HBox prefHeight="54.0" prefWidth="305.0" />
+                                        <HBox layoutX="513.0" layoutY="10.0" prefHeight="100.0" prefWidth="523.0">
+                                            <children>
+                                                <Label prefHeight="41.0" prefWidth="551.0" styleClass="title-right" text="  / Evenements/ Reservations">
+                                                    <graphic>
+                                                        <FontAwesomeIcon glyphName="HOME" />
+                                                    </graphic>
+                                                    <font>
+                                                        <Font name="Century Gothic" size="15.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </HBox>
+                                <HBox prefHeight="85.0" prefWidth="1015.0" styleClass="header-title" />
+                            </children>
+                        </VBox>
+                    <ScrollPane layoutX="124.0" layoutY="114.0" prefHeight="404.0" prefWidth="1004.0" stylesheets="@style.css">
+                        <content>
+                            <TableView fx:id="listeClubs" prefHeight="404.0" prefWidth="1244.0" style="-fx-background-color: #F3F3F3;" stylesheets="@style.css">
+                                <columns>
+                                    <TableColumn fx:id="idReservation" prefWidth="153.0" text="id reservation" />
+                                    <TableColumn fx:id="nomEvenement" prefWidth="202.0" text="nom evenement" />
+                                    <TableColumn fx:id="nomUtilisateur" prefWidth="217.0" text="nom utilisateur" />
+                                    <TableColumn fx:id="statusEvenement" prefWidth="163.0" text="status" />
+                              <TableColumn fx:id="action" prefWidth="246.0" />
+                                </columns>
+                            </TableView>
+                        </content>
+                    </ScrollPane>
+                    </children>
+                </Pane>
+            </children>
+        </StackPane>
+    </children>
+    <effect>
+        <DropShadow color="#1b1eeb" />
+    </effect>
+</AnchorPane>

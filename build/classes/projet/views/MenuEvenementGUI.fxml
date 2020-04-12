@@ -14,6 +14,11 @@
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font></JFXButton>
+      <JFXButton contentDisplay="TOP" mnemonicParsing="false" onAction="#afficherReservationGUI" prefHeight="71.0" prefWidth="256.0" styleClass="link-button" text="Afficher Reservations" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </JFXButton>
       <JFXButton contentDisplay="TOP" layoutX="10.0" layoutY="109.0" mnemonicParsing="false" onAction="#afficherMesEvenementGUI" prefHeight="71.0" prefWidth="256.0" styleClass="link-button" text="Exporter Excel" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="14.0" />
