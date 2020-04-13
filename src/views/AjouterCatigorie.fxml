@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="605.0" prefWidth="599.0" stylesheets="@../projet/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.AjouterCatigorieController">
+   <children>
+      <Text layoutX="37.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/Home/Bibliothéque/Ajouter Categorie" wrappingWidth="441.13671875">
+         <font>
+            <Font name="Arial Bold Italic" size="21.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="37.0" fitWidth="42.0" layoutX="37.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/1485476041-artboard-1_78536.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="141.0" layoutY="149.0" prefHeight="431.0" prefWidth="376.0" style="-fx-background-color: DEB887;">
+         <children>
+            <TextField fx:id="description" layoutX="26.0" layoutY="123.0" prefHeight="86.0" prefWidth="323.0" promptText="description" />
+            <TextField fx:id="libelle" layoutX="22.0" layoutY="37.0" prefHeight="31.0" prefWidth="330.0" promptText="Libelle" />
+            <Button layoutX="20.0" layoutY="331.0" mnemonicParsing="false" onAction="#AjoutCatigorie" prefHeight="31.0" prefWidth="336.0" style="-fx-background-color: green;" text="Ajouter" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/emblemnew_93501.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="273.0" layoutY="386.0" mnemonicParsing="false" onAction="#vider" prefHeight="31.0" prefWidth="89.0" style="-fx-background-color: red;" text="vider" />
+            <Button layoutX="288.0" layoutY="271.0" mnemonicParsing="false" onAction="#Browser" text="Browser" />
+            <ImageView fx:id="imageView" fitHeight="64.0" fitWidth="154.0" layoutX="26.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="erreur_libelle" layoutX="23.0" layoutY="79.0" prefHeight="17.0" prefWidth="330.0" />
+            <Label fx:id="erreur_description" layoutX="23.0" layoutY="224.0" prefHeight="17.0" prefWidth="330.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
