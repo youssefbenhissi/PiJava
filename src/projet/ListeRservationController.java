@@ -64,19 +64,19 @@ public class ListeRservationController implements Initializable {
         
         
      }
-//     private void accepter(ActionEvent event) {
-//         table.setOnMouseClicked(new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent event) {
-//                Reservation p1=table.getItems().get(table.getSelectionModel().getSelectedIndex());
-//                p1.getId();
-//                
-//            // Reservation a = new Reservation(p1.getId());
-//                
-//            }
-//        }
-//        
-//        );
-//     }
+     private void accepter(ActionEvent event) {
+         table.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Reservation p1=table.getItems().get(table.getSelectionModel().getSelectedIndex());
+                p1.getId();
+                
+            // Reservation a = new Reservation(p1.getId());
+                
+            }
+        }
+        
+        );
+     }
     
 }
