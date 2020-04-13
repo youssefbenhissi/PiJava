@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projet;
+package controller;
 
 import utils.ConnexionBase;
 import Iservice.IcategorierService;
@@ -302,7 +302,7 @@ public class AfficheController implements Initializable {
                  
             }
                     
-            FileOutputStream fileout = new FileOutputStream("C:\\Users\\HP\\Desktop\\clubdetails.xlsx");
+            FileOutputStream fileout = new FileOutputStream("C:\\Users\\HP\\Desktop\\CategorieDetails.xlsx");
             wb.write(fileout);
             fileout.close();
             

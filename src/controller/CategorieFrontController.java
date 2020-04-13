@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projet ;
+package controller ;
 
 import Service.ServiceCategorier;
 import Service.ServiceLivre;
@@ -39,7 +39,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.StageStyle;
 import models.categorier;
 import models.livre;
-import projet.AjouterCatigorieController;
+import controller.AjouterCatigorieController;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

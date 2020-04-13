@@ -18,7 +18,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import models.Reservation;
 import models.categorier;
-import projet.FTPUploader;
+import controller.FTPUploader;
 import utils.ConnexionBase;
 
 /**
