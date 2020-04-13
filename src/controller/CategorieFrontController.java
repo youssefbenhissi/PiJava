@@ -53,6 +53,8 @@ public class CategorieFrontController implements Initializable {
 
     @FXML
     private ComboBox<String> combo;
+//    @FXML
+//    private ComboBox<String> TrieCom;
       private ResultSet res;
         private PreparedStatement pst = null;
     private ResultSet rs = null;
@@ -66,6 +68,8 @@ public class CategorieFrontController implements Initializable {
     @FXML
     private HBox row;
     public static livre liv1;
+    @FXML
+    private ComboBox<String> TrieCom;
     /**
      * Initializes the controller class.
      */
@@ -73,6 +77,9 @@ public class CategorieFrontController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
          categorieCombobox();
+          TrieCom.getItems().clear();
+        TrieCom.getItems().addAll("A à Z", "Z à A");
+
     }    
  private void categorieCombobox() {
        
@@ -194,6 +201,54 @@ public static void loadWindow(URL loc, String title, Stage parentStage) {
 loadWindow(getClass().getResource("/views/DetailLivre.fxml"), "DetailLivre",null);
 
 }
+   private void TrieLiv() {
 
-    
+        String categorie = combo.getValue();
+        String classement = "all";
+
+        String tri = TrieCom.getValue();
+
+        if (TrieCom.getValue() != null) {
+
+            switch (TrieCom.getValue()) {
+                case "A à Z":
+                    tri = "nom_asc";
+                    break;
+                case "Z à A":
+                    tri = "nom_desc";
+                    break;
+                default:
+                    break;
+            }
+        }
+
+    listLivre = FXCollections.observableArrayList(ps.getListProduitsFilter(categorie, tri));
+       getLiv();
+}
+
+    @FXML
+    private void Trie(ActionEvent event) {
+        TrieLiv();
+    }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
 }
