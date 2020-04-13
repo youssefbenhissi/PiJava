@@ -46,10 +46,11 @@ public class DetailLivreController implements Initializable {
     private Label nom;
     @FXML
     private Label description;
-    @FXML
-    private Label nbr;
+    
+    
     livre liv;
     Stage stage;
+   
     /**
      * Initializes the controller class.
      */
@@ -69,6 +70,7 @@ public class DetailLivreController implements Initializable {
         
         nom.setText(liv.getNom());
         description.setText(liv.getDescription());
+       
       // nbr.setText(liv.getNombredepage());
         
     }  

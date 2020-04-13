@@ -118,7 +118,7 @@ public class CategorieFrontController implements Initializable {
      livre lib;
        for (int i=0;i<listLivre.size();i++) {
            lib=listLivre.get(i);
-           if (index % 5 == 0) {
+           if (index % 4 == 0) {
                 row = new HBox();
                 cont.getChildren().add(row);
             }
