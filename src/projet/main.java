@@ -24,7 +24,7 @@ public class main extends Application {
     
    @Override
    public void start(Stage stage) throws IOException {
-      Parent root = FXMLLoader.load(getClass().getResource("/views/homee.fxml"));
+      Parent root = FXMLLoader.load(getClass().getResource("/views/CategorieFront.fxml"));
         Scene scene = new Scene(root);
        
         stage.setTitle("google");

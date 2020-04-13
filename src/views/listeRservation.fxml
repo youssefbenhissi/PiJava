@@ -28,6 +28,7 @@
             <Image url="@../image/1485476041-artboard-1_78536.png" />
          </image>
       </ImageView>
-      <Button layoutX="437.0" layoutY="242.0" mnemonicParsing="false" onAction="#accepter" prefHeight="25.0" prefWidth="150.0" stylesheets="@style.css" text="Accepter Reservation" />
+      <Button layoutX="437.0" layoutY="242.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: green;" text="Accepter Reservation" textFill="#f5e3e3" />
+      <Button layoutX="437.0" layoutY="163.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: red;" text="Refuser Reservation" textFill="#fcf1f1" />
    </children>
 </AnchorPane>
