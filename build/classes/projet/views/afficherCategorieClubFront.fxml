@@ -70,11 +70,6 @@
                                     <FontAwesomeIcon glyphName="USER" />
                                  </graphic>
                               </MenuItem>
-                              <MenuItem mnemonicParsing="false"  text="Quitter">
-                                 <graphic>
-                                    <FontAwesomeIcon glyphName="POWER_OFF" />
-                                 </graphic>
-                              </MenuItem>
                            </items>
                            <graphic>
                               <Circle fill="DODGERBLUE" radius="17.0" stroke="WHITE" strokeType="INSIDE" />

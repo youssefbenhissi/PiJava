@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="351.0" prefWidth="425.0" style="-fx-background-color: #16495e;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DetailLivreController">
+   <children>
+      <Pane layoutX="68.0" layoutY="49.0" prefHeight="271.0" prefWidth="285.0" style="-fx-background-color: white;">
+         <effect>
+            <DropShadow radius="15.19" width="41.76" />
+         </effect>
+         <children>
+            <ImageView fx:id="imageBack" fitHeight="112.0" fitWidth="200.0" layoutX="43.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="nom" layoutX="94.0" layoutY="14.0" prefHeight="17.0" prefWidth="65.0" />
+            <Label fx:id="description" layoutX="94.0" layoutY="181.0" prefHeight="17.0" prefWidth="89.0" />
+            <Button layoutX="64.0" layoutY="226.0" mnemonicParsing="false" onAction="#reservation" prefHeight="25.0" prefWidth="130.0" stylesheets="@style.css" text="Demand reservation" />
+            <Label layoutX="20.0" layoutY="14.0" prefHeight="17.0" prefWidth="78.0" text="nom du livre:" />
+            <Label layoutX="27.0" layoutY="181.0" prefHeight="17.0" prefWidth="65.0" text="Description:" />
+            <Label fx:id="nbr" layoutX="129.0" layoutY="209.0" prefHeight="17.0" prefWidth="53.0" />
+         </children>
+      </Pane>
+      <Label layoutX="123.0" layoutY="14.0" prefHeight="17.0" prefWidth="124.0" text="Detail Livre" textFill="#f2e6e6">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="25.0" fitWidth="24.0" layoutX="81.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/libraryofthreebooksoutlines_81092.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
