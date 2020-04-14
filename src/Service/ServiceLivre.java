@@ -273,12 +273,12 @@ String req = "delete from livre where id =?";
         }
         return categories;
     }
-     public List<livre> getListProduitsFilter(String categorie, String triNom) {
+     public List<livre> getListProduitsFilter(String category, String triNom) {
 
         ObservableList<livre> listLivre = FXCollections.observableArrayList();
         String req = null;
 
-        if (categorie == null) {
+        if (category == null) {
             if (triNom == null) {
                 req = "SELECT l.id,l.nom,l.nom_image,l.description,l.auteur,l.nombredepage FROM livre l,category cat WHERE c.id_category = cat.id ORDER BY l.id DESC ";
                 
@@ -288,7 +288,7 @@ String req = "delete from livre where id =?";
                 req = "SELECT l.id,l.nom,l.nom_image,l.description,l.auteur,l.nombredepage FROM livre l,category cat WHERE l.id_category = cat.id ORDER BY(l.nom) ASC";
             }
             if (triNom == "nom_desc") {
-                req = "SELECT c.id,c.nom,c.nom_image,c.description,c.auteur,c.nombredepage FROM livre c,category cat WHERE c.id_category = cat.id  ORDER BY(c.nom) DESC";
+                req = "SELECT l.id,l.nom,l.nom_image,l.description,l.auteur,l.nombredepage FROM livre l,category cat WHERE l.id_category = cat.id  ORDER BY(l.nom) DESC";
             }
            
            
@@ -296,13 +296,13 @@ String req = "delete from livre where id =?";
         } else {
             if (triNom == null) {
                
-                String sql = "SELECT l.id,l.nom FROM livre l  WHERE l.id_category = '" + categorie + "' ORDER BY l.id DESC ";
+                String sql = "SELECT l.id,l.nom FROM livre l  WHERE l.id_category = '" + category + "' ORDER BY l.id DESC ";
             }
 
         }
         try {
             ste = cn.createStatement();
-            ResultSet rs = ste.executeQuery(req);
+            ResultSet rs = statement.executeQuery(req);
 
             while (rs.next()) {
                 livre l = new livre();
@@ -312,19 +312,42 @@ String req = "delete from livre where id =?";
                 l.setDescription(rs.getString(4));
                 l.setAuteur(rs.getString(5));
                 l.setNombredepage(rs.getInt(6));
-                // c.setNomcategorie(rs.getString(6));
+               
                
                 listLivre.add(l);
             }
 
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
+            
             e.printStackTrace();
         }
 
         return listLivre;
     }
-
+ public List<livre> listLivv() {
+        ArrayList<livre> livres = new ArrayList<>();
+        String req = "SELECT l.id,ct.libelle,l.nom,l.description,l.auteur,l.nombredepage FROM livre l ,category ct where l.id_category=ct.id";
+        try {
+            PreparedStatement ps = cn.prepareStatement(req);
+            ps.executeQuery();
+            ResultSet rs = ps.getResultSet();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            
+            while (rs.next()) {
+                livre l = new livre();
+                l.setId(rs.getInt(1));
+                l.setNom(rs.getString(2));
+                l.setNom_image(rs.getString(3));
+                l.setDescription(rs.getString(4));
+                l.setAuteur(rs.getString(5));
+                l.setNombredepage(rs.getInt(6));
+                livres.add(l);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ServiceLivre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return livres;
+    }
 
 }
     

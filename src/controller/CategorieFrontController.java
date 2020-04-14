@@ -40,6 +40,8 @@ import javafx.stage.StageStyle;
 import models.categorier;
 import models.livre;
 import controller.AjouterCatigorieController;
+import java.io.File;
+import java.util.List;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -70,6 +72,7 @@ public class CategorieFrontController implements Initializable {
     public static livre liv1;
     @FXML
     private ComboBox<String> TrieCom;
+
     /**
      * Initializes the controller class.
      */
@@ -79,6 +82,9 @@ public class CategorieFrontController implements Initializable {
          categorieCombobox();
           TrieCom.getItems().clear();
         TrieCom.getItems().addAll("A à Z", "Z à A");
+        
+
+ 
 
     }    
  private void categorieCombobox() {
@@ -89,6 +95,7 @@ public class CategorieFrontController implements Initializable {
         HashMap<String, Integer> mapCategorie = ServiceCategorier.getAllCategorie();
         for (String s : mapCategorie.keySet()) {
             combo.getItems().add(s);
+
 
         }
     } 
@@ -203,7 +210,7 @@ loadWindow(getClass().getResource("/views/DetailLivre.fxml"), "DetailLivre",null
 }
    private void TrieLiv() {
 
-        String categorie = combo.getValue();
+        String category = combo.getValue();
         String classement = "all";
 
         String tri = TrieCom.getValue();
@@ -222,7 +229,7 @@ loadWindow(getClass().getResource("/views/DetailLivre.fxml"), "DetailLivre",null
             }
         }
 
-    listLivre = FXCollections.observableArrayList(ps.getListProduitsFilter(categorie, tri));
+    listLivre = FXCollections.observableArrayList(ps.getListProduitsFilter(category, tri));
        getLiv();
 }
 
@@ -230,6 +237,7 @@ loadWindow(getClass().getResource("/views/DetailLivre.fxml"), "DetailLivre",null
     private void Trie(ActionEvent event) {
         TrieLiv();
     }
+
    
    
    
