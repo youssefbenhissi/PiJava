@@ -34,7 +34,7 @@ public class ProjetPi extends Application {
         CategorieClubService c = new CategorieClubService();
         c.selectAll();
         try {
-            URL url = new File("src/views/CategorieFront.fxml").toURI().toURL();
+            URL url = new File("src/projet/views/LoginGUI.fxml").toURI().toURL();
             Parent root = FXMLLoader.load(url);
             primaryStage.setScene(new Scene(root));
             primaryStage.show();

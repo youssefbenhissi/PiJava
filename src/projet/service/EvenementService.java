@@ -168,14 +168,14 @@ public class EvenementService implements IEvenement {
             File file = new File("C:\\Users\\youssef\\Desktop\\categorie.xls");
             WritableWorkbook myexcel = Workbook.createWorkbook(file);
             WritableSheet mysheet = myexcel.createSheet("categorie", 0);
-            Label id = new Label(0, 0, "id");
+           // Label id = new Label(0, 0, "id");
             Label libelle = new Label(1, 0, "nom");
             Label capacite = new Label(2, 0, "capacite");
             Label description = new Label(3, 0, "description");
             Label prix = new Label(4, 0, "prix");
             Label date = new Label(5, 0, "date");
 
-            mysheet.addCell(id);
+            //mysheet.addCell(id);
             mysheet.addCell(libelle);
             mysheet.addCell(capacite);
             mysheet.addCell(description);
@@ -185,7 +185,7 @@ public class EvenementService implements IEvenement {
             int i = 1;
             for (Evenement c : list) {
 
-                id = new Label(0, i, String.valueOf(c.getIdEvenement()));
+              //  id = new Label(0, i, String.valueOf(c.getIdEvenement()));
                 libelle = new Label(1, i, c.getNomEvenement());
                 capacite = new Label(2, i, Integer.toString(c.getCapaciteEvenement()));
                 description = new Label(3, i, c.getDescriptionEvenement());
@@ -195,7 +195,7 @@ public class EvenementService implements IEvenement {
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
                 String strDate = dateFormat.format(d);
                 date= new Label(5, i, strDate);
-                mysheet.addCell(id);
+                //mysheet.addCell(id);
                 mysheet.addCell(libelle);
                 mysheet.addCell(capacite);
                 mysheet.addCell(description);

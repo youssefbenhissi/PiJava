@@ -143,7 +143,7 @@ public class EvenementFrontController implements Initializable {
     
     
     
-    @FXML
+     @FXML
     private void AfficherC(ActionEvent event) {
         Button btn = (Button) event.getSource();
         Stage stage = (Stage) btn.getScene().getWindow();
@@ -156,9 +156,9 @@ public class EvenementFrontController implements Initializable {
             Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
         }
         Scene scene = new Scene(root);
-     //   scene.setFill(Color.TRANSPARENT);
+        //scene.setFill(Color.TRANSPARENT);
         primaryStage.setScene(scene);
-       // primaryStage.initStyle(StageStyle.TRANSPARENT);
+        //primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
     }
     @FXML
@@ -180,4 +180,42 @@ public class EvenementFrontController implements Initializable {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
     }
+        @FXML
+    private void login(ActionEvent event) {
+        
+        Button btn = (Button) event.getSource();
+        Stage stage = (Stage) btn.getScene().getWindow();
+        stage.close();
+        Stage primaryStage = new Stage();
+        javafx.scene.Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/projet/views/LoginGUI.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
+    }
+    @FXML
+    private void AfficherB(ActionEvent event) {
+        Button btn = (Button) event.getSource();
+        Stage stage = (Stage) btn.getScene().getWindow();
+        stage.close();
+        Stage primaryStage = new Stage();
+        javafx.scene.Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/views/CategorieFront.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene = new Scene(root);
+        //scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        //primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
+    }
+
 }

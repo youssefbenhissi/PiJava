@@ -23,26 +23,20 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="858.0" prefWidth="1050.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.AfficherCategoriesClubController">
     <children>
         <VBox alignment="TOP_CENTER" prefHeight="858.0" prefWidth="260.0" style="-fx-background-color: #2F323A;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <children>
-                <Button fx:id="btnOverview" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Overview" textFill="#e7e5e5">
-                    <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/icons8_Home_32px.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <opaqueInsets>
-                        <Insets />
-                    </opaqueInsets>
-                    <VBox.margin>
-                        <Insets />
-                    </VBox.margin>
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                </Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#AfficherClubs" prefHeight="49.0" prefWidth="163.0" stylesheets="@../../views/style.css" text="clubs">
+            <padding>
+                <Insets top="150.0" />
+            </padding>
+         <children>
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="252.0" stylesheets="@../../views/style.css" text="Home">
+               <graphic>
+                  <ImageView fitHeight="29.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image/icons8_Home_32px_1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#AfficherClubs" prefHeight="49.0" prefWidth="258.0" stylesheets="@../../views/style.css" text="clubs">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -51,7 +45,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#AfficherEvenements" prefHeight="53.0" prefWidth="165.0" stylesheets="@../../views/style.css" text="evenements">
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#AfficherEvenements" prefHeight="53.0" prefWidth="258.0" stylesheets="@../../views/style.css" text="evenements">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -60,7 +54,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#AfficherC" onMouseClicked="#AfficherC" prefHeight="51.0" prefWidth="164.0" stylesheets="@../../views/style.css" text="bibliotheque">
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#AfficherC" onMouseClicked="#AfficherC" prefHeight="51.0" prefWidth="256.0" stylesheets="@../../views/style.css" text="bibliotheque">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -69,7 +63,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#Afficherpersonnel" prefHeight="56.0" prefWidth="166.0" stylesheets="@../../views/style.css" text="personnel">
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#Afficherpersonnel" prefHeight="56.0" prefWidth="260.0" stylesheets="@../../views/style.css" text="personnel">
                <graphic>
                   <ImageView fitHeight="27.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -78,22 +72,16 @@
                   </ImageView>
                </graphic>
             </Button>
-                <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Sign Out">
-                    <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/icons8_Sign_Out_32px.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                </Button>
-            </children>
-            <padding>
-                <Insets top="150.0" />
-            </padding>
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#login" prefHeight="56.0" prefWidth="283.0" stylesheets="@../../views/style.css" text="Sign Out">
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image/icons8_Sign_Out_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
         </VBox>
         <StackPane fx:id="afficherTsEvenementStackPane" layoutX="258.0" prefHeight="858.0" prefWidth="797.0" style="-fx-background-color: #02030A;">
             <children>

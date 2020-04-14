@@ -27,7 +27,7 @@
       </HBox>
       <HBox prefHeight="69.0" prefWidth="487.0" styleClass="header-dialog">
          <children>
-            <Label prefHeight="49.0" prefWidth="689.0" text="Modifier Categorie" textFill="#234b86">
+            <Label prefHeight="49.0" prefWidth="689.0" text="Modifier Evenement" textFill="#234b86">
                <font>
                   <Font name="Chrisye" size="26.0" />
                </font>

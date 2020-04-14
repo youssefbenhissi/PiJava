@@ -541,4 +541,22 @@ present_img.setFitWidth(300);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
     }
+    @FXML
+    private void AfficherB(ActionEvent event) {
+        Button btn = (Button) event.getSource();
+        Stage stage = (Stage) btn.getScene().getWindow();
+        stage.close();
+        Stage primaryStage = new Stage();
+        javafx.scene.Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/views/CategorieFront.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene = new Scene(root);
+        //scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        //primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
+    }
 }

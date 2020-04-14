@@ -26,7 +26,7 @@
                         <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="nav_button" text="Accueil" />
                         <Button layoutX="97.0" layoutY="10.0" mnemonicParsing="false" onAction="#AfficherC" styleClass="nav_button" text="Clubs" />
                         <Button layoutX="216.0" layoutY="10.0" mnemonicParsing="false" onAction="#AfficherEvenements" styleClass="nav_button" text="Evenements" />
-                        <Button mnemonicParsing="false" styleClass="nav_button" text="Bibliotheque" />
+                        <Button mnemonicParsing="false" onAction="#AfficherB" styleClass="nav_button" text="Bibliotheque" />
                      </children>
                   </HBox>
                   <HBox prefHeight="66.0" prefWidth="711.0" styleClass="nav-right">

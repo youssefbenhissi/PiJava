@@ -18,6 +18,7 @@ import com.jfoenix.controls.events.JFXDialogEvent;
 //import com.jfoenix.controls.JFXTextField;
 import java.util.Timer;
 import com.sun.speech.freetts.*;
+import controller.HomeeController;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -622,9 +623,8 @@ public class AfficherCategoriesClubController implements Initializable {
     
     
     
-     //Menuuuuuuuuuu
-    @FXML
-    private void AfficherC(ActionEvent event) {
+     @FXML
+    private void AfficherClubs(ActionEvent event) {
         Button btn = (Button) event.getSource();
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
@@ -641,9 +641,10 @@ public class AfficherCategoriesClubController implements Initializable {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
     }
+
     @FXML
     private void Afficherpersonnel(ActionEvent event) {
-        
+
         Button btn = (Button) event.getSource();
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
@@ -660,9 +661,10 @@ public class AfficherCategoriesClubController implements Initializable {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
     }
+
     @FXML
     private void AfficherEvenements(ActionEvent event) {
-        
+
         Button btn = (Button) event.getSource();
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
@@ -680,8 +682,47 @@ public class AfficherCategoriesClubController implements Initializable {
         primaryStage.show();
     }
      @FXML
+    private void login(ActionEvent event) {
+
+        Button btn = (Button) event.getSource();
+        Stage stage = (Stage) btn.getScene().getWindow();
+        stage.close();
+        Stage primaryStage = new Stage();
+        javafx.scene.Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/projet/views/LoginGUI.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
+    }
+    
+    @FXML
+    private void AfficherC(ActionEvent event) {
+       Button btn = (Button) event.getSource();
+        Stage stage = (Stage) btn.getScene().getWindow();
+        stage.close();
+        Stage primaryStage = new Stage();
+        javafx.scene.Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/views/affiche.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
+    }
+
+    @FXML
     private void AfficherBlogs(ActionEvent event) {
-        
+
         Button btn = (Button) event.getSource();
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
@@ -698,5 +739,4 @@ public class AfficherCategoriesClubController implements Initializable {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
     }
-
 }

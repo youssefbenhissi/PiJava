@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.Button;
+import projet.models.CategorieClub;
 import projet.models.Club;
 import projet.models.Evenement;
 import projet.models.Inscription;
@@ -93,7 +94,7 @@ public class ReservationService {
                 c.setStatus(rs.getString(2));
                 c.setNomEvenement(rs.getString(3));
                 c.setNomUser(rs.getString(4));
-                c.setBtn_confirmer(new Button("btn_confirmer"));
+                c.setBtn_confirmer(new Button("confirmer"));
                 clubs.add(c);
             }
         } catch (Exception ex) {
@@ -171,4 +172,33 @@ public class ReservationService {
         }
         return false;
     }
+       public List<reservation> rechercheCategories(String str) {
+        List<reservation> categories = new ArrayList<reservation>();
+        String sql = "SELECT c.id,c.statut,cEvenement.nomE,cUser.username FROM reservation c,evenement cEvenement,fos_user cUser where ( c.Evenement_id = cEvenement.id AND c.id_user = cUser.id AND cEvenement.nomE LIKE ? )";
+        PreparedStatement statement;
+
+        try {
+
+            statement = connection.prepareStatement(sql);
+
+            statement.setString(1, "%" + str + "%");
+            //statement.setString(2, "%" + str + "%");
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                 reservation c = new reservation();
+                System.out.println(rs.getInt(1));
+                c.setId(rs.getInt(1));
+                c.setStatus(rs.getString(2));
+                c.setNomEvenement(rs.getString(3));
+                c.setNomUser(rs.getString(4));
+                c.setBtn_confirmer(new Button("confirmer"));
+                categories.add(c);
+            }
+        } catch (SQLException ex) {
+
+        }
+        return categories;
+    }
+
 }

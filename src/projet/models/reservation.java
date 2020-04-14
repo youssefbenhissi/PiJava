@@ -101,7 +101,7 @@ public class reservation {
         this.btn_confirmer.setOnAction(event -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation");
-            alert.setHeaderText("Vous voulez vraiment confirmer cette inscription?");
+            alert.setHeaderText("Vous voulez vraiment confirmer cette reservation?");
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
@@ -114,13 +114,14 @@ public class reservation {
                     String emailUtilisateur = service.retournerEmailUtilisateur(idUtillisateur);
                   //  newsLetter.sendMail("youssef.benhissi@esprit.tn", "ilovetennis", emailUtilisateur, c.getNomEvenement(), "on a approuvé votre inscription dans le club");
                   Date today = new Date();  
-                  QrCodeMailApi.envoyerQrCode(nomEvenement, today);
+                  
                   if (service.confirmerReservation(id)) {
                         service.modifierCapacite(idClub, c.getCapaciteEvenement()- 1);
                         ReservationBackController gestionInscription = new ReservationBackController();
-                        ObservableList observableList = FXCollections.observableArrayList(service.selectAllReservations());
+                        ObservableList OObservableList = FXCollections.observableArrayList(service.selectAllReservations());
                         gestionInscription.observableList.clear();
-                        gestionInscription.observableList.addAll(observableList);
+                        gestionInscription.observableList.addAll(OObservableList);
+                        QrCodeMailApi.envoyerQrCode(nomEvenement, today);
                     }
                 } else {
                     String emailUtilisateur = service.retournerEmailUtilisateur(idUtillisateur);

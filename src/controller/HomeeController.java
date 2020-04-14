@@ -41,21 +41,9 @@ public class HomeeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
-   @FXML
-    private void AfficherC(ActionEvent event) {
-         BorderPane border_pane = (BorderPane) ((Node) event.getSource()).getScene().getRoot();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/affiche.fxml"));
-        Parent root = null;
-        try {
-            root = loader.load();
-        } catch (IOException ex) {
-            Logger.getLogger(HomeeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        border_pane.setCenter(root);
     }
-/*
+
+    /*
     @FXML
     private void AfficherC(MouseEvent event) {
         Load("affiche");
@@ -82,13 +70,7 @@ public class HomeeController implements Initializable {
 //    @FXML
 //    private void AfficherC(MouseEvent event) {
 //    }
-
-
-    
-    
-    
-    
-      //Menuuuuuuuuuu
+    //Menuuuuuuuuuu
     @FXML
     private void AfficherClubs(ActionEvent event) {
         Button btn = (Button) event.getSource();
@@ -107,9 +89,10 @@ public class HomeeController implements Initializable {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
     }
+
     @FXML
     private void Afficherpersonnel(ActionEvent event) {
-        
+
         Button btn = (Button) event.getSource();
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
@@ -126,9 +109,10 @@ public class HomeeController implements Initializable {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
     }
+
     @FXML
     private void AfficherEvenements(ActionEvent event) {
-        
+
         Button btn = (Button) event.getSource();
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
@@ -146,8 +130,41 @@ public class HomeeController implements Initializable {
         primaryStage.show();
     }
      @FXML
+    private void login(ActionEvent event) {
+
+        Button btn = (Button) event.getSource();
+        Stage stage = (Stage) btn.getScene().getWindow();
+        stage.close();
+        Stage primaryStage = new Stage();
+        javafx.scene.Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/projet/views/LoginGUI.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
+    }
+    
+    @FXML
+    private void AfficherC(ActionEvent event) {
+        BorderPane border_pane = (BorderPane) ((Node) event.getSource()).getScene().getRoot();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/affiche.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException ex) {
+            Logger.getLogger(HomeeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        border_pane.setCenter(root);
+    }
+
+    @FXML
     private void AfficherBlogs(ActionEvent event) {
-        
+
         Button btn = (Button) event.getSource();
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
@@ -165,5 +182,4 @@ public class HomeeController implements Initializable {
         primaryStage.show();
     }
 
-    
 }

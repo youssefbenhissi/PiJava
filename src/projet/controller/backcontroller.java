@@ -220,8 +220,10 @@ public class backcontroller implements Initializable {
 
     //Menuuuuuuuuuu
     //Menuuuuuuuuuu
-    @FXML
-    private void AfficherC(ActionEvent event) {
+   
+    
+     @FXML
+    private void AfficherClubs(ActionEvent event) {
         Button btn = (Button) event.getSource();
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
@@ -238,9 +240,10 @@ public class backcontroller implements Initializable {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
     }
+
     @FXML
     private void Afficherpersonnel(ActionEvent event) {
-        
+
         Button btn = (Button) event.getSource();
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
@@ -257,9 +260,10 @@ public class backcontroller implements Initializable {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
     }
+
     @FXML
     private void AfficherEvenements(ActionEvent event) {
-        
+
         Button btn = (Button) event.getSource();
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
@@ -276,9 +280,9 @@ public class backcontroller implements Initializable {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
     }
-    @FXML
+     @FXML
     private void login(ActionEvent event) {
-        
+
         Button btn = (Button) event.getSource();
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
@@ -295,4 +299,44 @@ public class backcontroller implements Initializable {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
     }
+    
+    @FXML
+    private void AfficherC(ActionEvent event) {
+       Button btn = (Button) event.getSource();
+        Stage stage = (Stage) btn.getScene().getWindow();
+        stage.close();
+        Stage primaryStage = new Stage();
+        javafx.scene.Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/views/affiche.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
+    }
+
+    @FXML
+    private void AfficherBlogs(ActionEvent event) {
+
+        Button btn = (Button) event.getSource();
+        Stage stage = (Stage) btn.getScene().getWindow();
+        stage.close();
+        Stage primaryStage = new Stage();
+        javafx.scene.Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/gestion_blog/views/Home.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
+    }
+    
 }
