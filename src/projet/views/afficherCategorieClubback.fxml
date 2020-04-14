@@ -27,15 +27,6 @@
                 <Insets top="150.0" />
             </padding>
          <children>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="252.0" stylesheets="@../../views/style.css" text="Home">
-               <graphic>
-                  <ImageView fitHeight="29.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../image/icons8_Home_32px_1.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
             <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#AfficherClubs" prefHeight="49.0" prefWidth="258.0" stylesheets="@../../views/style.css" text="clubs">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
@@ -68,6 +59,15 @@
                   <ImageView fitHeight="27.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../image/icons8_Xbox_Menu_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="gestionBlog" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#AfficherGestionBlog" prefHeight="56.0" prefWidth="260.0" stylesheets="@../../views/style.css" text="Blog">
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icon-blog-desabled.png" />
                      </image>
                   </ImageView>
                </graphic>

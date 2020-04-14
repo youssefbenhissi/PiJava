@@ -13,6 +13,7 @@ import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -486,95 +487,69 @@ present_img.setFitWidth(300);
     
     
     @FXML
-    private void AfficherC(ActionEvent event) {
-        Button btn = (Button) event.getSource();
-        Stage stage = (Stage) btn.getScene().getWindow();
-        stage.close();
-        Stage primaryStage = new Stage();
-        javafx.scene.Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/projet/views/afficherCategorieClubFront.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private void AfficherC(ActionEvent event) throws IOException {
+       
+        
+        Stage stage = (Stage) this.box.getScene().getWindow();
+        URL url = new File("src/projet/views/afficherCategorieClubFront.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+       
         Scene scene = new Scene(root);
-        //scene.setFill(Color.TRANSPARENT);
-        primaryStage.setScene(scene);
-        //primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.show();
+        stage.setScene(scene);
     }
     @FXML
-    private void AfficherEvenements(ActionEvent event) {
+    private void AfficherEvenements(ActionEvent event) throws IOException {
         
-        Button btn = (Button) event.getSource();
-        Stage stage = (Stage) btn.getScene().getWindow();
-        stage.close();
-        Stage primaryStage = new Stage();
-        javafx.scene.Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/projet/views/EvenemnetFront.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
+        
+         Stage stage = (Stage) this.box.getScene().getWindow();
+        URL url = new File("src/projet/views/EvenemnetFront.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+       
         Scene scene = new Scene(root);
-        scene.setFill(Color.TRANSPARENT);
-        primaryStage.setScene(scene);
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.show();
+        stage.setScene(scene);
     }
         @FXML
-    private void login(ActionEvent event) {
+    private void login(ActionEvent event) throws IOException {
         
-        Button btn = (Button) event.getSource();
-        Stage stage = (Stage) btn.getScene().getWindow();
-        stage.close();
-        Stage primaryStage = new Stage();
-        javafx.scene.Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/projet/views/LoginGUI.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        
+         Stage stage = (Stage) this.box.getScene().getWindow();
+        URL url = new File("src/projet/views/LoginGUI.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+       
         Scene scene = new Scene(root);
-        scene.setFill(Color.TRANSPARENT);
-        primaryStage.setScene(scene);
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.show();
+        stage.setScene(scene);
     }
     @FXML
-    private void AfficherB(ActionEvent event) {
-        Button btn = (Button) event.getSource();
-        Stage stage = (Stage) btn.getScene().getWindow();
-        stage.close();
-        Stage primaryStage = new Stage();
-        javafx.scene.Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/views/CategorieFront.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private void AfficherB(ActionEvent event) throws MalformedURLException, IOException {
+        
+         Stage stage = (Stage) this.box.getScene().getWindow();
+        URL url = new File("src/views/CategorieFront.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+       
         Scene scene = new Scene(root);
-        //scene.setFill(Color.TRANSPARENT);
-        primaryStage.setScene(scene);
-        //primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.show();
+        stage.setScene(scene);
     }
     @FXML
-    private void AfficherEtablissement(ActionEvent event) {
-        Button btn = (Button) event.getSource();
-        Stage stage = (Stage) btn.getScene().getWindow();
-        stage.close();
-        Stage primaryStage = new Stage();
-        javafx.scene.Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/projet2020/AficcherEtablissement.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private void AfficherEtablissement(ActionEvent event) throws MalformedURLException, IOException {
+       
+        
+         Stage stage = (Stage) this.box.getScene().getWindow();
+        URL url = new File("src/projet2020/AficcherEtablissement.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+       
         Scene scene = new Scene(root);
-        //scene.setFill(Color.TRANSPARENT);
-        primaryStage.setScene(scene);
-        //primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.show();
+        stage.setScene(scene);
     }
+      @FXML
+      public void AfficherBlog(ActionEvent event) throws MalformedURLException, IOException{
+         Stage stage = (Stage) this.box.getScene().getWindow();
+        URL url = new File("src/projet/views/affichageArticlesFrontList.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+       
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    }
+    
 }

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<HBox prefHeight="451.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.AffichageArticleListFront">
+               <children>
+                  <VBox prefHeight="331.0" prefWidth="820.0">
+                     <children>
+                        <Pane prefWidth="392.0">
+                           <children>
+                              <VBox fx:id="vboxArticle" alignment="CENTER" layoutX="9.0" layoutY="9.0" onMouseClicked="#AfficherArticle" prefHeight="339.0" prefWidth="798.0" style="-fx-background-color: white; -fx-background-radius: 10px;">
+                                 <children>
+                                    <ImageView fx:id="articleimage1" fitHeight="269.0" fitWidth="730.0" onMouseClicked="#AfficherArticle" pickOnBounds="true" smooth="false">
+                                       <image>
+                                          <Image url="@../images/amperesoft-gmbh-computer-software-drag-and-drop-drag-queen-work-steps-png-clip-art.png" />
+                                       </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                                    </ImageView>
+                                    <Text fx:id="articletitre1" onMouseClicked="#AfficherArticle" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #eb4a46; -fx-font-size: 1.4em;" text="Cozy 5 star apartment" textAlignment="CENTER">
+                                       <VBox.margin>
+                                          <Insets left="10.0" right="10.0" top="12.0" />
+                                       </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                                    </Text>
+                                    <Text fx:id="articledesc1" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #eb4a46;" text="                          The place is close to Barcolenota beach" textAlignment="CENTER" wrappingWidth="363.1435546875">
+                                       <VBox.margin>
+                                          <Insets left="10.0" right="10.0" top="5.0" />
+                                       </VBox.margin>
+                                    </Text>
+                                    <HBox style="-fx-background-color: #adadad;">
+                                       <children>
+                                          <Text fx:id="articlevue1" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white;" text="\$899/night" />
+                                          <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Text fx:id="articlecat1" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white;" text="Barcelona, Span" />
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets top="18.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                                 <effect>
+                                    <DropShadow height="10.620000000000001" radius="5.18" width="12.1" />
+                                 </effect>
+                     <padding>
+                        <Insets top="12.0" />
+                     </padding>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                              </VBox>
+                              <VBox layoutX="45.0" layoutY="-8.0" prefHeight="259.0" prefWidth="728.0">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </VBox>
+                           </children>
+                        </Pane>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="38.0" top="26.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="12.0" />
+               </VBox.margin>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+            </HBox>

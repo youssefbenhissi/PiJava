@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="1008.0" style="-fx-background-color: #2F2B43;" stylesheets="@../style/fullpackstyling.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.backhomecontroller">
+   <children>
+      <Pane layoutX="95.0" prefHeight="649.0" prefWidth="1156.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="-243.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane layoutX="135.0" layoutY="-178.0" prefHeight="303.0" prefWidth="467.0" rotate="41.6" style="-fx-background-color: #4287f5; -fx-background-radius: 70;" />
+            <Pane fx:id="AfficherClubs" layoutX="76.0" layoutY="106.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#AfficherClubs" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2" />
+                  <Circle layoutX="84.0" layoutY="87.0" radius="50.0" strokeType="INSIDE">
+                     <stroke>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="BLACK" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </stroke>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startY="0.4952380952380952">
+                           <stops>
+                              <Stop color="#03b5fc" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Circle>
+                  <ImageView fitHeight="49.0" fitWidth="37.0" layoutX="66.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image/users-solid.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="-6.0" layoutY="146.0" prefHeight="17.0" prefWidth="174.0" text="Club" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="13.0" />
+                     </font></Label>
+               </children>
+            </Pane>
+            <Pane layoutX="316.0" layoutY="106.0" prefHeight="202.0" prefWidth="179.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#AfficherEvenements" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2" />
+                  <Circle layoutX="84.0" layoutY="87.0" radius="50.0" strokeType="INSIDE">
+                     <stroke>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="BLACK" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </stroke>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startY="0.4952380952380952">
+                           <stops>
+                              <Stop color="#68479f" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Circle>
+                  <ImageView fitHeight="49.0" fitWidth="37.0" layoutX="66.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image/icons8_Slider__32px.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="1.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="evenements" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="13.0" />
+                     </font></Label>
+               </children>
+            </Pane>
+            <Pane layoutX="201.0" layoutY="354.0" prefHeight="202.0" prefWidth="179.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#Afficherpersonnel" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2" />
+                  <Circle layoutX="84.0" layoutY="87.0" radius="50.0" strokeType="INSIDE">
+                     <stroke>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="BLACK" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </stroke>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startY="0.4952380952380952">
+                           <stops>
+                              <Stop color="#ff52e2" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Circle>
+                  <ImageView fitHeight="49.0" fitWidth="37.0" layoutX="66.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image/icons8_Xbox_Menu_32px.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="3.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="personnel" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="13.0" />
+                     </font></Label>
+               </children>
+            </Pane>
+            <Pane layoutX="446.0" layoutY="354.0" prefHeight="202.0" prefWidth="179.0">
+               <children>
+                  <Button fx:id="btn" mnemonicParsing="false" onAction="#AfficherGestionBlog" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2" />
+                  <Circle layoutX="84.0" layoutY="87.0" radius="50.0" stroke="#ff924f" strokeType="INSIDE">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startY="0.4952380952380952">
+                           <stops>
+                              <Stop color="#ff934f" />
+                              <Stop color="WHITE" offset="0.9961685823754789" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Circle>
+                  <ImageView fitHeight="49.0" fitWidth="37.0" layoutX="66.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icon-blog-desabled.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="1.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Blog" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="13.0" />
+                     </font></Label>
+               </children>
+            </Pane>
+            <Pane layoutX="559.0" layoutY="106.0" prefHeight="190.0" prefWidth="174.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#AfficherC" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2" />
+                  <Circle layoutX="84.0" layoutY="87.0" radius="50.0" strokeType="INSIDE">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startY="0.4952380952380952">
+                           <stops>
+                              <Stop color="#4f79ff" />
+                              <Stop color="WHITE" offset="0.9961685823754789" />
+                              <Stop color="#4f79ff" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Circle>
+                  <ImageView fitHeight="49.0" fitWidth="37.0" layoutX="66.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image/icons8_Open_Envelope_32px.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="1.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="bibliotheque" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="13.0" />
+                     </font></Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

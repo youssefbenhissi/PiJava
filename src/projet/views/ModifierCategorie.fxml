@@ -1,91 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="510.0" styleClass="content-dialog" stylesheets="@../style/gestionproduit.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.ModifierCategorieEvenementController">
-   <children>
-      <HBox prefHeight="32.0" prefWidth="937.0" styleClass="top-dialog">
-         <children>
-            <Button mnemonicParsing="false" onMouseClicked="#closeDialog" prefHeight="31.0" prefWidth="48.0" styleClass="button-dialog-close" text="X">
-               <font>
-                  <Font name="Comic Sans MS" size="14.0" />
-               </font>
-            </Button>
-         </children>
-         <VBox.margin>
-            <Insets left="-15.0" right="-15.0" top="-15.0" />
-         </VBox.margin>
-      </HBox>
-      <HBox prefHeight="74.0" prefWidth="564.0" styleClass="header-dialog">
-         <children>
-            <Label prefHeight="49.0" prefWidth="689.0" text="Modifier Categorie" textFill="#234b86">
-               <font>
-                  <Font name="Chrisye" size="26.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
-      <VBox prefHeight="165.0" prefWidth="600.0">
-         <children>
-            <JFXTextField fx:id="nomCategorie" focusColor="#d1d1d1" onKeyPressed="#libelleEvent" prefHeight="30.0" prefWidth="492.0" promptText="Nom" unFocusColor="#d1d1d1">
-               <VBox.margin>
-                  <Insets top="25.0" />
-               </VBox.margin>
-            </JFXTextField>
-            <Label fx:id="errorsNom" prefHeight="0.0" prefWidth="550.0" styleClass="label-errors" />
-            <JFXTextField fx:id="description" focusColor="#d1d1d1" onKeyPressed="#libelleEvent" prefHeight="30.0" prefWidth="492.0" promptText="Description" unFocusColor="#d1d1d1" />
-            <Label fx:id="errorsLibelle" prefHeight="0.0" prefWidth="550.0" styleClass="label-errors" />
-            <VBox>
-               <children>
-                  <HBox prefHeight="79.0" prefWidth="333.0" styleClass="content-h-uplaod">
-                     <children>
-                        <JFXButton onMouseClicked="#uploadimg" prefHeight="44.0" prefWidth="156.0" styleClass="button-upload" text="Upload a File">
-                           <font>
-                              <Font name="Britannic Bold" size="16.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets top="18.0" />
-                           </HBox.margin>
-                        </JFXButton>
-                        <ImageView fx:id="imageView" disable="true" fitHeight="78.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true" styleClass="image-upload">
-                           <HBox.margin>
-                              <Insets left="30.0" />
-                           </HBox.margin>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <Label fx:id="errorsImage" prefHeight="17.0" prefWidth="562.0" styleClass="label-errors" />
-               </children>
-            </VBox>
-         </children>
-         <padding>
-            <Insets left="30.0" right="30.0" />
-         </padding>
-      </VBox>
-      <HBox prefHeight="70.0" prefWidth="939.0" styleClass="dialog-group-button">
-         <children>
-            <JFXButton onMouseClicked="#closeDialog" prefHeight="50.0" prefWidth="120.0" styleClass="button-close" text="Fermer">
-               <font>
-                  <Font name="Century Gothic" size="17.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="11.0" />
-               </HBox.margin>
-            </JFXButton>
-            <JFXButton onMouseClicked="#modifierCategorie" prefHeight="49.0" prefWidth="120.0" styleClass="button-save" text="Modifier">
-               <font>
-                  <Font name="Century Gothic" size="17.0" />
-               </font>
-            </JFXButton>
-         </children>
-      </HBox>
-   </children>
-</VBox>
+<GridPane alignment="center" hgap="10.0" prefHeight="720.0" prefWidth="1366.0" vgap="5.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.ModifierCategorie">
+    <padding><Insets bottom="1.0" left="3.0" right="1.0" top="3.0" /></padding>
+    <columnConstraints>
+        <ColumnConstraints halignment="RIGHT" maxWidth="Infinity" minWidth="100.0" prefWidth="100.0">
+        </ColumnConstraints>
+        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="200.0">
+        </ColumnConstraints>
+    </columnConstraints>
+
+    <!-- Add Header Label -->
+    <Label alignment="CENTER" prefHeight="98.0" prefWidth="608.0" style="-fx-background-color: #dedede; -fx-background-radius: 1em;" text="Modifier Catégorie" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowSpan="1">
+        <font>
+            <Font name="Arial" size="24" />
+        </font>
+        <GridPane.margin>
+            <Insets left="109.0" />
+        </GridPane.margin>
+    </Label>
+
+
+
+    <!-- Add Name Label -->
+    <Label alignment="CENTER" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: #dedede; -fx-background-radius: 1em;" text="*Titre : " GridPane.rowIndex="4">
+    </Label>
+    <!-- Add Name Text Field -->
+    <TextField fx:id="titre" prefHeight="40" promptText="Titre mini 3 caractères  -  200 max" style="-fx-background-radius: 1em;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+
+    <!-- Add Email Label -->
+    <Label alignment="CENTER" prefHeight="38.0" prefWidth="100.0" style="-fx-background-color: #dedede; -fx-background-radius: 1em;" text="*Description :" GridPane.rowIndex="5">
+    </Label>
+    <!-- Add Email Text Field -->
+    <TextField fx:id="descri" prefHeight="40" promptText="Titre mini 10 caractères  -  300 max" style="-fx-background-radius: 1em;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+
+    <!-- Add Submit Button -->
+    <Button fx:id="submitButton" defaultButton="true" onAction="#handleModificationCateg" prefHeight="40" prefWidth="100" text="Modifier" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.rowSpan="1">
+        <GridPane.margin>
+            <Insets bottom="20" left="0" right="0" top="20" />
+        </GridPane.margin>
+    </Button>
+   <Label fx:id="taglabel" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <GridPane.margin>
+         <Insets left="205.0" />
+      </GridPane.margin>
+   </Label>
+   <Button fx:id="Retourner" defaultButton="true" onAction="#retouraccu" prefHeight="42.0" prefWidth="100" text="Retour">
+      <graphic>
+         <ImageView fitHeight="16.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../images/unnamed%20(1).png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </Button>
+   <rowConstraints>
+      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="43.0" valignment="TOP" />
+      <RowConstraints maxHeight="-Infinity" prefHeight="100.0" valignment="TOP" />
+      <RowConstraints valignment="TOP" />
+      <RowConstraints valignment="TOP" />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints minHeight="10.0" prefHeight="100.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+   </rowConstraints>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</GridPane>

@@ -21,13 +21,14 @@
                <children>
                   <HBox prefHeight="53.0" prefWidth="1366.0" styleClass="nav-top" stylesheets="@../style/home.css">
                      <children>
-                        <HBox prefHeight="66.0" prefWidth="645.0">
+                        <HBox prefHeight="53.0" prefWidth="674.0">
                            <children>
                               <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="nav_button" text="Accueil" />
                               <Button layoutX="97.0" layoutY="10.0" mnemonicParsing="false" onAction="#AfficherC" styleClass="nav_button" text="Clubs" />
                               <Button layoutX="216.0" layoutY="10.0" mnemonicParsing="false" onAction="#AfficherEvenements" styleClass="nav_button" text="Evenements" />
                               <Button mnemonicParsing="false" onAction="#AfficherB" styleClass="nav_button" text="Bibliotheque" />
                               <Button mnemonicParsing="false" onAction="#AfficherEtablissement" prefWidth="149.0" styleClass="nav_button" text="Etablissement" />
+                              <Button mnemonicParsing="false" onAction="#AfficherBlog" styleClass="nav_button" text="Blog" />
                            </children>
                         </HBox>
                         <HBox prefHeight="66.0" prefWidth="711.0" styleClass="nav-right">

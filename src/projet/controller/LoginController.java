@@ -103,7 +103,7 @@ public class LoginController {
             Stage stage = (Stage) GUI.getScene().getWindow();
             stage.close();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/projet/views/afficherCategorieClubFront.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/projet/views/Dashboard.fxml"));
             Parent root = loader.load();
 //            WorldfriendshipController controller = (WorldfriendshipController) loader.getController();
             //          existenceUtilisateur = ServiceLogin.getUtilisateur(nomUtilisateur);
@@ -165,7 +165,7 @@ public class LoginController {
                         Stage stage = (Stage) GUI.getScene().getWindow();
                         stage.close();
 
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/projet/views/afficherCategorieClubFront.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/projet/views/Dashboard.fxml"));
                         Parent root = loader.load();
                         // WorldfriendshipController controller = (WorldfriendshipController) loader.getController();
                         //controller.setUser(ServiceLogin.getUtilisateur(Uti.getKey()));
@@ -180,7 +180,7 @@ public class LoginController {
                         Stage stage = (Stage) GUI.getScene().getWindow();
                         stage.close();
 
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/projet/views/afficherCategorieClubback.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/projet/views/sample.fxml"));
                         Parent root = loader.load();
                         // DashboardController controller = (DashboardController) loader.getController();
                         //controller.setUser(ServiceLogin.getUtilisateur(Uti.getKey()));

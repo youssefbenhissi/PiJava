@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ProjetPi.jar" size="38837033" download="eager" />
+    <jar href="ProjetPi.jar" size="39991561" download="eager" />
     <jar href="lib\AbsoluteLayout.jar" size="2903" download="eager" />
     <jar href="lib\AnimateFX-1.2.0.jar" size="85823" download="eager" />
     <jar href="lib\Client.jar" size="3693" download="eager" />
@@ -48,6 +48,7 @@
     <jar href="lib\freetts.jar" size="208668" download="eager" />
     <jar href="lib\itext-2.1.7.jar" size="1130070" download="eager" />
     <jar href="lib\itext-5.0.5.jar" size="1599728" download="eager" />
+    <jar href="lib\javax.mail-1.6.2.jar" size="659031" download="eager" />
     <jar href="lib\jaxb-api-2.3.1.jar" size="128076" download="eager" />
     <jar href="lib\jaxb-core-2.3.0.1.jar" size="254858" download="eager" />
     <jar href="lib\jaxb-impl-2.3.2.jar" size="1017695" download="eager" />
