@@ -39,7 +39,7 @@ public class ServiceReservation {
     
      
         pre.executeUpdate();
-        new NoticeWindow(NoticeType.SUCCESS_NOTIFICATION,"reseavation avec sucee",NoticeWindow.LONG_DELAY,NPosition.BOTTOM_RIGHT);
+        new NoticeWindow(NoticeType.SUCCESS_NOTIFICATION,"Reservation Envoyé",NoticeWindow.LONG_DELAY,NPosition.BOTTOM_RIGHT);
 
                 
        }
@@ -56,8 +56,9 @@ List<Reservation> cats = new ArrayList<>();
                         resultSet.getInt("id"),
                        
                         resultSet.getString("nom"),
-                        resultSet.getInt("id_livre")
-                      
+                        
+                        resultSet.getString("reponse"),
+                      resultSet.getInt("id_livre")
                        
                         
                 );
@@ -69,5 +70,34 @@ List<Reservation> cats = new ArrayList<>();
         return cats;
     }
 
+    public void deleteReservation(int id) {
+        String req = "delete from resevationn where id =?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = cn.prepareStatement(req);
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null,"Reservation refuser");
 
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+          
+        }
+      
+    }
+    
+       public void reservationAccpeter(int id){
+            PreparedStatement preparedStatement;
+           try {
+            String req = "update resevationn set reponse=? where id=?";
+             preparedStatement = cn.prepareStatement(req);
+            preparedStatement.setString(1,"accepter");
+            preparedStatement.setInt(2,id);
+            
+            preparedStatement.executeUpdate();//exécution
+            JOptionPane.showMessageDialog(null,"Reservation accepter");
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
 }

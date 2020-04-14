@@ -38,45 +38,52 @@ public class ListeRservationController implements Initializable {
     @FXML
     private TableColumn<Reservation,String> nomlivre;
      ObservableList<Reservation> oblist = FXCollections.observableArrayList();
+    @FXML
+    private Button btnres;
+    @FXML
+    private Button btndecline;
+    @FXML
+    private TableColumn<Reservation, ?> Reponse;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         ServiceReservation annonceService = new ServiceReservation();
-        oblist = FXCollections.observableArrayList(annonceService.getAll());
-
-        ObservableList observableList = FXCollections.observableArrayList(oblist);
-        table.setItems(observableList);
-        id_r.setCellValueFactory(new PropertyValueFactory<>("id"));
-        nomlivre.setCellValueFactory(new PropertyValueFactory<>("nom"));
-                id_rl.setCellValueFactory(new PropertyValueFactory<>("id_livre"));
-
-      
         
-   
-        
-        
-        // TODO
+        set(); 
     }    
     
      public void setCellValue(){
         
         
      }
-//     private void accepter(ActionEvent event) {
-//         table.setOnMouseClicked(new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent event) {
-//                Reservation p1=table.getItems().get(table.getSelectionModel().getSelectedIndex());
-//                p1.getId();
-//                
-//            // Reservation a = new Reservation(p1.getId());
-//                
-//            }
-//        }
-//        
-//        );
-//     }
-    
+
+    @FXML
+    private void reservation(ActionEvent event) {
+        ServiceReservation sr=new ServiceReservation();
+        sr.reservationAccpeter(table.getSelectionModel().getSelectedItem().getId());
+        set(); 
+    }
+
+   
+
+    @FXML
+    private void descline(ActionEvent event) {
+         ServiceReservation sr=new ServiceReservation();
+        sr.deleteReservation(table.getSelectionModel().getSelectedItem().getId());
+        set(); 
+    }
+   
+    public void set(){
+     ServiceReservation annonceService = new ServiceReservation();
+        oblist = FXCollections.observableArrayList(annonceService.getAll());
+
+        ObservableList observableList = FXCollections.observableArrayList(oblist);
+        table.setItems(observableList);
+        id_r.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nomlivre.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        id_rl.setCellValueFactory(new PropertyValueFactory<>("id_livre"));
+        Reponse.setCellValueFactory(new PropertyValueFactory<>("reponse"));
+      
+    }
 }
