@@ -259,5 +259,22 @@ public class CategorieFrontController implements Initializable {
         //primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
     }
-
+ @FXML
+    private void AfficherEtablissement(ActionEvent event) {
+        Button btn = (Button) event.getSource();
+        Stage stage = (Stage) btn.getScene().getWindow();
+        stage.close();
+        Stage primaryStage = new Stage();
+        javafx.scene.Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/projet2020/AficcherEtablissement.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene scene = new Scene(root);
+        //scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        //primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
+    }
 }

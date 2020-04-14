@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ProjetPi.jar" size="38808442" download="eager" />
+    <jar href="ProjetPi.jar" size="38837033" download="eager" />
     <jar href="lib\AbsoluteLayout.jar" size="2903" download="eager" />
     <jar href="lib\AnimateFX-1.2.0.jar" size="85823" download="eager" />
     <jar href="lib\Client.jar" size="3693" download="eager" />
@@ -64,6 +64,7 @@
     <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
     <jar href="lib\mysql-connector-java-8.0.19.jar" size="2356711" download="eager" />
     <jar href="lib\org.apache.commons.codec-1.8-sources.jar" size="5017" download="eager" />
+    <jar href="lib\org.apache.commons.io.jar" size="83613" download="eager" />
     <jar href="lib\poi-4.1.2.jar" size="2915337" download="eager" />
     <jar href="lib\poi-examples-4.1.2.jar" size="377209" download="eager" />
     <jar href="lib\poi-excelant-4.1.2.jar" size="31321" download="eager" />
