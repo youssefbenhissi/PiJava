@@ -286,7 +286,7 @@ public class AffichageArticleSingleFront implements Initializable {
             Affich.SetCateg(listcat.get(listcat.indexOf(categorie)).getNom()); // categorie
             Affich.SetContenu(html2text(listarti.get(index).getContenu()));
 
-            String path = "http://127.0.0.1/www/PIJAVA/web/assets/images/" + listarti.get(index).getImage();
+            String path = "http://127.0.0.1:8000/assets/images/" + listarti.get(index).getImage();
 
             javafx.scene.image.Image img = new javafx.scene.image.Image(path);
             Affich.SetImage(img);
@@ -320,7 +320,7 @@ public class AffichageArticleSingleFront implements Initializable {
             Affich.SetCateg(listcat.get(listcat.indexOf(categorie)).getNom()); // categorie
             Affich.SetContenu(html2text(listarti.get(index).getContenu()));
 
-            String path = "http://127.0.0.1/www/PIJAVA/web/assets/images/" + listarti.get(index).getImage();
+            String path = "http://127.0.0.1:8000/assets/images/" + listarti.get(index).getImage();
 
             javafx.scene.image.Image img = new javafx.scene.image.Image(path);
             Affich.SetImage(img);
@@ -358,7 +358,7 @@ public class AffichageArticleSingleFront implements Initializable {
                 Affich.SetCateg(listcat.get(listcat.indexOf(categorie)).getNom()); // categorie
                 Affich.SetContenu(html2text(listarti.get(index).getContenu()));
 
-                String path = "http://127.0.0.1/www/PIJAVA/web/assets/images/" + listarti.get(index).getImage();
+                String path = "http://127.0.0.1:8000/assets/images/" + listarti.get(index).getImage();
 
                 javafx.scene.image.Image img = new javafx.scene.image.Image(path);
                 Affich.SetImage(img);

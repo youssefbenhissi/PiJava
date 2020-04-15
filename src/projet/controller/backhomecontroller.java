@@ -100,7 +100,7 @@ public class backhomecontroller implements Initializable {
        
         
         Stage stage = (Stage) this.btn.getScene().getWindow();
-        URL url = new File("src/views/affiche.fxml").toURI().toURL();
+        URL url = new File("src/views/homee.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         // stage.getIcons().add(new javafx.scene.image.Image("/projet/images/article-512.png"));
         Scene scene = new Scene(root);

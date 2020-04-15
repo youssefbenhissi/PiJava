@@ -190,7 +190,7 @@ public void AffichParCat(int id){
                 int index = listCat.indexOf(categor);
                 Affich.setArticlecat1(listCat.get(index).getNom());
                 this.CategorieNom.setText("Catégorie : "+listCat.get(index).getNom());
-                 String path = "http://127.0.0.1/www/PIJAVA/web/assets/images/" + listarticles.get(i).getImage();
+                 String path = "http://127.0.0.1:8000/assets/images/" + listarticles.get(i).getImage();
                
                   Image img = new Image(path);
                  

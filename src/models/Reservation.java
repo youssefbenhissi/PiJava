@@ -12,7 +12,15 @@ package models;
 public class Reservation {
     public int id;
     public String nom;
+    public String Reponse;
     public int id_livre;
+
+    public Reservation(int id, String nom, String Reponse, int id_livre) {
+        this.id = id;
+        this.nom = nom;
+        this.Reponse = Reponse;
+        this.id_livre = id_livre;
+    }
 
     public Reservation( String nom, int id_livre) {
        
@@ -31,6 +39,14 @@ public class Reservation {
 
     public int getId() {
         return id;
+    }
+
+    public String getReponse() {
+        return Reponse;
+    }
+
+    public void setReponse(String Reponse) {
+        this.Reponse = Reponse;
     }
 
     public String getNom() {

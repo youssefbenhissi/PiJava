@@ -5,7 +5,9 @@
  */
 package controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -41,9 +43,21 @@ public class HomeeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
+    }    
 
-    /*
+   @FXML
+    private void AfficherC(ActionEvent event) {
+         BorderPane border_pane = (BorderPane) ((Node) event.getSource()).getScene().getRoot();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/affiche.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException ex) {
+            Logger.getLogger(HomeeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        border_pane.setCenter(root);
+    }
+/*
     @FXML
     private void AfficherC(MouseEvent event) {
         Load("affiche");
@@ -70,64 +84,50 @@ public class HomeeController implements Initializable {
 //    @FXML
 //    private void AfficherC(MouseEvent event) {
 //    }
-    //Menuuuuuuuuuu
-    @FXML
-    private void AfficherClubs(ActionEvent event) {
-        Button btn = (Button) event.getSource();
-        Stage stage = (Stage) btn.getScene().getWindow();
-        stage.close();
-        Stage primaryStage = new Stage();
-        javafx.scene.Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/projet/views/afficherCategorieClubback.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+   
+    
+    
+    
+    
+     
+     @FXML
+    private void AfficherClubs(ActionEvent event) throws MalformedURLException, IOException {
+       
+         Stage stage = (Stage) this.border_pane.getScene().getWindow();
+        URL url = new File("src/projet/views/afficherCategorieClubback.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+       
         Scene scene = new Scene(root);
-        scene.setFill(Color.TRANSPARENT);
-        primaryStage.setScene(scene);
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.show();
+        stage.setScene(scene);
     }
 
     @FXML
-    private void Afficherpersonnel(ActionEvent event) {
+    private void Afficherpersonnel(ActionEvent event) throws MalformedURLException, IOException {
 
-        Button btn = (Button) event.getSource();
-        Stage stage = (Stage) btn.getScene().getWindow();
-        stage.close();
-        Stage primaryStage = new Stage();
-        javafx.scene.Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/projet/views/affichageBackPersonnel.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        
+         Stage stage = (Stage) this.border_pane.getScene().getWindow();
+        URL url = new File("src/projet/views/affichageBackPersonnel.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+       
         Scene scene = new Scene(root);
-        scene.setFill(Color.TRANSPARENT);
-        primaryStage.setScene(scene);
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.show();
+        stage.setScene(scene);
     }
 
     @FXML
-    private void AfficherEvenements(ActionEvent event) {
+    private void AfficherEvenements(ActionEvent event) throws MalformedURLException, IOException {
 
-        Button btn = (Button) event.getSource();
-        Stage stage = (Stage) btn.getScene().getWindow();
-        stage.close();
-        Stage primaryStage = new Stage();
-        javafx.scene.Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/projet/views/EvenementBack.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        
+         Stage stage = (Stage) this.border_pane.getScene().getWindow();
+        URL url = new File("src/projet/views/EvenementBack.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+      
         Scene scene = new Scene(root);
-        scene.setFill(Color.TRANSPARENT);
-        primaryStage.setScene(scene);
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.show();
+        stage.setScene(scene);
+        
+       
     }
      @FXML
     private void login(ActionEvent event) {
@@ -149,37 +149,20 @@ public class HomeeController implements Initializable {
         primaryStage.show();
     }
     
-    @FXML
-    private void AfficherC(ActionEvent event) {
-        BorderPane border_pane = (BorderPane) ((Node) event.getSource()).getScene().getRoot();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/affiche.fxml"));
-        Parent root = null;
-        try {
-            root = loader.load();
-        } catch (IOException ex) {
-            Logger.getLogger(HomeeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        border_pane.setCenter(root);
-    }
+    
 
     @FXML
-    private void AfficherBlogs(ActionEvent event) {
+    private void AfficherGestionBlog(ActionEvent event) throws MalformedURLException, IOException {
 
-        Button btn = (Button) event.getSource();
-        Stage stage = (Stage) btn.getScene().getWindow();
-        stage.close();
-        Stage primaryStage = new Stage();
-        javafx.scene.Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/gestion_blog/views/Home.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(backcontroller.class.getName()).log(Level.SEVERE, null, ex);
-        }
+         Stage stage = (Stage) this.border_pane.getScene().getWindow();
+        URL url = new File("src/projet/views/Home.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+     
+        stage.setTitle("Gestion de Blog");
         Scene scene = new Scene(root);
-        scene.setFill(Color.TRANSPARENT);
-        primaryStage.setScene(scene);
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.show();
+        stage.setScene(scene);
     }
-
+    
+    
+    
 }

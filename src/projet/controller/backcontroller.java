@@ -279,7 +279,7 @@ public class backcontroller implements Initializable {
     private void AfficherC(ActionEvent event) throws MalformedURLException, IOException {
 
         Stage stage1 = (Stage) this.listeEleve.getScene().getWindow();
-        URL url1 = new File("src/views/affiche.fxml").toURI().toURL();
+        URL url1 = new File("src/views/homee.fxml").toURI().toURL();
         javafx.scene.Parent root1;
 
         root1 = FXMLLoader.load(url1);

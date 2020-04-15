@@ -9,18 +9,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="376.0" prefWidth="608.0" style="-fx-background-color: #ffe6e6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListeRservationController">
+<AnchorPane id="AnchorPane" prefHeight="403.0" prefWidth="689.0" style="-fx-background-color: #ffe6e6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListeRservationController">
    <children>
-      <Label layoutX="33.0" layoutY="60.0" prefHeight="30.0" prefWidth="344.0" text="/Home/Bibliothéque/Gerer Livre" textFill="#2f2020">
+      <Label layoutX="33.0" layoutY="60.0" prefHeight="30.0" prefWidth="417.0" text="/Home/Bibliothéque/Liste Reservation" textFill="#2f2020">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Label>
-      <TableView fx:id="table" layoutX="14.0" layoutY="133.0" prefHeight="200.0" prefWidth="380.0">
+      <TableView fx:id="table" layoutX="14.0" layoutY="133.0" prefHeight="200.0" prefWidth="458.0" style="-fx-border-color: black;">
         <columns>
           <TableColumn fx:id="id_r" prefWidth="102.0" text="id_reservation" />
-          <TableColumn fx:id="id_rl" prefWidth="124.0" text="id_livre" />
-            <TableColumn fx:id="nomlivre" prefWidth="131.0" text="nom du livre" />
+          <TableColumn fx:id="id_rl" prefWidth="97.0" text="id_livre" />
+            <TableColumn fx:id="nomlivre" prefWidth="153.0" text="nom du livre" />
+            <TableColumn fx:id="Reponse" prefWidth="102.0" text="Reponse" />
         </columns>
       </TableView>
       <ImageView fitHeight="37.0" fitWidth="48.0" layoutX="33.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
@@ -28,7 +29,7 @@
             <Image url="@../image/1485476041-artboard-1_78536.png" />
          </image>
       </ImageView>
-      <Button layoutX="437.0" layoutY="242.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: green;" text="Accepter Reservation" textFill="#f5e3e3" />
-      <Button layoutX="437.0" layoutY="163.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: red;" text="Refuser Reservation" textFill="#fcf1f1" />
+      <Button fx:id="btnres" layoutX="512.0" layoutY="233.0" mnemonicParsing="false" onAction="#reservation" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: green;" text="Accepter Reservation" textFill="#f5e3e3" />
+      <Button fx:id="btndecline" layoutX="512.0" layoutY="161.0" mnemonicParsing="false" onAction="#descline" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: red;" text="Refuser Reservation" textFill="#fcf1f1" />
    </children>
 </AnchorPane>

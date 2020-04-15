@@ -199,7 +199,7 @@ public void AffichParTag(int id){
                 Tags tag = new Tags(id);
                 int indextag = tagslist.indexOf(tag);
                 this.TagNom.setText("Tag : "+ tagslist.get(indextag).getNom());
-                 String path = "http://127.0.0.1/www/PIJAVA/web/assets/images/" + listarticles.get(i).getImage();
+                 String path = "http://127.0.0.1:8000/assets/images/" + listarticles.get(i).getImage();
                
                   Image img = new Image(path);
                  

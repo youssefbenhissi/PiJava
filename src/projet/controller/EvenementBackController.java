@@ -327,7 +327,7 @@ public class EvenementBackController implements Initializable {
     private void AfficherC(ActionEvent event) throws MalformedURLException, IOException {
 
         Stage stage1 = (Stage) this.listeCategorie.getScene().getWindow();
-        URL url1 = new File("src/views/affiche.fxml").toURI().toURL();
+        URL url1 = new File("src/views/homee.fxml").toURI().toURL();
         Parent root1;
 
         root1 = FXMLLoader.load(url1);

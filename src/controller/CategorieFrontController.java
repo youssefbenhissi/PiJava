@@ -42,11 +42,10 @@ import models.livre;
 import controller.AjouterCatigorieController;
 import java.io.File;
 import java.net.MalformedURLException;
+import java.util.List;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import projet.controller.backcontroller;
 
 /**
  * FXML Controller class
@@ -57,6 +56,8 @@ public class CategorieFrontController implements Initializable {
 
     @FXML
     private ComboBox<String> combo;
+//    @FXML
+//    private ComboBox<String> TrieCom;
     private ResultSet res;
     private PreparedStatement pst = null;
     private ResultSet rs = null;
@@ -70,6 +71,8 @@ public class CategorieFrontController implements Initializable {
     @FXML
     private HBox row;
     public static livre liv1;
+    @FXML
+    private ComboBox<String> TrieCom;
 
     /**
      * Initializes the controller class.
@@ -78,6 +81,9 @@ public class CategorieFrontController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         categorieCombobox();
+        TrieCom.getItems().clear();
+        TrieCom.getItems().addAll("A à Z", "Z à A");
+
     }
 
     private void categorieCombobox() {
@@ -114,7 +120,7 @@ public class CategorieFrontController implements Initializable {
         livre lib;
         for (int i = 0; i < listLivre.size(); i++) {
             lib = listLivre.get(i);
-            if (index % 5 == 0) {
+            if (index % 4 == 0) {
                 row = new HBox();
                 cont.getChildren().add(row);
             }
@@ -185,67 +191,100 @@ public class CategorieFrontController implements Initializable {
 
     }
 
+    private void TrieLiv() {
+
+        String category = combo.getValue();
+        String classement = "all";
+
+        String tri = TrieCom.getValue();
+
+        if (TrieCom.getValue() != null) {
+
+            switch (TrieCom.getValue()) {
+                case "A à Z":
+                    tri = "nom_asc";
+                    break;
+                case "Z à A":
+                    tri = "nom_desc";
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        listLivre = FXCollections.observableArrayList(ps.getListProduitsFilter(category, tri));
+        getLiv();
+    }
+
+    @FXML
+    private void Trie(ActionEvent event) {
+        TrieLiv();
+    }
+
+    
+    
     @FXML
     private void AfficherC(ActionEvent event) throws IOException {
-
+       
+        
         Stage stage = (Stage) this.cont.getScene().getWindow();
         URL url = new File("src/projet/views/afficherCategorieClubFront.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-
+       
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
-
     @FXML
     private void AfficherEvenements(ActionEvent event) throws IOException {
-
-        Stage stage = (Stage) this.cont.getScene().getWindow();
+        
+       
+        
+         Stage stage = (Stage) this.cont.getScene().getWindow();
         URL url = new File("src/projet/views/EvenemnetFront.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-
+       
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
-
-    @FXML
+        @FXML
     private void login(ActionEvent event) throws IOException {
-
-        Stage stage = (Stage) this.cont.getScene().getWindow();
+        
+        
+        
+         Stage stage = (Stage) this.cont.getScene().getWindow();
         URL url = new File("src/projet/views/LoginGUI.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-
+       
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
-
     @FXML
     private void AfficherB(ActionEvent event) throws MalformedURLException, IOException {
-
-        Stage stage = (Stage) this.cont.getScene().getWindow();
+        
+         Stage stage = (Stage) this.cont.getScene().getWindow();
         URL url = new File("src/views/CategorieFront.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-
+       
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
-
     @FXML
     private void AfficherEtablissement(ActionEvent event) throws MalformedURLException, IOException {
-
-        Stage stage = (Stage) this.cont.getScene().getWindow();
+       
+        
+         Stage stage = (Stage) this.cont.getScene().getWindow();
         URL url = new File("src/projet2020/AficcherEtablissement.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-
+       
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
-
-    @FXML
-    public void AfficherBlog(ActionEvent event) throws MalformedURLException, IOException {
-        Stage stage = (Stage) this.cont.getScene().getWindow();
+      @FXML
+      public void AfficherBlog(ActionEvent event) throws MalformedURLException, IOException{
+         Stage stage = (Stage) this.cont.getScene().getWindow();
         URL url = new File("src/projet/views/affichageArticlesFrontList.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-
+       
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }

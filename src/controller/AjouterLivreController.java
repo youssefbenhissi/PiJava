@@ -301,13 +301,13 @@ public class AjouterLivreController implements Initializable {
         if (result == JFileChooser.APPROVE_OPTION) {
             photofile = file.getSelectedFile();
             Image image;
-            photopath = "C:\\Users\\youssef\\PhpstormProjects\\pidevFinal\\web\\assets\\images\\"+photofile.getAbsolutePath();
+            photopath = "file:C:\\wamp64\\www\\img"+photofile.getAbsolutePath();
 
             image = new Image(photofile.toURI().toString(), 270, 280, true, true);
             
             image = new Image(photofile.toURI().toString(), 270, 280, true, true);
             
-            File outputFile = new File("C:\\Users\\youssef\\PhpstormProjects\\pidevFinal\\web\\assets\\images\\"+photofile.getName());
+            File outputFile = new File("C:\\wamp64\\www\\img\\"+photofile.getName());
             BufferedImage bImage = SwingFXUtils.fromFXImage(image, null);
     try {
         ImageIO.write(bImage, "png", outputFile);

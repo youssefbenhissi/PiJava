@@ -30,6 +30,11 @@ import models.Reservation;
 import models.categorier;
 import models.livre;
 import controller.AjouterCatigorieController;
+import java.io.IOException;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -46,10 +51,13 @@ public class DetailLivreController implements Initializable {
     private Label nom;
     @FXML
     private Label description;
-    @FXML
-    private Label nbr;
+    
+    
     livre liv;
     Stage stage;
+    @FXML
+    private Label auteur;
+   
     /**
      * Initializes the controller class.
      */
@@ -60,7 +68,7 @@ public class DetailLivreController implements Initializable {
         Image  image;
         
         try {
-            image = new Image(new FileInputStream("C:\\Users\\youssef\\PhpstormProjects\\pidevFinal\\web\\assets\\images\\"+ liv.getNom_image()));
+            image = new Image(new FileInputStream("C:\\wamp64\\www\\img\\"+ liv.getNom_image()));
             imageBack.setImage(image);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(DetailLivreController.class.getName()).log(Level.SEVERE, null, ex);
@@ -69,6 +77,7 @@ public class DetailLivreController implements Initializable {
         
         nom.setText(liv.getNom());
         description.setText(liv.getDescription());
+       
       // nbr.setText(liv.getNombredepage());
         
     }  
@@ -87,10 +96,33 @@ public class DetailLivreController implements Initializable {
 //         stage= (Stage)((Button)event.getSource()).getScene().getWindow();
 //        stage.close();
 //    }
+public static void loadWindow(URL loc, String title, Stage parentStage) {
+        try {
+            Parent parent = FXMLLoader.load(loc);
+            Stage stage = null;
+            
+            if (parentStage != null) {
+                stage = parentStage;
+            } else {
+                stage = new Stage(StageStyle.DECORATED);
+            }
+            stage.setTitle(title);
+            stage.setScene(new Scene(parent));
+            stage.show();
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    }
+    @FXML
+    private void ecouterLivre(ActionEvent event) {
+        loadWindow(getClass().getResource("/views/EcouterLivre.fxml"), "DetailLivre",null);
+
+    }
 
    
     
    
+ 
     
     
 }

@@ -448,7 +448,7 @@ try {
             } catch (IOException ex) {
                // Logger.getLogger(JavaFXPixel.class.getName()).log(Level.SEVERE, null, ex);
             }
-FileUploader fu = new FileUploader("http://127.0.0.1/www/PIJAVA/web/assets/images/");
+FileUploader fu = new FileUploader("http://127.0.0.1:8000/assets/images/");
         
         //Upload
         String fileNameInServer = fu.upload(file.getAbsolutePath());
