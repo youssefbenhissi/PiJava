@@ -80,6 +80,12 @@ public class ServiceLogin {
                 utilisateur.setId_Utilisateur(resultSet.getInt("id"));
                 utilisateur.setNom_Utilisateur(resultSet.getString("username"));
                 utilisateur.setMotDePasse_Utilisateur(resultSet.getString("password"));
+                utilisateur.setEmail(resultSet.getString("email"));
+                utilisateur.setImage(resultSet.getString("image"));
+                utilisateur.setNom(resultSet.getString("nom"));
+                utilisateur.setPrenom(resultSet.getString("prenom"));
+                utilisateur.setTelephone(resultSet.getInt("telephone"));
+                utilisateur.setRole_Utilisateur(resultSet.getString("roles"));
 
                 list.add(utilisateur);
             }
@@ -103,9 +109,14 @@ public class ServiceLogin {
             while (resultSet.next()) {
                 utilisateur = new Utilisateur();
 
-                utilisateur.setId_Utilisateur(resultSet.getInt("id"));
+               utilisateur.setId_Utilisateur(resultSet.getInt("id"));
                 utilisateur.setNom_Utilisateur(resultSet.getString("username"));
+                utilisateur.setMotDePasse_Utilisateur(resultSet.getString("password"));
                 utilisateur.setEmail(resultSet.getString("email"));
+                utilisateur.setImage(resultSet.getString("image"));
+                utilisateur.setNom(resultSet.getString("nom"));
+                utilisateur.setPrenom(resultSet.getString("prenom"));
+                utilisateur.setTelephone(resultSet.getInt("telephone"));
                 utilisateur.setRole_Utilisateur(resultSet.getString("roles"));
             }
 

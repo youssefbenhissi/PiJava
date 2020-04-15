@@ -5,16 +5,18 @@
  */
 package projet.service;
 import java.util.List;
+import javafx.collections.ObservableList;
 import projet.models.Parent;
+import projet.models.Utilisateur;
 
 /**
  *
  * @author user
  */
 public interface IParent {
-    public List<Parent> selectAllParent();
+    public ObservableList<Utilisateur> selectAllParent();
     public void supprimerParents(int x);
-    public boolean ajouterParent(Parent p);
-    public void modifierP(Parent p);
+    public boolean ajouterParent(Utilisateur p);
+    public void modifierP(Utilisateur p);
     
 }

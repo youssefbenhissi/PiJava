@@ -6,6 +6,8 @@ import java.util.Map;
 
 import projet.models.Utilisateur;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +23,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.mindrot.jbcrypt.BCrypt;
+import projet.service.ParentService;
 import projet.service.ServiceLogin;
 
 public class LoginController {
@@ -153,12 +157,12 @@ public class LoginController {
             if (nomUtilisater.equals(Uti.getKey())) {
                 if (ServiceLogin.testMotDePasse(motDePasseUtilisateur, Uti.getValue())) {
                     Utilisateur utilisateur = ServiceLogin.getUtilisateur(Uti.getKey());
-                    if (utilisateur.getRole_Utilisateur().equals("a:0:{}")) {
-
+                    if (utilisateur.getRole_Utilisateur().equals("a:1:{i:0;s:11:\"ROLE_PARENT\";}")) {
+                             UserSession session = UserSession.getInstace(utilisateur);
                         Stage stage = (Stage) GUI.getScene().getWindow();
                         stage.close();
 
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/projet/views/AjouterEleve.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/projet/views/ParentFront.fxml"));
                         Parent root = loader.load();
 //                        WorldfriendshipController controller = (WorldfriendshipController) loader.getController();
                         //                      controller.setUser(ServiceLogin.getUtilisateur(Uti.getKey()));
@@ -169,11 +173,11 @@ public class LoginController {
                         primaryStage.show();
                         return;
                     } else {
-
+                          UserSession session = UserSession.getInstace(utilisateur);
                         Stage stage = (Stage) GUI.getScene().getWindow();
                         stage.close();
 
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/projet/views/AjouterParent.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/projet/views/GestionUtilisateurBack.fxml"));
                         Parent root = loader.load();
 //                        DashboardController controller = (DashboardController) loader.getController();
                         //                      controller.setUser(ServiceLogin.getUtilisateur(Uti.getKey()));
@@ -250,4 +254,44 @@ public class LoginController {
         // do what you have to do
         stage.close();
     }
+    
+    
+    
+    @FXML
+    void MotDePasseOublie(ActionEvent event) throws IOException {
+        
+         Utilisateur existenceUtilisateur = new Utilisateur();
+         existenceUtilisateur = ServiceLogin.getUtilisateur(login_nom_utilisateur_fx.getText());
+         if(existenceUtilisateur == null)
+         {
+         
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Erreur !");
+            alert.setContentText("Pas d'Utilisateur de ce pesudo !");
+            alert.showAndWait();
+         }
+         else
+         {
+            
+               String mdp = BCrypt.hashpw("1234", BCrypt.gensalt(13));
+               mdp =   mdp.replaceFirst("2a", "2y");
+               existenceUtilisateur.setMotDePasse_Utilisateur(mdp);
+               ParentService ps = new ParentService();
+               ps.modifierP(existenceUtilisateur);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Succée !");
+            alert.setContentText("un email a été envoyé a l'utilisateur "+login_nom_utilisateur_fx.getText()+" contenant le nouveau mot de passe !");
+            alert.showAndWait();
+             try {
+                 sendMail.sendMailPass(existenceUtilisateur.getEmail(), existenceUtilisateur);
+             } catch (Exception ex) {
+                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         }
+        
+       
+    }
+    
+    
+    
 }

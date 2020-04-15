@@ -7,8 +7,18 @@ public class Utilisateur {
     String nom_Utilisateur;
     String motDePasse_Utilisateur;
     String role_Utilisateur;
+    int telephone ;
+    String image ;
+    String nom ;
+    String prenom ;
 
     public Utilisateur() {
+        
+        
+        
+        
+        
+        
     }
 
     public Utilisateur(int id_Utilisateur, String email, String nom_Utilisateur, String motDePasse_Utilisateur, String role_Utilisateur) {
@@ -65,5 +75,43 @@ public class Utilisateur {
     public void setRole_Utilisateur(String role_Utilisateur) {
         this.role_Utilisateur = role_Utilisateur;
     }
+
+    public int getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(int telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    @Override
+    public String toString() {
+        return "Utilisateur{" + "id_Utilisateur=" + id_Utilisateur + ", email=" + email + ", nom_Utilisateur=" + nom_Utilisateur + ", motDePasse_Utilisateur=" + motDePasse_Utilisateur + ", role_Utilisateur=" + role_Utilisateur + ", telephone=" + telephone + ", image=" + image + ", nom=" + nom + ", prenom=" + prenom + '}';
+    }
+    
 
 }

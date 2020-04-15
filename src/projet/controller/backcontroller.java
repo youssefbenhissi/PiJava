@@ -18,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import projet.models.Eleve;
 import projet.models.Parent;
 import projet.models.Personnel;
+import projet.models.Utilisateur;
 import projet.service.EleveService;
 import projet.service.ParentService;
 import projet.service.PersonnelService;
@@ -103,8 +104,8 @@ private TableColumn<?, ?> nomParent;
     }
      @FXML
     private void afficherParents() {
-         ParentService  ParentSe= new ParentService();
-          List<Parent> myList = ParentSe.selectAllParent();
+        /* ParentService  ParentSe= new ParentService();
+          List<Utilisateur> myList = ParentSe.selectAllParent();
         ObservableList<Parent> myObservableList = FXCollections.observableArrayList();
 
         nomParent.setCellValueFactory(new PropertyValueFactory<>("nom"));
@@ -115,7 +116,7 @@ private TableColumn<?, ?> nomParent;
         myList.forEach(e -> {
             myObservableList.add(e);
             listeParent.setItems(myObservableList);
-        });
+        });*/
     }
     @FXML
     private void afficherPersonnel() {

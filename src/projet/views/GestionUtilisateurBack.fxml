@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1500.0" styleClass="custom-pane" stylesheets="@dark-theme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.GestionUtilisateurBackController">
+   <children>
+      <AnchorPane fx:id="rootAnchorPane" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <JFXTabPane fx:id="mainTabPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <tabs>
+                        <Tab styleClass="tab-main" text="         Parent        ">
+                          <content>
+                            <AnchorPane fx:id="AnchorAdmin" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="tabUser" layoutX="458.0" layoutY="96.0" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="458.0" AnchorPane.rightAnchor="103.0" AnchorPane.topAnchor="96.0">
+                                       <contextMenu>
+                                          <ContextMenu>
+                                            <items>
+                                              <MenuItem fx:id="MenuItem" mnemonicParsing="false" text="Blocker" />
+                                            </items>
+                                          </ContextMenu>
+                                       </contextMenu></TableView>
+                                    <ImageView fx:id="Picture" fitHeight="150.0" fitWidth="200.0" layoutX="113.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label fx:id="UName" layoutX="113.0" layoutY="262.0" text="Label :" />
+                                    <Label fx:id="USName" layoutX="245.0" layoutY="262.0" text="Label" />
+                                    <Label fx:id="Imail" layoutX="28.0" layoutY="327.0" text="Adresse Mail :" />
+                                    <Label fx:id="Inumero" layoutX="50.0" layoutY="396.0" text="Numero :" />
+                                    <Label fx:id="Lmail" layoutX="152.0" layoutY="327.0" text="Label" />
+                                    <Label fx:id="Lnumero" layoutX="157.0" layoutY="400.0" text="Label" />
+                                    <JFXTextField fx:id="searchfield" layoutX="604.0" layoutY="41.0" />
+                                    <Label layoutX="500.0" layoutY="47.0" text="Rechereche :" />
+                                 </children></AnchorPane>
+                          </content>
+                           <content>
+                              <JFXTabPane>
+                                 <tabs>
+                                    <Tab text="Gestion Parent">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <TableView fx:id="TabParent" layoutX="413.0" layoutY="161.0" onMouseClicked="#showPicture" prefHeight="446.0" prefWidth="655.0">
+                                                   <contextMenu>
+                                                      <ContextMenu>
+                                                        <items>
+                                                          <MenuItem mnemonicParsing="false" onAction="#DeleteParent" text="Supprimer" />
+                                                        </items>
+                                                      </ContextMenu>
+                                                   </contextMenu></TableView>
+                                                <JFXTextField fx:id="SearchField" layoutX="528.0" layoutY="107.0" onKeyTyped="#research" />
+                                                <Label layoutX="413.0" layoutY="113.0" text="Rechereche :" />
+                                                <JFXTextField fx:id="NomField" layoutX="63.0" layoutY="196.0" prefHeight="37.0" prefWidth="216.0" promptText="Nom" />
+                                                <JFXTextField fx:id="PrenomField" layoutX="62.0" layoutY="285.0" prefHeight="37.0" prefWidth="218.0" promptText="Prenom" />
+                                                <JFXTextField fx:id="EmailField" layoutX="62.0" layoutY="374.0" prefHeight="37.0" prefWidth="219.0" promptText="Email" />
+                                                <JFXTextField fx:id="TelephoneField" layoutX="60.0" layoutY="467.0" prefHeight="37.0" prefWidth="224.0" promptText="Telephone" />
+                                                <JFXButton fx:id="BtnAjouter" layoutX="188.0" layoutY="563.0" onAction="#ajouterParent" prefHeight="44.0" prefWidth="102.0" text="Ajouter" />
+                                                <ImageView fx:id="ParentPicture" fitHeight="196.0" fitWidth="200.0" layoutX="1086.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true" />
+                                                <Label layoutX="1095.0" layoutY="161.0" text="Parent :" />
+                                                <JFXTextField fx:id="UsernameField" layoutX="64.0" layoutY="126.0" prefHeight="37.0" prefWidth="217.0" promptText="Username" />
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                    </Tab>
+                                    <Tab text="Statistiques">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                      </content>
+                                    </Tab>
+                                 </tabs></JFXTabPane>
+                           </content>
+                        </Tab>
+                        <Tab styleClass="tab-main" text="         Eleve           ">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <JFXTabPane layoutX="247.0" layoutY="123.0" prefHeight="587.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <tabs>
+                                          <Tab text="Gestion de salles">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <TableView fx:id="tabSalle" layoutX="500.0" layoutY="68.0" prefHeight="400.0" prefWidth="446.0">
+                                                         <contextMenu>
+                                                            <ContextMenu>
+                                                              <items>
+                                                                <MenuItem mnemonicParsing="false" text="Supprimer" />
+                                                                  <MenuItem mnemonicParsing="false" text="Modifier" />
+                                                              </items>
+                                                            </ContextMenu>
+                                                         </contextMenu></TableView>
+                                                      <JFXTextField fx:id="salleNbrPlace" layoutX="168.0" layoutY="99.0" prefHeight="37.0" prefWidth="263.0" />
+                                                      <JFXTextField fx:id="salleName" layoutX="168.0" layoutY="36.0" prefHeight="37.0" prefWidth="261.0" />
+                                                      <JFXComboBox fx:id="salleType" layoutX="167.0" layoutY="181.0" prefHeight="25.0" prefWidth="183.0" />
+                                                      <JFXButton fx:id="salleChose" layoutX="369.0" layoutY="283.0" prefHeight="26.0" prefWidth="45.0" />
+                                                      <JFXTextArea fx:id="salleDes" layoutX="154.0" layoutY="372.0" prefHeight="73.0" prefWidth="283.0" />
+                                                      <Label layoutX="105.0" layoutY="55.0" text="Nom :" textFill="#edf29f">
+                                                         <font>
+                                                            <Font size="16.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="106.0" layoutY="181.0" text="Type :" textFill="#edf29f">
+                                                         <font>
+                                                            <Font size="16.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="14.0" layoutY="118.0" text="Nombre de places :" textFill="#edf29f">
+                                                         <font>
+                                                            <Font size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="47.0" layoutY="396.0" text="Description :" textFill="#edf29f">
+                                                         <font>
+                                                            <Font size="16.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <ImageView fx:id="salleImg" fitHeight="129.0" fitWidth="180.0" layoutX="159.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true" />
+                                                      <JFXTextField fx:id="search" layoutX="633.0" layoutY="14.0" />
+                                                      <Label layoutX="543.0" layoutY="24.0" text="Recherche :" />
+                                                      <JFXButton fx:id="btnAjouter" layoutX="92.0" layoutY="487.0" text="Ajouter" />
+                                                      <JFXButton fx:id="btnModifier" layoutX="259.0" layoutY="487.0" text="Modifier" />
+                                                   </children>
+                                                </AnchorPane>
+                                            </content>
+                                          </Tab>
+                                          <Tab text="Gestion de demandes">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                            </content>
+                                          </Tab>
+                                       </tabs>
+                                    </JFXTabPane>
+                                 </children></AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab styleClass="tab-main" text="         Personnel         ">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </JFXTabPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

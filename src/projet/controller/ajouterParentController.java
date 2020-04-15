@@ -6,6 +6,7 @@
 package projet.controller;
 
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.RequiredFieldValidator;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -22,6 +23,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import projet.models.Parent;
+import projet.models.Utilisateur;
 
 
 
@@ -32,7 +34,11 @@ import projet.models.Parent;
 public class ajouterParentController implements Initializable {
     @FXML
     private JFXTextField nomP;
-
+    
+    @FXML
+    private JFXTextField emailP;
+    
+    
     @FXML
     private Label errorsNom;
 
@@ -90,7 +96,7 @@ public class ajouterParentController implements Initializable {
         String filename = generateFileName() + extension;
 
         Path sourceDirectory = Paths.get(file);
-        Path targetDirectory = Paths.get("C:\\xampp\\htdocs\\pidev4\\web\\assets\\images\\" + filename);
+        Path targetDirectory = Paths.get("C:\\Users\\Damdoum\\Desktop\\stephane\\Pidev_java\\image\\" + filename);
         try {
             //copy source to target using Files Class
             Files.copy(sourceDirectory, targetDirectory);
@@ -102,9 +108,14 @@ public class ajouterParentController implements Initializable {
     }
       @FXML
     private void ajouterParent(MouseEvent event) {
+         
+          
 
         if (nomP.getText().equals("")) {
             errorsNom.setText("Nom field is required");
+        }
+        if (emailP.getText().equals("")) {
+            errorsNom.setText("email field is required");
         }
         if (prenomP.getText().equals("")) {
             errorPrenom.setText("Prenom field is required");
@@ -120,11 +131,13 @@ public class ajouterParentController implements Initializable {
             } else {
                 afficherParent = replaceFile(file.getAbsolutePath());
             }
-            Parent p=new Parent();
-            p.setNom(nomP.getText());
-            p.setPrenom(prenomP.getText());
-            p.getNumTelephone(Integer.parseInt(numTelephoneP.getText()));
+            Utilisateur p=new Utilisateur();
+            p.setNom_Utilisateur(nomP.getText()+" "+prenomP.getText());
+            p.setEmail(emailP.getText());
+            p.setTelephone(Integer.parseInt(numTelephoneP.getText()));
             p.setImage(afficherParent);
+            
+              ;
             
 
     
