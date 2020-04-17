@@ -602,7 +602,7 @@ public class AfficherCategoriesClubController implements Initializable {
                     controller.imageView.getFitHeight(), true, true);
             controller.imageView.setImage(controller.image);
             controller.imageView.setPreserveRatio(true);
-            System.out.println(clubselec.getCategorie_id());
+           // System.out.println(clubselec.getCategorie_id());
 
             Stage primaryStage = new Stage();
 

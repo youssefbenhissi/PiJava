@@ -6,6 +6,7 @@
 package projet.service;
 import java.util.List;
 import projet.models.Parent;
+import projet.models.Utilisateur;
 
 /**
  *
@@ -15,6 +16,6 @@ public interface IParent {
     public List<Parent> selectAllParent();
     public void supprimerParents(int x);
     public boolean ajouterParent(Parent p);
-    public void modifierP(Parent p);
+    public void modifierP(Utilisateur p);
     
 }

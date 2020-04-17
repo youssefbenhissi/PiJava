@@ -68,7 +68,7 @@ public class DetailLivreController implements Initializable {
         Image  image;
         
         try {
-            image = new Image(new FileInputStream("C:\\wamp64\\www\\img\\"+ liv.getNom_image()));
+            image = new Image(new FileInputStream("C:\\Users\\youssef\\PhpstormProjects\\pidevFinal\\web\\assets\\images\\"+ liv.getNom_image()));
             imageBack.setImage(image);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(DetailLivreController.class.getName()).log(Level.SEVERE, null, ex);

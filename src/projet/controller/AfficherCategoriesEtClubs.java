@@ -393,7 +393,7 @@ present_img.setFitWidth(300);
             Parent p = Loader.load();
 
             DetailClubController display = Loader.getController();
-            System.out.println("houni"+exp.getQuestionPr());
+          //  System.out.println("houni"+exp.getQuestionPr());
             display.setClub(exp);
 
             Dialog dialog = new Dialog();
@@ -551,5 +551,10 @@ present_img.setFitWidth(300);
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+      public void setIdUser(int id)
+      {
+          System.out.println("lindaaaaa");
+          System.out.println(id);
+      }
     
 }

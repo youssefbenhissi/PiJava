@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.Button;
 import projet.models.Eleve;
+import projet.models.Utilisateur;
 
 /**
  *
@@ -87,18 +88,21 @@ public class ParentService implements IParent{
         return false ;
 
     }
-     @Override
-    public void modifierP(Parent p) {
-        String req = "UPDATE parents SET nom= ?,prenom= ?,numTelephone= ?,image= ? WHERE id= ?";
+    @Override
+      public void modifierP(Utilisateur p) {
+        String req = "UPDATE fos_user SET nom= ?,prenom= ?,email= ?,email_canonical= ?,telephone=? ,image= ? ,password=? WHERE id= ?";
         try {
             pst = connection.prepareStatement(req);
             pst.setString(1, p.getNom());
             pst.setString(2, p.getPrenom());
-            pst.setInt(3, p.getNumTelephone());
-            pst.setString(4, p.getImage());
+            pst.setString(3, p.getEmail());
+            pst.setString(4, p.getEmail());
+            pst.setInt(5, p.getTelephone());
+            pst.setString(6, p.getImage());
             
-            pst.setInt(5, p.getId());
-
+          
+            pst.setString(7, p.getMotDePasse_Utilisateur());
+            pst.setInt(8, p.getId_Utilisateur());
             pst.executeUpdate();
 
         } catch (SQLException e1) {

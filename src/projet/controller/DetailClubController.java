@@ -53,7 +53,7 @@ public class DetailClubController implements Initializable {
     private Label nomClub;
     @FXML
     private Button inscription;
-
+    public int idUtilisateurDetail;
     @FXML
     private Rating rating;
     @FXML
@@ -64,6 +64,7 @@ public class DetailClubController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        System.out.println("hahhhahjhbhsdjhbsdf :"+idUtilisateurDetail);
         rating.setUpdateOnHover(false);
 
     }

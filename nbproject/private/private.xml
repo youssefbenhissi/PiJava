@@ -3,11 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/views/affichageBackPersonnel.fxml</file>
-            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/controller/EvenementBackController.java</file>
-            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/controller/backcontroller.java</file>
-            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/controller/AfficherCategoriesClubController.java</file>
-            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/views/EvenementBack.fxml</file>
+            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/controller/LoginController.java</file>
+            <file>file:/C:/Users/youssef/Desktop/PiJava-master/src/projet/views/LoginGUI.fxml</file>
         </group>
     </open-files>
 </project-private>

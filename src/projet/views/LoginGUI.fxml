@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox style="-fx-background-color: transparent;" stylesheets="@../style/login.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.LoginController">
+<VBox style="-fx-background-color: transparent;" stylesheets="@../style/login.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.LoginController">
    <children>
       <AnchorPane id="AnchorPane" fx:id="GUI" maxHeight="600.0" maxWidth="900.0" minHeight="600.0" minWidth="900.0" onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="600.0" prefWidth="900.0" styleClass="back">
           <children>
@@ -109,6 +109,7 @@
                   </Button>
                </children>
             </VBox>
+            <Button layoutX="341.0" layoutY="408.0" mnemonicParsing="false" onAction="#MotDePasseOublie" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #2f2f2fa3;" styleClass="buttonLogin" text="Mot de passe Oublié" />
           </children>
          <effect>
             <DropShadow />

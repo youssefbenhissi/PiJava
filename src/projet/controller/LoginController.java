@@ -1,11 +1,15 @@
 package projet.controller;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import projet.models.Utilisateur;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +25,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.mindrot.jbcrypt.BCrypt;
+import projet.service.ParentService;
 import projet.service.ServiceLogin;
 
 public class LoginController {
@@ -158,7 +164,13 @@ public class LoginController {
                     Utilisateur utilisateur = ServiceLogin.getUtilisateur(Uti.getKey());
                     if (utilisateur.getRole_Utilisateur().equals("a:0:{}")) {
                         System.out.println(utilisateur.getId_Utilisateur());
-                        InscriptionClub controller = new InscriptionClub();
+                        //InscriptionClub controller = new InscriptionClub();
+//                        controller.idUtilisateur.setText("kkkk");
+//                        controller.idUtilisateur.setText(Integer.toString(utilisateur.getId_Utilisateur()));
+                        //controller.setIdUtilisateur(utilisateur.getId_Utilisateur());
+                        //InscriptionClub con =new InscriptionClub();
+                       // con.sIdUtilisateur(utilisateur.getId_Utilisateur());
+                        writeUsingFileWriter(Integer.toString(utilisateur.getId_Utilisateur()));
 //            existenceUtilisateur = ServiceLogin.getUtilisateur(nomUtilisateur);
                         //controller.idUtilistaeur.setText(Integer.toString(utilisateur.getId_Utilisateur()));
                         //controller.idClub.setText(Integer.toString(utilisateur.getId_Utilisateur()));
@@ -256,5 +268,57 @@ public class LoginController {
         Stage stage = (Stage) GUI.getScene().getWindow();
         // do what you have to do
         stage.close();
+    }
+    private static void writeUsingFileWriter(String data) {
+        File file = new File("C:\\Users\\youssef\\Desktop\\PiJava-master (2)\\FileWriter.txt");
+        FileWriter fr = null;
+        try {
+            fr = new FileWriter(file);
+            fr.write(data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally{
+            //close resources
+            try {
+                fr.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
+     @FXML
+    void MotDePasseOublie(ActionEvent event) throws IOException {
+        
+         Utilisateur existenceUtilisateur = new Utilisateur();
+         existenceUtilisateur = ServiceLogin.getUtilisateur(login_nom_utilisateur_fx.getText());
+         if(existenceUtilisateur == null)
+         {
+         
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Erreur !");
+            alert.setContentText("Pas d'Utilisateur de ce pesudo !");
+            alert.showAndWait();
+         }
+         else
+         {
+            
+               String mdp = BCrypt.hashpw("1234", BCrypt.gensalt(13));
+               mdp =   mdp.replaceFirst("2a", "2y");
+               existenceUtilisateur.setMotDePasse_Utilisateur(mdp);
+               ParentService ps = new ParentService();
+               ps.modifierP(existenceUtilisateur);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Succée !");
+            alert.setContentText("un email a été envoyé a l'utilisateur "+login_nom_utilisateur_fx.getText()+" contenant le nouveau mot de passe !");
+            alert.showAndWait();
+             try {
+                 sendMail.sendMailPass(existenceUtilisateur.getEmail(), existenceUtilisateur);
+             } catch (Exception ex) {
+                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         }
+        
+       
     }
 }

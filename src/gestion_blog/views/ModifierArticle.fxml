@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.HTMLEditor?>
+
+<GridPane alignment="center" hgap="10.0" prefHeight="720.0" prefWidth="1366.0" vgap="5.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestion_blog.controller.ModifierArticle">
+    <padding><Insets bottom="1.0" left="3.0" right="1.0" top="3.0" /></padding>
+    <columnConstraints>
+        <ColumnConstraints halignment="RIGHT" maxWidth="Infinity" minWidth="100.0" prefWidth="100.0">
+        </ColumnConstraints>
+        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="200.0">
+        </ColumnConstraints>
+    </columnConstraints>
+
+    <!-- Add Header Label -->
+    <Label alignment="CENTER" prefHeight="98.0" prefWidth="608.0" style="-fx-background-color: #dedede; -fx-background-radius: 1em;" text="Modifier Article" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowSpan="1">
+        <font>
+            <Font name="Arial" size="24" />
+        </font>
+        <GridPane.margin>
+            <Insets left="109.0" />
+        </GridPane.margin>
+    </Label>
+
+
+
+    <!-- Add Name Label -->
+    <Label alignment="CENTER" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: #dedede; -fx-background-radius: 1em;" text="*Titre : " GridPane.columnIndex="0" GridPane.rowIndex="1">
+    </Label>
+    <!-- Add Name Text Field -->
+    <TextField fx:id="titre" prefHeight="40" promptText="Titre mini 3 caractères  -  200 max" style="-fx-background-radius: 1em;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+
+    <!-- Add Email Label -->
+    <Label alignment="CENTER" prefHeight="38.0" prefWidth="100.0" style="-fx-background-color: #dedede; -fx-background-radius: 1em;" text="*Description :" GridPane.columnIndex="0" GridPane.rowIndex="2">
+    </Label>
+    <!-- Add Email Text Field -->
+    <TextField fx:id="descri" prefHeight="40" promptText="Titre mini 10 caractères  -  300 max" style="-fx-background-radius: 1em;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+
+
+    <!-- Add Password Label -->
+    <Label alignment="CENTER" prefHeight="95.0" prefWidth="100.0" style="-fx-background-color: #dedede; -fx-background-radius: 1em;" text="*Image : " GridPane.rowIndex="6">
+    </Label>
+
+
+    <!-- Add Submit Button -->
+    <Button fx:id="submitButton" defaultButton="true" onAction="#handleAjouterArticleButton" prefHeight="40" prefWidth="100" text="Modifier" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.rowSpan="1">
+        <GridPane.margin>
+            <Insets bottom="20" left="0" right="0" top="20" />
+        </GridPane.margin>
+    </Button>
+   <MenuButton fx:id="categ" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="191.0" text="Catégories" GridPane.columnIndex="1" GridPane.rowIndex="3">
+     <items>
+  
+     </items>
+      <GridPane.margin>
+         <Insets left="1.0" />
+      </GridPane.margin>
+   </MenuButton>
+   <ImageView fx:id="imagev" fitHeight="95.0" fitWidth="337.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+   <Button fx:id="imagecho" mnemonicParsing="false" onAction="#handleImage" prefHeight="27.0" prefWidth="156.0" text="Sélectionner une image" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6">
+      <GridPane.margin>
+         <Insets left="100.0" />
+      </GridPane.margin>
+   </Button>
+   <Label alignment="CENTER" prefHeight="38.0" prefWidth="100.0" style="-fx-background-color: #dedede; -fx-background-radius: 1em;" text="*Catégorie :" GridPane.rowIndex="3" />
+   <Label alignment="CENTER" prefHeight="38.0" prefWidth="100.0" style="-fx-background-color: #dedede; -fx-background-radius: 1em;" text="*Tags :" GridPane.rowIndex="4" />
+   <Label fx:id="taglabel" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <GridPane.margin>
+         <Insets left="205.0" />
+      </GridPane.margin>
+   </Label>
+   <Label alignment="CENTER" prefHeight="204.0" prefWidth="101.0" style="-fx-background-color: #dedede; -fx-background-radius: 1em;" text="*Contenu :" GridPane.rowIndex="5" />
+   <Label alignment="CENTER" prefHeight="29.0" prefWidth="100.0" style="-fx-background-color: #dedede; -fx-background-radius: 1em;" text="*Type :" GridPane.rowIndex="7" />
+   <MenuButton fx:id="type" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" text="Publié ou non" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="7">
+      <items>
+         
+      </items>
+      <GridPane.margin>
+         <Insets left="1.0" />
+      </GridPane.margin>
+   </MenuButton>
+   <ListView fx:id="tags" maxWidth="-Infinity" prefHeight="120.0" prefWidth="191.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+   <Label fx:id="catlabel" alignment="TOP_RIGHT" prefHeight="17.0" prefWidth="228.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+      <opaqueInsets>
+         <Insets />
+      </opaqueInsets>
+   </Label>
+   <Button fx:id="Retourner" defaultButton="true" onAction="#retouraccu" prefHeight="42.0" prefWidth="100" text="Retour">
+      <graphic>
+         <ImageView fitHeight="16.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../images/unnamed%20(1).png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </Button>
+   <HTMLEditor fx:id="contenu" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" prefHeight="200.0" prefWidth="506.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+   <rowConstraints>
+      <RowConstraints maxHeight="-Infinity" prefHeight="43.0" valignment="TOP" />
+      <RowConstraints valignment="TOP" />
+      <RowConstraints valignment="TOP" />
+      <RowConstraints prefHeight="39.0" valignment="CENTER" />
+      <RowConstraints prefHeight="120.0" />
+      <RowConstraints prefHeight="204.0" />
+      <RowConstraints minHeight="10.0" prefHeight="95.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+   </rowConstraints>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</GridPane>

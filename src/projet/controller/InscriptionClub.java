@@ -10,9 +10,12 @@ import static java.awt.print.Printable.NO_SUCH_PAGE;
 import static java.awt.print.Printable.PAGE_EXISTS;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.TranslateTransition;
@@ -55,17 +58,18 @@ public class InscriptionClub implements Initializable, Printable {
 
     @FXML
     private TextField ReponseDe;
-     @FXML
+    @FXML
     public Label idUtilisateur;
     @FXML
     private TextField ReponseTr;
     @FXML
     public Label idClub;
+    public int idUtilis;
     InscriptionService service = new InscriptionService();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        System.out.println(idUtilisateur.getText());
     }
 
     @FXML
@@ -80,7 +84,21 @@ public class InscriptionClub implements Initializable, Printable {
         insc.setReponseTr(ReponseTr.getText());
         insc.setIdClub(Integer.parseInt(idClub.getText()));
         insc.setStatus("non traitée");
-        insc.setIdUser(8);
+      
+        try {
+            File myObj = new File("C:\\Users\\youssef\\Desktop\\PiJava-master (2)\\FileWriter.txt");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                 idUtilis = Integer.parseInt(myReader.nextLine());
+                //System.out.println(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+          System.out.println("hhhhhhhhhhhhhh" + idUtilis);
+        insc.setIdUser(idUtilis);
         service.ajouterInscription(insc);
         String tilte = "Inscription enregistre";
         String message = "votre inscription a été bien enregistrée.";
@@ -91,6 +109,10 @@ public class InscriptionClub implements Initializable, Printable {
         tray.setMessage(message);
         tray.setNotificationType(NotificationType.SUCCESS);
         tray.showAndDismiss(Duration.millis(3000));
+    }
+
+    public void setIdUtilisateur(int id) {
+        idUtilis = id;
     }
 
     @FXML
@@ -185,5 +207,11 @@ public class InscriptionClub implements Initializable, Printable {
             result = PAGE_EXISTS;
         }
         return result;
+    }
+
+    public void sIdUtilisateur(int id) {
+        System.out.println("hhhhhhhhjjjjj");
+        System.out.println(id);
+        idUtilis = id;
     }
 }
