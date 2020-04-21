@@ -25,12 +25,14 @@ import projet.models.Utilisateur;
  *
  * @author user
  */
-public class ParentService implements IParent{
+public class ParentService implements IParent {
+
     static Statement statement = null;
     PreparedStatement pst;
 
     DbConnection cnx = DbConnection.getInstance();
     Connection connection = cnx.getConnection();
+
     @Override
     public List<Parent> selectAllParent() {
         ArrayList<Parent> listeParent = new ArrayList<>();
@@ -54,8 +56,6 @@ public class ParentService implements IParent{
         return listeParent;
     }
 
-    
-
     public void supprimerParents(int x) {
         String sql = "DELETE FROM parents WHERE id = ? ";
         try {
@@ -69,10 +69,10 @@ public class ParentService implements IParent{
 
     @Override
     public boolean ajouterParent(Parent p) {
-        System.out.println("nom"+p.getNom());
-        System.out.println("prenom"+p.getPrenom());
-        System.out.println("num"+p.getNumTelephone());
-        System.out.println("age"+p.getImage());
+        System.out.println("nom" + p.getNom());
+        System.out.println("prenom" + p.getPrenom());
+        System.out.println("num" + p.getNumTelephone());
+        System.out.println("age" + p.getImage());
         String requete = "INSERT INTO parents (nom,prenom,numTelephone,image)"
                 + " VALUES ('" + p.getNom() + "','" + p.getPrenom() + "','" + p.getNumTelephone() + "','" + p.getImage() + "');";
 
@@ -83,14 +83,15 @@ public class ParentService implements IParent{
             return true;
         } catch (SQLException ex) {
             System.out.println(ex);
-            
+
         }
-        return false ;
+        return false;
 
     }
+
     @Override
-      public void modifierP(Utilisateur p) {
-        String req = "UPDATE fos_user SET nom= ?,prenom= ?,email= ?,email_canonical= ?,telephone=? ,image= ? ,password=? WHERE id= ?";
+    public void modifierP(Utilisateur p) {
+        String req = "UPDATE fos_user SET nom= ?,prenom= ?,email= ?,email_canonical= ?,telephone=? ,image= ? WHERE id= ?";
         try {
             pst = connection.prepareStatement(req);
             pst.setString(1, p.getNom());
@@ -101,8 +102,8 @@ public class ParentService implements IParent{
             pst.setString(6, p.getImage());
             
           
-            pst.setString(7, p.getMotDePasse_Utilisateur());
-            pst.setInt(8, p.getId_Utilisateur());
+            //pst.setString(7, p.getMotDePasse_Utilisateur());
+            pst.setInt(7, p.getId_Utilisateur());
             pst.executeUpdate();
 
         } catch (SQLException e1) {
@@ -110,9 +111,28 @@ public class ParentService implements IParent{
         }
 
     }
-    
+
+    public Utilisateur selectUser(int id) {
+//        ArrayList<Parent> listeParent = new ArrayList<>();
+        Utilisateur us = new Utilisateur();
+        String req = "SELECT nom,prenom,telephone,email,image,id FROM fos_user where id = "+id;
+        try {
+            PreparedStatement ps = connection.prepareStatement(req);
+            ps.executeQuery();
+            ResultSet rs = ps.getResultSet();
+            while (rs.next()) {
+                
+                us.setNom(rs.getString(1));
+                us.setPrenom(rs.getString(2));
+                us.setTelephone(rs.getInt(3));
+                us.setEmail(rs.getString(4));
+                us.setImage(rs.getString(5));
+                us.setId_Utilisateur(rs.getInt(6));
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(EleveService.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return us;
+    }
 
-    
-    
-
+}

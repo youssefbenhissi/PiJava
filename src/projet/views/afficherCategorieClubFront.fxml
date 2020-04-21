@@ -47,6 +47,11 @@
                         <Circle fx:id="notification" fill="DODGERBLUE" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" translateX="38.0" translateY="8.0" />
                         <MenuButton mnemonicParsing="false" prefHeight="47.0" prefWidth="67.0" styleClass="button-profil">
                            <items>
+                              <MenuItem mnemonicParsing="false" onAction="#profile" text="Profile">
+                                 <graphic>
+                                    <FontAwesomeIcon glyphName="USER" />
+                                 </graphic>
+                              </MenuItem>
                               <MenuItem fx:id="user_nav" mnemonicParsing="false">
                                  <graphic>
                                     <FontAwesomeIcon glyphName="USER" />

@@ -99,10 +99,5 @@ public class frontHome implements Initializable{
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
-    public void setIdUtilisateur(int id){
-        AfficherCategoriesEtClubs a =new AfficherCategoriesEtClubs();
-        a.setIdUser(id);
-        System.out.println("youssef");
-        System.out.println(id);
-    }
+  
 }

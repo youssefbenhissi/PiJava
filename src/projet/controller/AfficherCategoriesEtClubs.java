@@ -551,10 +551,16 @@ present_img.setFitWidth(300);
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
-      public void setIdUser(int id)
-      {
-          System.out.println("lindaaaaa");
-          System.out.println(id);
-      }
+     
+      @FXML
+    public void profile(ActionEvent even) throws IOException {
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/projet/views/Profile.fxml"));
+        Scene scene = new Scene(root);
+        //scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        //primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
+    }
     
 }
