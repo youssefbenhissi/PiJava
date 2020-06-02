@@ -187,7 +187,6 @@ public class ModifierEvenementController implements Initializable {
             EvenementService service = new EvenementService();
             
             if(service.modifierEvenement(c)){
-                            System.out.println("ahhhhhhhhhhhhhhhh");           
 
                 closeDialog(event);
                 ObservableList observableList = FXCollections.observableArrayList( service.selectAllEvenement());

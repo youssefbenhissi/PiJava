@@ -38,6 +38,7 @@ import javax.mail.internet.MimeMultipart;
 public class QrCodeMailApi {
 
     public static void envoyerQrCode(String nomEvenement,Date dateDebutEvenement) {
+        System.out.println("waaaaaaaa"+nomEvenement);
         final String username = "youssef.benhissi@esprit.tn";
         final String password = "ilovetennis";
         String fromEmail = "youssef.benhissi@esprit.tn";

@@ -146,7 +146,7 @@ public class Inscription {
 
     public void setBtn_delete(Button btn_delete) {
         this.btn_delete = btn_delete;
-        System.out.println("ahhhhh");
+        //System.out.println("ahhhhh");
         this.btn_delete.setOnAction(event -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation");

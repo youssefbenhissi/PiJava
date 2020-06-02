@@ -153,7 +153,6 @@ public class DetailExperienceeController implements Initializable {
 
     @FXML
     public void ajouterInscrip(ActionEvent even) {
-       //QrCodeMailApi.envoyerQrCode(experience.getNomEvenement(), experience.getDateEvenement());
        
         reservation insc = new reservation();
         // System.out.println(idUtilisateur);

@@ -138,6 +138,7 @@ public class inscriptionBackController implements Initializable {
         });
     }
 
+    
     public void compteurClub() {
         Timer timer = new Timer(); //new timer
         counter = 0; //setting the counter to 10 sec

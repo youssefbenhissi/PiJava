@@ -54,14 +54,14 @@ public class InscriptionClub implements Initializable, Printable {
     @FXML
     public Label questionT;
     @FXML
-    private TextField ReponsePr;
+    public TextField ReponsePr;
 
     @FXML
-    private TextField ReponseDe;
+    public TextField ReponseDe;
     @FXML
     public Label idUtilisateur;
     @FXML
-    private TextField ReponseTr;
+    public TextField ReponseTr;
     @FXML
     public Label idClub;
     public int idUtilis;
@@ -210,7 +210,6 @@ public class InscriptionClub implements Initializable, Printable {
     }
 
     public void sIdUtilisateur(int id) {
-        System.out.println("hhhhhhhhjjjjj");
         System.out.println(id);
         idUtilis = id;
     }

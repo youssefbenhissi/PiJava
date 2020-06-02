@@ -56,8 +56,8 @@ public class StatistiquesCategorieEtClubController implements Initializable {
     @FXML
     private BarChart bar_chart;
     CategorieClubService categoriesClubService = new CategorieClubService();
-    InscriptionService inscrservice=new InscriptionService();
-     ClubService clubServ=new ClubService();
+    InscriptionService inscrservice = new InscriptionService();
+    ClubService clubServ = new ClubService();
     @FXML
     private StackedAreaChart area_chart;
     @FXML
@@ -72,26 +72,27 @@ public class StatistiquesCategorieEtClubController implements Initializable {
     private CategoryAxis x;
     int counter = 0;
     int counterCat = 0;
-    
+
     int counterIns = 0;
     List<Integer> listdd = new ArrayList<Integer>();
     List<String> listddd = new ArrayList<String>();
     List<Integer> listIdClubIn = new ArrayList<Integer>();
     List<Integer> listIdClub = new ArrayList<Integer>();
-    
+
     Boolean isIt = false;
-@FXML
+    @FXML
     private Label countInscrisp;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         Node[] nodes = new Node[15];
-statsMoyenneLike();
-plotChart();
+        statsMoyenneLike();
+        plotChart();
         statsInscri();
         compteurClub();
         compteurCategorie();
-        compteurInscription() ;
+        compteurInscription();
     }
 
     private void plotChart() {
@@ -99,15 +100,16 @@ plotChart();
         listdd = categoriesClubService.getState();
         for (int i = 0; i < listdd.size(); i++) {
             String g = categoriesClubService.getState1(listdd.get(i));
-            
+
             int gg = categoriesClubService.getState12(listdd.get(i));
-           
+
             seriesApril.getData().add(new XYChart.Data(g, gg));
 
         }
 
         vente.getData().addAll(seriesApril);
     }
+
     private void statsInscri() {
         XYChart.Series seriesApril = new XYChart.Series();
         listIdClub = inscrservice.getState();
@@ -120,8 +122,6 @@ plotChart();
 
         statsInscri.getData().addAll(seriesApril);
     }
-
-    
 
     public void compteurClub() {
         Timer timer = new Timer(); //new timer
@@ -170,13 +170,14 @@ plotChart();
             timelineCat.play();
         }
     }
-     public void compteurInscription() {
+
+    public void compteurInscription() {
         Timer timer = new Timer();
         InscriptionService cs = new InscriptionService();
         if (cs.selectAllInscris().size() == 0) {
             countInscrisp.setText(String.valueOf(0));
         } else {
-            
+
             Timeline timelineCat = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
                 new Pulse(conteneurInscrip).play();
                 counterIns++;
@@ -192,15 +193,15 @@ plotChart();
             timelineCat.play();
         }
     }
-     private void statsMoyenneLike() {
+
+    private void statsMoyenneLike() {
         XYChart.Series seriesApril = new XYChart.Series();
         listIdClubIn = clubServ.getState();
         for (int i = 0; i < listIdClubIn.size(); i++) {
             String g = clubServ.getState1(listIdClubIn.get(i));
-            
-            
+
             float gg = clubServ.getState12(listIdClubIn.get(i));
-            
+
             seriesApril.getData().add(new XYChart.Data(g, gg));
 
         }

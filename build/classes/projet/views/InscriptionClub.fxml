@@ -11,22 +11,22 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="layer1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="596.0" prefWidth="532.0" style="-fx-background-color: #2A0033;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.InscriptionClub">
+<AnchorPane fx:id="layer1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="596.0" prefWidth="532.0" style="-fx-background-color: #D5CEC6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.InscriptionClub">
    <children>
       <Pane layoutY="75.0" prefHeight="521.0" prefWidth="539.0">
          <children>
-            <TextField fx:id="ReponsePr" layoutX="54.0" layoutY="89.0" prefHeight="34.0" prefWidth="430.0" style="-fx-border-color: #9643A9; -fx-background-color: #2A0033; -fx-background-insets: 0; -fx-border-radius: 20;" styleClass="text-input" stylesheets="@../style/styleInscriptionClub.css" />
-            <Label fx:id="questionP" layoutX="53.0" layoutY="57.0" text="premiere question" textFill="#ddd9d9">
+            <TextField fx:id="ReponsePr" layoutX="54.0" layoutY="89.0" prefHeight="34.0" prefWidth="430.0" style="-fx-border-color: #9643A9; -fx-background-color: #D5CEC6; -fx-background-insets: 0; -fx-border-radius: 20;" styleClass="text-input" stylesheets="@../style/styleInscriptionClub.css" />
+            <Label fx:id="questionP" layoutX="53.0" layoutY="57.0" text="premiere question">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="questionD" layoutX="55.0" layoutY="153.0" text="deuxieme question" textFill="#ddd9d9">
+            <Label fx:id="questionD" layoutX="55.0" layoutY="153.0" text="deuxieme question">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="questionT" layoutX="53.0" layoutY="265.0" text="troisieme question" textFill="#ddd9d9">
+            <Label fx:id="questionT" layoutX="53.0" layoutY="265.0" text="troisieme question">
                <font>
                   <Font size="14.0" />
                </font>
@@ -41,13 +41,13 @@
                <graphic>
                   <FontAwesomeIcon glyphName="SAVE" />
                </graphic></Button>
-            <TextField fx:id="ReponseDe" layoutX="58.0" layoutY="181.0" prefHeight="34.0" prefWidth="430.0" style="-fx-border-color: #9643A9; -fx-background-color: #2A0033; -fx-background-insets: 0; -fx-border-radius: 20;" styleClass="text-input" stylesheets="@../style/styleInscriptionClub.css" />
-            <TextField fx:id="ReponseTr" layoutX="51.0" layoutY="299.0" prefHeight="34.0" prefWidth="430.0" style="-fx-border-color: #9643A9; -fx-background-color: #2A0033; -fx-background-insets: 0; -fx-border-radius: 20;" styleClass="text-input" stylesheets="@../style/styleInscriptionClub.css" />
-            <Label fx:id="idClub" layoutX="421.0" layoutY="14.0" />
+            <TextField fx:id="ReponseDe" layoutX="58.0" layoutY="181.0" prefHeight="34.0" prefWidth="430.0" style="-fx-border-color: #9643A9; -fx-background-color: #D5CEC6; -fx-background-insets: 0; -fx-border-radius: 20;" styleClass="text-input" stylesheets="@../style/styleInscriptionClub.css" />
+            <TextField fx:id="ReponseTr" layoutX="51.0" layoutY="299.0" prefHeight="34.0" prefWidth="430.0" style="-fx-border-color: #9643A9; -fx-background-color: #D5CEC6; -fx-background-insets: 0; -fx-border-radius: 20;" styleClass="text-input" stylesheets="@../style/styleInscriptionClub.css" />
+            <Label fx:id="idClub" layoutX="421.0" layoutY="14.0" textFill="TRANSPARENT" />
             <Label fx:id="idUtilisateur" layoutX="431.0" layoutY="24.0" />
          </children>
       </Pane>
-      <Label layoutX="192.0" layoutY="40.0" text="INSCRIPTION" textFill="#ddd9d9">
+      <Label layoutX="192.0" layoutY="40.0" text="INSCRIPTION" textFill="#6b5252">
          <font>
             <Font size="24.0" />
          </font>

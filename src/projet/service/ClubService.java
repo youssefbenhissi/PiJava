@@ -178,32 +178,7 @@ public class ClubService implements IClub {
         return clubs;
     }
 
-    /* CONTROLE DE SAISIE */
-    //variable de controle de saisie
-    private static Matcher matcher;
-    private static final String email_pattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-    private static Pattern email_pattern_compile = Pattern.compile(email_pattern);
-
-    public static boolean validationEmail(final String emailSaisie) {
-        matcher = email_pattern_compile.matcher(emailSaisie);
-        return matcher.matches();
-    }
-    private static final String chaineSimple_avecEspace_pattern = "^[A-Z a-z ]+$";
-    private static Pattern chaineSimple_pattern_avecEspace_complie = Pattern.compile(chaineSimple_avecEspace_pattern);
-
-    public static boolean validationChaineSimpleAvecEspace(final String chaineSaisie) {
-        matcher = chaineSimple_pattern_avecEspace_complie.matcher(chaineSaisie);
-        return matcher.matches();
-    }
-
-    private static final String chaineSimple_nombre_pattern = "^[0-9]+$";
-    private static Pattern chaineSimple_pattern__nombre_complie = Pattern.compile(chaineSimple_nombre_pattern);
-
-    public static boolean validationChaineSimpleNombre(final String chaineSaisie) {
-        matcher = chaineSimple_pattern__nombre_complie.matcher(chaineSaisie);
-        return matcher.matches();
-    }
-
+    
     @Override
     public List<Club> retournerListeDesClubsSupprission(int id) {
         List<Club> categories = new ArrayList<Club>();
@@ -477,4 +452,39 @@ public class ClubService implements IClub {
         }
         return idClub;
     }
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     /* CONTROLE DE SAISIE */
+    //variable de controle de saisie
+    private static Matcher matcher;
+    private static final String email_pattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    private static Pattern email_pattern_compile = Pattern.compile(email_pattern);
+
+    public static boolean validationEmail(final String emailSaisie) {
+        matcher = email_pattern_compile.matcher(emailSaisie);
+        return matcher.matches();
+    }
+    private static final String chaineSimple_avecEspace_pattern = "^[A-Z a-z ]+$";
+    private static Pattern chaineSimple_pattern_avecEspace_complie = Pattern.compile(chaineSimple_avecEspace_pattern);
+
+    public static boolean validationChaineSimpleAvecEspace(final String chaineSaisie) {
+        matcher = chaineSimple_pattern_avecEspace_complie.matcher(chaineSaisie);
+        return matcher.matches();
+    }
+
+    private static final String chaineSimple_nombre_pattern = "^[0-9]+$";
+    private static Pattern chaineSimple_pattern__nombre_complie = Pattern.compile(chaineSimple_nombre_pattern);
+
+    public static boolean validationChaineSimpleNombre(final String chaineSaisie) {
+        matcher = chaineSimple_pattern__nombre_complie.matcher(chaineSaisie);
+        return matcher.matches();
+    }
+
 }

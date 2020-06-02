@@ -16,6 +16,7 @@ import static java.awt.print.Printable.NO_SUCH_PAGE;
 import static java.awt.print.Printable.PAGE_EXISTS;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
+import projet.controller.InscriptionClub;
 
 /**
  *
@@ -66,7 +67,8 @@ public class Printer implements Printable{
             g2d.translate((int) pageFormat.getImageableX(),(int) pageFormat.getImageableY()); 
 
             ////////// code by alqama//////////////
-
+            InscriptionClub controller =new InscriptionClub();
+            
             FontMetrics metrics=g2d.getFontMetrics(new Font("Arial",Font.BOLD,7));
         //    int idLength=metrics.stringWidth("000000");
             //int idLength=metrics.stringWidth("00");
@@ -115,28 +117,33 @@ public class Printer implements Printable{
                 
              g2d.setFont(new Font("Monospaced",Font.PLAIN,9));
             g2d.drawString("-------------------------------------",12,y);y+=yShift;
-            g2d.drawString("      Restaurant Bill Receipt        ",12,y);y+=yShift;
-            g2d.drawString("-------------------------------------",12,y);y+=headerRectHeight;
-      
-            g2d.drawString("-------------------------------------",10,y);y+=yShift;
-            g2d.drawString(" Food Name                 T.Price   ",10,y);y+=yShift;
-            g2d.drawString("-------------------------------------",10,y);y+=headerRectHeight;
-            g2d.drawString(" "+pn1a+"                  "+pp1a+"  ",10,y);y+=yShift;
-            g2d.drawString(" "+pn2a+"                  "+pp2a+"  ",10,y);y+=yShift;
-            g2d.drawString(" "+pn3a+"                  "+pp3a+"  ",10,y);y+=yShift;
-            g2d.drawString(" "+pn4a+"                  "+pp4a+"  ",10,y);y+=yShift;
-            g2d.drawString("-------------------------------------",10,y);y+=yShift;
-            g2d.drawString(" Total amount: "+sum+"               ",10,y);y+=yShift;
-            g2d.drawString("-------------------------------------",10,y);y+=yShift;
-            g2d.drawString("          Free Home Delivery         ",10,y);y+=yShift;
-            g2d.drawString("             03111111111             ",10,y);y+=yShift;
-            g2d.drawString("*************************************",10,y);y+=yShift;
-            g2d.drawString("    THANKS TO VISIT OUR RESTUARANT   ",10,y);y+=yShift;
-            g2d.drawString("*************************************",10,y);y+=yShift;
-                   
-           
-             
-           
+            g2d.drawString("-------------------------------------", 12, y);
+                y += yShift;
+                g2d.drawString("      Inscription au club        ", 12, y);
+                y += yShift;
+                g2d.drawString("-------------------------------------", 12, y);
+                y += headerRectHeight;
+                g2d.drawString(" QUESTION                                  REPONSE", 10, y);
+                y += yShift;
+                g2d.drawString("-------------------------------------", 10, y);
+                y += headerRectHeight;
+                g2d.drawString(" " + controller.questionP.getText() + "                  " + controller.ReponsePr.getText() + "  ", 10, y);
+                y += yShift;
+                g2d.drawString(" " + controller.questionD.getText() + "                  " + controller.ReponseDe.getText() + "  ", 10, y);
+                y += yShift;
+                g2d.drawString(" " + controller.questionT.getText() + "                  " + controller.ReponseTr.getText() + "  ", 10, y);
+                y += yShift;
+                g2d.drawString("-------------------------------------", 10, y);
+                y += yShift;
+                g2d.drawString("          Merci pour votre inscription au sein de notre club        ", 10, y);
+                y += yShift;
+                g2d.drawString("*************************************", 10, y);
+                y += yShift;
+                g2d.drawString("    Tres Prochainement   ", 10, y);
+                y += yShift;
+                g2d.drawString("*************************************", 10, y);
+                y += yShift;
+
             
 //            g2d.setFont(new Font("Monospaced",Font.BOLD,10));
 //            g2d.drawString("Customer Shopping Invoice", 30,y);y+=yShift; 

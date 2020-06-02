@@ -34,6 +34,7 @@ import tray.notification.TrayNotification;
 
 public class DetailClubController implements Initializable {
 
+    
     @FXML
     private AnchorPane layer1;
     @FXML
