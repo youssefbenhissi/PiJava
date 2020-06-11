@@ -56,9 +56,9 @@ public class ajouterParentController implements Initializable {
     @FXML
     private JFXTextField numTelephoneP;
 
-    private Label errorNumTelephone;
+   
     @FXML
-    private Label errornumTelephone;
+    private Label errorNumTelephone;
     ParentService service =new ParentService();
     
     @FXML
@@ -113,15 +113,28 @@ public class ajouterParentController implements Initializable {
 
         if (nomP.getText().equals("")) {
             errorsNom.setText("Nom field is required");
+        }else{
+            errorsNom.setText("");
         }
         if (prenomP.getText().equals("")) {
             errorPrenom.setText("Prenom field is required");
+        }else{
+             errorPrenom.setText("");
         }
-        if (numTelephoneP.getText().equals("") && Integer.parseInt(numTelephoneP.getText()) > 8) {
-            errorNumTelephone.setText("numTelephone field is required");
-            if (file == null) {
+        if (numTelephoneP.getText().equals("") || !this.isNumeric(numTelephoneP.getText())) {
+            errorNumTelephone.setText("Error in phone number !");
+            
+        }else{
+            if(numTelephoneP.getText().length() == 8){
+                 errorNumTelephone.setText("");
+            }else{
+                  errorNumTelephone.setText("Error in phone number !");
+            }
+            
+        }
+        if (file == null) {
                 errorsImage.setText("Image field is required");
-            }} else {
+            }else {
                 String afficherParent;
                 if (file == null) {
                     afficherParent = "";
@@ -133,8 +146,13 @@ public class ajouterParentController implements Initializable {
                 p.setPrenom(prenomP.getText());
                 p.setNumTelephone(Integer.parseInt(numTelephoneP.getText()));
                 p.setImage(afficherParent);
-                service.ajouterParent(p);
-            
+                if(service.ajouterParent(p)){
+                    Stage stage = (Stage) layer1.getScene().getWindow();
+        // do what you have to do
+        stage.close();
+                }
+             
+        
         }
     }
 
@@ -150,4 +168,17 @@ public class ajouterParentController implements Initializable {
         // do what you have to do
         stage.close();
     }
+    
+    public static boolean isNumeric(String strNum) {
+    if (strNum == null) {
+        return false;
+    }
+    try {
+        int d = Integer.parseInt(strNum);
+        System.out.println(d);
+    } catch (Exception e) {
+        return false;
+    }
+    return true;
+}
 }

@@ -23,7 +23,7 @@
                         <JFXDrawer fx:id="drawer" prefHeight="176.0" prefWidth="256.0" />
                     </children>
                 </VBox>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#AfficherClubs" prefHeight="49.0" prefWidth="258.0" stylesheets="@../../views/style.css" text="clubs">
+            <Button alignment="BASELINE_LEFT" focusTraversable="false" mnemonicParsing="false" onAction="#AfficherClubs" prefHeight="49.0" prefWidth="258.0" stylesheets="@../../views/style.css" text="clubs">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                      <image>

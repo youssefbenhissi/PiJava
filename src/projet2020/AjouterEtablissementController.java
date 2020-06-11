@@ -28,6 +28,8 @@ import Entities.Etablissement;
 import java.sql.SQLException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
@@ -110,8 +112,12 @@ public class AjouterEtablissementController implements Initializable {
             alert.showAndWait();
              Parent homePage;
             try {
-                AnchorPane pp = FXMLLoader.load(getClass().getResource("AficcherEtablissement.fxml"));
-                this.anch.getChildren().setAll(pp);
+                Stage stage = (Stage) anch.getScene().getWindow();
+                  
+                   URL url = new File("src/projet2020/AficcherEtablissement.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
 
             } catch (IOException ex) {
                 Logger.getLogger(AjouterEtablissementController.class.getName()).log(Level.SEVERE, null, ex);
@@ -121,9 +127,30 @@ public class AjouterEtablissementController implements Initializable {
 
     @FXML
     private void goToAffichage(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
+        
+        
+        
+        
+        
+        
+        Stage stage = (Stage) add.getScene().getWindow();
+                  
+                   URL url = new File("src/projet2020/AficcherEtablissement.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        /*FXMLLoader loader = new FXMLLoader();
         AnchorPane pp = FXMLLoader.load(getClass().getResource("AficcherEtablissement.fxml"));
-        this.anch.getChildren().setAll(pp);
+        this.anch.getChildren().setAll(pp);*/
     }
     
 }

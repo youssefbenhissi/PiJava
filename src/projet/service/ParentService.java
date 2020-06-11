@@ -60,7 +60,7 @@ public class ParentService implements IParent {
         String sql = "DELETE FROM parents WHERE id = ? ";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, x);
+            statement.setString(1, Integer.toString(x));
             statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ParentService.class.getName()).log(Level.SEVERE, null, ex);
@@ -91,7 +91,7 @@ public class ParentService implements IParent {
 
     @Override
     public void modifierP(Utilisateur p) {
-        String req = "UPDATE fos_user SET nom= ?,prenom= ?,email= ?,email_canonical= ?,telephone=? ,image= ? WHERE id= ?";
+        String req = "UPDATE fos_user SET nom= ?,prenom= ?,email= ?,email_canonical= ?,telephone=? ,image= ? , password= ? WHERE id= ?";
         try {
             pst = connection.prepareStatement(req);
             pst.setString(1, p.getNom());
@@ -100,10 +100,11 @@ public class ParentService implements IParent {
             pst.setString(4, p.getEmail());
             pst.setInt(5, p.getTelephone());
             pst.setString(6, p.getImage());
+            pst.setString(7, p.getMotDePasse_Utilisateur());
             
           
             //pst.setString(7, p.getMotDePasse_Utilisateur());
-            pst.setInt(7, p.getId_Utilisateur());
+            pst.setInt(8, p.getId_Utilisateur());
             pst.executeUpdate();
 
         } catch (SQLException e1) {
@@ -115,7 +116,7 @@ public class ParentService implements IParent {
     public Utilisateur selectUser(int id) {
 //        ArrayList<Parent> listeParent = new ArrayList<>();
         Utilisateur us = new Utilisateur();
-        String req = "SELECT nom,prenom,telephone,email,image,id FROM fos_user where id = "+id;
+        String req = "SELECT nom,prenom,telephone,email,image,id ,password FROM fos_user where id = "+id;
         try {
             PreparedStatement ps = connection.prepareStatement(req);
             ps.executeQuery();
@@ -128,6 +129,8 @@ public class ParentService implements IParent {
                 us.setEmail(rs.getString(4));
                 us.setImage(rs.getString(5));
                 us.setId_Utilisateur(rs.getInt(6));
+                us.setMotDePasse_Utilisateur(rs.getString(7));
+                
             }
         } catch (Exception ex) {
             Logger.getLogger(EleveService.class.getName()).log(Level.SEVERE, null, ex);

@@ -138,7 +138,7 @@ public class AjoutArticle implements Initializable{
     
     private static final String SMTP_SERVER = "ssl0.ovh.net";
     private static final String USERNAME = "pidevjava@topvoce.com";
-    private static final String PASSWORD = "21802623AZe";
+    private static final String PASSWORD = "21802623AZee";
 
     private static final String EMAIL_FROM = "pidevjava@topvoce.com";
     private static final String EMAIL_TO = "youssef.benhissi@esprit.tn";

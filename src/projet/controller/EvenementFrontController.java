@@ -36,9 +36,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import projet.models.Evenement;
+import projet.models.Utilisateur;
 import projet.service.EvenementService;
 
 /**
@@ -52,6 +55,9 @@ public class EvenementFrontController implements Initializable {
     private BorderPane borderpane;
     @FXML
     private VBox home;
+    private Utilisateur user = world.recupererUtilisateurConnecte;
+    @FXML
+    private Circle myCircle;
 
     //int id = WorldfriendshipController.recupererUtilisateurConnecte.getId_Utilisateur();
     /**
@@ -59,10 +65,31 @@ public class EvenementFrontController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        myCircle.setStroke(Color.SEAGREEN);
+        Image iiii = new Image("file:" + "C:\\Users\\youssef\\PhpstormProjects\\pidevFinal\\web\\assets\\images\\" + user.getImage());
+        myCircle.setFill(new ImagePattern(iiii));
         afficher();
-
+//        System.out.println(user.getEmail());
     }
+    @FXML
+    public void profile(ActionEvent even) throws IOException {
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/projet/views/Profile.fxml"));
+        Scene scene = new Scene(root);
+        //scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        //primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
+    }
+    @FXML
+    public void exit(ActionEvent even) throws IOException {
+        Stage stage = (Stage) this.borderpane.getScene().getWindow();
+        URL url = new File("src/projet/views/LoginGUI.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
 
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    }
     private void afficher() {
 
         EvenementService evenService = new EvenementService();
@@ -128,87 +155,67 @@ public class EvenementFrontController implements Initializable {
         }
     }
 
-    /*
-    private void loadUI(String ui) {
-        Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/projet/presentation/" + ui + ".fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(DashboardController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        borderpane.setCenter(root);
-    }
-
-    private void ajouterExp(MouseEvent event) {
-        loadUI("AjouterExperience");
-    }*/
-
-   
-    
-    
-    
     @FXML
     private void AfficherC(ActionEvent event) throws IOException {
-       
-        
+
         Stage stage = (Stage) this.borderpane.getScene().getWindow();
         URL url = new File("src/projet/views/afficherCategorieClubFront.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-       
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+
     @FXML
     private void AfficherEvenements(ActionEvent event) throws IOException {
-        
-       
-        
-         Stage stage = (Stage) this.borderpane.getScene().getWindow();
+
+        Stage stage = (Stage) this.borderpane.getScene().getWindow();
         URL url = new File("src/projet/views/EvenemnetFront.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-       
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
-        @FXML
+
+    @FXML
     private void login(ActionEvent event) throws IOException {
-        
-        
-        
-         Stage stage = (Stage) this.borderpane.getScene().getWindow();
+
+        Stage stage = (Stage) this.borderpane.getScene().getWindow();
         URL url = new File("src/projet/views/LoginGUI.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-       
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+
     @FXML
     private void AfficherB(ActionEvent event) throws MalformedURLException, IOException {
-        
-         Stage stage = (Stage) this.borderpane.getScene().getWindow();
+
+        Stage stage = (Stage) this.borderpane.getScene().getWindow();
         URL url = new File("src/views/CategorieFront.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-       
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+
     @FXML
     private void AfficherEtablissement(ActionEvent event) throws MalformedURLException, IOException {
-       
-        
-         Stage stage = (Stage) this.borderpane.getScene().getWindow();
+
+        Stage stage = (Stage) this.borderpane.getScene().getWindow();
         URL url = new File("src/projet2020/AficcherEtablissement.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-       
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
-      @FXML
-      public void AfficherBlog(ActionEvent event) throws MalformedURLException, IOException{
-         Stage stage = (Stage) this.borderpane.getScene().getWindow();
+
+    @FXML
+    public void AfficherBlog(ActionEvent event) throws MalformedURLException, IOException {
+        Stage stage = (Stage) this.borderpane.getScene().getWindow();
         URL url = new File("src/projet/views/affichageArticlesFrontList.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-       
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }

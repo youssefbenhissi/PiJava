@@ -40,6 +40,7 @@ import tray.notification.TrayNotification;
 import projet.models.CategorieEvenement;
 import projet.models.Evenement;
 import projet.service.CategorieEvenementService;
+import projet.service.ClubService;
 import projet.service.EvenementService;
 import tray.animations.AnimationType;
 
@@ -49,7 +50,7 @@ import tray.animations.AnimationType;
  * @author yassine
  */
 public class AjouterEvenementController implements Initializable {
-
+    ClubService ClubService = new ClubService();
     @FXML
     private JFXTextField nomE;
 
@@ -109,16 +110,50 @@ public class AjouterEvenementController implements Initializable {
     @FXML
     private void ajouterCategorie(ActionEvent event) {
 
-        if (nomE.getText().equals("")) {
-            errorsNom.setText("Nom est obligatoire");
-        } else if (capacite.getText().equals("") && Integer.parseInt(capacite.getText()) < 0) {
-            errorCapacite.setText("Capaciter nom valide");
-        } else if (description.getText().equals("")) {
-            errorDescription.setText("Description est obligatoire");
-        } else if (prixEvenement.getText().equals("") && Integer.parseInt(prixEvenement.getText()) < 0) {
-            errorPrix.setText("Prix nom valide");
-        } else if (file == null) {
-            errorsImage.setText("Image field is required");
+        if (nomE.equals("")||capacite.getText().equals("")||prixEvenement.getText().equals("")) {
+            String tilte = "Champ Vide";
+            String message = "tous les champs doivent être remplis";
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+            
+            tray.setAnimationType(type);
+            tray.setTitle(tilte);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.ERROR);
+            tray.showAndDismiss(Duration.millis(3000));
+        } else if(!ClubService.validationChaineSimpleNombre(capacite.getText())) {
+            String tilte = "Capacite Club";
+            String message = "la capacite dé l evenement est non autorisé";
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+
+            tray.setAnimationType(type);
+            tray.setTitle(tilte);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.ERROR);
+            tray.showAndDismiss(Duration.millis(3000));
+        }else if (!ClubService.validationChaineSimpleNombre(prixEvenement.getText())) {
+            String tilte = "Prix Evenement";
+            String message = "la prix du ticket est non autorisé";
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+
+            tray.setAnimationType(type);
+            tray.setTitle(tilte);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.ERROR);
+            tray.showAndDismiss(Duration.millis(3000));
+        }
+        else if (file == null) {
+             String tilte = "Image de l Evenement";
+            String message = "vous devez choisir une image";
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+            tray.setAnimationType(type);
+            tray.setTitle(tilte);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.ERROR);
+            tray.showAndDismiss(Duration.millis(3000));
         } else {
             HashMap<String, Integer> mapCategorie = service.getAllCategorie();
             int id_Categorie = mapCategorie.get(caetgorie.getValue());
@@ -155,7 +190,7 @@ public class AjouterEvenementController implements Initializable {
                 tray.setNotificationType(NotificationType.SUCCESS);
                 tray.showAndDismiss(Duration.millis(3000));
             }
-
+            
         }
     }
 

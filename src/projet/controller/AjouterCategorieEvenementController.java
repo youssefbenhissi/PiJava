@@ -79,12 +79,27 @@ public class AjouterCategorieEvenementController implements Initializable {
     @FXML
     private void ajouterCategorie(ActionEvent event) {
 
-        if (nom.getText().equals("")) {
-            errorsLibelle.setText("Nom est obligatoire");
-        } else if (description.getText() == "") {
-            errorsDescription.setText("Description est obligatoire");
+        if (nom.equals("")||description.getText().equals("")) {
+            String tilte = "Champ Vide";
+            String message = "tous les champs doivent être remplis";
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+            
+            tray.setAnimationType(type);
+            tray.setTitle(tilte);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.ERROR);
+            tray.showAndDismiss(Duration.millis(3000));
         } else if (file == null) {
-            errorsImage.setText("Image field is required");
+             String tilte = "Image de la categorie";
+            String message = "vous devez choisir une image";
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+            tray.setAnimationType(type);
+            tray.setTitle(tilte);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.ERROR);
+            tray.showAndDismiss(Duration.millis(3000));
         } else {
 
             String lib = nom.getText();

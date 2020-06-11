@@ -88,6 +88,7 @@ public class LoginController {
         Uti.setNom_Utilisateur(nomUtilisateur);
         Uti.setMotDePasse_Utilisateur(motDePasseUtilisateur);
         Uti.setEmail(emailUtilisateur);
+        Uti.setImage("anonyme.png");
 
         Utilisateur existenceUtilisateur = new Utilisateur();
         existenceUtilisateur = ServiceLogin.getUtilisateur(nomUtilisateur);
@@ -111,6 +112,9 @@ public class LoginController {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/projet/views/Dashboard.fxml"));
             Parent root = loader.load();
+            world controller = new world();
+            existenceUtilisateur = ServiceLogin.getUtilisateur(inscription_nom_utilisateur_fx.getText());
+            controller.setUser(existenceUtilisateur);
 //            WorldfriendshipController controller = (WorldfriendshipController) loader.getController();
             //          existenceUtilisateur = ServiceLogin.getUtilisateur(nomUtilisateur);
             //        controller.setUser(existenceUtilisateur);
@@ -169,7 +173,7 @@ public class LoginController {
 //                        controller.idUtilisateur.setText(Integer.toString(utilisateur.getId_Utilisateur()));
                         //controller.setIdUtilisateur(utilisateur.getId_Utilisateur());
                         //InscriptionClub con =new InscriptionClub();
-                       // con.sIdUtilisateur(utilisateur.getId_Utilisateur());
+                        // con.sIdUtilisateur(utilisateur.getId_Utilisateur());
                         writeUsingFileWriter(Integer.toString(utilisateur.getId_Utilisateur()));
 //            existenceUtilisateur = ServiceLogin.getUtilisateur(nomUtilisateur);
                         //controller.idUtilistaeur.setText(Integer.toString(utilisateur.getId_Utilisateur()));
@@ -179,16 +183,20 @@ public class LoginController {
 
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/projet/views/Dashboard.fxml"));
                         Parent root = loader.load();
-                        // WorldfriendshipController controller = (WorldfriendshipController) loader.getController();
-                        //controller.setUser(ServiceLogin.getUtilisateur(Uti.getKey()));
-
+                        Utilisateur existenceUtilisateur = new Utilisateur();
+                        world controller = new world();
+                        existenceUtilisateur = ServiceLogin.getUtilisateur(nomUtilisater);
+                        controller.setUser(existenceUtilisateur);
                         Stage primaryStage = new Stage();
                         Scene scene = new Scene(root);
                         primaryStage.setScene(scene);
                         primaryStage.show();
                         return;
                     } else {
-
+                        Utilisateur existenceUtilisateur = new Utilisateur();
+                        world controller = new world();
+                        existenceUtilisateur = ServiceLogin.getUtilisateur(nomUtilisater);
+                        System.out.println("waaaaaaaaa" + existenceUtilisateur.getEmail());
                         Stage stage = (Stage) GUI.getScene().getWindow();
                         stage.close();
 
@@ -269,6 +277,7 @@ public class LoginController {
         // do what you have to do
         stage.close();
     }
+
     private static void writeUsingFileWriter(String data) {
         File file = new File("C:\\Users\\youssef\\Desktop\\PiJava-master (2)\\FileWriter.txt");
         FileWriter fr = null;
@@ -277,7 +286,7 @@ public class LoginController {
             fr.write(data);
         } catch (IOException e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             //close resources
             try {
                 fr.close();
@@ -286,39 +295,35 @@ public class LoginController {
             }
         }
     }
-    
-     @FXML
+
+    @FXML
     void MotDePasseOublie(ActionEvent event) throws IOException {
-        
-         Utilisateur existenceUtilisateur = new Utilisateur();
-         existenceUtilisateur = ServiceLogin.getUtilisateur(login_nom_utilisateur_fx.getText());
-         if(existenceUtilisateur == null)
-         {
-         
+
+        Utilisateur existenceUtilisateur = new Utilisateur();
+        existenceUtilisateur = ServiceLogin.getUtilisateur(login_nom_utilisateur_fx.getText());
+        if (existenceUtilisateur == null) {
+
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Erreur !");
             alert.setContentText("Pas d'Utilisateur de ce pesudo !");
             alert.showAndWait();
-         }
-         else
-         {
-            
-               String mdp = BCrypt.hashpw("1234", BCrypt.gensalt(13));
-               mdp =   mdp.replaceFirst("2a", "2y");
-               existenceUtilisateur.setMotDePasse_Utilisateur(mdp);
-               ParentService ps = new ParentService();
-               ps.modifierP(existenceUtilisateur);
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        } else {
+
+            String mdp = BCrypt.hashpw("1234", BCrypt.gensalt(13));
+            mdp = mdp.replaceFirst("2a", "2y");
+            existenceUtilisateur.setMotDePasse_Utilisateur(mdp);
+            ParentService ps = new ParentService();
+            ps.modifierP(existenceUtilisateur);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Succée !");
-            alert.setContentText("un email a été envoyé a l'utilisateur "+login_nom_utilisateur_fx.getText()+" contenant le nouveau mot de passe !");
+            alert.setContentText("un email a été envoyé a l'utilisateur " + login_nom_utilisateur_fx.getText() + " contenant le nouveau mot de passe !");
             alert.showAndWait();
-             try {
-                 sendMail.sendMailPass(existenceUtilisateur.getEmail(), existenceUtilisateur);
-             } catch (Exception ex) {
-                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-             }
-         }
-        
-       
+            try {
+                sendMail.sendMailPass(existenceUtilisateur.getEmail(), existenceUtilisateur);
+            } catch (Exception ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
     }
 }

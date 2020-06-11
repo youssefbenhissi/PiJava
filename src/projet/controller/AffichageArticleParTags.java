@@ -42,8 +42,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
+import projet.models.Utilisateur;
 
 
 /**
@@ -64,14 +68,19 @@ public class AffichageArticleParTags implements Initializable{
     private Label TagNom;
           @FXML
     private VBox PNLTagList = null;
-    
+                @FXML
+    private Circle myCircle;
+
+private Utilisateur user = world.recupererUtilisateurConnecte;
 
     
     
      @Override
     public void initialize(URL location, ResourceBundle resources) {
      
-  
+           myCircle.setStroke(Color.SEAGREEN);
+        javafx.scene.image.Image iiii = new javafx.scene.image.Image("file:"+ "C:\\Users\\youssef\\PhpstormProjects\\pidevFinal\\web\\assets\\images\\" + user.getImage());
+        myCircle.setFill(new ImagePattern(iiii));
        
        GestionCategories gstcat1 = new GestionCategories();
        
@@ -290,7 +299,25 @@ public void AffichParTag(int id){
    
 
 
+       @FXML
+    public void profile(ActionEvent even) throws IOException {
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/projet/views/Profile.fxml"));
+        Scene scene = new Scene(root);
+        //scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        //primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
+    }
+    @FXML
+    public void exit(ActionEvent even) throws IOException {
+        Stage stage = (Stage) this.PNLCatList.getScene().getWindow();
+        URL url = new File("src/projet/views/LoginGUI.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
 
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    }
 
 
 

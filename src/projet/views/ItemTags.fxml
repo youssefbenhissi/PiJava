@@ -8,8 +8,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<HBox fx:id="itemC" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="1050.0" spacing="25.0" style="-fx-background-color: #b5b5b5; -fx-background-radius: 1em; -fx-background-insets: 0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.AffichagetagsList">
+<HBox fx:id="itemC" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="1050.0" spacing="25.0" style="-fx-background-color: #b5b5b5; -fx-background-radius: 1em; -fx-background-insets: 0;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.AffichagetagsList">
     <children>
         <ImageView fx:id="iconartic" fitHeight="31.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -27,6 +28,9 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+         <font>
+            <Font size="12.0" />
+         </font>
         </Button>
       <Button id="supp" fx:id="supp" mnemonicParsing="false" onAction="#handleClicks" prefHeight="10.0" prefWidth="72.0" stylesheets="@../style/style.css" text="Supprimer">
           <HBox.margin>
@@ -35,6 +39,9 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+         <font>
+            <Font size="12.0" />
+         </font>
         </Button>
     </children>
     <effect>

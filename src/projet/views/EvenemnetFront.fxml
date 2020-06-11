@@ -23,8 +23,8 @@
                      <children>
                         <HBox prefHeight="53.0" prefWidth="674.0">
                            <children>
-                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="nav_button" text="Accueil" />
-                              <Button layoutX="97.0" layoutY="10.0" mnemonicParsing="false" onAction="#AfficherC" styleClass="nav_button" text="Clubs" />
+                              <Button focusTraversable="false" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="nav_button" text="Accueil" />
+                              <Button focusTraversable="false" layoutX="97.0" layoutY="10.0" mnemonicParsing="false" onAction="#AfficherC" styleClass="nav_button" text="Clubs" />
                               <Button layoutX="216.0" layoutY="10.0" mnemonicParsing="false" onAction="#AfficherEvenements" styleClass="nav_button" text="Evenements" />
                               <Button mnemonicParsing="false" onAction="#AfficherB" styleClass="nav_button" text="Bibliotheque" />
                               <Button mnemonicParsing="false" onAction="#AfficherEtablissement" prefWidth="149.0" styleClass="nav_button" text="Etablissement" />
@@ -32,26 +32,31 @@
                            </children>
                         </HBox>
                         <HBox prefHeight="66.0" prefWidth="711.0" styleClass="nav-right">
-                           <children>
-                              <HBox fx:id="bl_search" prefHeight="66.0" prefWidth="225.0" styleClass="bl_search">
-                                 <padding>
-                                    <Insets top="7.0" />
-                                 </padding>
-                              </HBox>
-                              <Circle fx:id="notification" fill="DODGERBLUE" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" translateX="38.0" translateY="8.0" />
-                              <MenuButton mnemonicParsing="false" prefHeight="47.0" prefWidth="67.0" styleClass="button-profil">
-                                 <items>
-                                    <MenuItem fx:id="user_nav" mnemonicParsing="false">
-                                       <graphic>
-                                          <FontAwesomeIcon glyphName="USER" />
-                                       </graphic>
-                                    </MenuItem>
-                                 </items>
-                                 <graphic>
-                                    <Circle fill="DODGERBLUE" radius="17.0" stroke="WHITE" strokeType="INSIDE" />
-                                 </graphic>
-                              </MenuButton>
-                           </children>
+                            <children>
+                                <HBox fx:id="bl_search" prefHeight="66.0" prefWidth="225.0" styleClass="bl_search">
+                                    <padding>
+                                        <Insets top="7.0" />
+                                    </padding>
+                                </HBox>
+                                <Circle fx:id="notification" fill="DODGERBLUE" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" translateX="38.0" translateY="8.0" />
+                                <MenuButton mnemonicParsing="false" prefHeight="47.0" prefWidth="67.0" styleClass="button-profil">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#profile" text="Profile">
+                                            <graphic>
+                                                <FontAwesomeIcon glyphName="USER" />
+                                            </graphic>
+                                        </MenuItem>
+                                        <MenuItem fx:id="user_nav" mnemonicParsing="false" text="EXIT" onAction="#exit" >
+                                            <graphic>
+                                                <FontAwesomeIcon glyphName="EXIT" />
+                                            </graphic>
+                                        </MenuItem>
+                                    </items>
+                                    <graphic>
+                                        <Circle fx:id="myCircle" fill="DODGERBLUE" radius="17.0" stroke="WHITE" strokeType="INSIDE" />
+                                    </graphic>
+                                </MenuButton>
+                            </children>
                         </HBox>
                      </children>
                   </HBox>

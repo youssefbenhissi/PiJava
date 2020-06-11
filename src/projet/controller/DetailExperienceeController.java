@@ -14,6 +14,7 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -32,6 +33,7 @@ import projet.API.QrCodeMailApi;
 import projet.models.Club;
 import projet.models.Evenement;
 import projet.models.Inscription;
+import projet.models.Utilisateur;
 import projet.models.reservation;
 import projet.service.ReservationService;
 import tray.animations.AnimationType;
@@ -67,6 +69,7 @@ public class DetailExperienceeController implements Initializable {
     private Label ratee;
     @FXML
     private Label nomEvenement;
+    private Utilisateur user = world.recupererUtilisateurConnecte;
 
     @FXML
     private Label capaciteEvenement;
@@ -86,7 +89,7 @@ public class DetailExperienceeController implements Initializable {
     private Evenement experience;
     @FXML
     private Label desc;
-
+    //private Utilisateur user = world.recupererUtilisateurConnecte;
     /**
      * Initializes the controller class.
      */
@@ -153,22 +156,49 @@ public class DetailExperienceeController implements Initializable {
 
     @FXML
     public void ajouterInscrip(ActionEvent even) {
-       
+
         reservation insc = new reservation();
         // System.out.println(idUtilisateur);
         insc.setIdevenement(experience.getIdEvenement());
+        boolean test = verifierReservation();
+        if (test) {
+            insc.setStatus("non confirmer");
+            insc.setIdUser(user.getId_Utilisateur());
+            service.ajouterInscription(insc);
+            String tilte = "Reservation enregistre";
+            String message = "votre reservation a été bien enregistrée.";
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+            tray.setAnimationType(type);
+            tray.setTitle(tilte);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.SUCCESS);
+            tray.showAndDismiss(Duration.millis(3000));
+        } else {
+            String tilte = "Echec Reservation ";
+            String message = "votre reservation a été bien echouée.";
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+            tray.setAnimationType(type);
+            tray.setTitle(tilte);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.ERROR);
+            tray.showAndDismiss(Duration.millis(3000));
+        }
         //insc.setStatus("non traitée");
-        insc.setStatus("non confirmer");
-        insc.setIdUser(8);
-        service.ajouterInscription(insc);
-        String tilte = "Reservation enregistre";
-        String message = "votre reservation a été bien enregistrée.";
-        TrayNotification tray = new TrayNotification();
-        AnimationType type = AnimationType.POPUP;
-        tray.setAnimationType(type);
-        tray.setTitle(tilte);
-        tray.setMessage(message);
-        tray.setNotificationType(NotificationType.SUCCESS);
-        tray.showAndDismiss(Duration.millis(3000));
+
+    }
+
+    public boolean verifierReservation() {
+        boolean test = true;
+        ReservationService service = new ReservationService();
+        List<reservation> l = service.selectAllReservations();
+        for (reservation r : l) {
+            System.out.println("waaaaaaaaaaaaaaaaaaaaaa" + r.getIdUser() + " " + r.getIdevenement());
+            if (r.getIdUser() == user.getId_Utilisateur() && r.getIdevenement() == experience.getIdEvenement()) {
+                test = false;
+            }
+        }
+        return test;
     }
 }

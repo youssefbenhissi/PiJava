@@ -36,13 +36,13 @@ public class EtablissementService implements IEtablissementService<Etablissement
     @Override
     public void ajouter(Etablissement e) throws SQLException {
          ste = con.createStatement();
-        String requeteInsert = "INSERT INTO `projetintegration2020`.`etablissement` (`id`, `numTel`, `adresse`, `nom`,`Image`) VALUES (NULL, '" + e.getNumTel()+ "', '" + e.getAdresse()+ "', '" + e.getNom()+ "', '" + e.getImage()+ "');";
+        String requeteInsert = "INSERT INTO `pi`.`etablissement` (`id`, `numTel`, `adresse`, `nom`,`Image`) VALUES (NULL, '" + e.getNumTel()+ "', '" + e.getAdresse()+ "', '" + e.getNom()+ "', '" + e.getImage()+ "');";
         ste.executeUpdate(requeteInsert);
     }
 
     @Override
     public boolean delete(int id) throws SQLException {
-        PreparedStatement pre = con.prepareStatement("DELETE FROM `projetintegration2020`.`etablissement` where id =?");
+        PreparedStatement pre = con.prepareStatement("DELETE FROM `pi`.`etablissement` where id =?");
         pre.setInt(1,id);
         pre.executeUpdate();
         int rowsDeleted = pre.executeUpdate();
@@ -58,12 +58,14 @@ public class EtablissementService implements IEtablissementService<Etablissement
 
         PreparedStatement statement = con.prepareStatement(sql);
         statement.setString(1, e.getImage());
+        System.out.println("waaaaaaaaaa"+e.getImage());
         statement.setString(2, e.getAdresse());
         statement.setString(3,e.getNom() );
         statement.setInt(4,e.getNumTel());
         statement.setInt(5,e.getId());
         statement.executeUpdate();
 
+        
         int rowsUpdated = statement.executeUpdate();
         if (rowsUpdated > 0) {
             System.out.println("An existing School was updated successfully!");
@@ -100,11 +102,11 @@ public class EtablissementService implements IEtablissementService<Etablissement
             if (result.next()) {
                 et= new Etablissement();
                 et.setId(id);
-                et.setNom(result.getString("Nom Ecole"));
+                et.setNom(result.getString("Nom"));
                 et.setAdresse(result.getString("Adresse"));
                 et.setNumTel(result.getInt("Numtel"));
       
-                et.setImage(result.getNString("photo"));
+                et.setImage(result.getNString("image"));
 
                 EtablissementService es = new EtablissementService();
 

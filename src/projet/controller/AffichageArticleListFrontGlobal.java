@@ -41,9 +41,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import projet.models.Tags;
+import projet.models.Utilisateur;
 import projet.service.GestionTags;
 
 
@@ -54,7 +58,8 @@ import projet.service.GestionTags;
 public class AffichageArticleListFrontGlobal implements Initializable{
     
  
-    
+    @FXML
+    private Circle myCircle;
      @FXML
     private VBox PNLarticle = null;
      
@@ -66,10 +71,12 @@ public class AffichageArticleListFrontGlobal implements Initializable{
     
        @FXML
     private ScrollPane scrollPane;
-    
+    private Utilisateur user = world.recupererUtilisateurConnecte;
      @Override
     public void initialize(URL location, ResourceBundle resources) {
-     
+        myCircle.setStroke(Color.SEAGREEN);
+        Image iiii = new Image("file:"+ "C:\\Users\\youssef\\PhpstormProjects\\pidevFinal\\web\\assets\\images\\" + user.getImage());
+        myCircle.setFill(new ImagePattern(iiii));
         GestionArticles gst = new GestionArticles();
          List<Articles> listarticles = new ArrayList<Articles>();
          listarticles = gst.getArticles();
@@ -275,7 +282,25 @@ public class AffichageArticleListFrontGlobal implements Initializable{
     }
    
     
-    
+    @FXML
+    public void profile(ActionEvent even) throws IOException {
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/projet/views/Profile.fxml"));
+        Scene scene = new Scene(root);
+        //scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        //primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
+    }
+    @FXML
+    public void exit(ActionEvent even) throws IOException {
+        Stage stage = (Stage) this.PNLCatList.getScene().getWindow();
+        URL url = new File("src/projet/views/LoginGUI.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    }
 
     
     

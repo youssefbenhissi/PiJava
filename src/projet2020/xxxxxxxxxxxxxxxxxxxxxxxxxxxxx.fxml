@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="a" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1069.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet2020.AficcherEtablissementController">
+   <children>
+      <ScrollPane fx:id="s1" layoutX="10.0" layoutY="172.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="465.0" prefWidth="1058.0">
+         <content>
+            <VBox fx:id="vbox1" prefHeight="449.0" prefWidth="1061.0" style="-fx-background-color: white;" />
+         </content>
+      </ScrollPane>
+      <Pane layoutX="10.0" layoutY="10.0" prefHeight="149.0" prefWidth="1058.0" style="-fx-background-color: #9CC900;">
+         <children>
+            <HBox prefHeight="53.0" prefWidth="1058.0" styleClass="nav-top" stylesheets="@../projet/style/home.css">
+               <children>
+                  <HBox prefHeight="53.0" prefWidth="898.0">
+                     <children>
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="nav_button" text="Accueil" />
+                        <Button layoutX="97.0" layoutY="10.0" mnemonicParsing="false" onAction="#AfficherC" styleClass="nav_button" text="Clubs" />
+                        <Button layoutX="216.0" layoutY="10.0" mnemonicParsing="false" onAction="#AfficherEvenements" styleClass="nav_button" text="Evenements" />
+                        <Button mnemonicParsing="false" onAction="#AfficherB" styleClass="nav_button" text="Bibliotheque" />
+                        <Button mnemonicParsing="false" onAction="#AfficherEtablissement" styleClass="nav_button" text="Etablissement" />
+                        <Button mnemonicParsing="false" onAction="#AfficherBlog" styleClass="nav_button" text="Blog" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="66.0" prefWidth="711.0" styleClass="nav-right">
+                     <children>
+                        <HBox fx:id="bl_search" prefHeight="66.0" prefWidth="225.0" styleClass="bl_search">
+                           <padding>
+                              <Insets top="7.0" />
+                           </padding>
+                        </HBox>
+                        <Circle fx:id="notification" fill="DODGERBLUE" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" translateX="38.0" translateY="8.0" />
+                        <MenuButton mnemonicParsing="false" prefHeight="47.0" prefWidth="67.0" styleClass="button-profil">
+                           <items>
+                              <MenuItem fx:id="user_nav" mnemonicParsing="false">
+                                 <graphic>
+                                    <FontAwesomeIcon glyphName="USER" />
+                                 </graphic>
+                              </MenuItem>
+                           </items>
+                           <graphic>
+                              <Circle fill="DODGERBLUE" radius="17.0" stroke="WHITE" strokeType="INSIDE" />
+                           </graphic>
+                        </MenuButton>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <Label layoutX="202.0" layoutY="61.0" prefHeight="70.0" prefWidth="392.0" text="   Etablissements à venir" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Century Gothic" size="24.0" />
+               </font>
+            </Label>
+            <MenuButton fx:id="choice" layoutX="825.0" layoutY="97.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" text="FILTER BY" textFill="#14b20c">
+               <items>
+                  <MenuItem fx:id="aff1" mnemonicParsing="false" onAction="#aff1" text="Type" />
+               </items>
+            </MenuButton>
+            <JFXTextField fx:id="recherche" focusColor="WHITE" layoutX="671.0" layoutY="54.0" prefHeight="25.0" prefWidth="209.0" promptText="Rechercher une Annonce" unFocusColor="WHITE" />
+            <JFXComboBox fx:id="type" layoutX="607.0" layoutY="87.0" onAction="#aff1" prefHeight="25.0" prefWidth="209.0" />
+            <JFXButton fx:id="Aj" layoutX="55.0" layoutY="87.0" onAction="#goToAj" text="Ajouter par ici" textFill="WHITE" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

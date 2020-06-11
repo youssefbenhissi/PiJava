@@ -32,6 +32,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import projet.API.Printer;
 import projet.models.Inscription;
+import projet.models.Utilisateur;
 import projet.service.InscriptionService;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
@@ -65,11 +66,11 @@ public class InscriptionClub implements Initializable, Printable {
     @FXML
     public Label idClub;
     public int idUtilis;
+    private Utilisateur user = world.recupererUtilisateurConnecte;
     InscriptionService service = new InscriptionService();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println(idUtilisateur.getText());
     }
 
     @FXML
@@ -84,12 +85,12 @@ public class InscriptionClub implements Initializable, Printable {
         insc.setReponseTr(ReponseTr.getText());
         insc.setIdClub(Integer.parseInt(idClub.getText()));
         insc.setStatus("non traitée");
-      
+
         try {
             File myObj = new File("C:\\Users\\youssef\\Desktop\\PiJava-master (2)\\FileWriter.txt");
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
-                 idUtilis = Integer.parseInt(myReader.nextLine());
+                idUtilis = Integer.parseInt(myReader.nextLine());
                 //System.out.println(data);
             }
             myReader.close();
@@ -97,8 +98,8 @@ public class InscriptionClub implements Initializable, Printable {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-          System.out.println("hhhhhhhhhhhhhh" + idUtilis);
-        insc.setIdUser(idUtilis);
+        System.out.println("hhhhhhhhhhhhhh" + idUtilis);
+        insc.setIdUser(user.getId_Utilisateur());
         service.ajouterInscription(insc);
         String tilte = "Inscription enregistre";
         String message = "votre inscription a été bien enregistrée.";

@@ -15,7 +15,7 @@ import java.sql.SQLException;
 public class MyDbConnection {
         private static MyDbConnection instance;
     private Connection connexion;
-    private String url = "JDBC:mysql://localhost:3306/projetintegration2020";
+    private String url = "JDBC:mysql://localhost:3306/pi";
     private String user = "root";
     private String password = "";
 

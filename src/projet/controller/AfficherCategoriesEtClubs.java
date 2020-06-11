@@ -52,12 +52,15 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.controlsfx.control.InfoOverlay;
 import projet.models.Club;
+import projet.models.Utilisateur;
 import projet.models.commentaireClub;
 import projet.service.CategorieClubService;
 import projet.service.ClubService;
@@ -155,9 +158,14 @@ public class AfficherCategoriesEtClubs implements Initializable {
     public ListView<String> ListView_commentaire;
     @FXML
     private TextArea commentaire_text_fx;
-
+    @FXML
+    private Circle myCircle;
+    private Utilisateur user = world.recupererUtilisateurConnecte;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        myCircle.setStroke(Color.SEAGREEN);
+        Image iiii = new Image("file:"+ "C:\\Users\\youssef\\PhpstormProjects\\pidevFinal\\web\\assets\\images\\" + user.getImage());
+        myCircle.setFill(new ImagePattern(iiii));
          setDataCommentaire();
         getCategorie();
         tri_combo.getItems().addAll("Nom, A à Z", "Nom, Z à A", "Moyenne Croissante", "Moyenne Decroissante");
@@ -576,6 +584,15 @@ public class AfficherCategoriesEtClubs implements Initializable {
         primaryStage.setScene(scene);
         //primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
+    }
+    @FXML
+    public void exit(ActionEvent even) throws IOException {
+        Stage stage = (Stage) this.box.getScene().getWindow();
+        URL url = new File("src/projet/views/LoginGUI.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
     }
 
     public void setDataCommentaire() {

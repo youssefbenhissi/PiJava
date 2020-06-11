@@ -19,7 +19,7 @@
       <VBox alignment="TOP_CENTER" prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #2F323A;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0" />
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#AfficherClubs" prefHeight="49.0" prefWidth="258.0" stylesheets="@../../views/style.css" text="clubs">
+            <Button alignment="BASELINE_LEFT" focusTraversable="false" mnemonicParsing="false" onAction="#AfficherClubs" prefHeight="49.0" prefWidth="258.0" stylesheets="@../../views/style.css" text="clubs">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -28,7 +28,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#AfficherEvenements" prefHeight="53.0" prefWidth="258.0" stylesheets="@../../views/style.css" text="evenements">
+            <Button alignment="BASELINE_LEFT" focusTraversable="false" mnemonicParsing="false" onAction="#AfficherEvenements" prefHeight="53.0" prefWidth="258.0" stylesheets="@../../views/style.css" text="evenements">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -37,7 +37,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#AfficherC" onMouseClicked="#AfficherC" prefHeight="51.0" prefWidth="256.0" stylesheets="@../../views/style.css" text="bibliotheque">
+            <Button alignment="BASELINE_LEFT" focusTraversable="false" mnemonicParsing="false" onAction="#AfficherC" onMouseClicked="#AfficherC" prefHeight="51.0" prefWidth="256.0" stylesheets="@../../views/style.css" text="bibliotheque">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -131,7 +131,7 @@
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../gestion_blog/images/unnamed.png" />
+                              <Image url="@../images/unnamed.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -146,7 +146,7 @@
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../gestion_blog/images/unnamed.png" />
+                              <Image url="@../images/unnamed.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -161,7 +161,7 @@
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../gestion_blog/images/unnamed.png" />
+                              <Image url="@../images/unnamed.png" />
                            </image>
                         </ImageView>
                      </graphic>

@@ -53,7 +53,7 @@
             <JFXTextField fx:id="prenomP" focusColor="#d1d1d1" layoutX="40.0" layoutY="35.0" prefHeight="50.0" prefWidth="418.0" promptText="prenom" unFocusColor="#d1d1d1" />
             <Label fx:id="errorPrenom" layoutX="40.0" layoutY="65.0" prefHeight="0.0" prefWidth="550.0" styleClass="label-errors" />
             <JFXTextField fx:id="numTelephoneP" focusColor="#d1d1d1" prefHeight="45.0" prefWidth="418.0" promptText="NumTelephone" unFocusColor="#d1d1d1" />
-            <Label fx:id="errornumTelephone" prefHeight="0.0" prefWidth="550.0" styleClass="label-errors" />
+            <Label fx:id="errorNumTelephone" prefHeight="0.0" prefWidth="550.0" styleClass="label-errors" />
             
             <VBox prefHeight="87.0" prefWidth="418.0">
                <children>
@@ -84,7 +84,7 @@
       </VBox>
       <HBox prefHeight="70.0" prefWidth="939.0" styleClass="dialog-group-button">
          <children>
-            <JFXButton prefHeight="50.0" prefWidth="120.0" styleClass="button-close" text="Fermer">
+            <JFXButton onMouseClicked="#quitter" prefHeight="50.0" prefWidth="120.0" styleClass="button-close" text="Fermer">
                <font>
                   <Font name="Century Gothic" size="17.0" />
                </font>

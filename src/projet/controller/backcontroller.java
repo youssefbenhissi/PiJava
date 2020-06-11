@@ -149,6 +149,7 @@ public class backcontroller implements Initializable {
         });
     }
 
+    
     @FXML
     private void afficherPersonnel() {
 
@@ -218,8 +219,6 @@ public class backcontroller implements Initializable {
         primaryStage.show();
     }
 
-    
-
     //Menuuuuuuuuuu
     @FXML
     private void AfficherClubs(ActionEvent event) throws MalformedURLException, IOException {
@@ -288,16 +287,17 @@ public class backcontroller implements Initializable {
         stage1.setScene(scene1);
 
     }
-       @FXML
+
+    @FXML
     private void AfficherGestionBlog(ActionEvent event) throws MalformedURLException, IOException {
 
-         Stage stage = (Stage) this.listeEleve.getScene().getWindow();
+        Stage stage = (Stage) this.listeEleve.getScene().getWindow();
         URL url = new File("src/projet/views/Home.fxml").toURI().toURL();
         javafx.scene.Parent root = FXMLLoader.load(url);
-       // stage.getIcons().add(new javafx.scene.image.Image("/projet/images/article-512.png"));
+        // stage.getIcons().add(new javafx.scene.image.Image("/projet/images/article-512.png"));
         stage.setTitle("Gestion de Blog");
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
-    
+
 }

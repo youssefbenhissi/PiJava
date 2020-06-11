@@ -464,7 +464,6 @@ public class AjouterCategorieEtClubController implements Initializable {
             Files.copy(sourceDirectory, targetDirectory);
         } catch (IOException ex) {
             //Logger.getLogger(AjouterEvenementController.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("ahawa");
         }
 
         return filename;

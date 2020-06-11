@@ -273,8 +273,34 @@ String req = "delete from livre where id =?";
         }
         return categories;
     }
-     public List<livre> getListProduitsFilter(String category, String triNom) {
+    public List<livre> Tous() {
+        List<livre> categories = new ArrayList<livre>();
+        String sql = "SELECT l.id,l.nom,l.description,l.nom_image FROM livre l ";
+       
+        PreparedStatement statement;
 
+        try {
+
+            statement = cn.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                livre c = new livre();
+                c.setId(rs.getInt(1));
+                c.setNom(rs.getString(2));
+                c.setDescription(rs.getString(3));
+                c.setNom_image(rs.getString(4));
+               
+                categories.add(c);
+            }
+        } catch (SQLException ex) {
+
+        }
+        return categories;
+    }
+     public List<livre> getListProduitsFilter(String category, String triNom) {
+         System.out.println("waaaaaaa"+category);
+         System.out.println("waaaaaaa"+triNom);
         ObservableList<livre> listLivre = FXCollections.observableArrayList();
         String req = null;
 

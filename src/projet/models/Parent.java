@@ -35,13 +35,14 @@ public class Parent {
         this.btn_delete = btn_delete;
         this.btn_delete.setOnAction(event -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Confirmation");
-            alert.setHeaderText("Vous voulez vraiment supprimer cet evenement?");
+            alert.setTitle("Confirmation !");
+            alert.setHeaderText("Vous voulez vraiment supprimer ce parent ?");
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                 ParentService service = new ParentService();
                 service.supprimerParents(id);
+                System.out.println(id);
                 backcontroller gestionInscription = new backcontroller();
                 gestionInscription.myObservableListP.remove(this);
             }

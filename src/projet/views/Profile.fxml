@@ -4,47 +4,141 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="545.0" prefWidth="756.0" styleClass="custom-pane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.ProfileController">
+<AnchorPane id="AnchorPane" prefHeight="603.0" prefWidth="1025.0" styleClass="custom-pane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.ProfileController">
     <stylesheets>
-        <URL value="@dark-theme.css" />
+        <URL value="@../style/backcss.css" />
     </stylesheets>
    <children>
-      <Circle fx:id="myCircle" fill="DODGERBLUE" layoutX="355.0" layoutY="151.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="255.0" />
-      <JFXTextField fx:id="NomField" layoutX="94.0" layoutY="318.0" prefHeight="37.0" prefWidth="142.0" AnchorPane.leftAnchor="94.0" />
-      <JFXTextField fx:id="PrenomField" layoutX="380.0" layoutY="318.0" AnchorPane.rightAnchor="40.0" />
-      <Label layoutX="444.0" layoutY="336.0" text="Prenom :" textFill="#ddd718" AnchorPane.rightAnchor="249.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="55.0" layoutY="323.0" text="Nom :" textFill="#ddd718" AnchorPane.leftAnchor="40.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <JFXTextField fx:id="TelephoneField" layoutX="528.0" layoutY="405.0" prefHeight="37.0" prefWidth="180.0" AnchorPane.rightAnchor="48.0" />
-      <Label layoutX="434.0" layoutY="417.0" text="Telephone :" textFill="#ddd718" AnchorPane.rightAnchor="239.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <JFXButton fx:id="imgBtn" layoutX="473.0" layoutY="131.0" onAction="#changeImg" prefHeight="30.0" prefWidth="26.0" styleClass="toolbar-button" text=" " AnchorPane.leftAnchor="473.0">
-         <graphic>
-            <FontAwesomeIcon glyphName="PENCIL" wrappingWidth="1.0" />
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="validateBtn" layoutX="255.0" layoutY="468.0" onAction="#Modifier" prefHeight="39.0" prefWidth="207.0" styleClass="toolbar-button" text="Valider Modification" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="294.0" />
-      <JFXTextField fx:id="EmailField" layoutX="94.0" layoutY="411.0" prefHeight="37.0" prefWidth="149.0" />
-      <Label layoutX="39.0" layoutY="417.0" text="Email :" />
-      <JFXButton fx:id="imgBtn1" layoutX="519.0" layoutY="131.0" onAction="#Capture" prefHeight="39.0" prefWidth="43.0" styleClass="toolbar-button" text=" ">
-         <graphic>
-            <FontAwesomeIcon glyphName="CAMERA" wrappingWidth="1.0" />
-         </graphic>
-      </JFXButton>
+      <HBox layoutX="10.0" layoutY="10.0" prefHeight="85.0" prefWidth="1015.0" styleClass="header-title" stylesheets="@../style/backcss.css">
+         <children>
+            <HBox prefHeight="85.0" prefWidth="851.0">
+               <children>
+                  <Button mnemonicParsing="false" styleClass="title-button">
+                     <graphic>
+                        <FontAwesomeIcon glyphName="USER" styleClass="title-button-icon" />
+                     </graphic>
+                  </Button>
+                  <Label prefHeight="48.0" prefWidth="500.0" styleClass="title-label" text=" Accueil / Profile">
+                     <font>
+                        <Font name="Century Gothic" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox layoutX="513.0" layoutY="10.0" prefHeight="100.0" prefWidth="523.0">
+               <children>
+                  <Label prefHeight="48.0" prefWidth="522.0" styleClass="title-right" text="    / Profile    ">
+                     <graphic>
+                        <FontAwesomeIcon glyphName="HOME" />
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <VBox layoutX="14.0" layoutY="72.0" prefHeight="462.0" prefWidth="1004.0" styleClass="content-gproduit">
+         <children>
+            <ScrollPane minHeight="-Infinity" prefHeight="514.0" prefWidth="1004.0">
+               <content>
+                  <VBox fx:id="home" prefHeight="501.0" prefWidth="999.0" stylesheets="@../style/homeExp.css">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="272.0" prefWidth="946.0">
+                                 <children>
+                                    <Circle fx:id="myCircle" fill="DODGERBLUE" layoutX="441.0" layoutY="121.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <JFXButton fx:id="imgBtn1" layoutX="463.0" layoutY="88.0" maxWidth="-Infinity" minHeight="-Infinity" onAction="#Capture" prefHeight="41.0" prefWidth="148.0" styleClass="toolbar-button" text=" ">
+                                       <graphic>
+                                          <FontAwesomeIcon glyphName="CAMERA" wrappingWidth="1.0" />
+                                       </graphic>
+                                    </JFXButton>
+                                    <JFXButton fx:id="imgBtn" layoutX="473.0" layoutY="129.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" onAction="#changeImg" prefHeight="41.0" prefWidth="165.0" styleClass="toolbar-button" text=" ">
+                                       <graphic>
+                                          <FontAwesomeIcon glyphName="PENCIL" wrappingWidth="16.0" />
+                                       </graphic>
+                                    </JFXButton>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Nom :">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <JFXTextField fx:id="NomField" prefHeight="37.0" prefWidth="142.0" />
+                              <Label text="Prenom :">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="60.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <JFXTextField fx:id="PrenomField" />
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <padding>
+                              <Insets left="230.0" top="30.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Telephone :">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <JFXTextField fx:id="TelephoneField" prefHeight="37.0" prefWidth="180.0" />
+                              <Label text="Email :" />
+                              <JFXTextField fx:id="EmailField" prefHeight="37.0" prefWidth="149.0" />
+                           </children>
+                           <padding>
+                              <Insets left="220.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <JFXButton fx:id="validateBtn" onAction="#Modifier" prefHeight="39.0" prefWidth="207.0" styleClass="blue" stylesheets="@../style/EvenementCss.css" text="Valider Modification">
+                                 <HBox.margin>
+                                    <Insets left="30.0" right="500.0" top="10.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                              <JFXButton onAction="#ChangePassword" styleClass="blue" stylesheets="@../style/EvenementCss.css" text="Changer mot de passe">
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </ScrollPane>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

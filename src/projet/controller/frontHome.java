@@ -30,6 +30,8 @@ public class frontHome implements Initializable{
     @FXML
     public Label idUtili;
 
+    
+    public static String email ="";
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -99,5 +101,15 @@ public class frontHome implements Initializable{
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+
+    public static void setEmail(String email) {
+        frontHome.email = email;
+    }
+
+    public static String getEmail() {
+        return email;
+    }
+      
+      
   
 }

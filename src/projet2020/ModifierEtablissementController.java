@@ -23,9 +23,12 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -112,8 +115,13 @@ public class ModifierEtablissementController implements Initializable {
 
     @FXML
     private void goToAffichage2(ActionEvent event) throws IOException {
-        AnchorPane pp = FXMLLoader.load(getClass().getResource("AficcherEtablissement.fxml"));
-        this.ass.getChildren().setAll(pp);
+   
+                Stage stage = (Stage) Adresse.getScene().getWindow();
+                  
+                   URL url = new File("src/projet2020/AficcherEtablissement.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
     }
 
     @FXML
@@ -138,8 +146,12 @@ public class ModifierEtablissementController implements Initializable {
         alert.setContentText("Votre modification a été enregistrée");
         alert.showAndWait();
         alert.close();
-         AnchorPane pp = FXMLLoader.load(getClass().getResource("AficcherEtablissement.fxml"));
-                this.ass.getChildren().setAll(pp);
+        Stage stage = (Stage) Adresse.getScene().getWindow();
+                  
+                   URL url = new File("src/projet2020/AficcherEtablissement.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
     }
     
 }

@@ -81,7 +81,7 @@ public class ReservationService {
     }
      public List<reservation> selectAllReservations() {
         ArrayList<reservation> clubs = new ArrayList<>();
-        String req = "SELECT c.id,c.statut,cEvenement.nomE,cUser.username FROM reservation c,evenement cEvenement,fos_user cUser  where ( c.Evenement_id = cEvenement.id AND c.id_user = cUser.id  )";
+        String req = "SELECT c.id,c.statut,cEvenement.nomE,cUser.username,c.Evenement_id,c.id_user FROM reservation c,evenement cEvenement,fos_user cUser  where ( c.Evenement_id = cEvenement.id AND c.id_user = cUser.id  )";
         try {
             PreparedStatement ps = connection.prepareStatement(req);
             ps.executeQuery();
@@ -94,6 +94,9 @@ public class ReservationService {
                 c.setStatus(rs.getString(2));
                 c.setNomEvenement(rs.getString(3));
                 c.setNomUser(rs.getString(4));
+                c.setIdevenement(rs.getInt(5));
+                c.setIdUser(rs.getInt(6));
+                
                 c.setBtn_confirmer(new Button("confirmer"));
                 clubs.add(c);
             }

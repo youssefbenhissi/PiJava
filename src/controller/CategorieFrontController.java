@@ -45,7 +45,12 @@ import java.net.MalformedURLException;
 import java.util.List;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import projet.controller.world;
+import projet.models.Utilisateur;
 
 /**
  * FXML Controller class
@@ -58,6 +63,8 @@ public class CategorieFrontController implements Initializable {
     private ComboBox<String> combo;
 //    @FXML
 //    private ComboBox<String> TrieCom;
+    @FXML
+    private VBox home;
     private ResultSet res;
     private PreparedStatement pst = null;
     private ResultSet rs = null;
@@ -73,19 +80,27 @@ public class CategorieFrontController implements Initializable {
     public static livre liv1;
     @FXML
     private ComboBox<String> TrieCom;
+    @FXML
+    private Circle myCircle;
+    private Utilisateur user = world.recupererUtilisateurConnecte;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        myCircle.setStroke(Color.SEAGREEN);
+        Image iiii = new Image("file:" + "C:\\Users\\youssef\\PhpstormProjects\\pidevFinal\\web\\assets\\images\\" + user.getImage());
+        myCircle.setFill(new ImagePattern(iiii));
         // TODO
         categorieCombobox();
         TrieCom.getItems().clear();
         TrieCom.getItems().addAll("A à Z", "Z à A");
-
+        listLivre = FXCollections.observableArrayList(ps.Tous());
+        getLiv();
     }
 
+    
     private void categorieCombobox() {
 
         combo.getItems().clear();
@@ -113,52 +128,51 @@ public class CategorieFrontController implements Initializable {
 
     }
 
+    public void getLivdeux() {
+
+    }
+
     public void getLiv() {
-        cont.getChildren().clear();
+        home.getChildren().clear();
 
         int index = 0;
         livre lib;
+        HBox hbox = new HBox();
         for (int i = 0; i < listLivre.size(); i++) {
             lib = listLivre.get(i);
-            if (index % 4 == 0) {
-                row = new HBox();
-                cont.getChildren().add(row);
+            if (index % 3 == 0) {
+                hbox = new HBox();
+                hbox.getStyleClass().add("row");
+                home.getChildren().add(hbox);
             }
-            VBox con = new VBox();
-
-            // System.out.println(lib.getNom_image());
-            //VBox content = new VBox();
             Image image = null;
-
             try {
-
                 image = new Image(new FileInputStream("C:\\Users\\youssef\\PhpstormProjects\\pidevFinal\\web\\assets\\images\\" + lib.getNom_image()));
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(CategorieFrontController.class.getName()).log(Level.SEVERE, null, ex);
             }
+            ImageView img = new ImageView(image);
+            img.setFitWidth(400);
+            img.setFitHeight(250);
+            Label label = new Label(lib.getNom());
+            HBox detail = new HBox(label);
+            detail.getStyleClass().add("detail_btn");
 
-            ImageView imageView = new ImageView(image);
+            VBox vb = new VBox(img, detail);
 
-            Label title = new Label(lib.getNom());
+            HBox suppBox = new HBox();
+            suppBox.getStyleClass().add("supp_Box");
 
-            imageView.setFitHeight(100);
-            imageView.setFitWidth(150);
-
-            con.getChildren().addAll(title, imageView);
-            Button item = new Button("", con);
-            item.setId(Integer.toString(i));
-            item.setOnAction(event -> {
-                liv1 = listLivre.get(Integer.parseInt(item.getId()));
-                detailLivre(listLivre.get(Integer.parseInt(item.getId())));
-
+            Button btn = new Button("", vb);
+            btn.setId(Integer.toString(i));
+            btn.setOnAction(event -> {
+                liv1 = listLivre.get(Integer.parseInt(btn.getId()));
+                detailLivre(listLivre.get(Integer.parseInt(btn.getId())));
             });
-
-            row.getChildren().add(item);
-
+            hbox.getChildren().add(btn);
+            hbox.getChildren().add(suppBox);
             index++;
 
         }
-
     }
 
     @FXML
@@ -221,70 +235,88 @@ public class CategorieFrontController implements Initializable {
         TrieLiv();
     }
 
-    
-    
     @FXML
     private void AfficherC(ActionEvent event) throws IOException {
-       
-        
-        Stage stage = (Stage) this.cont.getScene().getWindow();
+
+        Stage stage = (Stage) this.home.getScene().getWindow();
         URL url = new File("src/projet/views/afficherCategorieClubFront.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-       
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+
     @FXML
     private void AfficherEvenements(ActionEvent event) throws IOException {
-        
-       
-        
-         Stage stage = (Stage) this.cont.getScene().getWindow();
+
+        Stage stage = (Stage) this.home.getScene().getWindow();
         URL url = new File("src/projet/views/EvenemnetFront.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-       
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
-        @FXML
+
+    @FXML
     private void login(ActionEvent event) throws IOException {
-        
-        
-        
-         Stage stage = (Stage) this.cont.getScene().getWindow();
+
+        Stage stage = (Stage) this.home.getScene().getWindow();
         URL url = new File("src/projet/views/LoginGUI.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-       
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+
     @FXML
     private void AfficherB(ActionEvent event) throws MalformedURLException, IOException {
-        
-         Stage stage = (Stage) this.cont.getScene().getWindow();
+
+        Stage stage = (Stage) this.home.getScene().getWindow();
         URL url = new File("src/views/CategorieFront.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-       
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+
     @FXML
     private void AfficherEtablissement(ActionEvent event) throws MalformedURLException, IOException {
-       
-        
-         Stage stage = (Stage) this.cont.getScene().getWindow();
+
+        Stage stage = (Stage) this.home.getScene().getWindow();
         URL url = new File("src/projet2020/AficcherEtablissement.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-       
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
-      @FXML
-      public void AfficherBlog(ActionEvent event) throws MalformedURLException, IOException{
-         Stage stage = (Stage) this.cont.getScene().getWindow();
+
+    @FXML
+    public void AfficherBlog(ActionEvent event) throws MalformedURLException, IOException {
+        Stage stage = (Stage) this.home.getScene().getWindow();
         URL url = new File("src/projet/views/affichageArticlesFrontList.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-       
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    }
+
+    @FXML
+    public void profile(ActionEvent even) throws IOException {
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/projet/views/Profile.fxml"));
+        Scene scene = new Scene(root);
+        //scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
+        //primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.show();
+    }
+
+    @FXML
+    public void exit(ActionEvent even) throws IOException {
+        Stage stage = (Stage) this.home.getScene().getWindow();
+        URL url = new File("src/projet/views/LoginGUI.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }

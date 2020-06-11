@@ -41,6 +41,7 @@ import javafx.stage.StageStyle;
 import projet.models.CategorieClub;
 import projet.models.CategorieEvenement;
 import projet.models.Evenement;
+import projet.models.Utilisateur;
 import projet.service.CategorieEvenementService;
 import projet.service.EvenementService;
 
@@ -87,7 +88,7 @@ public class EvenementBackController implements Initializable {
     public static ObservableList<Evenement> myObservableList;
     public static ObservableList<CategorieEvenement> ObservableList;
 //drawer 
-
+    private Utilisateur user = world.recupererUtilisateurConnecte;
     @FXML
     private JFXHamburger hamburger;
 
@@ -99,6 +100,7 @@ public class EvenementBackController implements Initializable {
         afficherCategorieEvenement();
         afficherEvenement();
         drawer();
+//        System.out.println("waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+user.getEmail());
 
     }
 

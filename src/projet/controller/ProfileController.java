@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,7 +43,7 @@ import projet.service.ParentService;
 public class ProfileController implements Initializable {
 
     @FXML
-    private Circle myCircle;
+    public  Circle myCircle;
     @FXML
     private JFXTextField NomField;
     @FXML
@@ -57,15 +58,21 @@ public class ProfileController implements Initializable {
 
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
-    Utilisateur user;
+    //Utilisateur user;
 
     File selectedFile;
+    private Utilisateur user = world.recupererUtilisateurConnecte;
     @FXML
     private JFXButton validateBtn;
 
     /**
      * Initializes the controller class.
      */
+    
+   
+
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -91,14 +98,14 @@ public class ProfileController implements Initializable {
         //fieldDate.getValidators().add(reg);
         //  fieldNumero.getValidators().add(reg);
         ParentService service = new ParentService();
-        user = service.selectUser(8);
+        user = service.selectUser(user.getId_Utilisateur());
         System.err.println(user);
         PrenomField.setText(user.getPrenom());
         NomField.setText(user.getNom());
         TelephoneField.setText(user.getTelephone() + "");
         EmailField.setText(user.getEmail());
         myCircle.setStroke(Color.SEAGREEN);
-        Image im = new Image("file:" + user.getImage());
+        Image im = new Image("file:"+ "C:\\Users\\youssef\\PhpstormProjects\\pidevFinal\\web\\assets\\images\\" + user.getImage());
         myCircle.setFill(new ImagePattern(im));
         myCircle.setEffect(new DropShadow(+25d, 0d, +2d, Color.DARKSEAGREEN));
 
@@ -170,5 +177,29 @@ public class ProfileController implements Initializable {
             Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
+    @FXML
+    private void ChangePassword(ActionEvent event) {
+        try {
+            Stage primaryStage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("/projet/views/ChangerMotDePasse.fxml"));
+            Scene scene = new Scene(root);
+            //scene.setFill(Color.TRANSPARENT);
+            primaryStage.setScene(scene);
+            //primaryStage.initStyle(StageStyle.TRANSPARENT);
+            primaryStage.show();
+//      ToolBarAssistant.loadWindow(getClass().getResource("/projet/views/CaptureWindow.fxml"), "Prendre Une Photo", null);
+//         Stage stage = (Stage) imgBtn.getScene().getWindow();
+//    // do what you have to do
+//    stage.close();
+        } catch (IOException ex) {
+            Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+     
+
+
 
 }

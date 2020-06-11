@@ -91,7 +91,7 @@
       </VBox>
       <HBox prefHeight="70.0" prefWidth="939.0" styleClass="dialog-group-button">
          <children>
-            <JFXButton prefHeight="50.0" prefWidth="120.0" styleClass="button-close" text="Fermer">
+            <JFXButton onMouseClicked="#quitter" prefHeight="50.0" prefWidth="120.0" styleClass="button-close" text="Fermer">
                <font>
                   <Font name="Century Gothic" size="17.0" />
                </font>

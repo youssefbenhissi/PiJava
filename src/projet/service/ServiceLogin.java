@@ -34,7 +34,7 @@ public class ServiceLogin {
         // Define the BCrypt workload to use when generating password hashes. 10-31 is a valid value en regarde le cryptage de fosuserbundle il utilise $2y$13$.
         int workload = 13;
         int status = 0;
-        String sql = "INSERT INTO fos_user(username,password,email,roles,enabled,username_canonical,email_canonical) VALUES(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO fos_user(username,password,email,roles,enabled,username_canonical,email_canonical,image) VALUES(?,?,?,?,?,?,?,?)";
 
         try {
             Connection connexion = ServiceLogin.creationConnexion();
@@ -47,6 +47,7 @@ public class ServiceLogin {
             preparedStatement.setInt(5, 1);
             preparedStatement.setString(6, utilisateur.getNom_Utilisateur());
             preparedStatement.setString(7, utilisateur.getEmail());
+            preparedStatement.setString(8, utilisateur.getImage());
             status = preparedStatement.executeUpdate();
             connexion.close();
         } catch (SQLException e) {
@@ -107,6 +108,7 @@ public class ServiceLogin {
                 utilisateur.setNom_Utilisateur(resultSet.getString("username"));
                 utilisateur.setEmail(resultSet.getString("email"));
                 utilisateur.setRole_Utilisateur(resultSet.getString("roles"));
+                utilisateur.setImage(resultSet.getString("image"));
             }
 
             connexion.close();
